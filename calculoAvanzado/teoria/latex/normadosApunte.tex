@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+
+\begin{document}
+\LaTeX \\
+
+Calculo Avanzado
+
+Universidad de Buenos Aires\\
+
+Teoría 
+
+Espacios Normados\\
+
+Javier Vera
+
+
+\newpage
+
+Los espacios normados son casos particulares de los espacios vectoriales, en otras palabras, son espacios vectoriales con una norma. Dicho esto es evidente que deben tener una estructura algebraica de espacio vectorial y además una norma.
+Ahora, ¿Qué es un norma?
+
+\begin{definition}
+	Sea $\E$ un espacio vectorial (Sobre $\R$ o $\mathbb{C}$). Una función $\norm{\cdot}:\E \ra [0,+\infty]$ es una norma si verifica las siguientes propiedades:
+	 \begin{enumerate}[(1)]
+		\item $\norm{x+y} \leq \norm{x} + \norm{y}$
+		
+		\item $\norm{\lambda \cdot x} = |\lambda| \cdot \norm{x}$
+
+		\item $\norm{x} = 0$ si y solo si $x=0$
+
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Si $\E$ es un espacio normado entonces es un espacio métrico con la distancia $d(x,y) = \norm {x-y}$
+\end{remark}
+
+\begin{definition}
+	Un espacio normado que es completo con la distancia $d(x,y) = \norm{x-y}$ se llama un espacio de Banch
+\end{definition}
+
+\begin{remark}
+Todo espacio normado es métrico , pero no todo epacio métrico es normado. Ejemplo $(R^n,\delta)$ con $\delta$ la distancia discreta. 
+
+	Supongamos que la distancia discreta nos induce una norma, luego Sea $x \neq 0$ $ d(x,0) = \norm{x-0} \neq \lambda \norm{x -0} = \norm {\lambda x - 0 } = d(\lambda x,0)$ luego $d(x,0) \neq d(\lambda x,0)$ cosa que es absurda dada la distancia discreta
+
+	Ejemplos de espacios normados
+
+	$(R^n,\norm {\cdot}_{2})$
+	
+	$(R^n,\norm {\cdot}_{\infty})$ $\norm{x}_{\infty} = max_{1 \leq i \leq m} |x_{i}| $
+\end{remark}
+
+
+\end{document}
