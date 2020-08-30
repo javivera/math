@@ -81,7 +81,7 @@ Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
 $\Ra x \in B \setminus \bigcap A_{i}$
 
 
-  \end{proof}
+   \end{proof}
 \item $$\bigcup_{i \in \I} (A_{i} \cap B) = B \cap (\bigcup_{i \in \I} A_{i})$$
 
   \begin{proof}
@@ -93,8 +93,41 @@ $\Ra x \in B \setminus \bigcap A_{i}$
 
   $\Ra x \in B \cap (\bigcup A_{i})$
 \end{proof}
+ 
+\end{enumerate}
+3) Sea $f : X \ra Y$ una función, $A, B $ subconjuntos de $X$
+\begin{enumerate}[i.]
+  \item $f(A \cup B) = f(A) \cup f(B)$
+    \begin{proof}
+      $\subseteq )$ Sea $y \in f(A \cup B)$ entonces $\exists x \in A \cup B /  f(x) = y$ 
+
+      Luego $x \in A$ y $ x \in B$ 
+
+     Entonces  $ y = f(x) \in f(A)$ y por otro lado $y = f(x) \in B$
+
+     Finalmente $y = f(x) \in f(A) \cup f(B)$
+
+   $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ e $y \in f(B)$
+
+   Entonces $\exists x \in A  $ tal que $ f(x) = y $ luego $ x \in A \cup B$
+
+   Luego $y = f(x) \in f(A \cup B)$
+    \end{proof}
+
+  \item $f(A \cap B) \subseteq f(A) \cap f(B)$
+
+    \begin{proof}
+      Sea $ y \in f(A \cap B)$ luego $\exists x \in A \cap B$ tal que $f(x) = y$
+
+Luego	$x \in A $ y $x \in B$ luego $y = f(x) \in f(A)$ e $y = f(x) \in f(B)$
+
+Finalmente $y = f(x) \in f(A) \cap f(B)$ 
+    \end{proof}
+
+  \item Sea $f(x) = 3 \quad \forall x \in X$ y $A = {1}, B={2}$
+
+    Luego $3 = f(A) \cap f(B) = 3 = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
 
 \end{enumerate}
-
 
 \end{document}
