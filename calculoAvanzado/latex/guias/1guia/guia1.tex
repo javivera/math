@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Espacios Normados}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+
+\noindent 1)
+\begin{enumerate}[i.]
+  \item $$B \setminus \bigcup_{i \in \I} A_{i} = \bigcap_{i \in \I} (B \setminus A_{i})$$
+    \begin{proof}
+    $\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcup_{i \in \I} A_{i}$ 
+
+    Luego $x \in B$ y $x \notin \bigcup A_{i} \quad \forall i \in \I $
+
+    Entonces $x \in B \setminus A_{i} \quad \forall i \in \I$
+
+    $\Ra x \in \bigcap B \setminus A_{i}$
+    
+$\supseteq )$ Sabemos $x \in B \setminus A_{i} \quad \forall i \in \I$
+
+Luego para cada $i \in \I$ sabemos $x \in B$ y $x \notin A_{i}$
+
+$\Ra x \in B \setminus \bigcup A_{i}$
+
+
+  \end{proof}
+\item $$B \setminus \bigcap_{i \in \I} A_{i} = \bigcup_{i \in \I} (B \setminus A_{i})$$
+
+  \begin{proof}
+  $\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcap A_{i}$ 
+
+    Luego existe algún $i \in \I$ tal que $x \notin A_{i}$ (quizas para todos los $i \in I$ sucede que $x \notin A_{i}$ pero con uno alcanza)
+
+    Entonces existe algún $i \in \I$ tal que $x \in B$ y $x \notin A_{i} \Ra B \setminus A_{i} $
+
+  $\Ra x \in \bigcup (B \setminus A_{i})$
+
+$\supseteq )$ Tenemos $x \in B \setminus A_{i}$ para algún $i \in \I$
+
+Luego $x \in B$ y $x \notin A_{i}$ para algún $i \in \I$
+
+Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
+
+$\Ra x \in B \setminus \bigcap A_{i}$
+
+
+  \end{proof}
+\item $$\bigcup_{i \in \I} (A_{i} \cap B) = B \cap (\bigcup_{i \in \I} A_{i})$$
+
+  \begin{proof}
+  $\subseteq )$ Tenemos $x \in A_{i} \cap B$ para algún $i \in \I$  
+  
+  Luego $x \in B$ y $x \in A_{i}$ para algún $i \in \I \Ra x \in \bigcup A_{i}$
+
+  Entonces $x \in B$ y $x \in \bigcup A_{i}$
+
+  $\Ra x \in B \cap (\bigcup A_{i})$
+\end{proof}
+
+\end{enumerate}
+
+
+\end{document}

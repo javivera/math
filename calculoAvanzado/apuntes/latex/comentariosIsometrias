@@ -1,0 +1,20 @@
+Si tenes una isometría tenes continuidad
+
+Si tenes isometría e inversa , la inversa es isometría tambien
+
+
+isometria ademas implica continuidad uniforme (y creo que lipschitz
+
+si tenes isometria e inversa tenes homemorfismo uniforme 
+ por que su inversa es isometria por ende continua y ademas ambas continuidades son uniformes , por ende tenes homemorfismo uniforme
+
+
+
+
+Continuidad uniforme preserva cauchy ,m y preserva totalmente acotados y acotados tambien. Y manda convergentes en convergentes 
+
+Homemorfismo de E con Rn  agarro cauchy en E 
+homeo manda cacuhy en cauchy y cauchy en Rn converge ,
+ ahora preimagen de convergente es convergente , 
+como homeo es una biyeccion entonces la sucesions original de cauchy de E era convergente
+ E es completo

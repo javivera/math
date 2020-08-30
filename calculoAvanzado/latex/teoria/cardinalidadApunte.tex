@@ -1,0 +1,609 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Espacios Normados}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+\thispagestyle{empty}
+
+Palabras introductorias
+
+\newpage
+\thispagestyle{empty}
+
+Cálculo Avanzado 
+
+Universidad de Buenos Aires \\
+
+Teoría
+
+Cardinalidad \\
+
+Javier Vera
+
+\LaTeX 
+
+\newpage
+\thispagestyle{empty}
+Cardinalidad es un tema que para el lectór en este momento de su vida puede parecer ajeno y anti intuitivo, pero en un análisis más profundo y con suerte habiendo entendido los conceptos mas adelante expuestos, él podrá confirmar que en realidad parecería ser una manera mas orgánica de definir a los 'numeros' y algunas de sus operaciones
+
+\begin{definition}
+  Sean $X$ e $Y$ dos conjuntos. Decimos que son coordinables (o equipotentes, o que tienen el mismo cardinal) si existe $f: X \ra Y$ biyectiva. [Notacion:$X \sim Y$
+  \end{definition}
+    \begin{remark}
+      Esta relacion $\sim$ es de equivalencia, la demostración es trivial y queda como ejercicio de repaso para el lector
+    \end{remark}
+Ejemplos para arrancar:
+
+\begin{center} $\N \sim \{$ numeros pares $\}$ \end{center}
+\begin{center} $\Q \sim \N$ (se ve usando un argumento de diagonales)\end{center} 
+
+\begin{remark}
+  Definimos el cardinal de un conjunto $X$ como la clase de equivalencia de los conjuntos coordinables con $X$:
+
+  $$ \# X = Card(X) = \{Y : X \sim Y\}$$
+
+ Algunos cardinales importantes tiene su símbolo unico \\
+
+ $\# (\N) = \n$
+ 
+ $\#(\R) = \mathfrak{c}$
+
+ $\# \{1,2,3 \dots ,n\} = n$
+
+ $\# \{a,b\} = 2$ 
+
+ Atención no confundir este último ejemplo y otros parecidos con `numeros' per se, son clases de equivalencia. Más adelante se verá que en algunos casos se comportan parecidos a los `numeros' que conocemos y que muchas veces directamente se comportan igual que ellos 
+\end{remark}
+
+\begin{remark}
+Llamemos $\I_{n} = \{1,2,3 \dots ,n\}$ el intervalo inicial del conjunto $\N$ de los números naturales
+
+Atención para poder llamar $n$ a $\# \I_{n}$ necesitamos que para $n \neq m$, $\I_{n}$ y $\I_{m}$ esten en distintas clases de equivalencia según $\sim$. Demostrémoslo..
+\end{remark}
+Pero antes un lema para facilitar el asunto 
+\begin{lemma}
+  
+  Sea $A \subset \I_{n}$. Si existe $f:\I_{n} \ra A$ inyectiva, entonces $A = \I_{n}$
+\end{lemma}
+
+\begin{theorem}
+  Sean $n,m \in \N$ Entonces, $$\I_{n} \sim \I_{m} \iff n = m$$
+
+  \begin{proof}
+  $\Ra)$ Directa por el lema
+
+$\quad \Leftarrow ) $ Por absurdo supongamos $n \neq m $ y sin perdida de generalidades $n < m \Ra \I_{n} \subset \I_{m}$
+
+Entonces por hipótesis $\I_{n} \sim \I_{m}$ sabemos $\exists f: \I_{n} \ra \I_{m}$ biyectiva 
+
+Pero entonces por lema $\I_{m} = \I_{n}$ absurdo 
+
+$\Ra n = m$ 
+  \end{proof}
+\end{theorem}
+
+\begin{lemma}
+  Sea $A \subseteq \I_{n}$. Si existe $f: \I_{n} \ra A$ inyectiva, entonces $A = \I_{n}$
+
+  \begin{proof}
+    Induccion
+
+  $(n=1)$ para el lector
+
+  $(n \ra n + 1) $. Sea $A \subseteq \I_{n+1}$, luego tomemos $f: \I_{n+1} \ra A$ inyectiva
+
+  Supongamos $A \neq \I_{n+1}$ (algo tiene que estar en $\I_{n}$ y no en $A$):
+
+    Caso I: $$n+1 \notin A \Ra A \subset \I_{n} \quad b = f(n+1)$$
+
+    \begin{center}$f\restriction_{\I_{n}} : \I_{n} \ra A - {b} \subset A$ inyectiva, o lo que es lo mismo $f \restriction_{\I_{n}}:\I_{n} \ra A$ inyectiva \end{center}
+
+    Por hipotesis inductiva $\I_{n} = A - {b} \subset A \subset \I_{n}$ absurdo
+
+    Caso II: \begin{center} $n+1 \in A$. Sea $p \in \I_{n+1} \setminus A $ \end{center}
+
+    Sea $g: \I_{n+1} \ra \I_{n+1}$
+    
+   $$n+1 \mapsto p$$
+    $$p \mapsto n+1$$
+  $$x \mapsto x \quad x \neq p \quad x \neq n+1$$
+
+  $g$ es biyectiva  y $g(A) \subset \I_{n}$
+
+  Miremos $$g \circ f: \I_{n+1} \ra g(f(\I_{n+1})) = g(A) \subset \I_{n} $$
+
+  $g \circ f$ es inyectiva por composición de inyectivas
+
+  Luego $g \circ f: \I_{n+1} \ra \I_{n}$ inyectiva y además $\I_{n} \subset \I_{n+1}$. Luego deberia ser $\I_{n} = \I_{n+1}$ lo que es absurdo
+
+  Estos absurdos provinieron de suponer $A \neq \I_{n+1}$
+
+  \end{proof}
+
+  \begin{definition}
+    Un conjunto $A$ es finito si existe $n \in \N $ tal que $A \sim \I_{n}$
+  \end{definition}
+
+  \begin{definition}
+    Un conjunto $A$ es infinito si no es finito
+  \end{definition}
+
+  \begin{remark}
+    Si uno puede definir conjuntos finitos sin usar los numeros naturales puede luego definir los numeros naturales a partir de los cardinales 
+  \end{remark}
+
+  \begin{definition}
+    Un conjunto $A$ es numerable si $A \sim \N$. Equivalentemente si $\# A = \n$
+    
+  \end{definition}
+\end{lemma}
+
+\begin{remark}
+  Decimos que $\# X \leq \# Y$ si existe $f:X \ra Y$ inyectiva
+\end{remark}
+\begin{remark}
+  Decimos que $\# X < \# Y$ si $\# X \leq \# Y$ pero $X \nsim Y$
+\end{remark}
+
+\begin{remark}
+  Dado un conjunto $X$ el conjunto de $partes$ de $X$ es $\mathcal{P}(X) = \{A : A \subset X \}$
+\end{remark}
+
+\begin{theorem}[Teorema de Cantor]
+Sea $X$ un conjunto. Entonces $\# X < \# \mathcal{P}(X)$
+
+\begin{proof}
+  $f:X \ra \mathcal{P}(X)$ definida como $x \mapsto {x}$ esta es inyectiva luego $\# X \leq \# \mathcal{P}(X)$
+
+Sea $g: X \ra \mathcal{P}(X)$ (si $ x \in X  \Ra g(x) \subseteq X$)
+
+Ahora $x \in g(x)$ o $x \notin g(x)$. Definamos $B =\{x \in X : x \notin g(x)\}$
+
+Supongamos que $B \in im(g)$ luego $\exists y / \quad B=g(y)$ 
+\begin{itemize}
+\item Ahora si $y \in B \Ra y \notin g(y)$ por como esta definido $B$ esto es absurdo
+
+\item Si $y \notin B \Ra y \notin g(y)$ pero entonces $y \in B$ absurdo
+\end{itemize}
+
+Luego $\nexists y \in X / \quad g(y) = B \Ra B \notin im(g)$ 
+
+Entonces $B \notin \mathcal{P}(X)$
+
+$\Ra g$ no puede ser suryectiva
+
+Observación Si $B = \emptyset$ luego si definimos $f(\emptyset) = \emptyset$ sabemos que $\emptyset \notin \emptyset$ dado que este no es nisiquiera un conjunto pero entonces $B=\{\emptyset \}$ pero entonces $B$ no era vacío, lo que es absurdo
+
+Luego tenemos que $\nexists x / g(x) = B $ pero $B \subset P(X)$ luego $g$ no puede ser suryectiva
+\end{proof}
+\end{theorem}
+
+\begin{remark}
+  $X$ es numerable si y solo si $X$ se puede escribir como una sucesión de elementos distintos: $X = \{x_{n}\}_{n \in \N}$ con $x_{n} \neq x_{m}$ si $n \neq m$
+
+  \begin{proof}
+  $\Ra ) \quad X$ numerable, luego $ \exists f: \N \ra X$ biyectiva
+
+  Definimos $x_{n} = f(n)$ entonces $X= \{x_{n}\}_{n \in \N}$
+  
+La vuelta es trivial
+\end{proof}
+
+\end{remark}
+
+\begin{theorem}
+  Sea $X$ infinito. Entonces existe $Y \subset X$ numerable
+
+  \begin{proof}
+    $X$ infinito $\Ra X$ no vacio $\Ra x_{1} \in X$
+
+    $X \setminus {x_{1}} \neq \emptyset \Ra \exists x_{2} \in X \setminus {x_{1}}$ con $x_{2} \neq x_{1}$
+  
+Repitiendo esto inductivamente tenemos un conjunto numerable $Y$ subconjunto de $X$
+
+  \end{proof}
+
+\end{theorem}
+\begin{theorem}
+  Sea $X$ un conjunto. Entonces, $X$ es infinito si y solo si es coordinable con un subconjunto propio
+  \begin{proof}
+$\Ra ) X$ infinito
+
+Luego $X$ contiene algún $Y$ numerable $Y=\{y_{n}\}_{n \in \N}$
+
+Sea $Y_{2} = \{y_{2},y_{4},y_{6} \dots \}$ luego $Y \sim Y_{2}$
+
+$g: Y \ra Y_{2}$ dada por $g(y_{n}) = y_{2n}$
+
+Luego $f: X \ra (X \setminus Y) \cup Y_{2}$ dada por  
+
+\[
+f(a,b) =
+     \begin{cases}
+       \text{$x$} &\quad\text{$x \notin Y$ }\\
+       \text{$g(x)$} &\quad\text{$x \in Y$} \\
+     \end{cases}
+\]
+
+es biyectiva
+
+$\Leftarrow ) \quad$ Supongamos que $X$ es finito ahora sabemos por hipótesis $\exists Y \subset X$ tal que $X \sim Y$ 
+
+Entonces $\exists f:X \ra Y$ biyectiva (en particular inyectiva) 
+
+Pero por lema 3 tenemos $X = Y$ absurdo 
+
+Observación: El lema 3 sirve para $A \subseteq \I_{n}$ osea para conjuntos finitos
+
+Luego no existe dicha función, lo cual es absurdo tambien que provino de suponer $X$ finito
+\end{proof}
+\end{theorem}
+
+\begin{theorem}
+  Sea $X$ un conjunto. Las siguientes afirmaciones son equivalentes.
+  \begin{itemize}
+    \item $X$ es infinito
+    \item Existe una función inyectiva de $\N$ a $X$ (o $X$ tiene un subconjunto numerable)
+    \item $X$ es coordinable a un subconjunto propio
+    \item $X$ es coordinable a $X \setminus {x_{0}}$ para cualquier $x_{0} \in X$
+  \end{itemize}
+\end{theorem}
+
+
+\begin{theorem}[Teorema de Cantor-Schroeder-Bernstein]
+  Si existen $f: X \ra Y, g:Y \ra X$ inyectivas, entonces existe $h:X \ra Y$ biyectiva
+  \begin{proof}
+    Definamos $\Phi: \mathcal{P}(X) \ra \mathcal{P}(X)$,
+    $$\Phi (A) = X \setminus g(Y \setminus f(A)) $$
+
+   Esta función es creciente, probemoslo.
+
+   $$ A \subset B $$ 
+   $$ f(A) \subset f(B)$$
+   $$ Y \setminus f(A) \supset Y \setminus f(B)$$
+   $$ g(Y \setminus f(A)) \supset g(Y \setminus f(B))$$
+   $$ X \setminus g(Y \setminus f(A)) \subset X \setminus g(Y \setminus f(B)) $$ 
+   $$ \Phi (A) \subset \Phi (B)$$
+ 
+Luego $\Phi$ es creciente
+
+Sea $\Omega = \{C \subset X : \Phi (C) \subset C \} $ se puede verificar que $\Omega$ no es vacío, $X \in \Omega$. Lugo tiene sentido definirse
+$$ A = \bigcap_{C \in \Omega} C$$
+
+Por como esta definido $A$ sabemos $A \in C \quad \forall C \in \Omega$ y ademas sabemos que $\Phi$ es creciente y que para $\forall C \in \Omega$ se da  $\Phi(C) \subset C$. Luego juntando todo tenemos
+
+$$ \Phi (A) \subset \Phi (C) \subset C \quad \forall C \in \Omega$$
+
+Luego $$ \Phi (A) \subset \bigcap_{C \in \Omega} C = A \Ra \Phi (A) \subset A$$
+
+Usando $\Phi$ creciente $$ \Phi (\Phi (A)) \subset \Phi (A) \Ra \Phi (A) \in \Omega$$
+
+Pero devuelta como 
+\begin{center} $A \subset C \quad \forall C \in \Omega \quad $ y $\quad \Phi (A) \in \Omega \Ra A \subset \Phi (A) $ \end{center}
+  
+Finalmente $ A = \Phi (A) \Ra A = X \setminus (g(Y \setminus f(A)) $
+
+  Ahora si definimos a partir de las $f$ y $g$ inyectivas que tenemos por hipótesis $X_{1} = A$, $Y_{1} = f(X_{1})$, $Y_{2} = Y \setminus Y_{1}$, $X \setminus X_{1} = X_{2}$ podemos ver que $$ X_{1} = X \setminus g (Y \setminus f(X_{1})) \iff g(Y \setminus f(X_{1})) = X \setminus X_{1} \iff g(Y_{2}) = X \setminus X_{1} = X_{2}$$ 
+  
+  Estas nuevas $f$, $g$ son inyectivas, por que vienen de la $f$ y $g$ que por hipótesis eran inyectivas y son suryectivas por como estan construidas (ejemplo $f(X_{1})$ es exactamente igual a $Y_{2}$ osea que todo elemento de $Y_{2}$ tiene preimagen , si no $f(X_{1}) \neq Y_{2}$
+
+    Luego tenemos nuevas $f: X_{1} \ra Y_{1}$ y $g: Y_{2} \ra X_{2}$ biyectivas
+
+    Con estas definimos $h : X \ra Y$ 
+
+\[
+h(x) =
+     \begin{cases}
+       \text{$f(x)$} &\quad\text{$x \in X_{1}$ }\\
+       \text{$g(x)^{-1}$} &\quad\text{$x \in X_{2}$} \\
+     \end{cases}
+\]
+
+que sabemos es biyectiva
+  \end{proof}
+
+
+\end{theorem}
+
+\begin{corollary}
+  El conjunto $\N \times \N$ es numerable
+
+  \begin{proof}
+    Por un lado $f: \N \ra \N \times \N$ dada por $f(n) = (n,1)$ es inyectiva
+
+    Por otro lado $g: \N \times \N \ra \N $ dada por $f(n,m) = 2^n3^m $ tambien inyectiva
+
+    Por Schroeder Bernstein tenemos que existe biyección, luego $\N \times \N \sim \N$
+  \end{proof}
+\end{corollary}
+
+\begin{corollary}
+  Para $n \in \N $ sea $X_{n}$ un conjunto numerable. Entonces, $X = \bigcup_{n} X_{n}$ es numerable (Unión numerable de numerables es numerable)
+
+  \begin{proof}
+    Cada $X_{n}$ es numerable $ \Ra \exists f_{n}: \N \ra X_{n}$ biyectiva
+
+    Luego $g: \N \times \N \ra X = \bigcup_{n} X_{n}$ dada por $g(m,n) = f_{n}(m)$ suryectiva (no necesariamente inyectiva por que no necesariamente los $X_{n}$ son disjuntos)
+
+    Pero con suryectividad sabemos que $X$ tiene que ser contable ($\# X \leq \# \N \times \N$) pero como es infinito luego $X$ es numerable 
+  \end{proof}
+  Notemos que de aqui es facil probar otro tipo de resultados por ejemplo que union de numerable de finitos (disjuntos) es numerable o que union numerable de finitos es contable 
+\end{corollary}
+
+
+
+\begin{corollary}
+La relación $\leq$ entre cardinales es una relación de orden  
+\end{corollary}
+
+\begin{remark}
+  Sea $X$ numerable, $Y \subset X$. Entonces, $Y$ es finito o numerable (o sea $Y$ es contable)
+
+  \begin{proof}
+    Supongamos $Y$ no es finito 
+
+    Como $X$ es numerable. $X = \{x_{n} : n \in \N \}$ con $x_{n}$ distintos
+
+    $n_{1} = min \{n \in \N / x_{n} \in Y \}$ 
+
+    $n_{2} = min \{ n > n_{1} / x_{n} \in Y \}$
+
+    $\dots$
+
+    $ n_{k} = min \{ n > n_{k -1} / x_{n} \in Y \}$
+
+    Sabemos que hay infinitos $n_{k}$ dado que $Y$ es infinito.
+
+    Luego $Y = \{ (x_{n_{k}})_{k \in \N} \}$ probémoslo 
+  
+  $\supseteq ) $ es trivial
+
+$\subseteq) $ Sea $y \in Y$ como $y \subset X$ sabemos $\exists m \in \N  / y = x_{m}$
+
+Ahora como $n_{k}$ es una sucesión $k$ puede ser tan grande como uno quiera, por ende existen $n_{k} \leq m < n_{k + 1} = min \{n > n_{k} / x_{n} \in Y\}$ 
+
+Luego $m = n_{k}$ si no llegariamos a un absurdo entonces $y = x_{m} = x_{m_{k}}$
+
+
+
+  \end{proof}
+\end{remark}
+
+\begin{remark}
+  Sea $X$ numerable,
+  \begin{itemize}
+    \item Si existe $f:X \ra Y $ inyectiva, entonces $Y$ es contable (a lo sumo numerable)
+	\item Si existe $f:X \ra Y$ suryectiva, entonces $Y$ es contable
+    \end{itemize}
+\end{remark}
+
+\begin{prop}
+  Si $X$ es infinito, existe $Y \subseteq X$, $ Y$ numerable, tal que $X \sim X \setminus Y$
+
+  \begin{proof}
+  Como $X$ es infinito $\exists A \subseteq X$ numerable, $A = \{a_{n}: n \in \N\}$
+
+  $Y = A_{1} = \{a_{2n -1} : n \in \N \} \quad A_{2} = \{a_{2n} : n \in \N \} \quad a_{n} \neq a_{m} \quad (n \neq m)$ 
+
+  $f : A \ra A_{2} = A \setminus A_{1} = A \setminus Y$ dada por $f(a_{n}) = a_{2n}$ biyectiva 
+
+  Luego sea $h(x): X \ra X \setminus Y$ 
+
+\[
+h(x) =
+     \begin{cases}
+       \text{$x$} &\quad\text{$x \in X \setminus A$ }\\
+       \text{$f(x)$} &\quad\text{$x \in A$} \\
+     \end{cases}
+\]
+
+  \end{proof}
+\end{prop}
+
+
+\begin{prop}
+  Sea $X$ infinito y $X'$ numerable. Entonces $X \cup X' \sim X$ (Esta unión es disjunta)
+
+  \begin{proof}
+   Sea $Y \subseteq X$ numerable tal que $X \setminus Y \sim X$
+
+  Sabemos $X' \cap X = \emptyset$ 
+
+  $X \cup X' = [(X \setminus Y) \cup Y ] \cup X' = (X \setminus Y) \cup (Y \cup X') \sim X \setminus Y \cup Y = X$
+
+  Esto vale por que $Y \cup X'$ es unión de numerables por ende vuelve a dar numerable y por ende es coordinable con $Y$ numerable
+   
+   
+  \end{proof}
+
+  \begin{remark}
+    Se puede probar con unión no disjunta , pero no es trivial , los que esten en ambos $X, X'$ no cambian nada
+  
+    Aqui podemos ver un ejemplo $\# \R = \# \I \cup \Q = \# \I$
+
+  \end{remark}
+\end{prop}
+
+
+\begin{remark}
+  Sea $\{0,1\}^{\N} = \{(a_{n})_{n \in \N} : a_{n} \in \{0,1\}\}$ luego existe una biyección entre $\mathcal{P}(\N)$ y $\{0,1\}^{\N}$
+  
+  \begin{proof}
+    Sea $f: \mathcal{P}(\N) \ra \{0,1\}^{\N}$ dada por $f(A) = (a_{n})_{n}$
+  \[
+    a_{n} =
+     \begin{cases}
+       \text{$1$} &\quad\text{$n \in A$ }\\
+       \text{$0$} &\quad\text{$n \notin A$} \\
+     \end{cases}
+\]
+
+\noindent
+Probar que esta función es biyectiva queda como ejercicio para el lector
+
+\noindent
+Dada esta demostración notemos que $\# \{0,1\}^{\N} = \# \mathcal{P}(\N) > \n$
+  \end{proof}
+\end{remark}
+
+\begin{prop}
+  Sea $A_{0} = \{(a_{n})_{n \geq 1} \in \{0,1\}^{\N} :$ existe $m$ tal que $a_{n} = 0$ si $ n \geq m$ $\}$ es numerable
+
+  Sea $B_{m} = \{(a_{n})_{n \geq 1} \in \{0,1\}^{\N} : a_{n} = 0 $ si $ n \geq m$ $\}$
+
+Luego $$A_{0} = \bigcup_{m = 1}^{\infty} B_{m}$$ 
+
+Sabemos que cada $B_{m}$ es finito luego union numerable de finitos es contable $A_{0}$ es contable, pero ademas sabemos que $A_{0}$ es infinito , por lo tanto es numerable
+
+\end{prop}
+
+\begin{prop}
+ Sea $X = \{(a_{n})_{n \geq 1} : a_{n} \in \{0,1\}$ y $ a_{n} = 1 $ para infinitos valores de $ n$ $\}$
+
+ Luego $X = \{0,1\}^{\N} \setminus A_{0}$ y tenemos $X \cup A_{0} = \{0,1\}^{\N}$ 
+
+ Pero recordemos $X$ es infinito y $A_{0}$ es numerable luego $X \cup A_{0} \sim X$
+
+ Luego $X \sim X \cup A_{0} \sim \{0,1\}^{\N} \Ra \# X = \# \{0,1\}^{\N} = \# \mathcal{P}(\N)$
+\end{prop}
+
+\begin{theorem}
+  Finalmente podemos probar $\# \R = \# \mathcal{P}(\N) > \# \N$
+
+  \begin{proof}
+    Sabemos que $\# \mathcal{P}(\N) = \# X $
+
+    Definimos $f: X \ra [0,1]$ como $$f(a) = \sum_{n = 1}^{\infty} \frac{a_{n}}{2^n}$$
+
+que es biyectiva
+
+Veamos que $\# [0,1] = \# \R$ 
+
+Por un lado tenemos $\R \sim (-1,1)$ por medio de$f:\R \ra (-1,1)$ dada por $x \mapsto \frac{x}{1 + x^2}$ biyectiva
+
+Por otro lado tenemos que $(-1,1) \sim (a,b)$ usando la recta que manada 
+
+$-1 \mapsto a$ 
+
+$1 \mapsto b$
+
+Ahora sabemos que $(0,1) \sim \R$ agregarle numerables puntos a algo infinito no cambia su cardinal , agregarle el 0 y el 1 tampoco 
+
+Luego $[0,1] \sim \R$
+
+Juntando todo $\# \mathcal{P}(\N) = \# \R$
+  \end{proof}
+\end{theorem}
+
+
+\begin{definition}
+  Dados dos cardinales, $\alpha, \beta$ y $X$ e $Y$ disjuntos tales que $\alpha = \# X, \beta = \# Y$ 
+Podemos definir las siguientes operaciones:
+
+\begin{center}
+\begin{tabular}{ c c  }
+  Suma: & $\alpha + \beta = \# (X \cup Y)$  \\ 
+  Producto: & $\alpha . \beta = \# (X \times Y)$  \\  
+  Potencia: & $\alpha^{\beta} = \# \{F: Y \ra X\} = \#(X^Y)$     
+\end{tabular}
+\end{center}
+
+
+Es importante que sean disjuntos para que todo esté bien definido
+
+Veamos que la suma está correctamente definida:
+
+Si tenemos $X \sim X'$ e $Y \sim Y'$ disjuntos $\Ra X \cup Y \sim X' \cup Y'$ 
+
+Lo que acabamos de ver es que es lo mismo sumar $X$ a $Y$ que otros conjunto que sean coordinables (y por ende tengan el mismo cardinal) con alguno de ellos respectivamente
+
+La multiplicación se ve de forma similar y el producto se ve aprovechando las funciones biyectivas que nos da la coordinabilidad y la $F$ que nos da el producto
+\end{definition}
+
+\begin{remark}
+  Teniendo está aritmética de cardinales, podemos obtener ciertos resultados.
+
+ \begin{enumerate}
+      \item $\n + \n = \n$   
+      \item $\mathfrak{c} + \mathfrak{c} = \mathfrak{c}$ 
+      \item$ \mathfrak{c} + \n = \mathfrak{c}$
+      \end{enumerate}
+      
+  \begin{proof}
+    Aquí nos vamos a apoyar en el hecho de que podemos usar cualquier par de conjuntos que tengan el cardinal que necesitamos para probarlo para todo conjunto
+
+  1) $\{$pares$\}$ $\cup$ $\{$impares$\}$
+
+2) $[0,1) \cup [1,2) = [0,2)$ cada uno de estos es coordinable con $\R$
+
+3) Lo mas directo es usando $\mathfrak{c} \leq \mathfrak{c} + \n \leq \mathfrak{c} + \mathfrak{c} = \mathfrak{c}$ esto usa Cantor-Bernstein por detras (tenemos dos funciones inyectivas entonces tenemos una biyectiva. Otra forma es notar que si a un conjunto infinito le agrego algo numerable no nos cambia el cardinal
+    
+  \end{proof}
+
+\end{remark}
+
+\begin{definition}
+  Usando la definicion del producto y sabiendo $\# \{0,1\} = 2$ y $\# \N = \n$
+  $\# \R = \mathfrak{c} = 2^{\N}$ 
+
+  Teniendo esto en cuenta veamos que:
+
+  \begin{enumerate}
+    \item $\n.\n = \n$
+    \item $\mathfrak{c}.\mathfrak{c} = \mathfrak{c}$
+    \item $\mathfrak{c}.\n = \mathfrak{c}$
+    \end{enumerate}
+
+    \begin{proof}
+    1) sabemos que $\n \times \n \sim \n$
+
+  2) $\mathfrak{c}.\mathfrak{c} = \mathfrak{c}^2 = (2^{\n})^2 = 2^{\n.2} = 2^{\n + \n} = 2 ^{\n} = \mathfrak{c}$
+  \end{proof} 
+\end{definition}
+
+\begin{remark}
+  Dado $\mathfrak{c}.\mathfrak{c} = \mathfrak{c}$ tenemos resultados interesantes. 
+  Primero $$\R \sim \R \times \R = \R^2$$
+
+  De la misma manera pdoemos probar $$\R \sim \R^n \quad \forall n \in \N $$
+
+Como cualquier intervalo (no vacío) tiene cardinal $\mathfrak{c},$ concluimos que para cualquier $\epsilon > 0$ y cualquier $n \in \N$, tenemos $$(0,\epsilon)\sim \R \sim \R^n$$
+\end{remark}
+\end{document}

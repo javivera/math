@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Espacios Normados}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+
+\begin{remark}[Axioma de elección (enunciado formal)]
+  Sea $A$ familia de conjuntos no vacíos, 
+  $$ A = \{A_{j}: i \in \I\}$$
+
+  Entonces, podemos elegir un elemento de cada $A_{j}$
+\end{remark}
+
+\begin{remark}[Axioma de eleccion como una función] 
+
+  Para todo conjunto $X = \bigcup A_{j}$, existe una función 
+
+  $$e: \mathcal{P}(X) \setminus \emptyset \ra X$$
+
+tal que $e(A) \in A$ para todo $A \in \mathcal{P}(X) \setminus \emptyset$
+\end{remark}
+
+Cuestiones importantes. El axioma de elección es intuitivamente cierto. Pero lleva a ciertas paradojas
+
+El axioma de elección es equivalente al Principio de Buena ordenación (Todo conjunto puede ser bien ordenado), pero cuando tratamos de encontrar buen orden por ejemplo en el conjunto de los numeros reales , parecería ser imposible 
+
+El axioma de elección es tambien equivalente al Lema de Zorn
+
+\begin{definition} $ $ 
+  \begin{enumerate}
+    \item Un orden $\leq$ en un conjunto $X$ es $total$ si para todo $x,y \in X$ se cumple $x \leq y$ ó $y \leq x$  
+Ejemplo de orden que no es totales $(\mathcal{P}(X), \subseteq)$
+\item Un conjunto $X$ con un orden total $\leq$ es bien ordenado si todo subconjunto $A \subset X$ no vacío tiene mínimo: Existe $a_{0} \in A$ tal que $a_{0} \leq a$ para todo $a \in A$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Buena ordenacion de Zermelo ]
+  En todo conjunto se puede definir un buen orden.
+\end{definition}
+
+\begin{definition}
+  Sea X un conjunto con un orden parcial $\leq$. Una cadena en $X$ es un subconjunto totalmente ordenado de $X$ 
+  Esto significa que $A \subset X$ es una cadena si dados $a_{1}, a_{2} \in A$ se tiene que $a_{1} \leq a_{2}$ o $a_{2} \leq a_{1}$
+\end{definition}
+
+\begin{definition}
+  Sea $X$ un conjunto con un orden parcial $\leq$. Un elemento $x_{0} X$ es maximal si $x_{0} \leq x$ implica $x = x_{0}$
+  
+  Algo es maximal si le gana a todo con lo que es comparable
+
+  Ejemplo sea $X = \{1,2,3 \dots 100\}$ con el orden $x \leq y$ si $x$ divide a $y$
+
+  Entonces todo $x > 50$ es maximal , dado que $x$ tiene divisores , pero no divide a nadie mas que el mismo en $X$
+
+  Otro ejemplo interesante: Sea $X$ el conjunto de conjuntos linealmente independientes de $\R^3$ con el orden dado por la inclusión. Luego las bases son los únicos maximales , por que cualquier conjunto de generados por menos generadores que los de la base , va a estar contenido el conjunto generado por la base
+\end{definition}
+
+\begin{definition}[Lema de Zorn]
+  Si toda cadena de un conjunto parcialmente ordenado $X$ admite una cota superior, entonces $X$ tiene elementos maximales 
+\end{definition}
+
+\begin{definition}[Lema de Zorn 2]
+  Si toda cadena de un conjunto parcialmente ordenado $X$ admite una cota superiór, entonces todo elemento precede a un elemento maximal.
+
+Esto ademas nos está diciendo no solo que hay elementos maximales, si no que dado cualquier $x \in X$ existe $m \in X$ maximal tal que $x \leq m$
+\end{definition}
+
+A lo largo de la carrera usamos el axioma de elección (o alguna variante)a veces sin saberlo, por ejemplo en:
+\begin{itemize}
+  \item Union den umerables conjuntos numerables es numerable
+  \item Dados dos conjuntos $X$ e $Y$ o bien $\# X \leq \# Y$ o bien $\# Y \leq \# X$. De esto y Cantor-Bernstein se deduce propiedad de tricotomía para los cardinales.
+  \item Todo espacio vectorial no nulo tiene base. Es mas , todo conjunto l.i se extiende a una base y de todo conjunto de generadores se puede extraer una base. Hay resultados similares para otras estructuras algebráicas tambien.
+  \end{itemize}
+
+  Por último , el axioma de elección a pesar de necesario para muchas demostraciones, presenta ciertas paradoajas como por ejemplo la paradoja de Tarski-Banach
+\end{document}
