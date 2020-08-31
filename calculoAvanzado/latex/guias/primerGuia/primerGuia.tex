@@ -41,10 +41,11 @@
 \fancyhead[C]{Cálculo Avanzado}
 \begin{document}
 
-\noindent 1)
+\noindent 1) Probar las siguientes igualdades
 \begin{enumerate}[i.]
   \item $$B \setminus \bigcup_{i \in \I} A_{i} = \bigcap_{i \in \I} (B \setminus A_{i})$$
     \begin{proof}
+    
     $\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcup_{i \in \I} A_{i}$ 
 
     Luego $x \in B$ y $x \notin \bigcup A_{i} \quad \forall i \in \I $
@@ -52,82 +53,251 @@
     Entonces $x \in B \setminus A_{i} \quad \forall i \in \I$
 
     $\Ra x \in \bigcap B \setminus A_{i}$
+
+    $\supseteq )$ Sabemos $x \in B \setminus A_{i} \quad \forall i \in \I$
+
+    Luego para cada $i \in \I$ sabemos $x \in B$ y $x \notin A_{i}$
+
+    $\Ra x \in B \setminus \bigcup A_{i}$
     
-$\supseteq )$ Sabemos $x \in B \setminus A_{i} \quad \forall i \in \I$
+    \end{proof}
+  \item $$B \setminus \bigcap_{i \in \I} A_{i} = \bigcup_{i \in \I} (B \setminus A_{i})$$
+    \begin{proof}
 
-Luego para cada $i \in \I$ sabemos $x \in B$ y $x \notin A_{i}$
+    	$\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcap A_{i}$ 
 
-$\Ra x \in B \setminus \bigcup A_{i}$
+    	Luego existe algún $i \in \I$ tal que $x \notin A_{i}$ (quizas para todos los $i \in I$ sucede que $x \notin A_{i}$ pero con uno alcanza)
 
+    	Entonces existe algún $i \in \I$ tal que $x \in B$ y $x \notin A_{i} \Ra B \setminus A_{i} $
 
-  \end{proof}
-\item $$B \setminus \bigcap_{i \in \I} A_{i} = \bigcup_{i \in \I} (B \setminus A_{i})$$
+    	$\Ra x \in \bigcup (B \setminus A_{i})$
 
-  \begin{proof}
-  $\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcap A_{i}$ 
+    	$\supseteq )$ Tenemos $x \in B \setminus A_{i}$ para algún $i \in \I$
 
-    Luego existe algún $i \in \I$ tal que $x \notin A_{i}$ (quizas para todos los $i \in I$ sucede que $x \notin A_{i}$ pero con uno alcanza)
+    	Luego $x \in B$ y $x \notin A_{i}$ para algún $i \in \I$
 
-    Entonces existe algún $i \in \I$ tal que $x \in B$ y $x \notin A_{i} \Ra B \setminus A_{i} $
+    	Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
 
-  $\Ra x \in \bigcup (B \setminus A_{i})$
+    	$\Ra x \in B \setminus \bigcap A_{i}$
+    
+    \end{proof}
+  \item $$\bigcup_{i \in \I} (A_{i} \cap B) = B \cap (\bigcup_{i \in \I} A_{i})$$
+    \begin{proof}
+    $\subseteq )$ Tenemos $x \in A_{i} \cap B$ para algún $i \in \I$  
+    
+    Luego $x \in B$ y $x \in A_{i}$ para algún $i \in \I \Ra x \in \bigcup A_{i}$
 
-$\supseteq )$ Tenemos $x \in B \setminus A_{i}$ para algún $i \in \I$
+    Entonces $x \in B$ y $x \in \bigcup A_{i}$
 
-Luego $x \in B$ y $x \notin A_{i}$ para algún $i \in \I$
-
-Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
-
-$\Ra x \in B \setminus \bigcap A_{i}$
-
-
-   \end{proof}
-\item $$\bigcup_{i \in \I} (A_{i} \cap B) = B \cap (\bigcup_{i \in \I} A_{i})$$
-
-  \begin{proof}
-  $\subseteq )$ Tenemos $x \in A_{i} \cap B$ para algún $i \in \I$  
-  
-  Luego $x \in B$ y $x \in A_{i}$ para algún $i \in \I \Ra x \in \bigcup A_{i}$
-
-  Entonces $x \in B$ y $x \in \bigcup A_{i}$
-
-  $\Ra x \in B \cap (\bigcup A_{i})$
-\end{proof}
- 
+    $\Ra x \in B \cap (\bigcup A_{i})$
+    \end{proof}
 \end{enumerate}
+
+\newpage
+\noindent
 3) Sea $f : X \ra Y$ una función, $A, B $ subconjuntos de $X$
 \begin{enumerate}[i.]
   \item $f(A \cup B) = f(A) \cup f(B)$
     \begin{proof}
-      $\subseteq )$ Sea $y \in f(A \cup B)$ entonces $\exists x \in A \cup B /  f(x) = y$ 
+    $\subseteq )$ Sea $y \in f(A \cup B)$ entonces $\exists x \in A \cup B /  f(x) = y$ 
 
-      Luego $x \in A$ y $ x \in B$ 
+    Luego $x \in A$ y $ x \in B$ 
 
-     Entonces  $ y = f(x) \in f(A)$ y por otro lado $y = f(x) \in B$
+    Entonces  $ y = f(x) \in f(A)$ y por otro lado $y = f(x) \in B$
 
-     Finalmente $y = f(x) \in f(A) \cup f(B)$
+    Finalmente $y = f(x) \in f(A) \cup f(B)$
 
-   $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ e $y \in f(B)$
+    $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ e $y \in f(B)$
 
-   Entonces $\exists x \in A  $ tal que $ f(x) = y $ luego $ x \in A \cup B$
+    Entonces $\exists x \in A  $ tal que $ f(x) = y $ luego $ x \in A \cup B$
 
-   Luego $y = f(x) \in f(A \cup B)$
+    Luego $y = f(x) \in f(A \cup B)$
+    
     \end{proof}
-
   \item $f(A \cap B) \subseteq f(A) \cap f(B)$
-
     \begin{proof}
-      Sea $ y \in f(A \cap B)$ luego $\exists x \in A \cap B$ tal que $f(x) = y$
+    
+    Sea $ y \in f(A \cap B)$ luego $\exists x \in A \cap B$ tal que $f(x) = y$
 
-Luego	$x \in A $ y $x \in B$ luego $y = f(x) \in f(A)$ e $y = f(x) \in f(B)$
+    Luego $x \in A $ y $x \in B$ luego $y = f(x) \in f(A)$ e $y = f(x) \in f(B)$
 
-Finalmente $y = f(x) \in f(A) \cap f(B)$ 
+    Finalmente $y = f(x) \in f(A) \cap f(B)$ 
+    
     \end{proof}
+  \item Sea $A_{i \in \N} $ una familia de infinitos conjuntos, entonces 
+    \begin{enumerate}
+      \item $f(\bigcup A_{i}) = \bigcup f(A_{i})$ 
+	\begin{proof} $\subseteq )$ Sea $y \in f(\bigcup A_{i})$ luego $\exists x \in \bigcup A_{i}$ tal que $f(x) = y$
 
-  \item Sea $f(x) = 3 \quad \forall x \in X$ y $A = {1}, B={2}$
+	Entonces $\exists A_{j}$ tal que $x \in A_{j}$ por lo que $y = f(x) \in f(A_{j}) \subseteq \bigcup f(A_{i})$
 
-    Luego $3 = f(A) \cap f(B) = 3 = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
+        $\supseteq )$ Sea $y \in \bigcup f(A_{i})$ luego $\exists j \in \N $ tal que $y \in f(A_{j})$
+
+	Luego $\exists x \in A_{j} $ tal que $y = f(x)$ luego $x \in \bigcup A_{i}$
+
+	Finalmente $y = f(x) \in f (\bigcup A_{i})$
+
+        \end{proof}
+
+      \item $f(\bigcap A_{i}) \subseteq \bigcap f(A_{i})$
+	\begin{proof}
+	
+	Sea $y \in f(\bigcap A_{i})$ luego $\exists x \in \bigcap A_{i}$
+
+	Entonces $x \in A_{i} \quad \forall i \in \N$
+
+	Luego $y = f(x) \in f(A_{i}) \quad \forall i \in \N$ 
+
+	Finalmente $y \in \bigcap f(A_{i})$
+
+        \end{proof}
+
+      \item La última inclusión puede ser estricta. 
+	\begin{proof}
+
+	Sea $f(x) = 3 \quad \forall x \in X$ y $A = {1}, B={2}$
+
+	Luego $3 = f(A) \cap f(B) = 3 = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
+
+        \end{proof}
+
+     \end{enumerate}
+\end{enumerate}
+
+4) Sean $f: X \ra Y$ una función, $A \subseteq X$ y $B,B_{1},B_{2} \subseteq Y.$ Luego vale:
+
+\begin{enumerate}[i.]
+  \item $A \subseteq f^{-1} (f(A))$
+    \begin{proof}
+      
+    Sea $x \in f(A)$ luego $f(x) \in f(A)$ por lo tanto $f^{-1}(f(x)) \in f^{-1}(f(A))$  
+    
+    Entonces $x \in f^{-1}(f(A)) $ 
+  \end{proof}
+  \item $f(f^{-1}(B)) \subseteq B$
+    \begin{proof}
+      Sea $y \in f(f^{-1}(B))$ entonces $\exists x \in f^{-1}(B) / f(x) = y$
+
+      Pero entonces $f(x) \in B \Ra y \in B$
+    \end{proof}
+     
+  \item $f^{-1}(Y \setminus B) = X \setminus f^{-1}(B)$
+    \begin{proof}
+      $\subseteq )$ Sea $x \in f^{-1}(Y \setminus B)$ luego $f(x) \in Y \setminus B$
+
+      Entonces $f(x) \notin B$ entonces $x = f^{-1}(f(x)) \notin f^{-1}(B) $
+
+      Por otro lado $f(x) \in Y$ entonces $x \in f^{-1}(Y)$
+
+      Juntando todo $x \in f^{-1}(Y) \setminus f^{-1}(B)$
+
+      O lo que és lo mismo $X \setminus f^{-1}(B)$
+
+      $\supseteq )$ Sea $x \in X \setminus f^{-1}(B)$ 
+
+      Entonces $x \in X$ entonces $f(x) \in f(X)=Y $
+
+      Tambien $x \notin f^{-1}(B)$ por lo que $f(x) \notin B$
+
+      Luego $f(x) \in Y \setminus B$
+
+      Finalmente $x = f^{-1}(f(x)) \in f^{-1}(Y \setminus B)$
+     \end{proof}
+
+   \item $f^{-1}(B_{1} \cup B_{2}) = f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
+      \begin{proof}
+        $\subseteq )$ Sea $ x \in f^{-1}(B_{1} \cup B_{2})$ luego $f(x) \in B_{1} \cup B_{2}$
+
+	Luego $f(x) \in B_{1}$ por lo que $x \in f^{-1}(B_{1})$
+
+	Finalmente $x \in f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
+
+        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cup f^{1}(B_{2})$
+
+	Luego $x \in f^{-1}(B_{1})$ entonces $f(x) \in B_{1}$
+
+	Por tanto $f(x) \in B_{1} \cup B_{2}$
+
+	Finalmente $x \in f^{-1}(B_{1} \cup B_{2})$
+      \end{proof}
+
+    \item $f^{-1}(B_{1} \cap B_{2}) = f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+      \begin{proof}
+        $\subseteq )$ Sea $x \in f^{-1}(B_{1} \cap B_{2})$ entonces $f(x) \in B_{1} \cap B_{2}$
+
+	Por lo que $f(x) \in B_{1}$ esto implica $x \in f^{-1}(B_{1})$
+
+	Tambien $f(x) \in B_{2}$ que implica $f(x) \in f^{-1}(B_{2})$
+
+	Finalmente $f(x) \in f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+
+        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+
+        Luego $x \in f^{-1}(B_{1})$ por lo que $f(x) \in B_{1}$ y con el mismo argumento $f(x) \in B_{2}$
+
+	Entonces tenemos $f(x) \in B_{1} \cap B_{2} $
+
+        Finalmente $x \in f^{-1}(B_{1} \cap B_{2})$
+      \end{proof}
+ \end{enumerate}
+
+4)b) Sean $f: X \ra Y$ una función y $B_{i}$ Una familia infinita de subconjuntos de $Y$ vale:
+
+\begin{enumerate}[i.]
+  \item $f^{-1}(\bigcup B_{i}) = \bigcup f^{-1}(B_{i})$
+    \begin{proof}
+      $\subseteq )$ Sea $x \in f^{-1}(\bigcup B_{i})$ entonces $f(x) \in \bigcup B_{i}$
+
+      Luego $f(x) \in B_{j}$ para algún $B_{j}$
+
+      Por ende $x \in f^{-1}(B_{j}) \subseteq \bigcup f^{-1}(B_{i})$
+
+      Finalmente $x \in \bigcup f^{-1}(B_{i})$
+
+      $\supseteq )$ Por hipótesis sabemos $\exists j \in \N$ tal que $x \in f^{-1}(B_{j})$
+
+      Por lo que $f(x) \in B_{j}$ y entonces $f(x) \in \bigcup B_{j}$
+
+      Luego $x \in f^{-1} (\bigcup B_{j})$
+    \end{proof}
+  \item $f^{-1}(\bigcap B_{i}) = \bigcap f^{-1}(B_{i})$
+
+    $\subseteq )$ Sea $x \in f^{-1}(\bigcap B_{i})$ luego $f(x) \in \bigcap B_{i}$
+
+    Entonces $f(x) \in B_{i} \quad \forall i \in \N$ luego $x \in f^{-1}(B_{i}) \quad \forall i \in \N$
+
+    Finalmente $x \in \bigcap f^{-1}(B_{i})$
+
+    La otra inclusión sale de la misma forma que todos los ejercicios arriba , queda como ejercicio para alguién con muchas ganas
 
 \end{enumerate}
+
+5) Sea $f: X \ra Y$ una función. Probar que $f(f^{-1}(B)) = B$ para cada $B \subseteq Y$ si y sólo si $f$ es suryectiva
+
+\begin{proof}
+ $\Leftarrow)$ Por ejercicio anteriór sabemos que $f(f^{-1}(B)) \subseteq B $ probemos la otra inclusión.
+
+  Sea $y \in B$ luego $y \in Y$ como $f$ suryectiva $\exists x \in X$ tal que $f(x) = y$ equivalentemente $x = f^{-1}(y)$
+
+  Luego $y = f(x) = f(f^{-1}(y)) \in f(f^{-1}(B)) $
+
+  Entonces $y \in f(f{-1}(B)) \quad \forall y \in B $ y por ende $B \subseteq f(f^{-1}(B))$ 
+
+  Finalmente $B = f(f^{-1}(B)) $ para cualquier $B \subseteq Y$
+
+  $\Ra )$ Tenemos la igualdad para cada $B \subseteq Y$ en particular vale para $Y$ 
+
+  Luego $f(f^{-1}(Y)) = Y$ por lo tanto $f$ es suryectiva 
+
+  Si no fuera suryectiva tiene que existir algún $y \in Y$ tal que $f^{-1}(y) = \emptyset$ 
+
+  Por lo que $f^{-1}(y) \notin f^{-1}(Y)$ entonces $y \notin f(f^{-1}(Y))$
+
+  Finalmente $Y \neq f(f^{-1}(Y))$
+\end{proof}
+
+
+
+
 
 \end{document}
