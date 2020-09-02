@@ -137,7 +137,7 @@ $\Ra n = m$
 
     Por hipotesis inductiva $\I_{n} = A - {b} \subset A \subset \I_{n}$ absurdo
 
-    Caso II: \begin{center} $n+1 \in A$. Sea $p \in \I_{n+1} \setminus A $ \end{center}
+    Caso II: \begin{center} $n+1 \in A$. Sea $p \in \I_{n+1} \setminus A $ Luego $p \notin A$ \end{center}
 
     Sea $g: \I_{n+1} \ra \I_{n+1}$
     
@@ -147,13 +147,15 @@ $\Ra n = m$
 
   $g$ es biyectiva  y $g(A) \subset \I_{n}$
 
-  Miremos $$g \circ f: \I_{n+1} \ra g(f(\I_{n+1})) = g(A) \subset \I_{n} $$
+  Miremos $$g \circ f: \I_{n+1} \ra g(f(\I_{n+1})) = g(A)  $$
 
   $g \circ f$ es inyectiva por composición de inyectivas
 
-  Luego $g \circ f: \I_{n+1} \ra \I_{n}$ inyectiva y además $\I_{n} \subset \I_{n+1}$. Luego deberia ser $\I_{n} = \I_{n+1}$ lo que es absurdo
+  Pero ademas como $ p \notin A$ luego $n + 1 \notin g(A) $
 
-  Estos absurdos provinieron de suponer $A \neq \I_{n+1}$
+  Luego tenemos una función que va desde $I_{n+1}$ hacia un conjunto que no tiene al $n + 1$ y está metido en $I_{n+1}$
+
+  Entonces tenemos las hipótesis del caso I , por lo tanto esto es absurdo
 
   \end{proof}
 

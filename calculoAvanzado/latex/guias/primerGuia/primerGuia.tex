@@ -170,7 +170,7 @@
   \item $A \subseteq f^{-1} (f(A))$
     \begin{proof}
       
-    Sea $x \in f(A)$ luego $f(x) \in f(A)$ por lo tanto $f^{-1}(f(x)) \in f^{-1}(f(A))$  
+      Sea $x \in A$ luego $f(x) \in f(A)$ por lo tanto, como $ x\in f^{-1}(f(x)) \subseteq f^{-1}(f(A))$  
     
     Entonces $x \in f^{-1}(f(A)) $ 
   \end{proof}
@@ -296,7 +296,71 @@
   Finalmente $Y \neq f(f^{-1}(Y))$
 \end{proof}
 
+\noindent
+6) Sea $f: X \ra Y$ una función. Luego las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+  \item $f$ es inyectiva
+  \item $f(A \cap B) = f(A) \cap f(B)$ para todo $A,B \subseteq X$
+  \item $f^{-1}(f(A)) = A$ para todo $A \subseteq X$
+  \item $f(A) \cap f(B) = \emptyset$ para todo par de subconjuntos $A,B $ tales que $A \cap B = \emptyset$
+  \item $f(A \setminus B) = f(A) \setminus f(B)$ para todo $B \subseteq A \subseteq X$
+    \begin{proof}
+  $1) \Ra 2)$ Sabemos que $f(A \cap B) \subseteq f(A) \cap f(B)$ probemos la otra inclusión
+  
+  Sea $y \in f(A) \cap f(B)$ luego $y \in f(A)$ y $y \in f(B)$ 
 
+  Por esto sabemos que $\exists x \in A$ tal que $f(x) = y$ y tambien que $\exists x' \in B$ tal que $f(x') = y$
+
+  Luego $f(x) = y = f(x')$ y como $f$ es inyectiva tenemos que $x = x'$
+
+  Luego ambos $x,x' $ (que son el mismo) estan en $A$ y ambos están en $B$
+
+  Resumiendo $x \in A \cap B$ y por ende $y = f(x) \in f(A \cap B)$
+
+  Luego $f(A \cap B) = f(A) \cap f(B)$
+
+$2 \Ra 3)$ Por ej anteriór sabemos que $A \cap B \subseteq f^{-1}(f(A \cap B))$. Probemos la otra inclusión 
+
+Sea $x \in f^{-1}(f(A \cap B))$ entonces $f(x) \in f(A \cap B)$
+
+Y como $f(A \cap B) = f(A) \cap f(B)$ tenemos $f(x) \in f(A) \cap f(B)$  
+
+Entonces $f(x) \in f(A)$ luego $x \in A$ por otro lado $f(x) \in f(B)$ luego $x \in B$
+
+Finalmente $x \in A \cap B$
+
+$3 \Ra 4 )$ Supongamos que $f(A) \cap f(B) \neq \emptyset$ luego $\exists y \in f(A) \cap f(B)$
+
+Luego tenemos $y \in f(A)$ entonces $\exists x \in A$ tal que $f(x) = y$
+
+Y también $y \in f(B)$ entonces $\exists x' \in B$ tal que $f(x') = y$
+
+Entonces tenemos $x' = f^{-1}(f(x')) = f^{-1}(y) = f^{-1}(f(x)) = x$
+
+Luego $x = x'$ por lo que $x \in A \cap B$ lo que es absurdo
+
+Provino de suponer $f(A) \cap f(B) \neq \emptyset$
+
+Entonces $f(A) \cap f(B) = \emptyset$
+
+$4 \Ra 5 )$ $\supseteq )$ Sea $y \in f(A) \setminus f(B)$ 
+
+Luego $y \in f(A)$ entonces $\exists x \in A$ tal que $f(x) = y$
+
+Por otro lado $y \notin f(B)$ entonces $\nexists x \in B$ tal que $f(x) = y$
+
+Luego $x \in A \setminus B$ por lo que $f(x) \in f(A \setminus B)$
+
+$\subseteq )$ Sea $y \in f(A \setminus B)$ luego $\exists x \in A \setminus B$ tal que $f(x) = y$
+
+Luego $x \in A$ por ende $f(x) \in A$
+
+Y tambien $x \notin B$ por ende $f(x) \notin B$
+
+Finalmente $y = f(x) \in f(A) \setminus f(B)$
+
+\end{proof}
+\end{enumerate}
 
 
 
