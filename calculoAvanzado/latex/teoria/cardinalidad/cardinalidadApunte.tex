@@ -100,29 +100,11 @@ Atención para poder llamar $n$ a $\# \I_{n}$ necesitamos que para $n \neq m$, $
 Pero antes un lema para facilitar el asunto 
 \begin{lemma}
   
-  Sea $A \subset \I_{n}$. Si existe $f:\I_{n} \ra A$ inyectiva, entonces $A = \I_{n}$
+  Sea $A \subseteq \I_{n}$. Si existe $f:\I_{n} \ra A$ inyectiva, entonces $A = \I_{n}$
 \end{lemma}
 
-\begin{theorem}
-  Sean $n,m \in \N$ Entonces, $$\I_{n} \sim \I_{m} \iff n = m$$
 
-  \begin{proof}
-  $\Ra)$ Directa por el lema
-
-$\quad \Leftarrow ) $ Por absurdo supongamos $n \neq m $ y sin perdida de generalidades $n < m \Ra \I_{n} \subset \I_{m}$
-
-Entonces por hipótesis $\I_{n} \sim \I_{m}$ sabemos $\exists f: \I_{n} \ra \I_{m}$ biyectiva 
-
-Pero entonces por lema $\I_{m} = \I_{n}$ absurdo 
-
-$\Ra n = m$ 
-  \end{proof}
-\end{theorem}
-
-\begin{lemma}
-  Sea $A \subseteq \I_{n}$. Si existe $f: \I_{n} \ra A$ inyectiva, entonces $A = \I_{n}$
-
-  \begin{proof}
+\begin{proof}
     Induccion
 
   $(n=1)$ para el lector
@@ -159,6 +141,24 @@ $\Ra n = m$
 
   \end{proof}
 
+
+\begin{theorem}
+  Sean $n,m \in \N$ Entonces, $$\I_{n} \sim \I_{m} \iff n = m$$
+
+  \begin{proof}
+  $\Ra)$ Sabemos que $\I_{n} \subseteq \I_{m}$ o $\I_{n} \supseteq \I_{m}$ y sabemos que hay una inyección entre ellos por que $\I_{n} \sim \I_{m}$ luego por lema $\I_{n} = \I_{m} \Ra m = n$
+
+$\quad \Leftarrow ) $ Por absurdo supongamos $n \neq m $ y sin perdida de generalidades $n < m \Ra \I_{n} \subset \I_{m}$
+
+Entonces por hipótesis $\I_{n} \sim \I_{m}$ sabemos $\exists f: \I_{n} \ra \I_{m}$ biyectiva 
+
+Pero entonces por lema $\I_{m} = \I_{n}$ absurdo 
+
+$\Ra n = m$ 
+  \end{proof}
+\end{theorem}
+
+
   \begin{definition}
     Un conjunto $A$ es finito si existe $n \in \N $ tal que $A \sim \I_{n}$
   \end{definition}
@@ -175,7 +175,6 @@ $\Ra n = m$
     Un conjunto $A$ es numerable si $A \sim \N$. Equivalentemente si $\# A = \n$
     
   \end{definition}
-\end{lemma}
 
 \begin{remark}
   Decimos que $\# X \leq \# Y$ si existe $f:X \ra Y$ inyectiva
@@ -246,9 +245,9 @@ Repitiendo esto inductivamente tenemos un conjunto numerable $Y$ subconjunto de 
 \begin{theorem}
   Sea $X$ un conjunto. Entonces, $X$ es infinito si y solo si es coordinable con un subconjunto propio
   \begin{proof}
-$\Ra ) X$ infinito
+$\Ra )$  $X$ infinito luego por Teorema 4 
 
-Luego $X$ contiene algún $Y$ numerable $Y=\{y_{n}\}_{n \in \N}$
+$X$ contiene algún $Y$ numerable $Y=\{y_{n}\}_{n \in \N}$
 
 Sea $Y_{2} = \{y_{2},y_{4},y_{6} \dots \}$ luego $Y \sim Y_{2}$
 
@@ -439,9 +438,43 @@ h(x) =
   \end{proof}
 \end{prop}
 
+\begin{remark}
+  Si $X$ es infinito no numerable ademas sirve cualquier $Y$ numerable. Esto va a ser obvio un par de demostraciones mas adelante. 
+\end{remark}
+
+\begin{lemma}
+  Sea $X \sim Y$ y $X' \sim Y'$ además $X \cap X' = \emptyset = Y \cap Y'$
+
+  $$ X \cup X' \sim Y \cup Y'$$
+
+  \begin{proof}
+    Tenemos $f: X \ra Y$ y $g: X' \ra Y'$ ambas biyectivas.
+
+    Luego tenemos $h: X \cup X' \ra Y \cup Y'$ biyectiva dada por
+
+\[
+h(x) =
+     \begin{cases}
+       \text{$f(x)$} &\quad\text{$x \in X$ }\\
+       \text{$g(x)$} &\quad\text{$x \in X'$} \\
+     \end{cases}
+\]
+
+
+
+  \end{proof}
+\end{lemma}
+
 
 \begin{prop}
-  Sea $X$ infinito y $X'$ numerable. Entonces $X \cup X' \sim X$ (Esta unión es disjunta)
+  Sea $X$ infinito y $X'$ numerable. Entonces $X \cup X' \sim X$ 
+ 
+  Aclaración Tomo disjunta la unión por comodidad, pero no es necesario, por que se puede reescribir a $X'$ como $X''=X' \setminus X $
+
+    Igualmente la gracia del ejercicio es cuando las cosas que estan en $X'$ pero no en $X$ son numerables, si no le  estarías agregando finitas cosas a $X$ y eso no es nada nuevo
+
+  
+
 
   \begin{proof}
    Sea $Y \subseteq X$ numerable tal que $X \setminus Y \sim X$
@@ -450,8 +483,7 @@ h(x) =
 
   $X \cup X' = [(X \setminus Y) \cup Y ] \cup X' = (X \setminus Y) \cup (Y \cup X') \sim X \setminus Y \cup Y = X$
 
-  Esto vale por que $Y \cup X'$ es unión de numerables por ende vuelve a dar numerable y por ende es coordinable con $Y$ numerable
-   
+  Esto vale por que $Y \cup X'$ es unión de numerables por ende vuelve a dar numerable y por ende es coordinable con $Y$ numerable. Y la relacion $\sim$ vale por el lema 8  
    
   \end{proof}
 
@@ -582,7 +614,7 @@ La multiplicación se ve de forma similar y el producto se ve aprovechando las f
 \end{remark}
 
 \begin{definition}
-  Usando la definicion del producto y sabiendo $\# \{0,1\} = 2$ y $\# \N = \n$
+ Usando la definicion del producto y sabiendo $\# \{0,1\} = 2$ y $\# \N = \n$
   $\# \R = \mathfrak{c} = 2^{\N}$ 
 
   Teniendo esto en cuenta veamos que:

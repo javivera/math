@@ -1,6 +1,22 @@
 En un grupo abeliano , el centralizador es el mismo grupo??
 
-ejericcio 1.4
+1.24 parte  3 habia una forma mas simple h = ab  entonces hg = abg  asociando a(bg)= ag(b) = gab
+(observación si g esta en Z(G) (osea es centro) entonces C_G(g) es todo Gz
 
+1.47 , por que vale el remate
 
-1.31   1.
+2.5 el orden se define como la cantidad de generadores? por que notaci0nalmente parece que es el cardinal del conjunto
+NO , al pareceres literalmente la cantidad de elementos generados
+
+2.6 1 IMPLICA 2	, el final no puede ser k -j por que si fuera se repetiria el elemento 1 antes de llegar a k que supuestamente era el minimo , y despues prueba esa igualdad para ver que la cantidad de elementos es k osea que k = n
+
+3 implica 4 , por que no puede ser negativo l - kza
+
+Grupo finito implica cicliclo?? No necesariamente
+
+En grupo finito las potencias negativas repiten valores que estan en las potencias positivas .
+
+Ponele G de orden 5 Osea g^-1 g^-2 g^-3 g^-4   genera lo mismo que g ^1 g^2 g^3 g^4. Si , osea toda potencia negativa la podes reescribir como una potencia positiva , esto vale si existe un gn tal que g^n = 1 , por que g^n-1 por g = g ^ n = 1 = g por g^-1 entonces g^n-1 = g ^ -1 
+
+ 
+

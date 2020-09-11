@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Teoría de Grupos}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Álgebra II}
+\begin{document}
+
+
+\noindent
+1) Sean $p,q,r \in G_{n}$ entonces usando su notacion exponencial $(e^{\frac{2k \pi i}{n}}) \in G_{n} \quad \forall \in \mathbb{Z}$
+\begin{enumerate}[i.]
+  \item
+    \begin{itemize}
+      \item $p(qr) = e^{\frac{2k \pi i}{n}} (e^{\frac{2k_{1} \pi i}{n}}e^{\frac{2k_{2} \pi i}{n}}) = (e^{\frac{2k \pi i}{n}} e^{\frac{2k_{1} \pi i}{n}})e^{\frac{2k_{2} \pi i}{n}}$
+      \item Sabemos que $1 \in G_{n}$ y cumple $e^{\frac{2k \pi i}{n}}1 = 1e^{\frac{2k \pi i}{n}} = e^{\frac{2k \pi i}{n}}$
+      \item Sea $p = e^{\frac{2k \pi i}{n}}$ tomamos $p^{-1} = e^{\frac{-2k \pi i}{n}}$ luego $p^{-1} \in G_{n}$ y además $pp^{-1} = p^{-1}p = e ^ 0 = 1$
+      \item Usando las mismas ideas es facil verificar que $pq = e^{\frac{(2k + 2k_{1}) \pi i}{n}}= qp$
+    \end{itemize}
+  \item b) Sabemos que $G_{n} = <e^{\frac{2 \pi i}{n}}>$
+
+\end{enumerate}
+
+
+\noindent
+2) a) Sale trivialmente usando la notacion $e^{\alpha i}$
+b) No lo és supongo\\
+
+
+\noindent
+3) Probar si son grupo 
+\begin{enumerate}[(a)]
+  \item $(G = \Q_{>0}$ con $ a*b = ab)$ Es trivial ver que es grupo abeliano para todo $\frac{p}{q}$ el inverso es $\frac{q}{p}$ el neutro es el $1$ ,es evidentemente asociativa y conmutativa
+  \item $(G = GL_{3}(\Z)$ con $a*b = a.b)$ Sean $A,B,C \in GL_{3}$    
+    \begin{enumerate}[i.]
+      \item  Podemos pensar que estas son matices de transformaciones $f,g,h$ respectivamente y sabemos $(f \circ g) \circ h(x) = (f \circ g)h(x) = f(g ( h(x))) = f((g \circ h)(x)) = f \circ ( g \circ h) (x)$ esto vale $\forall x \in \Z_{3}$
+
+	Entonces $(f \circ g) \circ h = f \circ (g \circ h)$ por ende $(AB)C = A(BC)$
+
+      \item La matriz identidad es el elemento neutro, sabemos que $AId = IdA = A$
+
+      \item No necesariamente existe inverso, cualquier matriz con determinante diferente de 0 no es inversible
+   \end{enumerate}
+
+ \item ($G = GL_{n}(\R)$ con $ a*b = a + b)$ Es evidentemente grupo abeliano , dado que podemos restringirnos a mirar una sola coordenada de la matriz y probar que todo sucede, es asociativa , tiene elemento neutro e inverso y da lo mismo el orden en el que sumemos dos matrices
+
+ \item ($G = SL_{n}(\R)$ con $a*b = ab$)
+
+   \begin{enumerate}[i.]
+      \item  Sean $A,B,C \in G$ podemos pensar que estas son matices de transformaciones $f,g,h$ respectivamente y sabemos $(f \circ g) \circ h(x) = (f \circ g)h(x) = f(g ( h(x))) = f((g \circ h)(x)) = f \circ ( g \circ h) (x)$ esto vale $\forall x \in \Z_{3}$
+
+	Entonces $(f \circ g) \circ h = f \circ (g \circ h)$ por ende $(AB)C = A(BC)$
+
+      \item La matriz identidad es el elemento neutro, sabemos que $AId = IdA = A$
+
+      \item Sea $A \in G$ sabemos que $det(A) = 1$ entonces por tener determinante diferente de cero existe $A^{-1}$ y por otro lado sabemos $det(A^{-1}) = det(A)^{-1} = 1 ^ {-1} = 1$ 
+
+	Entonces $A^{-1} \in G$. Además sabemos que $AA^{-1} = A^{-1}A $
+
+      \item 
+   \end{enumerate}
+
+   \newpage
+ \item ($G = End_{K}(V),$  $V$ un $ K-ev$ con $f*g =f \circ g$)
+
+   \begin{enumerate}[i.]
+  \item Sabemos que la composición de funciones es asociativa por definición
+  \item Tenemos la funcion $Id$ un enfomorfismo que cumple la propiedad de neutro $f \circ Id (x) = Id \circ f(x) = f(x) \quad \forall x \in V$ luego $f \circ Id = Id \circ f = f$
+  \item Si pensamos a $A \in G$ como matriz sabemos que no necesariamente tienen inverso ya que puede tener determinante igual a 0 
+\end{enumerate}
+
+ \item ($G = \{f \in End_{\R}(\R^n)$  $|$ $ d(f(x),f(y)) = d(x,y) \quad \forall x,y \in \R^n\}$ con $f*g = f \circ g)$
+   \begin{enumerate}[i.]
+     \item Una vez la composición de funciones es asociativa 
+     \item Sabemos que la funciona identidad es una isometría asi que está en $G$ y cumple las propiedades de elemento neutro
+
+
+   \end{enumerate}
+
+ \item ($G = S(X) = \{f: X \ra X $ $|$ f es biyectiva $\}$ $X \neq \emptyset$ con $ f*g = f \circ g $)
+   \begin{itemize}
+     \item Como siempre por ser función es asociativa
+     \item La función identidad es el neutro 
+     \item Aqui si tenemos inverso , por ser $f$ biyectiva y sabemos $f \circ f^{-1} = f^{-1} \circ f = Id$
+     \item 
+    \end{itemize}
+ \item ($G = S(\Z)$ con $f*g = f \circ g^{-1}$) 
+   \begin{itemize}
+     \item Sean $f,g,h \in G$ tenemos que $(f \circ g ) \circ h = (f \circ g^{-1} ) \circ h$
+   \end{itemize}
+\end{enumerate}
+
+\noindent
+6) Sea $G$ un grupo Sea ($G^{op}, \cdot$) como conjunto y el producto está dado por $a \cdot b = ba$. Entonces $G^{op}$ es un grupo. (Llamamos $G^{op}$ el $grupo$ $opuesto$ de $G$)
+
+Acá asumo que cuando dice $ba$ se refiere al producto en el grupo $G$. 
+\begin{itemize}
+  \item Sean $a,b,c \in G$ tenemos que $a*(b*c) = a * (cb) = cba = (ba) * c = (a*b)*c$ 
+  \item El elemento neutro $e$ del grupo $G$ sirve. Sea $a \in G$ entonces $a*e = ea = a = ae = e*a$ 
+  \item Sea $a \in G$ usemos el $a^{-1}$ dado por el grupo $G$. $a*a{-1} = a^{-1}a = e = aa^{-1} = a^{-1}*a$. Y sabemos que $e$ es el mismo para ambos
+    
+\end{itemize}
+Entonces si $G$ es grupo $(G^{op},j*h = h \cdot_{G}j)$ es grupo
+\end{document}

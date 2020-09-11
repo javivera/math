@@ -19,7 +19,10 @@ Sabiendo que existe inverso tenemos $exx^{-1} = e'xx^{-1}$
 
 Y suponiendo que $xx^{-1} = e$ luego $ee = e'e$
 
-Finalmente considerando que $e, e' \in G$ y que un elemento de $g \in G$ operado con un elemento neutro da el mismo elemento $g$ tenemos $e = e'$
+iFnalmente considerando que $e, e' \in G$ y que un elemento de $g \in G$ operado con un elemento neutro da el mismo elemento $g$ tenemos $e = e'$
+
+Ej 1.8) Sale por inducción primero probas $a^{n + 1} = a^{n}a^{1}$ y despues salen los otros dos
+
 
 Ej 1.9)
 
@@ -29,9 +32,56 @@ Inyectividad: Sean $x , x' \in G$ tal que $gx = f(x) = f(x') = gx'$
 
 Luego como $g \in G$ existe elemento inverso y elemento neutro
 
-Luego $g^{-1}gx = g^{-1}gx \Rightarrow ex = ex' $ entonces $x = x'$
+Luego $g^{-1}gx = g^{-1}gx' \Rightarrow ex = ex' $ entonces $x = x'$
 
-Suryectividad: 
+Suryectividad: Sea $r \in G$ ahora queremos ver si $r = gx$ con $ g \in G$ tiene solución.
+
+Por ejericio 1.4) sabemos que tiene y que es única además $g^{-1}r = x$ y como $g^{-1} \in G$ y $g \in G$ y la operación de $G$ es cerrada luego $x \in G$ 
+
+Luego $r$ tiene pre imagen $\forall r \in G$ 
+
+Ambos procesos son se usan de forma análoga para probar la otra biyección
+
+Ej 1.23) 
+\begin{itemize}
+  \item Sabemos que $e \in Z(G)$ por que $ex = x = xe$ luego $ex = xe \quad \forall x \in G$
+  \item Sea $r \in Z(G)$ sabemos que $rh = hr \quad \forall h \in G$ 
+
+    Luego como $r \in G$ tiene inverso, usémoslo para multiplicar ambos lados varias veces con el inverso $r^{-1}$
+
+    $r^{-1}rh = r^{-1}hr \Rightarrow r^{-1}rhr^{-1} = r^{-1}hrr^{-1} \Rightarrow  hr^{-1} = r^{-1}h \quad \forall h \in G$
+  
+    Finalmente $r^{-1} \in Z(G)$
+
+  \item Sea $r \in Z(G) \quad r_{1} \in Z(G)$ entonces tenemos $rh =hr \quad$ y $\quad r_{1}h = h r_{1} \quad \forall h \in G$ 
+
+    Luego multiplicando convenientemente sabiendo que existe inverso 
+
+    $h = r^{-1}hr$ y tambié $r_{1}hr_{1}^{-1} = h$ por lo tanto $r^{-1}hr = r_{1}hr_{1}^{-1} \quad \forall h \in G$
+
+    Devuelta multiplicando $hr = rr_{1}hr_{1}^{-1} \Rightarrow hrr_{1} = rr_{1}h \quad \forall h \in G$
+
+    Luego $rr_{1} \in Z(G)$
+
+\end{itemize}
+
+Ej 1.24) 
+\begin{itemize}
+  \item Sabemos que $e \in C_{G}(g) \quad \forall g \in G$ por que $ge = eg$
+  \item  Sea $r \in C_{G}(g)$ entonces $gr = rg $ 
+
+    Luego como $r \in G$ tiene inverso 
+
+    Por lo tanto $g = rgr^{-1} \Rightarrow r^{-1}g =gr^{-1} \Rightarrow gr^{-1} = r^{-1}g$
+
+    Entonces $r^{-1} \in C_{G}(g)$
+
+  \item Sean $r,r_{1} \in C_{G}(g)$ luego $gr =rg$ y tambien $gr_{1} = r_{1}g$ ahora multiplicando estratégicamente por inversos llegamos a $r^{-1}gr = g$ y por otro lado $g = r_{1}gr_{1}^{-1}$
+
+    Entonces tenemos $r^{-1}gr = r_{1}gr_{1}^{-1} \Rightarrow gr = r r_{1}gr_{1}^{-1} \Rightarrow grr_{1} = rr_{1}g $
+
+    Luego $rr_{1} \in C_{G}(g)$
+\end{itemize}
 
 
 \end{document}
