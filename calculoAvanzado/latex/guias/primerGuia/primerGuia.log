@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.7.28)  11 SEP 2020 20:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.7.28)  14 SEP 2020 12:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -327,13 +327,27 @@ Overfull \hbox (2.93323pt too wide) in paragraph at lines 833--834
 alo que es dis-junto con cualquier
  []
 
-[14] (./primerGuia.aux) ) 
+LaTeX Font Info:    Trying to load font information for U+euf on input line 857
+.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [14] [15] [16]
+[17] [18]
+Overfull \hbox (3.9676pt too wide) in paragraph at lines 1123--1124
+[]\OT1/cmr/m/n/12 Consideremos la fun-cion $\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 
+: \U/msb/m/n/12 R[] \OMS/cmsy/m/n/12 ! P[]\OT1/cmr/m/n/12 (\U/msb/m/n/12 R\OT1/
+cmr/m/n/12 )$ dada por $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 a[]
+; a[]; [] \OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 a[]; a[]; [] \
+OMS/cmsy/m/n/12 g$
+ []
+
+[19] (./primerGuia.aux) ) 
 Here is how much of TeX's memory you used:
- 3613 strings out of 483183
- 49511 string characters out of 5966292
+ 3626 strings out of 483183
+ 49753 string characters out of 5966292
  294346 words of memory out of 5000000
- 18601 multiletter control sequences out of 15000+600000
- 537667 words of font info for 44 fonts, out of 8000000 for 9000
+ 18609 multiletter control sequences out of 15000+600000
+ 538375 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  30i,13n,45p,515b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jvera/.texlive2019/texmf-var/fonts/pk/ljfour/j
@@ -348,12 +362,13 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb>
-Output written on primerGuia.pdf (14 pages, 167120 bytes).
+/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msbm10.pfb>
+Output written on primerGuia.pdf (19 pages, 189935 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

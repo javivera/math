@@ -193,15 +193,17 @@ Sea $X$ un conjunto. Entonces $\# X < \# \mathcal{P}(X)$
 \begin{proof}
   $f:X \ra \mathcal{P}(X)$ definida como $x \mapsto {x}$ esta es inyectiva luego $\# X \leq \# \mathcal{P}(X)$
 
-Sea $g: X \ra \mathcal{P}(X)$ (si $ x \in X  \Ra g(x) \subseteq X$)
+  Sea $g: X \ra \mathcal{P}(X)$ (si $ x \in X  \Ra g(x) \subseteq X$ dado que $g(x) $ es un conjunto )
 
 Ahora $x \in g(x)$ o $x \notin g(x)$. Definamos $B =\{x \in X : x \notin g(x)\}$
 
-Supongamos que $B \in im(g)$ luego $\exists y / \quad B=g(y)$ 
+Supongamos que $B \in im(g)$ 
+
+Luego $\exists y \in X / \quad B=g(y)$ 
 \begin{itemize}
 \item Ahora si $y \in B \Ra y \notin g(y)$ por como esta definido $B$ esto es absurdo
 
-\item Si $y \notin B \Ra y \notin g(y)$ pero entonces $y \in B$ absurdo
+\item Si $y \notin B \Ra y \in g(y)$ pero entonces $y \in B$ absurdo
 \end{itemize}
 
 Luego $\nexists y \in X / \quad g(y) = B \Ra B \notin im(g)$ 
@@ -210,9 +212,7 @@ Entonces $B \notin \mathcal{P}(X)$
 
 $\Ra g$ no puede ser suryectiva
 
-Observación Si $B = \emptyset$ luego si definimos $f(\emptyset) = \emptyset$ sabemos que $\emptyset \notin \emptyset$ dado que este no es nisiquiera un conjunto pero entonces $B=\{\emptyset \}$ pero entonces $B$ no era vacío, lo que es absurdo
 
-Luego tenemos que $\nexists x / g(x) = B $ pero $B \subset P(X)$ luego $g$ no puede ser suryectiva
 \end{proof}
 \end{theorem}
 
@@ -626,10 +626,14 @@ La multiplicación se ve de forma similar y el producto se ve aprovechando las f
     \end{enumerate}
 
     \begin{proof}
-    1) sabemos que $\n \times \n \sim \n$
+    1) sabemos que $\N \times \N \sim \N$ luego $\# \N \times \N = \# \N$
 
-  2) $\mathfrak{c}.\mathfrak{c} = \mathfrak{c}^2 = (2^{\n})^2 = 2^{\n.2} = 2^{\n + \n} = 2 ^{\n} = \mathfrak{c}$
-  \end{proof} 
+  2) $\mathfrak{c}.\mathfrak{c} = \mathfrak{c}^2 = (2^{\n})^2 = 2^{2.\n} = 2^{(\n + \n)} = 2 ^{\n} = \mathfrak{c}$
+  
+  El paso $(2^{\n})^2 = 2^{2.\n}$ directo y hay un ejercicio en la guia que lo prueba 
+
+  Sean $a,b,c$ cardinales entonces $(a^b)^c = a^{bc}$ 
+\end{proof} 
 \end{definition}
 
 \begin{remark}

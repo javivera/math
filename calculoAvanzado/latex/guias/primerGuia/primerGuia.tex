@@ -568,12 +568,12 @@ f(x,y) = \left\{
 $$
 
 Es trivialmente inyectiva devuelta por unicidad de descomposicion en primos y como $\Z \times \N$ es evidentemente infinito entonces es numerable
- 
+  
 \item $\Q: \quad $ Usando una función casi igual que la de arriba podemos ver que $ \Z \times \Z $ es numerable.
 
   Consideremos $f: \Z \times \Z \ra \Q$ dada por $f(x,y) = \frac{x}{y}$ sobreyectiva por que cualquier racional se escribe como division de enteros. Entonces $\Q$ es a lo sumo numerable y ademas es infinito , entonces es numerable
- 
-\item $\N^{n}: \quad$ To mamos $f: \N^{n} \ra \N$ dada por $f(a_{1},a_{2}, \dots , a_{n}) = p_{1}^{a_{1}}p_{2}^{a_{2}} \dots p_{n}^{a_{n}}$  con $p_{n}$ primos distintos dos a dos. $f$ es inyectiva. Luego usando el mismo argumento que antes tenemos que $\N^n$ con $n \in \N$ es numerable \\
+  
+ \item $\N^{n}: \quad$ To mamos $f: \N^{n} \ra \N$ dada por $f(a_{1},a_{2}, \dots , a_{n}) = p_{1}^{a_{1}}p_{2}^{a_{2}} \dots p_{n}^{a_{n}}$  con $p_{n}$ primos distintos dos a dos. $f$ es inyectiva. Luego usando el mismo argumento que antes tenemos que $\N^n$ con $n \in \N$ es numerable \\
 \end{itemize}
 
 \noindent Ej 14) 
@@ -733,10 +733,10 @@ Como es una unión numerable de numerables, $\Q[X]$ es numerable
 
     \end{proof}
 
-
+ 
   \item Existen numeros reales que no son algebraicos (Estos se llaman $trascendentes$) 
 
-Por insciso anteriór sabemos que hay numerables $algebraicos$ sin embargo hay más que numerables $reales$ por ende debe haber reales que no son algebráicos
+ Por insciso anteriór sabemos que hay numerables $algebraicos$ sin embargo hay más que numerables $reales$ por ende debe haber reales que no son algebráicos
 \end{enumerate}
 
 \noindent
@@ -832,9 +832,9 @@ Por insciso anteriór sabemos que hay numerables $algebraicos$ sin embargo hay m
 
   Luego para cada discontinuidad tenemos un ÚNICO intervalo que es disjunto con cualquier otro  o lo que es lo mismo tenemos una función biyectiva entre cada discontinuidad y un intervalo abierto de $\R$
 
-  Finalmente como sabemos que tenemos a lo sumo numerables intervalos abiertos en $\R$ entonces tenemos a lo sumo numerables discontinuidades 
+  Finalmente como sabemos que tenemos a lo sumo numerables intervalos abiertos y disjuntos en $\R$ entonces tenemos a lo sumo numerables discontinuidades 
   
-  Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjutnos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racinal y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
+  Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjutnos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racional y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
 \end{proof}
 
 \noindent 20) Sea $A$ un conjunto numerable, el conjunto de las partes finitas de $A$ (es decir, el subconjunto de $\mathcal{P}(A)$ formado por los subconjuntos finitos de $A$) es numerable
@@ -845,7 +845,296 @@ Por insciso anteriór sabemos que hay numerables $algebraicos$ sin embargo hay m
   Para eso tomemos la funcion $ \phi :  \mathcal{P}_{n}(A) \ra A^n$ dada por $\{a_{1}, a_{2} ,\dots , a_{n}\} \mapsto  (a_{1}, \dots , a_{n}) $ donde $\mathcal{P}_{n}(A)$ es subconjuntos de $\mathcal{P}(A)$ donde solo hay conjutnos de cardinal $n$. La función es claramente inyectiva , por que mover mover elementos de un conjunto da el mismo conjunto y cambiar elementos da diferentes n-uplas. Y sabemos que $\# A^{n} = \n$ por que $A$ es numerable, luego $\# \mathcal{P}_{n}(A) \leq \n$
   Entonces $$ \mathcal{P}_{finitas}(A) = \bigcup_{n \in \N} \mathcal{P}_{n}(A)$$
 
-  Que es unión numerable de numerables entonces es numerable. Acá faltaría agregar el conjunto $\{\emptyset\}$ pero sigue valiendo obviamente (ejericicio para el lector si no le parece obvio)
+  Que es unión numerable de numerables entonces es numerable. Acá faltaría agregar el conjunto $\{\emptyset\}$ , que es un subconjunto finito de partes, pero sigue valiendo obviamente (ejericicio para el lector si no le parece obvio)
 \end{proof}
+
+21) 
+\begin{enumerate}
+  \item $A_{1} = \{(a_{n}) : a_{n} \in \N $ para todo $ n \in \N\}$
+    \begin{proof}
+      Sabemos que $\# A_{1} = \# \N^{\N} = \n^{\n} $
+
+      Y sabemos $ \mathfrak{c} = 2^{\n}= 2^{\n \n}  = (2^{\n})^{\n} \geq \n^{\n} \geq 2^{\n} = \mathfrak{c}$ 
+
+      Entonces $\# A_{1} = \mathfrak{c}$
+    \end{proof}
+  \item $A_{2} = \{(a_{n}) \subseteq \N : a_{n} \leq a_{n +1} $ para todo $ n \in \N \}$
+    \begin{proof}
+      Podemos definir $f:A_{1} \ra A_{2}$ como la función que manda $a_{n}$ en $b_{n}$ 
+     
+      Donde $b_{1} = a_{1}$ y $b_{n} = b_{n - 1} + a_{n} + 1$ es claramente biyectiva si se pinesa un momento
+
+      Por ende $\# A_{2} = \# A_{1} = \mathfrak{c}$
+    \end{proof}  
+  \item $A_{3} = \{(a_{n}) \subseteq \N : a_{n} \geq a_{n +1} $ para todo $ n \in \N \}$
+    \begin{proof}
+      
+
+    \end{proof} 
+  \item $A_{4} = \{ (q_{n}) \subseteq \Q : \lim_{n \ra \infty} q_{n} = 0\}$
+    \begin{proof}
+Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \mathfrak{c}$ entonces $\# A_{3} \leq \mathfrak{c}$
+
+      Por otro lado tenemos $\phi : \{0,1\}^{\N} \ra A_{3} $ dada por $f(a_{n}) = \frac{a_{n}}{n}$ que es inyectiva
+
+      Entonces $\# A_{3} \geq \# \{0,1\}^{\N} \geq \mathfrak{c}$
+
+    \end{proof} 
+  \item $A_{5} = \{ (q_{n}) \subseteq \Q : (q_{n}) $ es periódica $\}$
+    \begin{proof}
+      Sabemos que toda sucesión en $A_{5}$ se repite en algún momento. Sea $P_{k}$ el conjunto de sucesiones que se repiten a partir del elemento $k$, $a_{n + k} = a_{k}$. 
+
+      Ahora consideremos $f: P_{k} \ra \Q^{k}$ dada por $f(a_{n}) = (a_{1}, \dots , a_{k})$ que es biyectiva
+
+      Entonces $\# P_{k} = \# \Q^{k} = \# \N^{k} = \n$
+
+      Y luego tenemos que $$ A_{5} = \bigcup_{k \in \N} P_{k}$$
+
+      Luego $A_{5}$ es unión numerable de numerable $\# A_{5} = \n$
+
+
+    \end{proof} 
+  \item $A_{6} = \{(a_{n}) \subseteq \N : 1 \leq a_{n} \leq m$ para todo $ n \in \N\}$
+    \begin{proof}
+      Sabemos que $X_{6} = \{1, \dots , m\}^{\N}$ 
+
+      Luego $\mathfrak{c} = 2^{\n} < m^{\n} = \# A_{6} < \# \N^{\N} = \n^{\n} = \mathfrak{c}$ resumiendo $\# A_{6} = \mathfrak{c}$
+    \end{proof} 
+
+\end{enumerate}
+
+\noindent
+22) 
+\begin{enumerate}[i.]
+  \item $A_{1} = \{$ I : I es un intervalo de extremos racionales$ \}$
+    \begin{proof}
+      Sea $A = \Q \times \N_{0} \times \N $ sabemos $\# A = \n$ 
+
+      Por otro lado tenemos $f: A \ra A_{1}$ dada por $f(a,b,c) =[a,a+ \frac{b}{c} ] $ es sobreyectiva
+
+      Entonces $\# A_{1} \leq \# \Q \times \N_{0} \times \N = \n$
+
+      Y por otro lado $f: A_{1} \ra \Q$ dada por $f([a,b]) = a$ que es sobreyectiva tambien 
+
+      Luego $\# A_{1} \geq \# \Q = \n$
+    \end{proof}
+  \item $A_{2} = \{[a,b] : a,b \in \R \}$
+    \begin{proof}
+      Sabemos que $\# \R \times \R = \# \R = \mathfrak c$
+
+      Luego tomemos la función $f : A_{2} \ra \R \times \R $ dada por $f([a,b]) =(a,b) $ que no es sobreyectiva, por que $(a,b)$ es una tupla y la tupla $(a,b)\neq (b,a)$. Pero es inyectiva
+
+      Entonces tenemos que $\# A_{2} \leq \#( \R \times \R) = \mathfrak{c}$
+
+      Por otro lado miramos $f : A_{2} \ra \R$ dada por $f([a,b]) = a$ es claramente NO inyectiva, pero es trivialmente sobreyectiva entonces $\# A_{2} \geq \# \R = \mathfrak{c}$
+    \end{proof}
+  \item $I$, sabiendo que $\{A_{i}\}_{i \in I} \subset \R$ es una familia de intervalos disjuntos
+    \begin{proof}
+      Esto está probado más arriba, igual no es dificil, la idea usando axioma de elección y densidad es que para conjunto $A_{i}$ podemos elegir un $q \in \Q$ y esté va a estar solo en este conjunto , si no no serían disjuntos , de ahi podemos armar una biyección con $\Q$ y por ende este conjunto es numerable 
+    \end{proof}
+  \item $\{(x,y) \in \R^{2} : 3x + 2y \geq 7\}$
+    \begin{proof}
+      
+    \end{proof}
+  \item $\R_{>0}$
+    \begin{proof}
+      Tenemos la inyección $f : \R \ra \R_{>0}$ con $f(t) = e^t$ 
+
+      Y por otro lado tenemos la inyección $f^{-1} : \R_{>0} \ra \R$ dada por $f^{-1}(s) = ln(s)$
+
+      Entonces por Cantor-Bernstein tenemos una biyección.
+
+      Notar que en realidad es facil probar que ambas funciones son una la inversa de la otra y son ambas biyectivas..
+    \end{proof}
+\end{enumerate}
+
+\noindent 23) Unión numerable de conjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$.
+\begin{proof}
+  Sea $A_{n}$ un sucesión de conjuntos de cardinal $\mathfrak{c}$ luego para cada $n \in \N$ tenemos un conjunto de cardinal $\mathfrak{c}$ por ende una biyección $\phi :\R \ra A_{n}$ y esto pasa para cada $n \in \N$ entonces tenemos varias biyecciones $f_{n} : \R \ra A_{n}$
+
+  Teniendo esto en cuenta podemos armar otra funcion $g: \N \times \R \ra \bigcup_{n \in \N} A_{n} $ 
+
+  Dada por $f(n,m) = f_{n}(r)$ que es evidentemente sobreyectiva 
+
+  Luego $\# \bigcup A_{n} \leq \# \N \times \R \leq \# \R \times \R = \mathfrak{c}$
+
+  Y por otro lado sabemos que cualquier $A_{j}$ con $j \in \N$ esta metido en la unión , y $\# A_{j} = \mathfrak{c}$
+
+  Por ende $\# \bigcup A_{n} \geq \# A_{j} = \mathfrak{c}$
+
+  Finalmente $$\# \bigcup_{n \in \N} A_{n} = \mathfrak{c}$$
+\end{proof}
+
+\noindent Ej 23) Sean $a,b,c$ cardinales
+\begin{enumerate}[i.]
+  \item $a.(b+c) = ab + ab$
+    \begin{proof}
+      En este caso y considerando el álgebra de cardinales, tendriamos que buscar una funcion biyectiva $f: A \times (B \cup C) \ra (A \times B) \cup (A \times C)$ con $\# A = a, \# B = b, \# C = c$ etc 
+
+      Pero en este caso $A \times (B \cup C) = (A \times B) \cup (A \times C)$ por ende la función identidad serviría
+    \end{proof}
+  \newpage
+  \item $a^{b + c} = a^b.a^c$
+ 
+    \begin{proof}
+      Siguiendo la misma idea deberiamos encontrar $F: A^{B + C} \ra A^B.A^C$
+
+      El dominio tiene funciones de la pinta $h:(B \cup C) \ra A$
+
+      La imagen seríán tuplas de funciones de la pinta $(\alpha : B \ra A , \quad \phi : C \ra A)$
+
+      Teniendo todo esto en claro y dado $h \in A^{B + C}$ definimos $F(h) = (h|_{B},h|_{C})$
+
+      Veamos que es biyectiva
+
+      Supongamos $h,g \in A^{B \cup C}$ tales que $F(h|_{B},h|_{C}) = F(h) = F(g) = (g|_{B},g|_{C})$ 
+
+      Viéndolo así es evidente que si $x \in B$ entonces $h(x) = h|_{B}(x) = g|_{B}(x) = g(x)$
+
+      Y si $x \in C$ entonces pasa lo mismo $f(x) = f|_{C}(x) = g|_{C}(x) = g(x)$
+
+      Entonces $f = g$ por lo que es inyectiva
+
+      Sea $(k,l) \in A^B \times A^C$ podemos dar una función $f \in A^{B \cup C}$ tal que para cada $x \in B \cup C$
+
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  k(x)  & \quad si \quad x \in B \\
+	l(x)  & \quad si \quad x \in C 
+        \end{array}
+    \right.
+$$
+
+Y es claro que $F(f(x)) = (k(x),l(x))$ entonces para cada $(k,l)$ en la imagen , puedo encontrar una $f$ en el dominio. Por lo tanto es $F$ es sobreyectiva 
+
+Uniendo todo encontramos $F$ biyectiva
+    \end{proof}
+  \item $(a^b)^c = a^{bc}$
+
+    \begin{proof}
+      Este puede parecer confuso en un principio pero dejo aquí la idea correcta para que lo piensen.
+
+      Necesito una función biyectiva $F: (A^B)^C \ra A^{B \times C}$ 
+
+      Consideremos $h \in (A^B)^C$ y $(b,c) \in (B \times C)$ 
+
+      Podemos definir $F(h)(b,c) = h(c)(b)$ esto significa  'el resultado de evaluar $F$ en una función es otra función que puede ser evaluada en una tupla $(b,c)$'
+
+      Esto tiene sentido por que $F$ recibe funciones y las manda a funciones que deben poder recibir tuplas.
+
+      Con estas dos ideas deberia alcanzar para que el lector pueda entender la validez de la demostración
+
+      Ahora faltaría ver que es biyectiva. Veamos que es facil encontrar una inversa 
+
+      Sea $k \in A^{B \times C}$ y $b \in B, c \in C$ tenemos $ F^{-1}(k)(c)(b) = k(b,c) $
+
+      Ahora veamos que es inversa.
+
+    $F^{-1}(F(h))(c)(b) = F(h)(b,c) = h(c)(b) \Ra F^{-1}(F(h)) = h \quad \forall h \in (A^{B})^C$
+
+      $F(F^{-1}(k))(b,c) = F^{-1}(k)(c)(b) = k(b,c) \Ra F(F^{-1}(k)) = k \quad \forall k \in A^{B \times C}$
+
+      Efectivamente $F$ es biyectiva
+    \end{proof}
+  \item $(ab)^c = a^c.b^c$
+    \begin{proof}
+     No voy a explicar mucho, por que para entender se puede pensar en una hoja usando las mismas ideas hasta ahora.
+
+     Tomemos una $F: (A.B)^C \ra (A^C.B^C)$ 
+
+     Dada por $F(h) = (h_{1}, h_{2})$ 
+
+     Con $h_{1},h_{2}$ son la primera y segunda coordenada (respectivamente) de la imagen de $h$
+    \end{proof}
+  \item Si $b \leq c,$ entonces $a^b \leq a^c$ y $b^a \leq c^a$
+\end{enumerate}
+
+25) $n^{\n} = \n^{\n} = \mathfrak{c}^{\n} = \mathfrak{c}$ con $n \geq 2$
+
+\begin{proof}
+  Primero veamos $\mathfrak{c}^{\n} = \mathfrak{c}$
+
+  Usemos álgebra de cardinales $\mathfrak{c}^{\n} = (2^{\n})^{\n} = 2^{\n \n} = 2^{\n} = \mathfrak{c} \quad $ 
+
+  Sirve recordar que $\N \times \N \sim \N$
+
+  Luego $\mathfrak{c}  = 2^{\n} \leq \n^{\n} \leq \mathfrak{c}^{\n} = \mathfrak{c} \Ra \n^{\n} = \mathfrak{c}$
+
+  Tambien $2^{\n} \leq n^{\n} \leq \n^{\n}$
+\end{proof}
+
+\noindent 26) $\R$ es unión disjunta de $\mathfrak{c}$ conjuntos de cardinal a $\mathfrak{c}$
+
+Tenemos una union de conjuntos de cardinal $\mathfrak{c}$ para cada uno de estos conjuntos $A_{j}$ tenemos una funcion $f_{j} : \R \ra A_{j}$ con $j \in \R$ biyectiva.
+
+Ahora definimos una función $F: \R \times \R \ra \bigcup_{j \in \R} A_{j}$
+
+Dada por $F(j,h) = f_{j}(h)$ que es biyectiva
+
+Luego tenemos que $$\bigcup_{i \in \R} A_{j} \sim \R \times \R \sim \R  $$
+
+Luego existe una biyección entre $\R $ asi que como conjunto son 'lo mismo'
+
+\noindent Ej 27) Sean 
+
+$$ \mathcal{F}(\R) = \{f | f:\R \ra \R \} \quad \mathcal{F}(\Q) = \{f | \Q \ra \R \}$$
+
+\begin{center} $ \mathcal{C}(\R) = \{f \in \mathcal{F}(\R) | $ $f $ es continua $\} \quad$ $\mathcal{C}(\Q) = \{f \in \mathcal{F}(\Q) |$ $ f $ es continua $\} $ \end{center}
+  \begin{enumerate}[i.]
+    \item $\#\mathcal{F}(\R) > \mathfrak{c}$
+      \begin{proof}
+	Sabemos que $\# \mathcal{F}(\R) = \# \R^{\R} =  \mathfrak{c}^{\mathfrak{c}} \geq 2^{\mathfrak{c}} = \# \mathcal{P}(\R) > \# \R =  \mathfrak{c}$
+      \end{proof}
+    \item $\# \mathcal{F}(\Q) = \mathfrak{c}$
+      \begin{proof}
+	Sabemos que $\# \mathcal{F}(\Q) = \# \R^{\Q} = \mathfrak{c}^{\n} = \mathfrak{c}$	
+
+	      \end{proof}
+      \newpage
+    \item $\# \mathcal{C}(\Q) = \mathfrak{c}$
+      \begin{proof}
+	Por un lado tenemos que $\# \mathcal{C}(\Q)  \leq \# \mathcal{F}(\Q) = \mathfrak{c}$ 
+
+Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de funciones constantes $f: \Q \ra \R$ y sabemos que $A$ tiene cardinal $\mathfrak{c}$
+
+	Entonces $\# \mathcal{C}(\Q) = \mathfrak{c}$
+      \end{proof}
+    \item La función $\phi : \mathcal{C}(\R) \ra \mathcal{C}(\Q)$ dada por $\phi(f) = f|_{\Q}$ es inyectiva.
+      \begin{proof}
+      Sean $f,g \in \mathcal{C}(\R) $ talque $\phi (f) = \phi(g)$ entonces $f|_{\Q}(x) = g|_{\Q}(x) \quad \forall x \in \Q$
+
+      Pero entonces $f(x) = g(x) \quad \forall x \in \R$ por lo que $f = g $ entonces $\phi$ es inyectiva
+
+      Esta es una demostración de taller por ende no la voy a hacer, la idea es suponer que restringiendo a $\Q$ son iguales pero no lo son en $\R$ y usando la propiedad de que continua manda sucesiones convergentes en convergentes llegas a un absurdo 
+      \end{proof}
+    \item $\# \mathcal{C}(\R) = \mathfrak{c}$
+
+      Teniendo el item anteriór sabemos que $\# \mathcal{C}(\R) \leq \# \mathcal{C}(\Q) = \mathfrak{c}$
+
+      Usando que el conjunto en cuestion contiene a las funciones constantes $f : \R \ra \R $ tenemos que $\# \mathcal{C}(\R) \geq \mathfrak{c}$
+
+      Entonces $\# \mathcal{C}(\R) = \mathfrak{c}$
+  \end{enumerate}
+
+
+\noindent Ej 28) El conjunto de partes numerables de $\R$ (es decir, el subcojunto de $\mathcal{P}(\R)$ formado por todos los subconjuntos numerables de $\R$) tiene cardinal $\mathfrak{c}$
+\begin{proof}
+  Consideremos la funcion $f: \R^{\N} \ra \mathcal{P}_{numerables}(\R)$ dada por $f(a_{1},a_{2}, \dots ) = \{a_{1},a_{2}, \dots \}$ Esta no es inyectiva , pero es claramente sobreyectiva
+
+  Luego  $\mathcal{P}_{n}(\R) \leq \mathfrak{c}^{\n} = \mathfrak{c}$
+
+  Por otro lado sabemos que partes numerables contiene a partes numerables y acotadas adentro llamemosla $\mathcal{P}_{NumAc}(\R)$ y ahora tenemos la función $g: \mathcal{P}_{NumAc}(\R) \ra \R$ dada por $f(A) = inf(A)$ que es evidentemente sobreyectiva usando la inclusión tenemos que $\# \mathcal{P}_{n}(\R) \geq \mathfrak{c}$
+
+\end{proof}
+
+\noindent Ej 29) Sean $A,B \neq \emptyset$. Luego o bien existe $f:A \ra B$ inyectiva o bien $g: B \ra A$ inyectiva.(Es decir $\#A \leq \# B$ o $\#B \leq \# A$) 
+
+Supongamos que no existe $f: A \ra B$ inyectiva entonces $\forall a \in A \quad \exists b \in B $ tal que $f(a) = b$. Y para algunos $a \in A$ o quizas para todos existe más de un $b \in B$
+
+Por axioma de elección tenemos una función que elije elementos llamemosla $h$
+
+Ahora podemos armar una función $g: B \ra A$ dada por $g(b) = h ( f^{-1}(b)) $
+
 
 \end{document}
