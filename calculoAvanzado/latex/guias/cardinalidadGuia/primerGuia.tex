@@ -1,0 +1,1148 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Espacios Normados}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+
+\noindent 1) Probar las siguientes igualdades
+\begin{enumerate}[i.]
+  \item $$B \setminus \bigcup_{i \in \I} A_{i} = \bigcap_{i \in \I} (B \setminus A_{i})$$
+    \begin{proof}
+    
+    $\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcup_{i \in \I} A_{i}$ 
+
+    Luego $x \in B$ y $x \notin \bigcup A_{i} \quad \forall i \in \I $
+
+    Entonces $x \in B \setminus A_{i} \quad \forall i \in \I$
+
+    $\Ra x \in \bigcap B \setminus A_{i}$
+
+    $\supseteq )$ Sabemos $x \in B \setminus A_{i} \quad \forall i \in \I$
+
+    Luego para cada $i \in \I$ sabemos $x \in B$ y $x \notin A_{i}$
+
+    $\Ra x \in B \setminus \bigcup A_{i}$
+    
+    \end{proof}
+  \item $$B \setminus \bigcap_{i \in \I} A_{i} = \bigcup_{i \in \I} (B \setminus A_{i})$$
+    \begin{proof}
+
+    	$\subseteq )$ Sabemos $x \in B $ y $x \notin \bigcap A_{i}$ 
+
+    	Luego existe algún $i \in \I$ tal que $x \notin A_{i}$ (quizas para todos los $i \in I$ sucede que $x \notin A_{i}$ pero con uno alcanza)
+
+    	Entonces existe algún $i \in \I$ tal que $x \in B$ y $x \notin A_{i} \Ra B \setminus A_{i} $
+
+    	$\Ra x \in \bigcup (B \setminus A_{i})$
+
+    	$\supseteq )$ Tenemos $x \in B \setminus A_{i}$ para algún $i \in \I$
+
+    	Luego $x \in B$ y $x \notin A_{i}$ para algún $i \in \I$
+
+    	Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
+
+    	$\Ra x \in B \setminus \bigcap A_{i}$
+    
+    \end{proof}
+  \item $$\bigcup_{i \in \I} (A_{i} \cap B) = B \cap (\bigcup_{i \in \I} A_{i})$$
+    \begin{proof}
+    $\subseteq )$ Tenemos $x \in A_{i} \cap B$ para algún $i \in \I$  
+    
+    Luego $x \in B$ y $x \in A_{i}$ para algún $i \in \I \Ra x \in \bigcup A_{i}$
+
+    Entonces $x \in B$ y $x \in \bigcup A_{i}$
+
+    $\Ra x \in B \cap (\bigcup A_{i})$
+    \end{proof}
+\end{enumerate}
+
+\newpage
+\noindent
+3) Sea $f : X \ra Y$ una función, $A, B $ subconjuntos de $X$
+\begin{enumerate}[i.]
+  \item $f(A \cup B) = f(A) \cup f(B)$
+    \begin{proof}
+    $\subseteq )$ Sea $y \in f(A \cup B)$ entonces $\exists x \in A \cup B /  f(x) = y$ 
+
+    Luego $x \in A$ y $ x \in B$ 
+
+    Entonces  $ y = f(x) \in f(A)$ y por otro lado $y = f(x) \in B$
+
+    Finalmente $y = f(x) \in f(A) \cup f(B)$
+
+    $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ e $y \in f(B)$
+
+    Entonces $\exists x \in A  $ tal que $ f(x) = y $ luego $ x \in A \cup B$
+
+    Luego $y = f(x) \in f(A \cup B)$
+    
+    \end{proof}
+  \item $f(A \cap B) \subseteq f(A) \cap f(B)$
+    \begin{proof}
+    
+    Sea $ y \in f(A \cap B)$ luego $\exists x \in A \cap B$ tal que $f(x) = y$
+
+    Luego $x \in A $ y $x \in B$ luego $y = f(x) \in f(A)$ e $y = f(x) \in f(B)$
+
+    Finalmente $y = f(x) \in f(A) \cap f(B)$ 
+    
+    \end{proof}
+  \item Sea $A_{i \in \N} $ una familia de infinitos conjuntos, entonces 
+    \begin{enumerate}
+      \item $f(\bigcup A_{i}) = \bigcup f(A_{i})$ 
+	\begin{proof} $\subseteq )$ Sea $y \in f(\bigcup A_{i})$ luego $\exists x \in \bigcup A_{i}$ tal que $f(x) = y$
+
+	Entonces $\exists A_{j}$ tal que $x \in A_{j}$ por lo que $y = f(x) \in f(A_{j}) \subseteq \bigcup f(A_{i})$
+
+        $\supseteq )$ Sea $y \in \bigcup f(A_{i})$ luego $\exists j \in \N $ tal que $y \in f(A_{j})$
+
+	Luego $\exists x \in A_{j} $ tal que $y = f(x)$ luego $x \in \bigcup A_{i}$
+
+	Finalmente $y = f(x) \in f (\bigcup A_{i})$
+
+        \end{proof}
+
+      \item $f(\bigcap A_{i}) \subseteq \bigcap f(A_{i})$
+	\begin{proof}
+	
+	Sea $y \in f(\bigcap A_{i})$ luego $\exists x \in \bigcap A_{i}$
+
+	Entonces $x \in A_{i} \quad \forall i \in \N$
+
+	Luego $y = f(x) \in f(A_{i}) \quad \forall i \in \N$ 
+
+	Finalmente $y \in \bigcap f(A_{i})$
+
+        \end{proof}
+
+      \item La última inclusión puede ser estricta. 
+	\begin{proof}
+
+	Sea $f(x) = 3 \quad \forall x \in X$ y $A = {1}, B={2}$
+
+	Luego $3 = f(A) \cap f(B) = 3 = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
+
+        \end{proof}
+
+     \end{enumerate}
+\end{enumerate}
+
+4) Sean $f: X \ra Y$ una función, $A \subseteq X$ y $B,B_{1},B_{2} \subseteq Y.$ Luego vale:
+
+\begin{enumerate}[i.]
+  \item $A \subseteq f^{-1} (f(A))$
+    \begin{proof}
+      
+      Sea $x \in A$ luego $f(x) \in f(A)$ por lo tanto, como $ x\in f^{-1}(f(x)) \subseteq f^{-1}(f(A))$  
+    
+    Entonces $x \in f^{-1}(f(A)) $ 
+  \end{proof}
+  \item $f(f^{-1}(B)) \subseteq B$
+    \begin{proof}
+      Sea $y \in f(f^{-1}(B))$ entonces $\exists x \in f^{-1}(B) / f(x) = y$
+
+      Pero entonces $f(x) \in B \Ra y \in B$
+    \end{proof}
+     
+  \item $f^{-1}(Y \setminus B) = X \setminus f^{-1}(B)$
+    \begin{proof}
+      $\subseteq )$ Sea $x \in f^{-1}(Y \setminus B)$ luego $f(x) \in Y \setminus B$
+
+      Entonces $f(x) \notin B$ entonces $x = f^{-1}(f(x)) \notin f^{-1}(B) $
+
+      Por otro lado $f(x) \in Y$ entonces $x \in f^{-1}(Y)$
+
+      Juntando todo $x \in f^{-1}(Y) \setminus f^{-1}(B)$
+
+      O lo que és lo mismo $X \setminus f^{-1}(B)$
+
+      $\supseteq )$ Sea $x \in X \setminus f^{-1}(B)$ 
+
+      Entonces $x \in X$ entonces $f(x) \in f(X)=Y $
+
+      Tambien $x \notin f^{-1}(B)$ por lo que $f(x) \notin B$
+
+      Luego $f(x) \in Y \setminus B$
+
+      Finalmente $x = f^{-1}(f(x)) \in f^{-1}(Y \setminus B)$
+     \end{proof}
+
+   \item $f^{-1}(B_{1} \cup B_{2}) = f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
+      \begin{proof}
+        $\subseteq )$ Sea $ x \in f^{-1}(B_{1} \cup B_{2})$ luego $f(x) \in B_{1} \cup B_{2}$
+
+	Luego $f(x) \in B_{1}$ por lo que $x \in f^{-1}(B_{1})$
+
+	Finalmente $x \in f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
+
+        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cup f^{1}(B_{2})$
+
+	Luego $x \in f^{-1}(B_{1})$ entonces $f(x) \in B_{1}$
+
+	Por tanto $f(x) \in B_{1} \cup B_{2}$
+
+	Finalmente $x \in f^{-1}(B_{1} \cup B_{2})$
+      \end{proof}
+
+    \item $f^{-1}(B_{1} \cap B_{2}) = f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+      \begin{proof}
+        $\subseteq )$ Sea $x \in f^{-1}(B_{1} \cap B_{2})$ entonces $f(x) \in B_{1} \cap B_{2}$
+
+	Por lo que $f(x) \in B_{1}$ esto implica $x \in f^{-1}(B_{1})$
+
+	Tambien $f(x) \in B_{2}$ que implica $f(x) \in f^{-1}(B_{2})$
+
+	Finalmente $f(x) \in f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+
+        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
+
+        Luego $x \in f^{-1}(B_{1})$ por lo que $f(x) \in B_{1}$ y con el mismo argumento $f(x) \in B_{2}$
+
+	Entonces tenemos $f(x) \in B_{1} \cap B_{2} $
+
+        Finalmente $x \in f^{-1}(B_{1} \cap B_{2})$
+      \end{proof}
+ \end{enumerate}
+
+4)b) Sean $f: X \ra Y$ una función y $B_{i}$ Una familia infinita de subconjuntos de $Y$ vale:
+
+\begin{enumerate}[i.]
+  \item $f^{-1}(\bigcup B_{i}) = \bigcup f^{-1}(B_{i})$
+    \begin{proof}
+      $\subseteq )$ Sea $x \in f^{-1}(\bigcup B_{i})$ entonces $f(x) \in \bigcup B_{i}$
+
+      Luego $f(x) \in B_{j}$ para algún $B_{j}$
+
+      Por ende $x \in f^{-1}(B_{j}) \subseteq \bigcup f^{-1}(B_{i})$
+
+      Finalmente $x \in \bigcup f^{-1}(B_{i})$
+
+      $\supseteq )$ Por hipótesis sabemos $\exists j \in \N$ tal que $x \in f^{-1}(B_{j})$
+
+      Por lo que $f(x) \in B_{j}$ y entonces $f(x) \in \bigcup B_{j}$
+
+      Luego $x \in f^{-1} (\bigcup B_{j})$
+    \end{proof}
+  \item $f^{-1}(\bigcap B_{i}) = \bigcap f^{-1}(B_{i})$
+
+    $\subseteq )$ Sea $x \in f^{-1}(\bigcap B_{i})$ luego $f(x) \in \bigcap B_{i}$
+
+    Entonces $f(x) \in B_{i} \quad \forall i \in \N$ luego $x \in f^{-1}(B_{i}) \quad \forall i \in \N$
+
+    Finalmente $x \in \bigcap f^{-1}(B_{i})$
+
+    La otra inclusión sale de la misma forma que todos los ejercicios arriba , queda como ejercicio para alguién con muchas ganas
+
+\end{enumerate}
+
+5) Sea $f: X \ra Y$ una función. Probar que $f(f^{-1}(B)) = B$ para cada $B \subseteq Y$ si y sólo si $f$ es suryectiva
+
+\begin{proof}
+ $\Leftarrow)$ Por ejercicio anteriór sabemos que $f(f^{-1}(B)) \subseteq B $ probemos la otra inclusión.
+
+  Sea $y \in B$ luego $y \in Y$ como $f$ suryectiva $\exists x \in X$ tal que $f(x) = y$ equivalentemente $x = f^{-1}(y)$
+
+  Luego $y = f(x) = f(f^{-1}(y)) \in f(f^{-1}(B)) $
+
+  Entonces $y \in f(f{-1}(B)) \quad \forall y \in B $ y por ende $B \subseteq f(f^{-1}(B))$ 
+
+  Finalmente $B = f(f^{-1}(B)) $ para cualquier $B \subseteq Y$
+
+  $\Ra )$ Tenemos la igualdad para cada $B \subseteq Y$ en particular vale para $Y$ 
+
+  Luego $f(f^{-1}(Y)) = Y$ por lo tanto $f$ es suryectiva 
+
+  Si no fuera suryectiva tiene que existir algún $y \in Y$ tal que $f^{-1}(y) = \emptyset$ 
+
+  Por lo que $f^{-1}(y) \notin f^{-1}(Y)$ entonces $y \notin f(f^{-1}(Y))$
+
+  Finalmente $Y \neq f(f^{-1}(Y))$
+\end{proof}
+
+\noindent
+6) Sea $f: X \ra Y$ una función. Luego las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+  \item $f$ es inyectiva
+  \item $f(A \cap B) = f(A) \cap f(B)$ para todo $A,B \subseteq X$
+  \item $f^{-1}(f(A)) = A$ para todo $A \subseteq X$
+  \item $f(A) \cap f(B) = \emptyset$ para todo par de subconjuntos $A,B $ tales que $A \cap B = \emptyset$
+  \item $f(A \setminus B) = f(A) \setminus f(B)$ para todo $B \subseteq A \subseteq X$
+    \begin{proof}
+  $1) \Ra 2)$ Sabemos que $f(A \cap B) \subseteq f(A) \cap f(B)$ probemos la otra inclusión
+  
+  Sea $y \in f(A) \cap f(B)$ luego $y \in f(A)$ y $y \in f(B)$ 
+
+  Por esto sabemos que $\exists x \in A$ tal que $f(x) = y$ y tambien que $\exists x' \in B$ tal que $f(x') = y$
+
+  Luego $f(x) = y = f(x')$ y como $f$ es inyectiva tenemos que $x = x'$
+
+  Luego ambos $x,x' $ (que son el mismo) estan en $A$ y ambos están en $B$
+
+  Resumiendo $x \in A \cap B$ y por ende $y = f(x) \in f(A \cap B)$
+
+  Luego $f(A \cap B) = f(A) \cap f(B)$
+
+$2 \Ra 3)$ Por ej anteriór sabemos que $A \cap B \subseteq f^{-1}(f(A \cap B))$. Probemos la otra inclusión 
+
+Sea $x \in f^{-1}(f(A \cap B))$ entonces $f(x) \in f(A \cap B)$
+
+Y como $f(A \cap B) = f(A) \cap f(B)$ tenemos $f(x) \in f(A) \cap f(B)$  
+
+Entonces $f(x) \in f(A)$ luego $x \in A$ por otro lado $f(x) \in f(B)$ luego $x \in B$
+
+Finalmente $x \in A \cap B$
+
+$3 \Ra 4 )$ Supongamos que $f(A) \cap f(B) \neq \emptyset$ luego $\exists y \in f(A) \cap f(B)$
+
+Luego tenemos $y \in f(A)$ entonces $\exists x \in A$ tal que $f(x) = y$
+
+Y también $y \in f(B)$ entonces $\exists x' \in B$ tal que $f(x') = y$
+
+Entonces tenemos $x' = f^{-1}(f(x')) = f^{-1}(y) = f^{-1}(f(x)) = x$
+
+Luego $x = x'$ por lo que $x \in A \cap B$ lo que es absurdo
+
+Provino de suponer $f(A) \cap f(B) \neq \emptyset$
+
+Entonces $f(A) \cap f(B) = \emptyset$
+
+$4 \Ra 5 )$ Primero asumamos $A \neq B$ si fueran iguales es trivial
+
+$\supseteq )$ Sea $y \in f(A) \setminus f(B)$ 
+
+Luego $y \in f(A)$ entonces $\exists x \in A$ tal que $f(x) = y$
+
+Por otro lado $y \notin f(B)$ entonces $\nexists x \in B$ tal que $f(x) = y$
+
+Luego $x \in A \setminus B$ por lo que $f(x) \in f(A \setminus B)$
+
+$\subseteq )$ Sea $y \in f(A \setminus B)$ luego $\exists x \in A \setminus B$ tal que $f(x) = y$
+
+Luego $x \in A$ por ende $f(x) \in f(A)$
+
+Y tambien $x \notin B$ por ende $\{x\} \cap B = \emptyset$
+
+Por hipótesis (4) sabemos $\{f(x)\} \cap f(B)  = f(\{x\}) \cap f(B) = \emptyset$ entonces $f(x) \notin f(B)$
+
+Finalmente $y = f(x) \in f(A) \setminus f(B)$
+
+\end{proof}
+\end{enumerate}
+
+7) Para cada subconjunto $S$ de un conjunto $A$ dado , se define la función característicade $S$, $X_{S}: A \ra {0,1}$, por 
+
+
+$$
+f(a) = \left\{
+        \begin{array}{ll}
+            1 & \quad a \in S \\
+            0 & \quad a \notin S
+        \end{array}
+    \right.
+$$
+\begin{enumerate}[i.]
+  
+  \item $X_{S \cap T} = X_{S} \cap X_{T} $
+    \begin{proof}
+      Sea $a \in S \cap T$ entonces $X_{S \cap T}(a) = 1$
+
+      Ademas $a \in S$ y $a \in T$ luego $X_{S}(a).X_{T}(a) = 1$
+
+      Si $a \notin S \cap T$ luego $a \notin S$ y ademas $a \notin T$ con esto sale trivialmente
+    \end{proof}
+
+  \item $X_{A \setminus S} = 1 - X_{S}$
+    \begin{proof}
+      Sea $a \in A \setminus S$ tenemos $X_{A \setminus S}(a) = 1$
+
+      Además $a \in A$ y $a \notin S$ por lo tanto $1 - X_{S}(a) = 1$
+
+      Sea $a \notin A \setminus S$ luego $X_{A \setminus S}(a) = 0$
+
+      Por otro lado $a \in S$ entonces $1 - X_{S}(a) = 0$
+    \end{proof}
+
+  \item $X_{S} + X_{T} = X_{S \cup T} + X_{S \cap T}$ 
+
+    Caso I) $a \in S \setminus T$ luego $a \in S \cup T$ y por otro lado $A \notin S \cap T $ entonces $X_{S}(a) $
+
+    Luego $X_{s}(a) + X_{T}(a) = 1 + 0 = X_{S \cup T}(a) + X_{S \cap T}(a)$
+
+    Caso II)  $a \in S $ y $a \in T$ entonces $a \in S \cup T$ sale de la misma forma
+    
+    Caso III) $a \notin S$ y $a \in T$ es exactamente igual que el Caso i)
+    
+    Caso IV) $a \notin S$ y además $a \notin T$ entonces $a \notin S \cup T$ y también $a \notin S \cap T$ es tambien trivial
+\end{enumerate}
+\newpage
+9) Sea $\sim$ una relación de equivalencia sobre un conjunto $A$. Para cada $a \in A$ se define el conjunto $S_{a} = \{b \in A : a \sim b\}$. Luego vale:
+
+\begin{enumerate}[i.]
+  \item Para todo par de elementos $a_{1}, a_{2} \in A$ vale: $S_{a_{1}} = S_{a_{2}} \quad$ o $\quad S_{a_{1}} \cap S_{a_{2}} = \emptyset$
+    \begin{proof}
+      Es trivial ver que si se da alguno de los dos el otro no se da.
+
+      Veamos para completar que si uno no se da entonces el otro si se da.
+
+      $S_{a_{1}} \cap S_{a_{2}} \neq \empty$ tomamos el $x$ que esta en la intersección
+
+      Luego $x \sim a_{1}$ y por otro lado $x \sim a_{2}$
+
+      Luego sea $y_{1} \in S_{a_{1}} $ tenemos $y_{1} \sim a_{1} \sim x \sim a_{2}$ entonces $y_{1} \in S_{a_{2}}$ 
+
+      Y sea $y_{2} \in S_{a_{2}}$ tenemos $y_{2} \sim a_{2} \sim x \sim a_{1}$ entonces $y_{2} \in S_{a_{1}}$
+
+      Finalmente es evidente que $S_{a_{1}} \neq S_{a_{2}}$ implica la intersección es vacía , si la intersección no fuera vacia tendriamos el argumento de arriba para ver que $S_{a_{1}} = S_{a_{2}}$ y esto sería absurdo
+    \end{proof}
+
+  \item $A = \bigcup_{a \in A} S_{a}$ 
+
+    Esto es trivial, dada la definición del ejercicio , no veo que haya que resolver nada
+
+
+
+\end{enumerate}
+
+10) Sea $A$ tal que $\# A = n$ luego $\# \mathcal{P}(A) = 2^{n}$
+
+Usaremos inducción
+
+\begin{itemize}
+  \item $n=1$, Luego $A = \{x\}$ tiene un elemento entonces $P(A) = \{ \emptyset , x \}$ esto cumple el caso base.
+
+  \item $n \Ra n+1$ Sea $A$ tal que $\# A = n$. Entonces $\exists x \in A$ Luego tomemos $B = A \setminus \{x\}$
+
+    Por un lado sabemos ,por hipótesis, que $\# B \setminus \{x\} = n$ entonces tenemos $g: B \setminus \{x\} \ra \I_{n}$ biyectiva. Además es evidente que $\# \{x\} = 1$ 
+
+    Luego existe tenemos $f: A \ra \I_{n+1}$ dada por 
+
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  g(x) & \quad x \in B \setminus \{x\} \\
+           n+1 & \quad x \in \{x\} 
+        \end{array}
+    \right.
+$$
+Sabemos que $f$ biyectiva por como fue construida
+
+Luego $\# A = \# \I_{n + 1} =  n + 1$
+  \end{itemize}
+
+\noindent 11) Sea $A$ un conjunto. Probar que son equivalentes:
+\begin{enumerate}
+  \item A es infinito 
+  \item $\forall x \in A$, existe una función $f_{x}: A \ra A \setminus \{x\}$ biyectiva
+  \item para todo $\{x_{1}, x_{2} \dots x_{n}\} \subset A$, existe una función $f_{\{ x_{1}, x_{2}, \dots , x_{n} \}}: A \ra A \setminus \{x_{1},x_{2} \dots x_{n} \}$ biyectiva
+\end{enumerate}
+
+\begin{proof}
+   $1 \Ra 2 )$ Como $A$ es numerable $A = \{x_{n} : n \in \N \}$
+
+   Sea $x \in A$ luego $x = x_{j}$ para algún $j \in \N$.
+  
+   Luego tenemos una función $g_{x}: A \ra A_{reordenado} = A$ biyectiva
+
+$$
+g_{x}(x_{n}) = \left\{
+        \begin{array}{ll}
+	  x_{1} & \quad n = j \\
+          x_{j} & \quad n = 1 \\
+          x_{n} & \quad n \neq j, n \neq 1
+        \end{array}
+    \right.
+$$
+
+   Luego sea $f: A \ra X \setminus \{x_{1}\}$ dada por $f(x_{n}) = x_{n + 1}$ es biyectiva
+
+   Finalmente tenemos $f \circ g_{x} : A \ra A \setminus \{x\}$ que es biyectiva por composición
+
+
+\end{proof}
+
+$2 \Ra 3) $ Para cada $x_{n}$ Tengo $f_{x_{n}} : A \ra A \setminus \{x_{n}\}$ biyectiva.
+
+Componiendo todas estas funciones tengo una $f: A \ra A \setminus \{x_{1} , x_{2}, \dots , x_{n}\}$ biyectiva
+
+$3 \Ra 1)$ Suponemos que $A$ es finito , pero entonces tenemos $A \setminus\{x\} \subseteq A$ y ademas tenemos $f: A \ra A \setminus \{x\}$ inyectiva. Luego por lema probado en teórica $A = A \setminus \{x\}$ lo que es absurdo
+
+
+
+\noindent
+Ej 12) Sea $A$ un conjunto numerable y $B$ un conjunto. Supongamos que existe un $f:A \ra B$ sobreyectiva. Entonces $B$ es a lo sumo numerable
+\begin{proof}
+  Sabemos que $A$ numerable luego $A \sim \N$
+
+  Juntando todo $\N \sim A \twoheadrightarrow B$ donde la doble flecha indica sobreyectividad
+
+  Entonces existe $g: \N \ra B$ sobreyectiva
+
+  Luego para cada $b \in B$ existe un único conjunto (si no g no estaría bien definida) tal que 
+
+  $S(b) = \{i \in \N : g(i) = b  \}$ que sabemos no es vacío por que $g$ es sobreyectiva osea que todo $b \in B$ tiene preimagen. También sabemos que cada $S(b)$ tiene mínimo por que es un subconjunto de los naturales.
+
+  Ahora considero $\N' = \bigcup_{b \in B} min (S(b)) $ esta unión es trivialmente disjunta y vemos que $\N ' \subseteq \N$
+
+  Y ahora podemos construir una función $g': B  \ra \N '$  dado por $g'(b) = min(S(b))$
+
+  Esta es evidentemente sobreyectiva , por que para cada $x \in \N '$ sabemos que $x$ es mínimo de un único conjunto dado por $b \in B$
+
+  $g'$ es inyectvia. Sea $b, b' \in B$ tal que $g'(b) = g'(b')$ luego $min(S(b)) = min(S(b'))$ como los mínimos son únicos y cada $S(b)$ es disjunto con cualquier otro entonces $b = b'$
+
+  Luego $g'$ es biyectiva entonces $B \sim \N ' \subseteq \N$
+
+  Por ende $\# B \leq \# \N$ \\
+
+\end{proof}
+
+
+ \noindent Ej 13) 
+
+\begin{itemize}
+  \item $\Z_{\leq -1}: \quad$ Consideremos la funcion $f : \Z_{n \leq -1} \ra \N$ dada por $f(x) = |x|$ que es trivialmente biyectiva
+
+  \item $\Z_{\geq -3}: \quad$ Sea $f: \Z_{\geq -3} \ra \N$ dada por $-1 \mapsto 1$, $-2 \mapsto 2$ , $-3 \mapsto 3$, $0 \mapsto 4$ y despues $x \mapsto x + 4 \quad \forall x \geq 1$. $f$ es biyectiva
+
+  \item $3 \N: \quad$ Tenemos la funcion $f:3 \N \ra \N$ dada por $f(x) = \frac{x}{3}$ trivialmente biyectiva
+  
+  \item $\Z: \quad $ Tenemos $f: \Z \ra \N$ biyectiva
+
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  -2x  & \quad x < 0 \\
+	2x +1  & \quad x \geq 0 
+        \end{array}
+    \right.
+$$
+
+\item $\N^{2} = \N \times \N: \quad$ Sea $f : \N \times \N \ra \N$ dada por $f(n,m) =2^n3^m$ es inyectiva por unicidad de  factorización en primos. Luego sabemos que $\N \times \N$ es a lo sumo numerable como además sabemos que es infinito , entonces es numerable
+
+\item  Sea la función $f: \Z \times \N \ra \N$ dada por 
+
+$$
+f(x,y) = \left\{
+        \begin{array}{ll}
+	  2^{y}3^{-2x}  & \quad x < 0 \\
+	  2^{y}3^{2x + 1}  & \quad x \geq 0 
+        \end{array}
+    \right.
+$$
+
+Es trivialmente inyectiva devuelta por unicidad de descomposicion en primos y como $\Z \times \N$ es evidentemente infinito entonces es numerable
+  
+\item $\Q: \quad $ Usando una función casi igual que la de arriba podemos ver que $ \Z \times \Z $ es numerable.
+
+  Consideremos $f: \Z \times \Z \ra \Q$ dada por $f(x,y) = \frac{x}{y}$ sobreyectiva por que cualquier racional se escribe como division de enteros. Entonces $\Q$ es a lo sumo numerable y ademas es infinito , entonces es numerable
+  
+ \item $\N^{n}: \quad$ To mamos $f: \N^{n} \ra \N$ dada por $f(a_{1},a_{2}, \dots , a_{n}) = p_{1}^{a_{1}}p_{2}^{a_{2}} \dots p_{n}^{a_{n}}$  con $p_{n}$ primos distintos dos a dos. $f$ es inyectiva. Luego usando el mismo argumento que antes tenemos que $\N^n$ con $n \in \N$ es numerable \\
+\end{itemize}
+
+\noindent Ej 14) 
+
+\begin{enumerate}[i.]
+  \item Sean $A$ y $B$ conjuntos contables entonces $A \cup B$ es contable.
+    \begin{proof}
+    Aquí voy a asumir siempre que $A$ y $B$ son disjuntos , si no lo fueran simplemente se podría usar un $A' = A \setminus B$ para que la intersección no moleste y probariamos todo para $A' = A \setminus B$ sabiendo que $(A \setminus B ) \cup B = A \cup B$ y por lo tanto tienen el mismo cardinal
+      
+      Si ambos son finitos es evidente que su union es finita.
+      
+      Si por ejemplo $A$ es finito y $B$ numerable. Sea $\# A = n$. Luego tenemos $g: A \ra \I_{n}$ biyectiva
+
+      Por otro lado como $B$ es numerable tenemos $h: B \ra \N$ biyectiva
+
+      $f : A \cup B \ra \N$ dada por 
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  g(x)  & \quad x \in A \\
+	  h(x) + n  & \quad x \in B 
+        \end{array}
+    \right.
+$$
+que es sobreyectiva , principalmente por ser composicion de sobreyectivas\\
+
+Si ambos son numerables devuelta aprovechando $f: A \ra \N$ sobreyectiva y $g: B \ra \N$ sobreyectiva.
+
+Luego $h: A \cup B \ra \N$
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  2g(x)  & \quad x \in A \\
+	  2f(x) + 1  & \quad x \in B 
+        \end{array}
+    \right.
+$$
+
+Es evidentemente inyectiva, mas considerando que $A$ es disjunto con $B$ entonces podemos usar sus funciones ya biyectivas para verlo facilmente, también saldría tambien si no lo fueran!
+
+Doy un ejemplo, sean $a,a' \in A$ tal que $f(a) = f(a')$ entonces $2g(x) = 2g(x') \Ra g(x) = g(x')$ como $g$ biyectiva $x = x'$
+
+Biyectiva , se pueden ver casos pares e impares , si $x \in \N$ es par seguro existe un $x' \in$ tal que $2x' = x$ y luego como $x'$ es natural seguro tiene preimagen dada por $g$ considerando que $g$ es biyectiva
+   
+    \end{proof}
+
+
+  \item Sea $(A_{n})_{n \in \N}$ una familia de conjuntos contables entonces $\bigcup_{n \in \N} A_{n}$ es contable
+  
+    Devuelta vamos a considerar que son disjuntos dos a dos.
+
+    Unión de numerables finitos disjuntos es trivialmente numerable
+
+    Veamos unión numerable de numerables disjuntos (insisto si no lo fueran se reescriben convenientemente sacando las intersecciones, si alguna intersección fuese algun conjunto entero entonces no aportaba nada unirlo de todas maneras)
+
+    Sea $A_{n}$ numerable existe $f_{n}: \N \ra A_{n}$ sobreyectiva
+
+    Usando esto tenemos $g: \N \times \N \ra \bigcup_{n \in \N} A_{n}$ dada por $g(n,m) = f_{n}(m)$
+
+    Esta es inyectiva, si fijas un $n$ entonces tenes $f_{n}$ que es inyectiva entonces 
+
+    Sean $m , m' \in \N $ sabemos $f_{n}(m) = f_{n}(m') \iff m = m'$ 
+
+    Si los $n$ son distintos $f_{n'}(m) \subseteq A_{n'} \neq A_{n} \supseteq f_{n}(m) $ entonces $f_{n'}(m) \neq f_{n}(m) \quad \forall m \in \N $
+
+    Sea $y \in \bigcup A_{n}$ luego $y \in A_{i}$ para algún $i \in \N$ entonces tenemos $(i ,f^{-1}_{i} (y)) \in \N \times \N$ que es claramente preimagen de $y$
+
+    Luego $\bigcup A_{n}$ es numerable
+
+  \item Sea $A$ un conjunto finito y $S = \bigcup_{m \in \N} A^{m}$ entonces $\# S = \n$  
+
+  Como $A$ es finito sabemos que $A^m$ es finito para cualquier $m \in \N$ además es evidente que son disjuntos para distntos $m$. Luego por ii) tenemos que $S$ es numerable ($\# S = \n$)
+
+Notemos que dado cualquier alfabeto hay mas números reales que palabras para nombrarlos. Esto vale por que dado un conjunto $A$ de todos los carácteres posibles si hacemos $\bigcup_{m \in \N}A^{m}$ eso seria todas las palabras posibles de todas las longitudes posibles y por parte ii) esto es numerable
+
+
+Ej 15) Sean $A$ y $B$ conjuntos disjuntos, $A$ infinito y $B$ numerable entonces:
+\begin{enumerate}
+  \item Existe una biyeccion entre $A \cup B$ y $A$
+    \begin{proof} 
+    Simple sabemos que como $A$ es infinito existe $Y \subseteq A$ tal que $Y$ es numerable
+
+    Luego tenemos que $$A \cup B = [(A \setminus Y ) \cup Y ] \cup B = (A \setminus Y) \cup (Y \cup B)$$
+
+    Luego como unión de numerables es numerable $Y \cup B \sim Y$
+
+    Juntando todo tenemos
+
+  $$A \cup B = [(A \setminus Y ) \cup Y ] \cup B = (A \setminus Y) \cup (Y \cup B) \sim (A \setminus Y) \cup Y = A$$
+\end{proof}
+
+  \item Si $A$ no numerable y $B \subseteq A$ numerable, existe una biyección entre $A \setminus B$ y $A$
+    \begin{proof} 
+    Sabemos que $B$ es numerable luego podemos escribirlo como $B = \{b_{n}\}_{n \in \N}$ 
+
+    De este modo es facil ver que existe $f:B \ra \N_{pares}$ dada por $f(b_{n}) =b_{2n}$ biyectiva
+
+  Luego podemos armar $g: X \ra (X \setminus B) \cup B_{pares}$
+
+   $$
+    g(x) = \left\{
+        \begin{array}{ll}
+	  x  & \quad x \in x \notin B \\
+	  f(x)  & \quad x \in B 
+        \end{array}
+    \right.
+    $$
+
+    Biyectiva. Entonces $ X \sim (X \setminus B) \cup B_{pares} \subseteq X $
+  \end{proof}
+  \item Observación. Como $\R$ es no numerable y $\Q$ es numerable $\R \setminus \Q \sim \R$ entonces $\R \sim \I$
+\end{enumerate}
+ 
+\end{enumerate}
+\noindent
+16) El conjunto de todos los polinomios de coeficientes racionales es numerable.
+
+\begin{proof}
+
+Por un lado tenemos una $f : \Q^{n+1} \ra \Q[X]_{\leq n}$ dada por
+
+$$ f(q_{0},q_{1}, \dots , q_{n}) = \sum_{j = 0}^{n} q_{j}X^{j}$$ que es trivialmente biyectiva. 
+
+Por otro lado sabemos $\Q^{n+1} \sim \N$. Luego $\N \sim \Q^{n+1} \sim \Q[X]_{\leq n}$ para cualquier $n \in \N$ fijo
+
+Entonces el conjunto de polinomios de algún grado fijo es numerable.
+
+Finalmente $$ \Q[X] = \bigcup_{n \in \N} \Q[X]_{\leq n}$$
+
+Como es una unión numerable de numerables, $\Q[X]$ es numerable
+
+\end{proof}
+
+\newpage
+\noindent
+17) Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \dots , a_{n}$ no todos nulos, tales que $$ a_{0} + a_{1}z + \dots + a_{n-1}z^{n-1} + a_{n}z^{n} = 0$$
+
+\begin{enumerate}
+  \item El conjunto de todos los numeros algebráicos es numerable
+
+    \begin{proof}
+       Por la definición sabemos que los números algebráicos son raices complejas de algun polinómios de coeficientes enteros 
+       
+     Ahora sea $f \in \Q[X]$ no nulo, el conjunto de las raices complejas de ese polinómio $S(f) = \{z \in C : f(z) = 0\}$
+
+     Es finito, a lo sumo $gr(f)$ (puede ser 0 inclusive)
+
+     Luego $$ \mathcal{A} = \bigcup_{f \in \Q[X] \setminus \{0\}} S(f)$$
+
+     Donde $\mathcal{A}$ es el conjunto de los números algebráicos
+
+     Y como $\mathcal{A}$ es unión de numerables conjuntos contables y disjuntos es a lo sumo nuerable
+
+     Pero además es facil ver que por ejemplo los racionales son todos algebraicos (ejercicio para el lector) 
+
+     Luego hay infinitos numeros algebráicos, entonces $\mathcal{A}$ es numerable
+
+    \end{proof}
+
+ 
+  \item Existen numeros reales que no son algebraicos (Estos se llaman $trascendentes$) 
+
+ Por insciso anteriór sabemos que hay numerables $algebraicos$ sin embargo hay más que numerables $reales$ por ende debe haber reales que no son algebráicos
+\end{enumerate}
+
+\noindent
+18) Sea $X \subseteq \R_{ >0 }$ un conjunto de números reales positivos. Supongamos que existe una constante positiva $C$ tal que para cualquier subconjuntos finito $\{x_{1},x_{2}, \dots ,x_{n}\} \subseteq X$ vale $\sum_{i =1}^{n} x_{i} \leq C$ entonces $X$ es contable
+
+\begin{proof}
+  Sea $S = \{p : p = \sum_{i = 1}^{n} x_{i} \leq C \quad x_{i} \in X\}$ luego $C$ es supremo de $S$ pero entonces tenemos una sucesion de $S$ , $p_{n} \in S \quad \forall n \in \N$ que converge a $C$ de la forma
+
+  $p_{1} = x_{1} + \dots + x_{n}$ suma finita de elmentos de $X$ tal que la suma es menor que $C$
+
+  $p_{2} = r_{1} + \dots + r_{n} $ devuelta suma finita de elementos de $X$
+
+  $\dots$
+
+  $p_{n} = z_{1} + \dots + z_{n}$ lo mismo que antes
+
+  Ahora afirmamos que las $x,r, \dots ,z $ cubrieron todo $x \in X$, si no fuera cierto tendria un $p \in X $ que no está en alguna suma. Pero entonces podemos armar otra sucesión: 
+  
+  $a_{1} = p_{1} + p$
+  
+  $a_{2}=   p_{2}+p$
+  
+  $\dots$
+  
+  $a_{n} = p_{n} + p$
+
+  Y sabemos que cada termino de $(a_{n})_{n \in \N} \subseteq S$ por que al fin y al cabo siguen siendo sumas finitas de elementos de $X$ por lo que su resultado tiene que ser menor que $C$
+
+  Pero por otro lado $a_{n} \ra C + p > C$ lo que es absurdo por que $C$ es supremo. 
+
+  Luego , no existía dicho $p$ por ende en esas sumas contemplamos todos los elementos de $X$ pero entonces tenemos numerables elementos (términos de la sucesión) de finitos elementos (sumas de cada término de la sucesión) eso es una unión numerable de finitos 
+
+  $\Ra X$ es a lo sumo numerable
+
+\end{proof}
+
+\noindent 
+19) Sea $f: \R \ra \R$ una función monótona entonces 
+\begin{center} 
+  $\# (\{x \in \R :f $ no es continua $\}) \leq \n$
+\end{center}
+
+\begin{proof}
+  Sin perdida de generalidades tomamos $f$ monótona creciente y consideramos $D(f)$ el conjunto de discontinuidades de $f$
+
+  Tomemos un $x \in \R$ luego podemos definir dos conjuntos no vacíos
+
+  \begin{center} $ L_{x} = \{ f(y) : y \in \R, y<x\} \quad \quad      R_{x} = \{f(z): z \in \R, z>x \}$ \end{center}
+
+  $L_{x}$ está acotado superiormente por $f(x)$ y $R_{x}$ está acotado inferiormente por $f(x)$
+
+  Entonces existen y podemos tomar $l_{x} = \sup (L_{x})$ y tambien $r_{x} = \inf(R_{x})$
+
+  Ahora vamos a probar que \begin{center} (1)$ \quad l_{x} = r_{x} \Ra f$ continua en x \end{center}
+
+  (2) Por un lado sabemos que $ l_{x} \leq f(x) \leq r_{x}$
+
+  Ahora supongamos que $r_{x} = l_{x}$ luego $f(x) = r_{x} = l_{x}$
+
+  Sea $\epsilon  > 0$, como $f(x) = \sup(L_{x})$ $\Ra$ $\exists y \in \R , \quad y < x$ tal que $f(x) - \epsilon \leq f(y) \leq f(x)$
+
+  Misma idea como $f(x) = \inf(R_{x}) \Ra \exists z \in \R,  \quad z > x$ tal que $ f(x) \leq f(z) \leq f(x) + \epsilon$
+
+  Ahora tomemos $\delta = \min\{x - y , z -x \}$ y consideremos $t \in (x - \delta , x + \delta ), \quad t \neq x$
+
+  Supongamos primero $t \in (x - \delta , x)$ luego $y = x - (x - y) \leq x - \delta < t < x$ 
+
+  Entonces $y < t < x $ como $f$ es creciente$ f(x) - \epsilon < f(y) \leq f(t) \leq f(x) $
+
+  Repitiendo esta idea pero usando con $t \in (x , x + \delta)$ tenemos $z = x + (z - x) \geq x + \delta > t > x $ 
+
+  Nuevamente como $f$ creciente $f(x) + \epsilon > f(z) \geq f(t) \geq f(x)$
+
+  Luego $f(x) - \epsilon < f(t) < f(x) + \epsilon \quad \forall t \in (x - \delta , x + \delta)$
+
+  O lo que es lo mismo $f(B_{\delta}(x)) \subseteq B_{\epsilon}(f(x))$ equivalentemente $f$ es continua
+ 
+  Ahora usando esto tenemos que si \begin{center} $f$ discontinua en $x$ $\Ra l_{x} \neq r_{x}$ \end{center}
+
+  Y por (2) tenemos \begin{center} $f$ discontinua en $x$ $\Ra l_{x} < r_{x}$ \end{center}
+
+  Entonces ahora sabemos que para cada discontinuidad o lo mismo para cada $x \in D(f)$
+
+  Tenemos un intervalo abierto $I_{x} = (l_{x},r_{x})$
+
+  Sabiendo esto vamos a ver que $$x ,y \in D(f) \Ra I_{x} \cap I_{y} = \emptyset $$
+
+  Sin pérdida de generalidades sea $x < y$. Para ver que $I_{x} \cap I_{y} = \emptyset$ basta ver que $r_{x} \leq l_{y}$
+
+  Supongamos que no, luego $r_{x} > l_{y}$ ahora tomemos $z$ promedio de $x$ e $y$, $z = \frac{1}{2} (x - y)$
+
+  Tenemos $x < z < y$ como $f$ es creciente $r_{x} \leq f(z) \leq l_{y} < r_{x}$ lo que es absurdo
+
+  Luego para cada discontinuidad tenemos un ÚNICO intervalo que es disjunto con cualquier otro  o lo que es lo mismo tenemos una función biyectiva entre cada discontinuidad y un intervalo abierto de $\R$
+
+  Finalmente como sabemos que tenemos a lo sumo numerables intervalos abiertos y disjuntos en $\R$ entonces tenemos a lo sumo numerables discontinuidades 
+  
+  Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjutnos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racional y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
+\end{proof}
+
+\noindent 20) Sea $A$ un conjunto numerable, el conjunto de las partes finitas de $A$ (es decir, el subconjunto de $\mathcal{P}(A)$ formado por los subconjuntos finitos de $A$) es numerable
+
+\begin{proof}
+  Primero veamos cuantos subconjuntos de cardinal $n \in \N$ tenemos.
+
+  Para eso tomemos la funcion $ \phi :  \mathcal{P}_{n}(A) \ra A^n$ dada por $\{a_{1}, a_{2} ,\dots , a_{n}\} \mapsto  (a_{1}, \dots , a_{n}) $ donde $\mathcal{P}_{n}(A)$ es subconjuntos de $\mathcal{P}(A)$ donde solo hay conjutnos de cardinal $n$. La función es claramente inyectiva , por que mover mover elementos de un conjunto da el mismo conjunto y cambiar elementos da diferentes n-uplas. Y sabemos que $\# A^{n} = \n$ por que $A$ es numerable, luego $\# \mathcal{P}_{n}(A) \leq \n$
+  Entonces $$ \mathcal{P}_{finitas}(A) = \bigcup_{n \in \N} \mathcal{P}_{n}(A)$$
+
+  Que es unión numerable de numerables entonces es numerable. Acá faltaría agregar el conjunto $\{\emptyset\}$ , que es un subconjunto finito de partes, pero sigue valiendo obviamente (ejericicio para el lector si no le parece obvio)
+\end{proof}
+
+21) 
+\begin{enumerate}
+  \item $A_{1} = \{(a_{n}) : a_{n} \in \N $ para todo $ n \in \N\}$
+    \begin{proof}
+      Sabemos que $\# A_{1} = \# \N^{\N} = \n^{\n} $
+
+      Y sabemos $ \mathfrak{c} = 2^{\n}= 2^{\n \n}  = (2^{\n})^{\n} \geq \n^{\n} \geq 2^{\n} = \mathfrak{c}$ 
+
+      Entonces $\# A_{1} = \mathfrak{c}$
+    \end{proof}
+  \item $A_{2} = \{(a_{n}) \subseteq \N : a_{n} \leq a_{n +1} $ para todo $ n \in \N \}$
+    \begin{proof}
+      Podemos definir $f:A_{1} \ra A_{2}$ como la función que manda $a_{n}$ en $b_{n}$ 
+     
+      Donde $b_{1} = a_{1}$ y $b_{n} = b_{n - 1} + a_{n} + 1$ es claramente biyectiva si se pinesa un momento
+
+      Por ende $\# A_{2} = \# A_{1} = \mathfrak{c}$
+    \end{proof}  
+  \item $A_{3} = \{(a_{n}) \subseteq \N : a_{n} \geq a_{n +1} $ para todo $ n \in \N \}$
+    \begin{proof}
+      
+
+    \end{proof} 
+  \item $A_{4} = \{ (q_{n}) \subseteq \Q : \lim_{n \ra \infty} q_{n} = 0\}$
+    \begin{proof}
+Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \mathfrak{c}$ entonces $\# A_{3} \leq \mathfrak{c}$
+
+      Por otro lado tenemos $\phi : \{0,1\}^{\N} \ra A_{3} $ dada por $f(a_{n}) = \frac{a_{n}}{n}$ que es inyectiva
+
+      Entonces $\# A_{3} \geq \# \{0,1\}^{\N} \geq \mathfrak{c}$
+
+    \end{proof} 
+  \item $A_{5} = \{ (q_{n}) \subseteq \Q : (q_{n}) $ es periódica $\}$
+    \begin{proof}
+      Sabemos que toda sucesión en $A_{5}$ se repite en algún momento. Sea $P_{k}$ el conjunto de sucesiones que se repiten a partir del elemento $k$, $a_{n + k} = a_{k}$. 
+
+      Ahora consideremos $f: P_{k} \ra \Q^{k}$ dada por $f(a_{n}) = (a_{1}, \dots , a_{k})$ que es biyectiva
+
+      Entonces $\# P_{k} = \# \Q^{k} = \# \N^{k} = \n$
+
+      Y luego tenemos que $$ A_{5} = \bigcup_{k \in \N} P_{k}$$
+
+      Luego $A_{5}$ es unión numerable de numerable $\# A_{5} = \n$
+
+
+    \end{proof} 
+  \item $A_{6} = \{(a_{n}) \subseteq \N : 1 \leq a_{n} \leq m$ para todo $ n \in \N\}$
+    \begin{proof}
+      Sabemos que $X_{6} = \{1, \dots , m\}^{\N}$ 
+
+      Luego $\mathfrak{c} = 2^{\n} < m^{\n} = \# A_{6} < \# \N^{\N} = \n^{\n} = \mathfrak{c}$ resumiendo $\# A_{6} = \mathfrak{c}$
+    \end{proof} 
+
+\end{enumerate}
+
+\noindent
+22) 
+\begin{enumerate}[i.]
+  \item $A_{1} = \{$ I : I es un intervalo de extremos racionales$ \}$
+    \begin{proof}
+      Sea $A = \Q \times \N_{0} \times \N $ sabemos $\# A = \n$ 
+
+      Por otro lado tenemos $f: A \ra A_{1}$ dada por $f(a,b,c) =[a,a+ \frac{b}{c} ] $ es sobreyectiva
+
+      Entonces $\# A_{1} \leq \# \Q \times \N_{0} \times \N = \n$
+
+      Y por otro lado $f: A_{1} \ra \Q$ dada por $f([a,b]) = a$ que es sobreyectiva tambien 
+
+      Luego $\# A_{1} \geq \# \Q = \n$
+    \end{proof}
+  \item $A_{2} = \{[a,b] : a,b \in \R \}$
+    \begin{proof}
+      Sabemos que $\# \R \times \R = \# \R = \mathfrak c$
+
+      Luego tomemos la función $f : A_{2} \ra \R \times \R $ dada por $f([a,b]) =(a,b) $ que no es sobreyectiva, por que $(a,b)$ es una tupla y la tupla $(a,b)\neq (b,a)$. Pero es inyectiva
+
+      Entonces tenemos que $\# A_{2} \leq \#( \R \times \R) = \mathfrak{c}$
+
+      Por otro lado miramos $f : A_{2} \ra \R$ dada por $f([a,b]) = a$ es claramente NO inyectiva, pero es trivialmente sobreyectiva entonces $\# A_{2} \geq \# \R = \mathfrak{c}$
+    \end{proof}
+  \item $I$, sabiendo que $\{A_{i}\}_{i \in I} \subset \R$ es una familia de intervalos disjuntos
+    \begin{proof}
+      Esto está probado más arriba, igual no es dificil, la idea usando axioma de elección y densidad es que para conjunto $A_{i}$ podemos elegir un $q \in \Q$ y esté va a estar solo en este conjunto , si no no serían disjuntos , de ahi podemos armar una biyección con $\Q$ y por ende este conjunto es numerable 
+    \end{proof}
+  \item $\{(x,y) \in \R^{2} : 3x + 2y \geq 7\}$
+    \begin{proof}
+      
+    \end{proof}
+  \item $\R_{>0}$
+    \begin{proof}
+      Tenemos la inyección $f : \R \ra \R_{>0}$ con $f(t) = e^t$ 
+
+      Y por otro lado tenemos la inyección $f^{-1} : \R_{>0} \ra \R$ dada por $f^{-1}(s) = ln(s)$
+
+      Entonces por Cantor-Bernstein tenemos una biyección.
+
+      Notar que en realidad es facil probar que ambas funciones son una la inversa de la otra y son ambas biyectivas..
+    \end{proof}
+\end{enumerate}
+
+\noindent 23) Unión numerable de conjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$.
+\begin{proof}
+  Sea $A_{n}$ un sucesión de conjuntos de cardinal $\mathfrak{c}$ luego para cada $n \in \N$ tenemos un conjunto de cardinal $\mathfrak{c}$ por ende una biyección $\phi :\R \ra A_{n}$ y esto pasa para cada $n \in \N$ entonces tenemos varias biyecciones $f_{n} : \R \ra A_{n}$
+
+  Teniendo esto en cuenta podemos armar otra funcion $g: \N \times \R \ra \bigcup_{n \in \N} A_{n} $ 
+
+  Dada por $f(n,m) = f_{n}(r)$ que es evidentemente sobreyectiva 
+
+  Luego $\# \bigcup A_{n} \leq \# \N \times \R \leq \# \R \times \R = \mathfrak{c}$
+
+  Y por otro lado sabemos que cualquier $A_{j}$ con $j \in \N$ esta metido en la unión , y $\# A_{j} = \mathfrak{c}$
+
+  Por ende $\# \bigcup A_{n} \geq \# A_{j} = \mathfrak{c}$
+
+  Finalmente $$\# \bigcup_{n \in \N} A_{n} = \mathfrak{c}$$
+\end{proof}
+
+\noindent Ej 24) Sean $a,b,c$ cardinales
+\begin{enumerate}[i.]
+  \item $a.(b+c) = ab + ab$
+    \begin{proof}
+      En este caso y considerando el álgebra de cardinales, tendriamos que buscar una funcion biyectiva $f: A \times (B \cup C) \ra (A \times B) \cup (A \times C)$ con $\# A = a, \# B = b, \# C = c$ etc 
+
+      Pero en este caso $A \times (B \cup C) = (A \times B) \cup (A \times C)$ por ende la función identidad serviría
+    \end{proof}
+  \newpage
+  \item $a^{b + c} = a^b.a^c$
+ 
+    \begin{proof}
+      Siguiendo la misma idea deberiamos encontrar $F: A^{B + C} \ra A^B.A^C$
+
+      El dominio tiene funciones de la pinta $h:(B \cup C) \ra A$
+
+      La imagen seríán tuplas de funciones de la pinta $(\alpha : B \ra A , \quad \phi : C \ra A)$
+
+      Teniendo todo esto en claro y dado $h \in A^{B + C}$ definimos $F(h) = (h|_{B},h|_{C})$
+
+      Veamos que es biyectiva
+
+      Supongamos $h,g \in A^{B \cup C}$ tales que $F(h|_{B},h|_{C}) = F(h) = F(g) = (g|_{B},g|_{C})$ 
+
+      Viéndolo así es evidente que si $x \in B$ entonces $h(x) = h|_{B}(x) = g|_{B}(x) = g(x)$
+
+      Y si $x \in C$ entonces pasa lo mismo $f(x) = f|_{C}(x) = g|_{C}(x) = g(x)$
+
+      Entonces $f = g$ por lo que es inyectiva
+
+      Sea $(k,l) \in A^B \times A^C$ podemos dar una función $f \in A^{B \cup C}$ tal que para cada $x \in B \cup C$
+
+$$
+f(x) = \left\{
+        \begin{array}{ll}
+	  k(x)  & \quad si \quad x \in B \\
+	l(x)  & \quad si \quad x \in C 
+        \end{array}
+    \right.
+$$
+
+Y es claro que $F(f(x)) = (k(x),l(x))$ entonces para cada $(k,l)$ en la imagen , puedo encontrar una $f$ en el dominio. Por lo tanto es $F$ es sobreyectiva 
+
+Uniendo todo encontramos $F$ biyectiva
+    \end{proof}
+  \item $(a^b)^c = a^{bc}$
+
+    \begin{proof}
+      Este puede parecer confuso en un principio pero dejo aquí la idea correcta para que lo piensen.
+
+      Necesito una función biyectiva $F: (A^B)^C \ra A^{B \times C}$ 
+
+      Consideremos $h \in (A^B)^C$ y $(b,c) \in (B \times C)$ 
+
+      Podemos definir $F(h)(b,c) = h(c)(b)$ esto significa  'el resultado de evaluar $F$ en una función es otra función que puede ser evaluada en una tupla $(b,c)$'
+
+      Esto tiene sentido por que $F$ recibe funciones y las manda a funciones que deben poder recibir tuplas.
+
+      Con estas dos ideas deberia alcanzar para que el lector pueda entender la validez de la demostración
+
+      Ahora faltaría ver que es biyectiva. Veamos que es facil encontrar una inversa 
+
+      Sea $k \in A^{B \times C}$ y $b \in B, c \in C$ tenemos $ F^{-1}(k)(c)(b) = k(b,c) $
+
+      Ahora veamos que es inversa.
+
+    $F^{-1}(F(h))(c)(b) = F(h)(b,c) = h(c)(b) \Ra F^{-1}(F(h)) = h \quad \forall h \in (A^{B})^C$
+
+      $F(F^{-1}(k))(b,c) = F^{-1}(k)(c)(b) = k(b,c) \Ra F(F^{-1}(k)) = k \quad \forall k \in A^{B \times C}$
+
+      Efectivamente $F$ es biyectiva
+    \end{proof}
+  \item $(ab)^c = a^c.b^c$
+    \begin{proof}
+     No voy a explicar mucho, por que para entender se puede pensar en una hoja usando las mismas ideas hasta ahora.
+
+     Tomemos una $F: (A.B)^C \ra (A^C.B^C)$ 
+
+     Dada por $F(h) = (h_{1}, h_{2})$ 
+
+     Con $h_{1},h_{2}$ son la primera y segunda coordenada (respectivamente) de la imagen de $h$
+
+   Y veamos que $F^{-1}: (A^C B^C) \ra (A.B)^C$ tomamos $g,h \in (A^C.B^C)$
+
+     Dada por $F^{-1}(g,h)(c) = (g(c),h(c)) $ 
+
+Luego es facil ver que esta es inversa a ambos lados y eso nos asegura sobreyectividad
+    \end{proof}
+  \item Si $b \leq c,$ entonces $a^b \leq a^c$ y $b^a \leq c^a$
+\end{enumerate}
+
+\noindent 25) $n^{\n} = \n^{\n} = \mathfrak{c}^{\n} = \mathfrak{c}$ con $n \geq 2$
+
+\begin{proof}
+  Primero veamos $\mathfrak{c}^{\n} = \mathfrak{c}$
+
+  Usemos álgebra de cardinales $\mathfrak{c}^{\n} = (2^{\n})^{\n} = 2^{\n \n} = 2^{\n} = \mathfrak{c} \quad $ 
+
+  Sirve recordar que $\N \times \N \sim \N$
+
+  Luego $\mathfrak{c}  = 2^{\n} \leq \n^{\n} \leq \mathfrak{c}^{\n} = \mathfrak{c} \Ra \n^{\n} = \mathfrak{c}$
+
+  Tambien $2^{\n} \leq n^{\n} \leq \n^{\n}$
+\end{proof}
+
+\noindent 26) $\R$ es unión disjunta de $\mathfrak{c}$ conjuntos de cardinal a $\mathfrak{c}$
+
+Tenemos una union de conjuntos de cardinal $\mathfrak{c}$ para cada uno de estos conjuntos $A_{j}$ tenemos una funcion $f_{j} : \R \ra A_{j}$ con $j \in \R$ biyectiva.
+
+Ahora definimos una función $F: \R \times \R \ra \bigcup_{j \in \R} A_{j}$
+
+Dada por $F(j,h) = f_{j}(h)$ que es biyectiva
+
+Luego tenemos que $$\bigcup_{i \in \R} A_{j} \sim \R \times \R \sim \R  $$
+
+Luego existe una biyección entre $\R $ asi que como conjunto son 'lo mismo'
+
+\noindent Ej 27) Sean 
+
+$$ \mathcal{F}(\R) = \{f | f:\R \ra \R \} \quad \mathcal{F}(\Q) = \{f | \Q \ra \R \}$$
+
+\begin{center} $ \mathcal{C}(\R) = \{f \in \mathcal{F}(\R) | $ $f $ es continua $\} \quad$ $\mathcal{C}(\Q) = \{f \in \mathcal{F}(\Q) |$ $ f $ es continua $\} $ \end{center}
+  \begin{enumerate}[i.]
+    \item $\#\mathcal{F}(\R) > \mathfrak{c}$
+      \begin{proof}
+	Sabemos que $\# \mathcal{F}(\R) = \# \R^{\R} =  \mathfrak{c}^{\mathfrak{c}} \geq 2^{\mathfrak{c}} = \# \mathcal{P}(\R) > \# \R =  \mathfrak{c}$
+      \end{proof}
+    \item $\# \mathcal{F}(\Q) = \mathfrak{c}$
+      \begin{proof}
+	Sabemos que $\# \mathcal{F}(\Q) = \# \R^{\Q} = \mathfrak{c}^{\n} = \mathfrak{c}$	
+
+	      \end{proof}
+      \newpage
+    \item $\# \mathcal{C}(\Q) = \mathfrak{c}$
+      \begin{proof}
+	Por un lado tenemos que $\# \mathcal{C}(\Q)  \leq \# \mathcal{F}(\Q) = \mathfrak{c}$ 
+
+Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de funciones constantes $f: \Q \ra \R$ y sabemos que $A$ tiene cardinal $\mathfrak{c}$
+
+	Entonces $\# \mathcal{C}(\Q) = \mathfrak{c}$
+      \end{proof}
+    \item La función $\phi : \mathcal{C}(\R) \ra \mathcal{C}(\Q)$ dada por $\phi(f) = f|_{\Q}$ es inyectiva.
+      \begin{proof}
+      Sean $f,g \in \mathcal{C}(\R) $ talque $\phi (f) = \phi(g)$ entonces $f|_{\Q}(x) = g|_{\Q}(x) \quad \forall x \in \Q$
+
+      Pero entonces $f(x) = g(x) \quad \forall x \in \R$ por lo que $f = g $ entonces $\phi$ es inyectiva
+
+      Esta es una demostración de taller por ende no la voy a hacer, la idea es suponer que restringiendo a $\Q$ son iguales pero no lo son en $\R$ y usando la propiedad de que continua manda sucesiones convergentes en convergentes llegas a un absurdo 
+      \end{proof}
+    \item $\# \mathcal{C}(\R) = \mathfrak{c}$
+
+      Teniendo el item anteriór sabemos que $\# \mathcal{C}(\R) \leq \# \mathcal{C}(\Q) = \mathfrak{c}$
+
+      Usando que el conjunto en cuestion contiene a las funciones constantes $f : \R \ra \R $ tenemos que $\# \mathcal{C}(\R) \geq \mathfrak{c}$
+
+      Entonces $\# \mathcal{C}(\R) = \mathfrak{c}$
+  \end{enumerate}
+
+
+\noindent Ej 28) El conjunto de partes numerables de $\R$ (es decir, el subcojunto de $\mathcal{P}(\R)$ formado por todos los subconjuntos numerables de $\R$) tiene cardinal $\mathfrak{c}$
+\begin{proof}
+  Consideremos la funcion $f: \mathcal{P}_{numerables}(\R) \ra \R^{\N}$ 
+
+  Dada por $f : \{ a_{1},a_{2}, \dots \} = (a_{1},a_{2} \dots )$ no es sobreyectiva pero si es inyectiva
+
+  Luego  $\mathcal{P}_{n}(\R) \leq \mathfrak{c}^{\n} = \mathfrak{c}$
+
+  Por otro lado sabemos que partes numerables contiene a partes numerables y acotadas adentro llamemosla $\mathcal{P}_{NumAc}(\R)$ y ahora tenemos la función $g: \mathcal{P}_{NumAc}(\R) \ra \R$ dada por $f(A) = inf(A)$ que es evidentemente sobreyectiva usando la inclusión tenemos que $\# \mathcal{P}_{n}(\R) \geq \mathfrak{c}$
+
+\end{proof}
+
+\noindent Ej 29) Sean $A,B \neq \emptyset$. Luego o bien existe $f:A \ra B$ inyectiva o bien $g: B \ra A$ inyectiva.(Es decir $\#A \leq \# B$ o $\#B \leq \# A$) 
+
+Supongamos que no existe $f: A \ra B$ inyectiva entonces $\forall a \in A \quad \exists b \in B $ tal que $f(a) = b$. Y para algunos $a \in A$ o quizas para todos existe más de un $b \in B$
+
+Por axioma de elección tenemos una función que elije elementos llamemosla $h$
+
+Ahora podemos armar una función $g: B \ra A$ dada por $g(b) = h ( f^{-1}(b)) $
+
+
+\end{document}
