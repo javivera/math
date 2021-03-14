@@ -1,0 +1,759 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ex}{Ejemplo}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Funciones Continuas}
+\fancyhead[L]{Javier Vera}
+ \fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+
+\begin{definition}
+  Una función $f: \E \ra \E'$ es continua en el punto $x \in \E$ si para cada $\epsilon > 0$ existe $\delta > 0$ tal que para todo $y \in \E$ que cumple $ d(x,y) \leq \delta$, entonces $d'(f(x),f(y)) \leq \epsilon$
+
+  Equivalentemente $$ f(B(x,\delta)) \subseteq B(f(x),\epsilon)$$
+\end{definition}
+\begin{remark}
+  $\delta$ depende de $\epsilon$ y de $x$
+\end{remark}
+\begin{remark}
+  Una función $f:\E \ra \E'$ es continua en el punto $x \in \E$ si y sólo si para cada entorno $V$ de $f(x)$ en $\E '$, existe un entorno $U$ de $x$ en $\E$ tal que $f(U) \subseteq V$.
+\begin{proof}
+Sea $V$ entorno de $f(x)$ entonces existe $A$ abierto tal que $f (x) \in  A \subseteq V$ entonces existe $r>0$ tal que $ B_{\epsilon}(f(x)) \subseteq A$ luego $f(x ) \in B_{\epsilon}(f(x)) \subseteq A \subseteq V$
+
+Por continuidad existe $\delta >0$ tal que $f(B_{\delta}(x)) \subseteq B_{\epsilon}(f(x)) \subseteq V$
+
+Además $U = B_{\delta}(x)$ es entorno de $x$ dado que por ser abierto y dado $x \in U$ existe $r$ tal que $x \in B_r(x) \subseteq U$
+
+
+\end{proof}
+\end{remark}
+\begin{remark}
+  Decir $f(U) \subseteq V$ es decir que $U \subseteq f^{-1}(V)$
+
+  O lo mismo $V$ entorno de $f(x) \iff f^{-1}(V)$ es entorno de $x$
+\end{remark}
+\begin{remark}
+ $\E$ espacio métrico, $x_0$ pto aislado de $\E $ entonces toda función def en $\E$ es continua en $x_0$.
+ \begin{proof}
+   Si vale para cualquier función, en particular vale para la función $f(x_0) = 1$ y $f(x) = 0$ si $x \neq x_0$
+
+ Entonces ahora esta tiene que ser continua en todos lados en particular en $x_0$ , entonces $f(B(x_0,\frac{1}{2})) \subseteq B(f(x_0),\frac{1}{2}) = B(1,\frac{1}{2}) = \{1\}$ entonces $B(x_0,\frac{1}{2}) = \{x_0\}$
+ \end{proof}
+
+\end{remark}
+\begin{lemma}
+ $\E $ discreto entonces toda funciones definida sobre $\E$ es continua en todo punto 
+\end{lemma}
+\begin{ej}
+  $\E$ metrico $x_0 \in \E$. Si toda $f: \E \ra \R$ es continua en $x_0$ entonces $x_0$ es aislado
+  \begin{proof} Si vale para cualquier función vale para $f: \E \ra \R$ dada por:
+    $$
+f(x) = \left\{
+        \begin{array}{ll}
+            1 & \quad x = x_0 \\
+            2 & \quad x \neq x_0
+        \end{array}
+    \right.
+$$
+
+Ahora supongamos que $x_0$ no es aislado, entonces es un punto de acumulación por lo tanto tenemos una sucesión $(x_n)_n \subseteq \E$ con $x_n \ra x_0$ tal que $x_n \neq x_0 \quad \forall n \in \N$ entonces como $f$ tiene que ser continua $f(x_n) \ra f(x)$, pero $f(x_n) = 2 \quad \forall n \in \N$ y $f(x) = 1$ entonces no puede ser que $f(x_n) \ra f(x)$ pero esto es absurdo , contradice la continuidad , este absurdo provino de suponer que $x_0$ no era aislado , entonces $x_0$ tiene que ser aislado para que cualquier función sea continua en $x_0$
+  \end{proof}
+\end{ej}
+\begin{theorem}
+  Una función $f:\E \ra \E '$ es continua si y sólo si transforma cualquier sucesión convergente a $x$ en una sucesión convergente $f(x)$
+  \begin{proof}
+    $\Ra )$ Sea $x_n \in \E \quad \forall n \in \N$ convergente, y $f$ continua. 
+
+    Dado $\epsilon >0$ sabemos que $\exists \delta >0$ tal que $f(B(x,\delta))\subseteq B(f(x),\epsilon)$
+
+    Luego como $x_n$ convergente $\exists n_0$ tal que $x_n \in B(x,\delta) \quad \forall n \geq n_0$
+
+    Entonces $f(x_n) \subseteq f(B(x,\delta)) \subseteq B(f(x),\epsilon)$ 
+
+    Entonces $\forall \epsilon >0 $ existe $n_0$ tal que $f(x_n) \in B(f(x), \epsilon) \quad \forall n \geq n_0$
+
+    Luego $f(x_n) \ra f(x)$
+
+  $\Leftarrow )$ Supongamos $f $ no es continua en $x$. 
+
+Luego $\exists \epsilon >0$ tal que $\forall \delta >0 \quad \exists y_{\delta} \in B(x,\delta)$ pero $f(y_{\delta}) \notin B(f(x),\epsilon)$
+
+Si tomamos $\delta = \frac{1}{n}$ y $x_n = y_{1/n}$ entonces $x_n \in B(x,\frac{1}{n})$
+
+Por lo tanto $d(x_n,x) = \frac{1}{n} \ra 0$ pero $f(x_n) = f(y_{1/n}) \notin B(f(x),\epsilon)$
+
+Entonces $d(f(x_n), f(x)) \geq \epsilon$ por lo tanto $f(x_n) $ no converge a $f(x)$ lo que es absurdo
+  \end{proof}
+\end{theorem}
+\begin{definition}
+Una función $f: \E \ra \E '$ es continua en $\E$ si es continua en todo punto $x \in \E$  
+\end{definition}
+\begin{remark}
+  Sea $\delta$ la métrica discreta toda función definida sobre $(\E,\delta)$ es continua
+\end{remark}
+\begin{theorem}
+  Una función $f:\E \ra \E '$ es continua si y sólo si la preimagen de todo abierto de $\E '$ es abierto de $\E$
+  \begin{proof}
+  $\Leftarrow )$ Sea $x \in \E \quad \epsilon >0 \quad V = B(f(x),\epsilon)$ abierto entonces $f^{-1}(V)$ tiene que ser abierto
+
+  Entonces $\exists \delta > 0$ tal que $B(x,\delta )\subseteq f^{-1}(V)$
+
+  Luego $f(B(x,\delta))\subseteq V = B(f(x),\epsilon)$ entonce $f$ continua en $x$
+
+$\Ra )$ Sea $V \subseteq \E '$ abierto.
+
+$x \in f^{-1}(V) = \{y \in \E / f(y) \in V\}$ luego $f(x) \in V$ abierto 
+
+Entonces $\exists \epsilon > 0 $ tal que $B(f(x),\epsilon) \subseteq V$
+
+Ahora como $f $ continua $\exists \delta > 0$ tal que $f(B(x,\delta)) \subseteq B(f(x),\epsilon) \subseteq V$
+
+Entonces $f(B(x,\delta))\subseteq V$ entonces $B(x,\delta) \subseteq f^{-1}(V)$
+
+Luego $f^{-1}(V)$ es abierto
+
+ \end{proof}
+\end{theorem}
+\begin{ej}
+  Ver que vale lo mismo cambiando abiertos por cerrados (con fución continua preimagen de cerrado es cerrada)
+\begin{proof}
+  Usar el resultado anteriór. Sea $F$ un cerrado entonces $X \setminus F$ es abierto
+
+Luego $f^{-1}(X \setminus F)$ es abierto. Entonces $(f^{-1}(X \setminus F))^c = f^{-1}(F)$ cerrado.
+
+Veamos esta última igualdad. 
+
+Sea $x \in (f^{-1}(X \setminus F))^c \iff x \notin f^{-1}(X \setminus F)$ 
+
+$\iff f(x) \notin X \setminus F \iff f(x) \in F\iff x \in f^{-1}(F)$
+
+\end{proof}
+\end{ej}
+\begin{remark}
+  Probar que $V = \{(x,y,z) \in \R^3 \quad / x^2 + e^{zx} \leq 4\}$ es abierto
+  \begin{proof}
+    $f: \R^3 \ra \R$ dada por $f(x,y,z) = x^2 + e^{yz}$ sabemos que es continua .
+
+    Entonces $V = f^{-1}((-\infty,4))$ es abierto por que $(-\infty , 4)$ es abierto
+  \end{proof}
+\end{remark}
+\begin{theorem}
+  Una fución $f: \E \ra \E '$ es continua si y sólo si para todo $A \subseteq \E$ $$ f(\ol A) \subseteq \ol{f(A)}$$
+\begin{proof}
+  Sea $x \in \ol A$ entonces existe una sucesión $x_n$ tal que $x_n \ra x$ 
+
+  Por continuidad $f(x_n) \ra f(x)$. Y sabemos $f(x_n) \subseteq f(A)$ entonces $f(x) \in \ol{f(A)}$ 
+
+  Luego $f(\ol A) \subseteq \ol{f(A)}$
+
+  ¿Vale la vuelta?
+\end{proof}
+\end{theorem}
+\begin{definition}
+  Una función $f:\E \ra \E '$ se dice uniformemente continua si dado $\epsilon > 0$ existe $\delta > 0$ tal que:
+  $$ f(B(x,\delta)) \subseteq B(f(x),\epsilon)$$ 
+
+  para todo $x \in \E$
+\end{definition}
+\begin{definition}[definición equivalente]
+  Una función $f: \E \ra \E '$ se dice uniformemente continua si para cada $\epsilon > 0$ existe $\delta > 0$ tal que si $d(x,y) < \delta$ entonces $d'(f(x),f(y)) < \epsilon$ para todo $x,y \in \E $ 
+  \begin{remark}
+    $\delta$ depende solamente de $\epsilon$
+  \end{remark}
+\end{definition}
+\begin{remark}
+  La gran diferencia entre las definiciones de continuidad y de continuidad uniforme es que la primera depende de x y de epsilon , para dar el delta, la segunda solo depende de epsilon
+\end{remark}
+
+\begin{ej}
+  Sea $f: \E \ra \E '.$ Entonces $f$ NO es uniformemente continua si y sólo si existen sucesiones $(x_n)_n $ e $(y_n)_n$ tales que $$ d(x_n,y_n) \ra 0 \text{ pero } d'(f(x_n),f(y_n)) \not\ra 0$$
+  \begin{proof}
+    $\Ra )$ Si $f$ no es uniformemente , negado la definición y dado un $\epsilon$ tomando $\delta = \frac{1}{n}$ es facil armar dos sucesiones que se acerquen pero su imagen no.
+
+$\Leftarrow )$ Hecho en la práctica
+  \end{proof}
+\end{ej}
+\begin{ex}
+  $f:[a,b] \ra \R$ continua entonces también uniformemente continua
+
+  $f: \R \ra \R \quad f(x) = x^2$ si tomamos $x_n = n \quad y_n = n + \frac{1}{n}$
+
+  Luego $|x_n - y_n| = \frac{1}{n} \ra 0 $ pero $|f(x_n) - f(y_n)| \ra 2 \neq 0$
+\end{ex}
+
+\begin{theorem}
+  Sea $f : \E \ra \E '.$ Si existe $C > 0$ tal que $$ d'(f(x),f(y)) \leq C d(x,y)$$
+
+  Entonces $f$ es uniformemente continua
+
+  ($f$ Lipschitz entonces $f$ uniformemente continua)
+  \begin{proof}
+    Dado $\epsilon >0$ si tomamos $\delta = \frac{\epsilon}{c}$ tenemos $d(x,y) < \delta \Ra d(f(x),f(y)) < c \frac{\epsilon}{c} = \epsilon$
+  \end{proof}
+\end{theorem}
+\begin{ex}
+  Consideremos en $C([0,1 ])$ la distancia $d_{\infty}$ dada por
+
+  Sea $F : C([0,1]) \ra \R$ la función dada por 
+  $$ F(x) = \int_{0}^1 x(t) dt \quad x \in C([0,1])$$
+
+  Sean $x,y \in C([0,1 ])$, $|F(x) - F(y)| = |\int (x(t) - y(t)) dt| \leq \int |x(t) - y(t)|dt$ 
+
+  $\leq \int \sup_{0\leq s\leq 1}{|x(s) - y(s)|} \leq \int_{0}^{1} d_{\infty}(x,y)dt = d_{\infty}(x,y).1 = d_{\infty}(x,y)$
+
+  Luego $F$ es uniformemente continua, o Lipschitz con constante 1
+\end{ex}
+\begin{ex}
+  Consideremos $F:(C([0,1 ]),d_{\infty}) \ra (\R^3,d_2)$ dada por $F(x) = (x(0),x(\frac{1}{2}),x(1))$
+
+  $d_2(F(x),F(y)) = d_2((x(0),x(\frac{1}{2}),x(1)),(y(0),y(\frac{1}{2}),y(1))) =$ la raiz de la diferencia de los cuadrados $\leq \sqrt{d_{\infty}^2 + d_{\infty}^2 + d_{\infty}^2} = \sqrt{3}d(x,y)$ 
+
+  Entonces $F$ es lipschitz con constante $\sqrt{3}$ entonces es uniformemente continua
+
+\end{ex}
+\begin{remark}
+  A veces las funciones con las que trabajemos no van a ser Lipschitz pero si uniformente continuas , ahi va a ser un poco mas dificil y va a haber que arremangarse
+\end{remark}
+\newpage
+
+Separabilidad 
+
+\fancyhead[R]{Separabilidad}
+\fancyhead[L]{Javier Vera}
+ \fancyhead[C]{Cálculo Avanzado}
+
+\newpage
+\begin{definition}
+  Sea $(\E,d)$ un espacio métrico. Un subconjunto $D \subseteq \E $ se dice denso (en $\E$) si $\ol D = \E$ 
+\end{definition}
+\begin{ex}
+  $\ol \Q = \R$ Entonces $\Q$ es denso en $\R$
+  $\ol (0,1) = [0,1]$ entonces $(0,1)$ es denso en $[0,1]$
+\end{ex}
+\begin{remark}
+  $D$ denso en $\E$ y tenemos  $f: D \ra \E '$ continua no necesariamente existe $f' : \E \ra \E '$ continua
+
+  Lo que significa que tener una funcion continua en un denso de $B$ no necesariamente podemos extenderla a $B$ y seguir teniendo continuidad.
+
+  Contraejemplo $f:(0,1) \ra \R$ dada por $f(x) = \frac{1}{x}$
+
+  Pero si en cambio tenemos una función uniformemente continua SI podemos
+\end{remark}
+\begin{definition}
+  Una función $f: \E \ra \E '$ se llama homemorfismo si es biyectiva, continua y su inversa es continua  
+
+  Dos espacios $(\E,d)$ y $(\E ' , d')$ se dicen homemorfos si existe un homeomorfismo   $f: \E \ra \E '$ homemorfismo
+\end{definition}
+\begin{remark}
+  Si $\E$ y $\E '$ son espacios homemorfos, entonces hay una correspondencia entre los abiertos de $\E$ y los de $\E '$ entonces topológicamente son lo mismo
+
+  Sea $A$ abierto de $\E$ , $f(A) = (f^{-1})^{-1}(A)$ que es abierto en $\E '$ esto vale por que $f^{-1} $ es continua, por que $f$ es homemorfismo y preimagen de abierto es abierto
+
+  Y por otro lado si $f(A)$ abierto entonces $A = f^{-1}(f(A))$ es abierto de $E$
+
+  Entonces $$A \text{ abierto de }\E  \iff f(A) \text{ es abierto de }\E' $$ 
+\end{remark}
+\begin{remark}
+  Dada $f$ biyectiva, puede suceder que $f$ esa continua pero su inversa no lo sea
+
+  $id: (\R,\delta) \ra (\R, | \cdot |)$ es continua pero su inversa $id^{-1}: (\R, |\cdot|) \ra (\R ,\delta)$ no es continua
+
+Es mas si la identidad entre dos espacios es un homemorfismo entonces sus métricas son equivalentes
+\end{remark}
+\begin{definition}
+  Si $f: \E \ra \E '$ es biyectiva y $d(x,y) = d'(f(x),f(y))$, diremos que $f$ es una isomemtría. 
+\end{definition}
+\begin{remark}
+  Si $f : \E \ra \E '$ una isomemtría, entonces tanto $f$ como $f^{-1}$ son uniformemente continuas. En particular $f$ es homemorfismo
+  \begin{proof}
+    Como $f$ isomorfismo $d(x,y) = d'(f(x),f(y)) \quad x,y \in \E$
+
+    $w,z \in E ' \quad $ $d'(w,z) = d'(f(f^{-1}(w)),f(f^{-1}(z))) = d(f^{-1}(w), f^{-1}(z))$ 
+  
+Entonces dado $\epsilon$ tomamos $\delta = \epsilon$ y nos sirve para todo el dominio
+  \end{proof}
+\end{remark}
+\begin{definition}[Una definicion equivalente de densidad]
+
+  $$ D \text{ denso en } \E \iff \quad \forall x \in \E, \quad \forall r>0 ,\quad  B(x,r) \cap D \neq \emptyset$$ 
+\end{definition}
+\begin{remark}
+  $\E$ es denso en $\E$
+
+  Sea $(\E,\delta)$, $\ol A = A \quad \forall A \subseteq \E$ entonces $D$ denso en $\E \iff D = \E$ 
+\end{remark}
+\begin{remark}[Ejemplos mas interesantes]
+  $$\ell^1 = \{(a_n)_{n \in \N} / \sum_{n=1}^{\infty}|a_n| < \infty\} \quad d_1(a,b) = \sum_{n = 1}^{\infty}|a_n - b_n|$$
+
+  $$\ell^{\infty} = \{(a_n)_{n \in \N} / \sup_{n \in \N}|a_n| < \infty\} \quad d_{\infty}(a,b) = \sup_{n \in \N} |a_n - b_n|$$
+
+  Sea $D = \{(a_n)_n / \exists m \text{ tal que } a_n = 0 \quad \forall n \geq m\}$ entonces $D$ es denso en $\ell^1$
+
+Sea $a \in \ell^1 , r>0$ entonces $\sum_{n=1}^{\infty}|a_n| \leq \infty \Ra \exists n_0 \in \N  / \sum_{n \geq n_0}^{\infty} |a_n| \leq r$
+
+Sea $b = (a_1,a_2, \dots , a_{n_0},0,0, \dots)$ entonces $b \in D$. Luego $d_1(a,b) = \sum_{n=1}^{\infty} |a_n - b_n|$ 
+
+Cada uno de estos módulos es 0 o $a_n$ entonces $\sum_{n=1}^{\infty} |a_n - b_n|=   \sum_{n\geq n_0}^{\infty} |a_n| \leq r$
+
+Finalmente $d_1(a,b) \leq r$
+
+Entonces para cada $a \in \ell^1$ y para cada $\epsilon > 0$ existe $b \in D$ tal que $d(a,b) \leq \epsilon$
+
+O lo equivalente dado un $a \in A$ $\forall \epsilon >0 \quad \exists b\in D$ tal que  $ b \in B(a,\epsilon) \cap D$ 
+
+Por lo que $B(a,\epsilon) \cap D \neq \emptyset$ entonces $D$ es denso en $\ell^1$
+
+Ejercicio para el lectór probar que no es denso en $\ell^{\infty}$
+\end{remark}
+\begin{definition}
+ Un espacio métrico $\E$ se llama separable si contiene un subconjunto $D$ numerable y denso 
+\end{definition}
+\begin{remark}
+  $\R$ y $\R^n$ son separables
+
+  $(\E,\delta)$ es el único denso es $\E$ entonces 
+
+  $$\E  \text{ separable} \iff \E \text{ es a lo sumo numerable}$$
+\end{remark}
+\begin{ex}
+  $\ell^1$ es separable, el $D$ que usamos arriba no nos sirve , por que NO es numerable a pesar de ser denso
+
+  Pero sea $A_{\Q}=\{(a_n)_n \subseteq \Q :\exists m\in \N / a_n = 0 \quad \forall n \geq m\}$
+
+  Probar que es denso en $\ell^1$ y que es numerable
+\end{ex}
+\begin{definition}
+  Sea $(\E,d)$ un espacio métrico. Una familia $\mathcal{B}$ de abiertos se dice una base de abiertos de $\E$ si todo abierto de $\E$ se escribe como unión de conjuntos de la familia $\mathcal{B}$ 
+\end{definition}
+\begin{remark}
+  La familia $$ \mathcal{B}_0 = \{B(x,r) : x \in \E, r>0\}$$
+
+  es un base de abiertos de $\E$
+  \begin{proof}
+    $G$ abierto de $\E$, dado $x \in G$, $\exists r_x >0 $ tal que $x \in B(x,r_x) \subseteq G$ 
+
+    Ahora afirmo $G \subseteq \bigcup_{x \in G}B(x,r_x) \subseteq G$
+
+    Entonces $G = \bigcup_{x \in G}B(x,r_x)$
+
+    En particular los intervalos abiertos forman una base de abiertos de $\R$
+  \end{proof}
+\end{remark}
+\begin{theorem}
+  Sea $(\E,d)$ un espacio métrico. Una familia (de abiertos) $\mathcal{B}$ es una base de abiertos de $\E$ si y sólo si para todo abierto $U \subseteq \E$ y todo $x \in U,$ existe $A \in \mathcal{B}$ tal que $x \in A \subseteq U$
+  \begin{proof}
+  $\Ra )$ $U$ abierto, $x \in U$, tenemos que $U = \bigcup_{i \in I} A_i$ con $A_i \in \mathcal{B}$
+
+  $x \in U$ entonces $\exists i_0 $ tal que $x \in A_{i_0}\subseteq U$ y además $A_{i_0} \in \mathcal B$
+
+$\Leftarrow )$ $G$ abierto de $\E$, $\forall x \in G$, $\exists A_x \in \mathcal{B}$ tal que $x \in A_x \subseteq G$
+
+Entonces $G = \bigcup_{x\in G}A_x$. Entonces dado un abierto lo escribimos como unión de abiertos de la base
+  \end{proof}
+\end{theorem}
+
+\begin{ex}
+  Probar que $\mathcal{B}$ es una base de abiertos si y sólo si para todo $x \in \E$ y todo entorno $V$ de $x$ existe $A \in \mathcal{B}$ tal que $x \in A \subseteq V.$
+  \begin{proof}
+  $\Ra )$ Sea $\mathcal{B}$ una base de abiertos y $V$ un entorno de $x$
+
+    Como $V$ entorno existe $U$ abierto tal que $x \in U \subseteq V$
+
+    Dado que $U$ abierto $x \in U = \bigcup_{i \in I} A_i$ con $A_i \in \mathcal B$
+
+    Pero entonces $x \in A_i \subseteq V$ para algún $i \in I$
+
+  $\Leftarrow )$ Sea $x \in \E$ sabemos que existe un $A \in \mathcal{B}$ base tal que $x \in A$
+  
+  Pero entonces $\E = \bigcup A_i$ con $A_i \in B$
+  \end{proof}
+\end{ex}
+\begin{remark}
+  Si $\E = \R^n$ con la métrica euclídea, entonces la familia
+$$ \mathcal{B}_1 = \{B(x,q): x \in \Q^n, q \in \Q, q >0\}$$
+
+es una base de abiertos, y es numerable
+
+en particular los intervalos de extremos racionales forman una base de abiertos de $\R$
+\end{remark}
+\begin{remark}
+  $R^n$ es separable , tiene base numerable de abiertos, cumple Lindelof 
+\end{remark}
+\begin{theorem}
+  Sea $(\E,d)$ un espacio métrico. Las siguientes afirmaciones son equivalentes:
+  \begin{enumerate}
+    \item $(\E,d)$ es separable.
+    \item $\E$ tiene una base numerable de conjuntos abiertos
+    \item $\E$ tiene la propiedad de Lindelof: todo cubrimiento por abiertos contiene un subcubrimiento (a lo sumo) numerable
+  \end{enumerate}
+  \begin{proof}
+$i) \Ra ii)$ Sea $D$ denso numerable y $\mathcal{B} = \{B(a,q): a \in D, q \in \Q , q>0\}$
+
+$\mathcal{B} \sim D \times \Q \sim \N \times \N$ entonces $\mathcal{B}$ es numerable
+
+Veamos que $\mathcal{B}$ es base: $G \subseteq \E$ abierto, $x \in G$ existe $r>0$ tal que $B(x,r) \subseteq G$ 
+
+Como $D$ es denso $B(x,\frac{r}{2}) \cap D \neq \emptyset$ entonces $\exists a \in B(x,\frac{r}{2}) \cap D$ Luego $d(a,x) < \frac{r}{2}$. 
+
+Sea $q \in \Q$ tal que $d(x,a) < q < \frac{r}{2}$, Ahora tenemos $d(x,a) < q$ entonces $x \in B(a,q)$
+
+Ahora sea $y \in B(a,q)$ entonces $d(y,x) \leq d(y,a) + d(a,x) < q + \frac{r}{2} < r$
+
+Entonces $y \in B(x,r)$ entonces $B(a,q) \subseteq B(x,r) \subseteq G$
+
+Juntando todo tenemos que para cualquier $x \in G$ encontramos $B(a,q) \in \mathcal{B}$ tal que $x \in B(a,q) \subseteq G$ con $B(a,q) \in \mathcal{B}$ y esto vale para cualquier $G$ abierto.
+
+Entonces $\mathcal{B}$ es base y es numerable
+
+$ii) \Ra iii)$ Sea $\mathcal{C}$ cubrimiento por abiertos de $S \subseteq \E$ y sea $\mathcal{B}$ base numerable de $\E$
+
+Definamos $\mathcal{B}_{\mathcal{C}} = \{A \in \mathcal{B} : \exists G \in \mathcal{C} \text{ tal que } A \subseteq G\}$
+
+$\mathcal{B}_{\mathcal{C}}$ es a lo sumo numerable por ser un subconjunto de $\mathcal{B}$
+
+Dado $A \in \mathcal{B}_{\mathcal{C}}$ existe algún $G \in \mathcal{C}$ (llamémoslo $G_A$) tal que $A \subseteq G_{A}$
+
+Y definamos $\mathcal{C}_0 = \{G_A : A \in \mathcal{B}_{\mathcal{C}}\}$ este es a lo sumo numerable por que su cardinal es menor o igual que el de $\mathcal{B}_{\mathcal{C}}$ (podría ser que un mismo $G_A$ contenga mas de un $A$)
+
+Ahora $$\bigcup_{A \in \mathcal{B}_{\mathcal{C}}}A \subseteq \bigcup_{G \in \mathcal{C}_0} G \subseteq \bigcup_{G \in \mathcal{C}} G  $$
+
+Veamos que $$\bigcup_{G \in \mathcal{C}} G \subseteq  \bigcup_{A \in \mathcal{B}_{\mathcal{C}} } G$$
+
+Sea $x \in \bigcup_{G \in \mathcal{C}} G$ entonces $ x \in G$ para algún $G \in \mathcal{C}$ entonces como $\mathcal{B}$ es base sabemos existe $A \in \mathcal{B}$ tal que $x \in A \subseteq G$ ($A \in \mathcal{B}_{\mathcal{C}}$ pues $A \subseteq G$)
+
+Demostrado esto y usando las inclusiones de arriba tenemos 
+$$ \bigcup_{G \in \mathcal{C}_0} G = \bigcup_{G \in \mathcal{C}} G$$
+
+Entonces $\bigcup_{G \in \mathcal{C}_0} G$ es subcubrimiento y además sabemos que es numerable por que $\mathcal{C}_0$ es numerable
+
+$iii) \Ra i)$ Dado $n \in \N$ tenemos $\E \subseteq \bigcup_{x \in \E} B(x, \frac{1}{n})$ (esto en realidad es una igualdad pero la inclusión deja más claro que son cubrimientos). Por Lindeloff existe subcubrimiento a lo sumo numerable 
+
+Ahora las bolas son de radio fijo , entonces podemos quedarnos con numerables $x \in \E$
+
+Entonces para cada $n \in \N$ $\exists (x_k^n)_{k \in \N}$ tal que $\E \subseteq \bigcup_{k \in \N} B(x_k^n,\frac{1}{n})$(Una vez fijado el $n \in \N$ nos armamos la sucesion de $x \in \E$ que nos dado el cubrimiento con las bolas de esos centros y radio $\frac{1}{n}$ esta notación representa todo eso con cualquier $n \in \N$)
+
+$D = \{x_k^n : n \in \N, k \in \N \}$ Esto es a lo sumo numerable 
+
+$ \N \times \N \sim D $ con $f(x,k) = x_k^n$ que es sobreyectiva
+
+Densidad, sea $x \in \E$, dado $r>0$ tomamos $n_0$ tal que $\frac{1}{n_0} < r$ entoncs $\E \subseteq \bigcup_{k \in \N}B(x_k^{n_0},\frac{1}{n_0})$
+
+Como $x \in \E$ entonces $\exists k_0$ tal que $x \in B(x_{k_0}^{n_0},\frac{1}{n_0})$ entonces $d(x,x_{k_0}^{n_0}) < \frac{1}{n_0} < r$
+
+$x_{k_0}^{n_0} \in B(x,r) $ y además $x_{k_0}^{n_0} \in D$ por lo tanto $B(x,r) \cap D \neq \emptyset$
+
+Encontramos $D$ es denso y numerable de $\E$ por lo tanto $\E$ es separable
+
+\end{proof}
+\end{theorem}
+
+\begin{definition}
+  Sea $(\E,d)$ un espacio métrico y $x \subseteq \E$ un subespacio métrico. Es decir, consideramos en $X$ la métrica $d_X$ inducida: dados $x,y \in X$
+  $$ d_X (x,y) = d(x,y)$$
+
+  Entonces, para $x \in X$ u $r >0$, la bola en $X$ o relativa a $X$ de centro $x$ y radio $r$ es 
+
+  $$ B_X(x,r) = \{y \in X : d_X(x,y) < r\} = B(x,r) \cap X$$
+\end{definition}
+
+\begin{definition}
+  Sea $X$ subespacio métrico de $\E$. Decimos que $A \subseteq X$ es abierto relativo de $X$ o abierto en $X$ si para todo $x \in A$ existe $r>0$ tal que $B_X(x,r )\subseteq A$
+\end{definition}
+\newpage
+\begin{prop}
+  Sea $X$ subespacio métrico de $\E$ y $A \subseteq X$. Son equivalentes:
+  \begin{enumerate}
+    \item $A$ es abierto relativo de $X$
+    \item Existe $U\subseteq \E$ abierto (en $\E$) tal que $A = U \cap X$
+  \end{enumerate}
+  \begin{proof}
+$i) \Ra ii)$ Sea $x \in A$ entonces $x \in U$ entonces $\exists r >0$ tal que $B(x,r) \subseteq U$
+
+Entonces $B(x,r) \cap X \subseteq U \cap X = A$ por lo tanto $B_X(x,r) \subseteq A$
+
+$i) \Ra ii)$ para cada $x \in A$ existe $r_x >0$ tal que $B_X(x,r_x) \subseteq A$
+
+Entonces $A = \bigcup_{x \in A} B_X(x,r_x)$ pero entonces tomemos $U =\bigcup_{x \in A} B(x,r_x)$ que es abierto por ser unión de abiertos. 
+
+Y ahora tenemos $A = U \cap X$ con $U$ abierto
+  \end{proof}
+\end{prop}
+\begin{definition}
+  Sea $X$ subespacio métrico de $\E$. Decimos que $B \subseteq X$ es cerrado relativo de $X$ o cerrado en $X$ si $X \setminus B$ es abierto relativo de $X$ 
+\end{definition}
+\begin{prop}
+  Sea $X$ subespacio métrico de $\E$ y $B \subseteq X$. Son equivalentes:
+  \begin{enumerate}
+    \item $B$ es cerrado relativo de $X$
+    \item Existe $F\subseteq \E$ cerrado (en $\E$) tal que $B = F \cap X$
+  \end{enumerate}
+  \begin{proof}
+    
+  \end{proof}
+\end{prop}
+
+\begin{ej}
+  Para pensar: dar una definición de clausura relativa a $X$ a partir de bolas y ver cómo se relaciona con la definición de cerrado relativo.
+  \begin{proof}
+    
+  \end{proof}
+\end{ej}
+
+\newpage
+Completitud
+\newpage
+
+\fancyhead[R]{Completitud}
+\fancyhead[L]{Javier Vera}
+ \fancyhead[C]{Cálculo Avanzado}
+
+\begin{definition}
+  Una sucesión $(x_n)_n$ se dice de Cauchy si para todo $\epsilon > 0$ existe $n_0 \in \N$ (que depende de $\epsilon$) tal que si $n,m \geq n_0$ entonces $d(x_n,x_m) \leq \epsilon$ 
+\end{definition}
+
+\begin{theorem}
+  Sea $(\E,d)$ un e.m y $(x_n)_n \subseteq \E$
+  \begin{enumerate}
+    \item Si $(x_n)_n$ es de Cauchy, entonces el conjunto $\{x_n : n \in \N \}$ es acotado.
+      \item Si $(x_n)_n$ es de Cauchy y contiene alguna subsucesión convergente entonces $x_n$ es convergente
+      \item Si $(x_n)_n$ es convergente, entonces es de Cauchy
+  \end{enumerate}
+  \begin{proof}
+Ya probamos la $1)$ y la $3)$
+  $2)$ Sea $(x_{n_k})_k$ subsucesión convergente a $ x \in \E$.
+
+  Sea $\epsilon >0 \quad \exists k_1 / d(x_{n_k},x) < \frac{\epsilon}{2} \quad \forall k \geq k_1$
+
+  $x_n$ es de Cauchy, entonces $\exists n_1 / d(x_n,x_m) < \frac{\epsilon}{2} \quad \forall n,m \geq n_0$
+
+  Ahora tomemoes $n \geq n_0$ y sea $k \geq k_1 / n_{k} \geq n_0$
+
+  Con esto tenemos $d(x_n,x) \leq d(x_n,x_{n_{k}}) + d(x_{n_{k}},x) < \epsilon$
+  \end{proof}
+\end{theorem}
+\begin{definition}
+  Un espacio métrico $(\E,d)$ se dice completo si toda sucesión de Cauchy es convergente a un punto $x \in \E$ 
+\end{definition}
+\begin{ex}
+  $\R$ es completo y también $\R^n$ se vió en taller
+
+  Idea: Si $x_n$ es una sucesión de Cauchy, entonces por el teorema de arriba es acotada. Ahora sabemos que una sucesión acotada tiene una subsucesión convergente, entonces usando nuevamente el teorema , $x_n$ tiene que converger. Luego $\R$ es completo por que toda sucesión de Cauchy converge en $\R$ 
+\end{ex}
+\begin{ej}
+  Sea $\E$ un conjunto no vacío con la métrica discreta, es ¿$(\E,\delta) $ completo ?
+\end{ej}
+
+\begin{ex}
+  El espacio $C([0,1])$ es completo con $d_{\infty}(x,y) = \max_{t \in [0,1]} |x(t)-y(t)|$
+  \begin{proof}
+    Tomemos una sucesión de Cauchy $(x_n)_n \subseteq C([0,1])$ y $x_n: [0,1] \ra \R$.
+
+    Ahora dado $\epsilon >0$, $\exists n_0 \in \N /\max_{t \in [0,1]} |x_n(t) - x_m(t)| < \epsilon \quad \forall n,m \geq n_0 $
+
+    Ahora si fijo $t$ tenemos que $(x_n(t))_n \subseteq \R$ es una sucesión de Cauchy de $\R$ entonces como $\R$ es completo $\lim_{n \ra \infty} x_n(t) = x(t)$
+
+    Ahora sabemos dado que $x_n$ es de Cauchy , usando la definición podemos afirmar que si el máximo para cualquier $t \in [0,1]$ es menor que $\epsilon$ entonces
+
+    $|x_n(t) - x_m(t)| < \frac{\epsilon}{2} \quad \forall n,m \geq n_0 \quad \forall t \in [0,1]$
+
+    Ahora si hacemos que $m \ra \infty$ llegamos a $|x_n(t) - x(t)| \leq \frac{\epsilon}{2} < \epsilon \quad \forall n \geq n_0 \quad \forall t \in [0,1]$
+
+    Entonces $\max_{t \in [0,1]} |x_n(t) - x(t)| < \epsilon \quad \forall n \geq n_0$
+
+    Luego $x_n$ converge uniformemente a $x$ en $[0,1]$
+
+    Sabemos que entonces $x$ es continua entonces $x \in C([0,1])$
+
+    Pero además $d_{\infty} (x_n,x) \ra 0$ entonces $x_n$ converge
+  \end{proof}
+\end{ex}
+\begin{ex}
+  El espacio $C([0,2])$ no es completo con
+
+  $$ d_1(x,y) = \int_{0}^2 |x(t) - y(t)| dt$$
+  \begin{proof}
+    Miremos 
+$$
+x_n(t) = \left\{
+        \begin{array}{ll}
+            t^n & \quad 0 \leq t < 1 \\
+            1 & \quad 1 \leq t \leq 2
+        \end{array}
+    \right.
+$$  
+
+Ahora $x_n$ converge a $x$ dada por 
+$$
+x(t) = \left\{
+        \begin{array}{ll}
+            0 & \quad 0 \leq t < 1 \\
+            1 & \quad 1 \leq t \leq 2
+        \end{array}
+    \right.
+$$
+Pero esta función NO es continua, entonces no está en el espacio , pero entonces $x_n$ no convergia , por que no se puede converge a algo que no está en el espacio
+\end{proof}
+\end{ex}
+\begin{definition}
+  Dado $A \subseteq \E$, con $A \neq \emptyset$, se define su diámetro
+
+  $$ \delta(A) = \sup \{d(x,y) : x \in A , y \in A\}$$
+\end{definition}
+\begin{remark}
+  El diámetro no necesariamente es el doble del radio , por ejemplo sea $(\E,\delta)$ la bola $B(0,\frac{1}{2}) = \{0\}$
+
+  Entonces $\delta(B(0,\frac{1}{2})) = 0$
+\end{remark}
+\begin{ej}
+  $\delta(A) = \delta (\ol A)$
+  \begin{proof}
+    Una inclusión es fácil , la vuelta un poco mas dificíl
+  \end{proof}
+\end{ej}
+\begin{theorem}[Principio de encaje de Cantor ]
+  Sea $(\E,d)$ un e.m completo y una sucesión decreciente de conjuntos no vacíos $A_1 \supset A_2 \supset A_3 \supset \dots ,$ tales que $\delta(A_j) \ra 0$ cuando $j \ra \infty$, entonces existe un único $x \in \bigcap_n^{\infty} \ol{A_n}$
+\end{theorem}
+\begin{proof}
+  $A_n \neq \emptyset \forall n \in\N$ entonces $\exists a_n \in A_n$
+
+  Además $\delta (A_n) \ra 0$ entonces dado $\epsilon >0$ $\exists n_0/ \quad \delta(A_n) < \epsilon \quad \forall n \geq n_0$
+
+  Ahora sean $n,m \geq n_0$ entonces $a_n \in A_n \subseteq A_{n_0}$ y $a_m \in A_m \subseteq A_{n_0}$
+
+  Por lo tanto $d(a_n,a_m ) < \epsilon \quad \forall n,m \geq n_0$. Entonces $(a_n)_n$ es de Cauchy.
+
+  Como  $\E$ es completo $a_n$ es convergente a un $x \in \E$. Mostremos que $x \in \bigcap \ol{A_n}$
+
+  Sea $k \in \N$. Si $n \geq k$ sucede $a_n \in A_n \subseteq A_k$ entonces $(a_n)_{n \geq k} \subseteq A_k$
+
+Ahora esto es un subsucesión de $(a_n)_n$ por lo tanto converge a $x$ también luego tengo una sucesión contenida $A_k$ que converge a $x$ por lo tanto $x \in A_k$ y este $k \in \N$ era arbitrario entonces puedo hacerlo $\forall k \in \N$
+
+Entonces $x \in \bigcap_k^{\infty} \ol{A_k}$
+
+Supongamos que tenemos $x, x' \in \bigcap_n^{\infty} \ol{A_n}$ entonces para cada $n\in\N \quad x,x' \in \ol{A_n}$ entonces $d(x,x') \leq \delta(\ol{A_n}) = \delta(A_n) \ra 0$ entonces $d(x,x') \ra 0$ luego $x = x'$
+
+Entonces $x $ es el único en la intersección
+\end{proof}
+\begin{remark}
+  No vale si $\E$ no completo, por ejemplo $\E = (0,1)$ y $A_n = (0, \frac{1}{n})$ $\ol{A_n} = (0,\frac{1}{n}]$ 
+
+  Entonces $A_1 \supseteq A_2 \supseteq \dots $ y también $\delta (A_j) \ra 0$ sin embargo $\bigcap_{m\in \N} \ol{A_n} = \emptyset$
+
+  Pensar $\E = (C([0,1]),d_1)$ no es completo.
+
+  Sea $A_n = \{x \in C[0,1] / x(0) = 1 \quad \int_0^1|x(t)|dt \leq \frac{1}{n}\}$ 
+
+  Pensar si este ejemplo sirve. Observación tiene que ser no vacía la intersección y además tener un único elemento
+\end{remark}
+\begin{prop}
+  Sean $\E ,\E '$ espacios métricos, $\E '$ completo, y $D \subseteq \E$ un subconjunto denso. Si $f : D \ra \E '$ es uniformemente continua, entonces existe una única $F : \E \ra \E '$ uniformemente continua tal que $F|_d = f$
+\end{prop}
+
+\begin{theorem}
+  Sea $(\E,d)$ un e.m completo y $X \subseteq \E$ un subespacio. Entonces, $X$ es completo si y sólo si $X$ es cerrado (como subconjunto de $\E$)
+  \begin{proof}
+  $\Ra ) $ Sea $x \in \ol X \subseteq \E$ entonces $\exists (x_n)_n \subseteq X / \quad x_n \ra x$ esta sucesión converge en $\E$ pero no sabemos si converge en $X$
+
+Ahora como $x_n$ converge en $\E$ entonces es de Cauchy en $\E$ . Ahora como $d_X(x_n,x_m) = d_{\E}(x_n,x_m)$
+
+Ahora dado que la distancia en $X$ es la inducida por la distancia en $\E$ entonces esta sucesión también es de Cauchy en $X$, pero como $X$ es completo entonces esta sucesión converge en $X$.
+
+Entonces $\exists y \in X / \quad x_n \ra y$ y esto vale para ambas distancias $d_x,d_{\E}$
+
+Pero entonces $y = x $ luego $x \in X$. Luego dada una sucesión convergente en $X$ entonces converge en $X$ por lo tanto $X$ es cerrado
+
+$\Leftarrow )$ Sea $(x_n)_n \subseteq X$ de Cauchy. Como $d_X(x_n,x_m) = d_{\E}(x_n,x_m)$ entonces $(x_n)_n$ es de Cauchy en $\E$ como $\E$ es completo existe $a \in \E/ \quad x_n \ra a$
+
+Ahora $(x_n)_n \subseteq X$ y $x_n \ra a$ entonces $a \in \ol X = X$ por ser $X$ cerrado
+
+Entonces $x_n \ra a$ con $d_{\E}$ y sabemos $(x_n)_n \subseteq X$ y también $a \in X$ 
+
+Entonces $x_n \ra a$ con $d_X$ (esto sucede por que la distancia en $X$ es la inducida por $\E$) por lo tanto $(x_n)_n$ es convergente en $X$
+
+Esto lo podemos hacer para cualquier sucesión de Cauchy en $X$ por lo tanto $X$ es completo
+  \end{proof}
+\end{theorem}
+\begin{remark}
+  $d: \E \ra \E '$ continua, no necesariamente manda sucesiones de Cauchy en sucesiones de Cauchy, pero si es uniformemente continua si
+
+  Métricas equivalentes no necesariamente respetan completitud, algo es que es completo en una métrica puede no ser completo en otra métrica equivalente.
+  
+  Intuición si dos métridas $d,d'$ son equivalentes entonces $id: (E,d) \ra (E,d')$ es homeomorfismo, ahora como continuidad no necesriamente respeta sucesiones de Cauchy , entonces puede que esto nos mande sucesiones de Cauchy en sucesiones que no son de Cauchy
+
+  Ahora si en cambio son fuertemente equivalentes (uniformemente equivalentes) entonces si respetan completitud. Vale por que la identidad esta vez es uniformemente equivalente por lo tanto manda Cauchy en Cauchy
+
+  Es más, veremos mas adelante que si tenemos un homemorfismo uniforme entre dos espacios métricos cualquiera entonces uno va a ser completo si y sólo si el otro es completo 
+\end{remark}
+\begin{remark}
+  Si $\E = \Q$ su completación podría ser $\R$
+
+  Si $\E = (0,1)$ su completación sería $[0,1]$ (aunque $[-1,2]$ o $\R$ también sean completos que lo contienen)
+
+  Si $\E \subseteq M$ con $M$ completo, ¿la completación de $\E$ sería $M$?. No necesariamente, mejor tomar $\ol{\E}$
+\end{remark}
+\begin{definition} 
+  Sean $(\E,d), (\E,d')$ espacios métricos. Una función $T : \E \ra \E '$ se dice inmersión isométrica o función isométrica si $d'(T(x),T(x) = d(x,y) \quad \forall x,y \in \E$ (La diferencia con una isometríá es que esta es inyectiva)
+\end{definition}
+\begin{definition}
+  Sea $(\E,d)$ un espacio métrico. Decimos que el espacio métricos $(\hat{E},\rho)$ es una completación de $\E$ si existe una inmersión isométrica $T: \E \ra \hat{\E}$ tal que $T(\E)$ es denso en $\hat{\E}$ 
+\end{definition}
+\begin{remark}
+  Cuando uno tiene una inmersión isométrica podemos decir que el espacio en imagén es casi lo mismo que el espacio en el dominio
+
+Si quisieramos ser mas rigurosos en realidad la completación es el par $((\hat{E},\rho), T)$
+\end{remark}
+\begin{theorem}
+  Todo espacio métrico de $\E$ tiene una completación (puede ser completado). La completación es única salvo isometrías.
+\end{theorem}
+\begin{proof}
+  Para que que la completación es única debemos ver que dadas dos completaciones $((\hat{E},d_1),T)$ y $( (\hat{\E_2}, d_2),T_2 )$ 
+
+  Tenemos que ver que existe una isometría biyectiva $F :\hat{\E} \ra \hat{\E_2}$ lo que nos diría que $\hat{\E}$ y $\hat{\E_2}$ son escencialmente el mismo espacio
+
+  Pero además nos asegura que $F \circ T = T_2$ para esto usar ejercicio de extender un denso con una función uniformemente continua, sabiendo que las isometríás siempre son uniformemente continuas 
+
+  Ahora demostremos el teorema, usando una demostración de Cantor
+
+   
+\end{proof}
+\end{document}

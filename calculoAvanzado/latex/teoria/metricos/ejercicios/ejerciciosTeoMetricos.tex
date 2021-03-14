@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+
+
+
+\fancyhead[R]{Espacios Normados}
+\fancyhead[L]{Alumno Javier Vera}
+ \fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+Ejercicio 1
+
+Sea $x \in C[0,1]$,$\quad A = \{x \in C[0,1 ] / x(\frac{1}{2}) > 0\}$ es abierto
+
+\begin{proof}
+  Afirmo que para cualquier $x \in A$, tomamos $r = \frac{d_{\R}(x(\frac{1}{2}),0)}{2}$ entonces la bola $B(r,x) \subseteq A$ 
+
+  Sea $y \in B(r,x)$ entonces $d_{\infty}(y(t),x(t)) < r$
+
+  $$|y(1/2) - x(1/2) |  < \sup_{t \in [0,1]} |y(t) - x(t)| <  \frac{d_{\R}(x(\frac{1}{2}),0)}{2} = \frac{|x(\frac{1}{2})|}{2}$$
+
+ Ahora si expandimos los módulos tenemos
+
+ $$ - \left |\frac{x(1/2)}{2} \right | < y(1/2) - x(1/2) < \left |\frac{x(1/2)}{2} \right |$$
+
+Considerando que $x(1/2) > 0$
+
+$$\frac{1}{2}x(1/2) <  y(1/2) < \frac{3}{2} x(1/2)$$
+
+Finalmente $$0 < \frac{1}{2} x(1/2) < y(1/2)$$
+
+Entonces $y \in A \quad \forall y \in B(r,x)$
+
+Por lo tanto $B(r,x) \subseteq A \quad \forall x \in C[0,1]$ 
+
+Entonces todo punto de $A$ es interiór , otra forma de decir que $A$ es abierto
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Espacios Métricos}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+\begin{ej}
+  Consideremos $\ell_{\infty} = \{(x_n)_{n \in\N } \subseteq \R \text{ acotadas }\}$ con la distancia dada por $d_{\infty}(x,y)= \sup_{n\in\N}|x_n - y_n|$. Probar que el conjunto
+  $$ U = \{(x_n)_{n\in\N} \subseteq \R \text{ acotadas pero no convergentes}\}$$
+
+  es abierto y denso en $\ell_{\infty}$
+  \begin{proof}
+PARTE A: Abierto
+
+    Veamos que $U$ es abierto, tomemos un $x_n \in U$ ahora como este $x_n$ es acotado sabemos que tiene $\lim \inf x_n = I$ y $\lim \sup x_n = S$ ahora tomemos $r = \frac{d(S - I)}{4}$. Y vamos a probar que $B_r(x_n) \subseteq U$. Pero antes definamos dos bolas que seran útiles $B_1(S,r)$ y $B_2(I,r)$ los subíndice son solo para indentificarlas
+
+    Ahora por como tomamos $r$ la intersección de estas bolas es vacía , mas aún la distancia entre ellas es $2r$ (FALTA DEMOSTRAR ESTO)
+
+    Ahora sea $y_n \in B(x_n,r)$ veamos que pertenece a $U$ para eso veamos que es acotada y no convergente
+
+    Acotada: Tenemos que $d(y_n,x_n) \leq r$ para todo $n \in \N$ por lo tanto $\sup_{n \in \N} |y_n - x_n| \leq r$
+
+    Entonces $| y_n -x_n | \leq r $ para cada $n \in \N$ por lo tanto $x_n -r \leq y_n \leq x_n +r \quad \forall n \in \N$ 
+
+    Pero además sabemos que $x_n$ es acotada (pertenece a $\ell_{\infty}$) 
+
+    Entonces existe un $M$ tal que $x_n \leq M_1 \quad \forall n \in \N$ y un $M_0 \leq x_n \quad \forall n \in \N$ 
+
+    Luego $M_0 - r <y_n \leq M_1 + r $ por lo tanto es acotada
+
+    No convergente: Supongamos que $y_n$ es convergente $y_n \ra y$. Ahora puede ser que $y \in B_1$ o $y \in B_2$ o en ninguna de las dos. Supongamos que $y \in B_2$
+
+
+	  Por convergencia de $y_n$ sabemos que $\exists n_0 $ tal que $ y_n \in B_2 \quad \forall n \geq n_0$  
+
+    Por otro lado como $I$ es límite inferiór sabemos que hay infitos $k \in \N$ tal que $ x_k< S + r $ otra forma de decir que hay infinitos $x_k$ tal que $x_k \in B_1$ 
+
+    Pero entonces tenemos infinitos $x_k \in B_1$ e infinitos $y_n \in B_2$ que  por lo tanto cumplen $d(x_k,y_n) > 2r$.
+
+	  Luego existe algún $j \in \N$ tal que $d(x_j,y_j) > 2r$. Si no existiera dicho $j \in \N$ entonces para todo $j \in \N$ sucederia que $d(x_j,y_j) \leq 2r$
+
+	  Pero entonces $d(x_n,I) \leq d(x_n,y_n) + d(y_n,y) \leq 3r \quad \forall n \geq n_0$ lo que es absurdo , por que solo hay finitos $n < n_0$ y por ende habría finitos $x_n \in B_1$ mientras que sabemos que hay infinitos 
+
+	  Ahora sabiendo que existe algún par $x_n,y_n$ tal que $d(x_n,y_n) > 2r$ sucede entonces $d_{\infty}(x_n,y_n) = \sup{|x_n - y_n|}> d(x_j , y_j) > 2r$ lo que es absurdo por que $y_n \in B_1(x_n,r) \Ra d_{\infty}(x_n,y_n) < r$ 
+
+    Con un razonamiento análogo vemos que tampoco puede suceder que $y \in B_2$
+ 
+    Ahora supongamos que $y \notin B_2,B_1$ ahora $y$ puede estar justo en el borde de una pero no en el borde de las dos
+
+    Como $d(B_1,B_2) = 2r$, $B(y,r) \cap B_1 = \emptyset$ o $B(y,r) \cap B_2 = \emptyset$ 
+
+    Si ninguna de estas intersecciones fuera diferente de vacia tendria un $y_1 \in B(y,r) \cap B_1$ y un $y_2 \in B(y,r) \cap B_2$
+
+	  Entonces tendria dos elementos $y_1,y_2 \in B(y,r)$ tal que $y_1 \in B_1$ e $y_2 \in B_2$ entonces $d(y_1,y_2) > 2r$ (esto sucede por que las bolas son abiertas entonces $2r$ es un infimo pero no un mínimo, por lo tanto no hay dos elementos que tengan distancia justo $2r$ y todos tienen distancia mayor que $2r$) por lo tanto $diam (B(y,r)) > 2r$ lo que seria absurdo  
+
+    Sin pérdida de generalidades supongamos que $B(y,r) \cap B_1(S,r) = \emptyset$ entonces es fácil ver que $d(y,S) = l > r$ si no fuese así enotnces $d(y,S) \leq r$ entonces $y \in B_1$ lo que es absurdo
+
+    Pero ademas sabemos que tenemos una subsucesión de $x_n$ tal que $x_{n_k} \ra S$ y sabemos que $y_n \ra y$ por lo tanto $y_{n_k} \ra y$
+
+  Entonces sabemos por ejercicio de guía que $d(x_{n_k},y_{n_k}) \ra d(S,y) = l$
+
+  Por lo tanto para todo $\epsilon $ $\exists n_0$ tal que $l - \epsilon < d(x_{n_k},y_{n_k}) < l + \epsilon \quad $ $\forall n_k \geq n_0$ 
+
+  Y esto se puede hacer con un $\epsilon$ tan pequeño como se quiera
+
+    Luego como $l > r $ existe $\epsilon > 0$ tal que $l-\epsilon \geq r$ y esto vale para cualquier $\epsilon ' < \epsilon$ tambien
+
+	  Entonces $r \leq l - \epsilon ' < d(x_{n_k},y_{n_k})$ y como vale para infinitos $\epsilon '$ tenemos infinitos $x_{n_k}$ e $y_{n_k}$ que cumplen lo mismo , entonces existe algún $j \in \N$ tal que $d(x_j,y_j) > r$ lo que es absurdo por que recordamos $y_n \in B(x_n,r)$.
+
+    Finalmente $y \notin B_1 \cup B_2 $ $y \notin (B_1 \cup B_2 )^c$ entonces dicho $y$ no existe , por lo tanto $y_n $ no puede converger , por lo tanto $y_n \in U$ entonces $B(x_n,r) \subseteq U$ entonces $U$ es abierto
+
+  PARTE B) Densidad
+
+  \end{proof}
+\end{ej}
+\end{document}

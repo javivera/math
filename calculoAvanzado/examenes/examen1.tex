@@ -1,0 +1,160 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Exámen}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+
+\begin{document}
+$1)$ Definamos $\mathcal{B} = \{f(x) = ix : i \in \I = \R - \Q \}$ digamos las funciones que multiplican por un irracional.
+
+Estas son continuas por que $f(x) = x$ es continua , y continua por una constante es continua. Además es inyectiva por que la identidad es inyectiva
+
+Y además cuando las restringimos a $\Q$ $f|_{\Q} = iq \quad i \in \I \quad q \in \Q$ entonces $iq \in \I$ por que multiplicar un irracional por un racional cualquier siempre va a ser irracional por lo tanto si $f \in \mathcal{B}$ $f$ es continua y inyectiva, tambien $f(\Q) \subseteq \R - \Q$
+
+Pero entonces $f \in \mathcal{B} $ implica $f \in \mathcal{A}$ por lo tanto $\mathcal{B} \subseteq \mathcal{A}$ entonces $\# \mathcal{B} \leq \# \mathcal{A}$ 
+
+Ahora sabemos que $\mathfrak{c} = \# \I = \# \mathcal{B} \leq \# \mathcal{A}$ 
+
+Y por otro lado sabemos que $\mathcal{A} \subseteq \mathcal{C}(\R)$ por lo tanto $\# \mathcal{A} \leq \# \mathcal{C}(\R) = \mathfrak{c}$
+
+Entonces juntando todo $\mathfrak{c} \leq \# \mathcal{A} \leq \mathfrak{c}$ finalmente $\# \mathcal{A} = \mathfrak{c}$
+
+
+$2) a)$ $\Leftarrow )$ Sea $V$ abierto de $Y$ veamos que $f^{-1}(V)$ es abierto.
+
+$f^{-1}(V) = f^{-1}(V) \cap X  = f^{-1}(V) \cap \bigcup A_i = \bigcup f^{-1}(V) \cap A_i =\bigcup f^{-1}|_{A_i}(V) $
+
+Ahora por hipótesis cada $f^{-1}|_{A_i}$ es continua para cualquier $i \in I$ entonces $f^{-1}|_{A_i}(V)$ es abierto para cada $i \in I$
+
+Por lo tanto $\bigcup_{i \in I} f^{-1}|_{A_i}(V)$ es unión infinita (o finita dependiendo de la familia $I$) de abierto y por lo tanto es abierto, como queríamos ver
+
+Entonces $f$ es continua
+
+$\Ra )$  Sea $f$ continua supongamos que $f|_{A_j}$ no es continua, entonces existe un punto donde no es continua llamemoslo $x_j \in A_j \subseteq X$
+
+Negando continuidad sucede que: 
+
+$$ \exists \epsilon >0 \text{ tal que } \forall \delta >0 \quad \exists x_{\delta} \in A_j \subseteq X \text{ tal que } d(x_{\delta},x_j) < \delta \text{ pero } d(f(x_{\delta}),f(x_j)) > \epsilon $$
+
+Pero $x_j \in X$ y los $x_{\delta}$ que tomamos también estan en $X$ 
+
+Entonces existe $\epsilon >0$ tal que $\forall \delta >0$ existe $x_{\delta} \in X$ tal que $d(x_{\delta},x_j) < \delta$ pero  $d(f(x_{\delta}),f(x_j)) \geq \epsilon$
+
+parte b) Supongamos que la afirmación dice uniformemente continua en vez de continua.
+
+Sea $X = [0,2] \cup [3,6] \cup [7,14] \cup [15 , 30] ...$ y así sucesivamente  Este $X$ está en la hipótesis por que ambos todos esos intervalos cerrados tienen distancia mayor a cero
+
+Ahora si agarramos $f: X \ra Y$ dada por $f(x) = x^2$. Cuando restringimos $f$ a cualquiera de esos intervalos, tenemos una $f$ que es continua , restringida a un compacto , por Heine Borel $f$ restringida es uniformemente continua
+
+Sin embargo no $f : X \ra Y$ no es uniformemente continua, se puede ver usando las sucesiones $a_n = n$ y $b_n = n + \frac{1}{n}$. Es fácil ver que podemos tomar subsucesiones $a_{n_k},b_{n_j}$ que esten contenidas en $X$. Ahora como son subsucesiones convergen a lo mismo. 
+
+Entonces $d(x_n,y_n) \ra |y_n - x_n| =  |1 + \frac{1}{n} - n |=  |\frac{1}{n}| \ra 0$
+
+Y entonces lo mismo pasa con las subsucesiones entonces $d(a_{n_k},b_{n_k}) \ra 0$ cuando $n \ra \infty$
+
+Sin embargo $d(f(x_n),f(y_n)) \ra n^2 + 2+\frac{1}{n^2} - n^2 = 2 + \frac{1}{n^2} \ra 2 $ cuando $n \ra \infty$
+
+Y entonces lo mismo pasa con las subsucesiones por lo tanto $d(f(x_{n_k}),f(y_{n_k})) \ra 2$
+
+(Aclaración $f(x_{n_k})$ y $f(y_{n_k})$ son subsucesiones de $f(x_n)$ y $f(y_n)$ respectivamente , por lo tanto convergen a lo mismo que ellas por eso vale también) 
+
+Entonces $f: X \ra Y$ no es uniformemente continua por un ejercicio de la práctica, por lo tanto tenemos una función que mirada en los intervalos es uniformemente continua , pero mirándola completa no es uniformemente continua , lo que contradice la vuelta de la afirmación, haciendola falsa 
+
+
+$3)$ Sea $D = \{(q_n \subseteq \Q : (q_n) \text{ es periódica })\}$ Probemos que es numerable
+
+Sabemos que cualquier sucesión en $D$ se repite a partir de algún momento. Sea $P_k$ el conjunto de sucesiones que se repiten a partir del elemento $k$, $a_{n +k} = a_k$
+
+Ahora consideremos $f: P_k \ra \Q^k$ dada por $f(a_n) = (a_1, \dots ,a_k)$ que es biyectiva
+
+Es trivial que es biyectiva asi que lo voy a explicar rapidamente, 
+
+Inyectividad: $f(a_n) = f(b_n) \iff (a_1,\dots,a_k) = (b_1,\dots,b_n) \iff a_n = b_n $ (sucede por que son periódicas)
+
+Sobreyectividad: Dado cualquier $(q_1,\dots,q_k)$ existe algúna sucesión que repite ese período 
+
+Entonces $\# P_k = \# \Q^k = \# \N^k = \n$
+
+Ahora tenemos que $D = \bigcup_{n \in \N} P_k$ lo que significa que $D$ es unión numerable de numerables 
+
+Por lo tanto $D$ es numerable. Veamos que es denso
+
+Sea $x_n \in \R^{\N}$ veamos que en cualquier bola de centro $x_n$ hay algo de $D$
+
+Sea $r>0$ sabemos que existe un $k \in \N$ tal que $\frac{1}{k} < r$.
+
+Ahora teniendo ese $k$ armamos una sucesión $d_n^k$ tal que $d_n^k$ sea igual a $x_n$ en los primero $k$ términos y despues se repite por ser periódica
+
+Entonces $\hat{d}(x_n,d_n) = \sup_{n \in \N}\frac{d(x_n,d_n)}{n}$ Ahora en los primero $k$ términos $d(x_n,d_n) = 0$ por lo tanto $\hat{d} (x_n,d_n) = 0$
+
+Y en los siguientes términos a $k$ tenemos que $d(x_n,d_n) < 1$ por como está definida (esto vale siempre no solo para los términos mas grandes que $k$ en particular vale para los mas grandes que $k$)
+
+$\hat{d}(x_n,d_n) = \sup_{n \in \N} \frac{d(x_n,d_n)}{n} < \sup_{n \in \N} \frac{1}{n} \leq \sup_{n \in \N} \frac{1}{k} = \frac{1}{k} < r \quad \forall n \geq k$
+
+Esto último vale por que $\frac{1}{n} \leq \frac{1}{k} \quad \forall n \geq k$
+
+Luego $\hat{d}(x_n,d_n) = 0$ si $n < k$ y $\hat{d}(x_n,d_n) \leq r$ si $n \geq k$ por lo tanto $\hat{d}(x_n,d_n) < r \quad \forall n \in \N$
+
+Entonces $d_n \in B(x_n,r)$ y esto lo podemos hacer con cualquier $x_n \in \R^{\N}$ y cualquier $r$
+
+Finalmente $D$ es denso en $\R^{\N}$ y es numerable , por lo tanto $\R^{\N}$ es separable
+
+$4) $ No sé como se hace rombo en latex , asi que voy a llamar a la distancia rombo $d'$
+
+Por un lado sabemos que $d(x,y) \leq d(x,y)$ por lo tanto si una sucesión converge con $d$ entonces converge con $d'$
+
+Faltaría ver la otra desigualdad
+
+$c)$ Asumamos que el $b)$ es verdadero, sea $x_n \subseteq U \subseteq X$ de Cauchy , como $X$ es completo $x_n \ra x \in X$.
+
+Y por otro lado sabemos que $d(\{x_n\} , U^c) > 0$ 
+
+
+Pero entonces $x \in U$ si no $x$ estaría en $U^c$ pero al tener un sucesión de $U$ que converge a $x$ tengo distancias cada vez mas peqeñas , $\forall \epsilon \quad \exists n_0$ tal que $d(x_n,x) \leq \epsilon \quad \forall n \geq n_0$
+
+Por lo tanto $\inf_{n \in \N} d(x_n,x) = 0$ y este $x \in U^c$ entonces $d(x_n,U^c) = 0$ pero esto es absurdo por que dijimos que $d(\{x_n\}, U^c) > 0$
+
+Entonces $x$ debe estar en $U$ por lo tanto toda sucesión de Cauchy de $U$ converge en $U$
+
+Entonces $U$ es completo con la métrica $d|_{U \times U}$ y como es equivalente a la rombo, entonces es U con la métrica rombo es completa tambien
+\end{document}
