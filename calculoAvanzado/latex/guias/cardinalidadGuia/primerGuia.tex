@@ -34,7 +34,7 @@
 \newtheorem{corollary}{Corolario}[theorem]
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{prop}{Proposición}
-
+\newtheorem{ej}{Ejercicio} 
 
 
 \fancyhead[R]{Espacios Normados}
@@ -42,7 +42,9 @@
 \fancyhead[C]{Cálculo Avanzado}
 \begin{document}
 
-\noindent 1) Probar las siguientes igualdades
+\noindent
+
+\begin{ej} Probar las siguientes igualdades
 \begin{enumerate}[i.]
   \item $$B \setminus \bigcup_{i \in \I} A_{i} = \bigcap_{i \in \I} (B \setminus A_{i})$$
     \begin{proof}
@@ -77,7 +79,7 @@
 
     	Luego $x \in B$ y $x \notin A_{i}$ para algún $i \in \I$
 
-    	Entonces $x \in B$ y $x \notin \bigcap A_{i} \quad \forall i \in \I$
+    	Entonces $x \in B$ y $x \notin \bigcap A_{i}$
 
     	$\Ra x \in B \setminus \bigcap A_{i}$
     
@@ -93,24 +95,148 @@
     $\Ra x \in B \cap (\bigcup A_{i})$
     \end{proof}
 \end{enumerate}
-
+\end{ej}
 \newpage
 \noindent
-3) Sea $f : X \ra Y$ una función, $A, B $ subconjuntos de $X$
+
+\begin{ej}
+	Sea $A_n$ una familia de conjuntos y sea $A = \bigcup_{n \in\N}A_n$. Hallar una familia de conjuntos $B_n$ que verifique simultaneamente:
+	\begin{enumerate}
+		\item $B_n \subseteq A_n \forall n \in \N$
+		\item $B_k \cap B_j = \emptyset$ si $k \neq j$
+		\item $A = \bigcup_{n\in\N} B_n$
+	\end{enumerate}
+	\begin{proof}
+	Consideremos $A_n = A_n \setminus \bigcup_{n = 1}^{n-1} A_n$
+
+	\begin{itemize}
+		\item Es evidente $B_n \subseteq A_n$
+		\item Tomemos $n,m \in \N$ sin périda de generalidades consideremos $n < m$. 
+
+			Sabemos que $B_n \subseteq A_n \subseteq \bigcup_{i =1}^{m-1} A_n$ entonces $B_n \in \bigcup_{i = 1}^{m-1}A_n$
+	
+			Luego $B_n \cap B_m = B_n \cap ( A_m \setminus \bigcup_{i=1}^{m-1} A_n) =\emptyset$
+
+		\item sea $a \in A$ entonces el conjunto $\{ i \in \N :a \in A_i \}$ no es vacío. Ahora consideremos el minimo de este conjutno $m$. Tenemos entonces que $a \in A_m$ y que $a \notin A_j$ si $j < m-1$. 
+
+			Por lo tanto $a \in A_m \setminus \bigcup_{n=1}^{m-1}A_n = B_m \subseteq \bigcup B_m$. Por otro lado $a \in \bigcup B_n \subseteq \bigcup A_n = A$
+	\end{itemize}
+
+\end{proof}
+\end{ej}
+
+\begin{ej}
+	Sea $L$ un conjunto parcialmente ordenado en el cual todo subconjunto no vacío tiene máximo y mínimo. Probar que $L$ es una cadena finita.
+
+	\begin{proof}
+		Dado que todo subconjunto es comparable , entonces cualquier par de elementos es comparable , entonces todos son comparables , entonces tenemos una cadena.
+
+		Supongamos que es una cadena infinita.
+	\end{proof}
+\end{ej}
+\begin{ej}
+	
+	Probar que toda cadena es un retriculado distributivo
+	\begin{proof}
+		Dados dos elementos $a,b$ cualquiera de la cadena $A$, por ser cadena sabemos que $a\leq b$ or viceversa, supongamos $a\leq b$ sin pérdida de generalidades
+
+		Por reflexividad sucede también $a \leq a$ por lo tanto $a$ es una cota inferiór 
+
+		Veamos que es la mayor de las cotas , para cualquier otro $c$ cota inferior tenemos por definición de cota inferiór que $c \leq a \land c \leq b$ por lo tanto cualquier otra cota inferiór será menor que $a$ entonces $a$ es la mayór de las cotas inferiores ergo el ínfimo, lo mismo sucede con $b$ como supremo.
+
+		Entonces cualquier conjunto con dos elementos tiene supremo e ínifimo por lo tanto toda cadena es un reticulado.
+
+		Veamos que es distributivo 
+
+		Sean $a,b,c \in A$ devuelta por ser cadena , estos son comparables, supongamos sin pérdida de generalidades que $a\leq b \leq c$
+\newpage
+		Veamos que se cumplen las propiedades de distribución
+		\begin{itemize}
+
+		\item $a \lor (b \land c) = a \lor b = (a \lor b) \land c = (a \lor b) \land (c \lor b) $
+
+		\item $a \land (b \lor c) = a \land c = (a \land c) \lor a = (a\land c) \lor (a \land b)$ 
+
+			Entonces es distributivo
+	\end{itemize}
+
+\end{proof}
+\end{ej}
+
+\begin{ej}
+	Sea $\N$ la cadena de números naturales con el orden usual ¿Es $\N$ completo?
+\end{ej}
+
+\begin{ej}
+Sea $L$ un reticulado distributivo con máximo y mínimo. Probar que si un elemento de $L$ tiene un complemento, el complemento es único.
+\begin{proof}
+	Llamemos 1 al máximo y 0 al mínimo. Tomemos cualquier elemento de $L$ y veamos que tiene complemento único.
+
+	Sea $a \in L$ supongamos que tiene dos complementos $l$ y $l'$
+
+	Entonces tenemos que $l = 1 \land l = (x \lor l') \land l = (x\land l) \lor (l'\land l) = 0 \lor (l \land l' ) = l \land l'$
+
+	Lo mismo sucede si arrancamos con $l' = 1 \land l'$ llegamos a $l'= l'\land l$
+
+	Entonces $l = l'$
+\end{proof}
+\end{ej}
+
+\begin{ej}
+	Sea $L$ un conjunto parcialmente ordenado en el cual todo subconjunto no vacío tiene supremo. Supongamos que $L$ tiene mínimo. Probar que $L$ es un reticulado completo.
+
+	\begin{proof}
+		Por hipótesis sabemos que todo subconjunto tiene supremo en particular todo subconjunto con dos valores tiene supremo
+
+		Sabemos que dado cualquier conjunto con dos elementos, estos pueden o no ser comparables, si lo son , el minimo entre los dos es ínfimo del conjunto si no lo son 
+
+		Entonces todo par de elmentos tiene supremo e ínfimo , por lo tanto $L$ es un reticulado. 
+
+		La misma idea vale para subconjuntos de cualquier tamaño , por ende el reticulado es completo
+	\end{proof}
+\end{ej}
+
+\begin{ej}	
+	Sea $L$ una cadena. Diremos que un subconjunto $S$ de $L$ es un segmento inferiór si tiene la siguiente propiedad: Si $x \in S$ y $a < x$, entonces $a \in S$
+
+	Probar que son equivalentes:
+	\begin{enumerate}[i.]
+		\item L es un reticulado condicionalmente completo.
+		\item Para cada segmento inferior $S$ de $L$ distinto de $L$ y $\emptyset$, existe un elemento $u \in L$ tal que
+
+			$$ S = \{x \in L : x \leq u\} \quad o \quad S = \{ x \in L : x < u\}$$
+	\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	
+\end{ej}
+
+
+
+
+
+
+
+
+\begin{ej}
+Sea $f : X \ra Y$ una función, $A, B $ subconjuntos de $X$
 \begin{enumerate}[i.]
   \item $f(A \cup B) = f(A) \cup f(B)$
     \begin{proof}
     $\subseteq )$ Sea $y \in f(A \cup B)$ entonces $\exists x \in A \cup B /  f(x) = y$ 
 
-    Luego $x \in A$ y $ x \in B$ 
+    Luego $x \in A$ o $ x \in B$ sin pérdida de generalidades $x \in A$ 
 
-    Entonces  $ y = f(x) \in f(A)$ y por otro lado $y = f(x) \in B$
+    Entonces  $ y = f(x) \in f(A)$
 
-    Finalmente $y = f(x) \in f(A) \cup f(B)$
+    Finalmente $y = f(x) \in f(A) \cup f(B)$ 
 
-    $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ e $y \in f(B)$
+    $\supseteq )$ Sea $y \in f(A) \cup f(B)$ luego $y \in f(A)$ o $y \in f(B)$
 
-    Entonces $\exists x \in A  $ tal que $ f(x) = y $ luego $ x \in A \cup B$
+    Sin pérdida de generalidades supongamos $y \in f(A)$
+
+    Entonces $\exists x \in A  $ tal que $ f(x) = y $ por lo tanto $ x \in A \cup B$
 
     Luego $y = f(x) \in f(A \cup B)$
     
@@ -158,22 +284,29 @@
 
 	Sea $f(x) = 3 \quad \forall x \in X$ y $A = {1}, B={2}$
 
-	Luego $3 = f(A) \cap f(B) = 3 = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
+	Luego $f(A) \cap f(B) = \{3 \cap 3\} = \{3\} $ que es distinto a $f(A \cap B) = f(\{\emptyset\}) = \emptyset$
+
+	Por lo tanto $f(A \cap B) \subset f(A) \cap f(B)$
 
         \end{proof}
 
      \end{enumerate}
 \end{enumerate}
+\end{ej}
+	
 
-4) Sean $f: X \ra Y$ una función, $A \subseteq X$ y $B,B_{1},B_{2} \subseteq Y.$ Luego vale:
+
+
+\begin{ej}
+Sean $f: X \ra Y$ una función, $A \subseteq X$ y $B,B_{1},B_{2} \subseteq Y.$ Luego vale:
 
 \begin{enumerate}[i.]
   \item $A \subseteq f^{-1} (f(A))$
     \begin{proof}
       
-      Sea $x \in A$ luego $f(x) \in f(A)$ por lo tanto, como $ x\in f^{-1}(f(x)) \subseteq f^{-1}(f(A))$  
+      Sea $x \in A$ luego $f(x) \in f(A)$ por lo tanto, como $ f^{-1}(f(x)) \subseteq f^{-1}(f(A))$  
     
-    Entonces $x \in f^{-1}(f(A)) $ 
+      Entonces como $x \subseteq f^{-1}(f(x)) $ tenemos $x \subseteq f^{-1}(f(A)) $ 
   \end{proof}
   \item $f(f^{-1}(B)) \subseteq B$
     \begin{proof}
@@ -202,33 +335,35 @@
 
       Luego $f(x) \in Y \setminus B$
 
-      Finalmente $x = f^{-1}(f(x)) \in f^{-1}(Y \setminus B)$
+      Finalmente $x \in f^{-1}(f(x)) \subseteq f^{-1}(Y \setminus B)$
      \end{proof}
 
    \item $f^{-1}(B_{1} \cup B_{2}) = f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
       \begin{proof}
         $\subseteq )$ Sea $ x \in f^{-1}(B_{1} \cup B_{2})$ luego $f(x) \in B_{1} \cup B_{2}$
 
-	Luego $f(x) \in B_{1}$ por lo que $x \in f^{-1}(B_{1})$
+	Sin pérdida de generalidades supongamos  $f(x) \in B_{1}$ 
+
+	Entonces $x \in f^{-1}(f(x)) \subseteq  f^{-1}(B_{1}) \subseteq f^{-1}(B_1) \cup f^{-1}(B_2)$
 
 	Finalmente $x \in f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
 
-        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cup f^{1}(B_{2})$
+        $\supseteq )$ Sea $x \in f^{-1}(B_{1}) \cup f^{-1}(B_{2})$
 
-	Luego $x \in f^{-1}(B_{1})$ entonces $f(x) \in B_{1}$
+	Sin pérdida de generalidades supongamos  $x \in f^{-1}(B_{1})$ entonces $f(x) \in B_{1}$
 
 	Por tanto $f(x) \in B_{1} \cup B_{2}$
 
-	Finalmente $x \in f^{-1}(B_{1} \cup B_{2})$
+	Finalmente $x \in f^{-1}(f(x)) \subseteq f^{-1}(B_{1} \cup B_{2})$
       \end{proof}
 
     \item $f^{-1}(B_{1} \cap B_{2}) = f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
       \begin{proof}
         $\subseteq )$ Sea $x \in f^{-1}(B_{1} \cap B_{2})$ entonces $f(x) \in B_{1} \cap B_{2}$
 
-	Por lo que $f(x) \in B_{1}$ esto implica $x \in f^{-1}(B_{1})$
+	Por lo que $f(x) \in B_{1}$ esto implica $x \in f^{-1}(f(x)) \subseteq f^{-1}(B_{1})$
 
-	Tambien $f(x) \in B_{2}$ que implica $f(x) \in f^{-1}(B_{2})$
+	Tambien $f(x) \in B_{2}$ que implica $x \in f^{-1}(f(x)) \subseteq f^{-1}(B_{2})$
 
 	Finalmente $f(x) \in f^{-1}(B_{1}) \cap f^{-1}(B_{2})$
 
@@ -238,11 +373,13 @@
 
 	Entonces tenemos $f(x) \in B_{1} \cap B_{2} $
 
-        Finalmente $x \in f^{-1}(B_{1} \cap B_{2})$
+	Finalmente $x \in f^{-1}(f(x)) \subseteq f^{-1}(B_{1} \cap B_{2})$
       \end{proof}
  \end{enumerate}
 
-4)b) Sean $f: X \ra Y$ una función y $B_{i}$ Una familia infinita de subconjuntos de $Y$ vale:
+Generalizaciones: 
+
+Sean $f: X \ra Y$ una función y $B_{i}$ Una familia infinita de subconjuntos de $Y$ vale:
 
 \begin{enumerate}[i.]
   \item $f^{-1}(\bigcup B_{i}) = \bigcup f^{-1}(B_{i})$
@@ -251,7 +388,7 @@
 
       Luego $f(x) \in B_{j}$ para algún $B_{j}$
 
-      Por ende $x \in f^{-1}(B_{j}) \subseteq \bigcup f^{-1}(B_{i})$
+      Por ende $x \in f^{-1}(f(x)) \subseteq f^{-1}(B_{j}) \subseteq \bigcup f^{-1}(B_{i})$
 
       Finalmente $x \in \bigcup f^{-1}(B_{i})$
 
@@ -272,17 +409,19 @@
     La otra inclusión sale de la misma forma que todos los ejercicios arriba , queda como ejercicio para alguién con muchas ganas
 
 \end{enumerate}
+\end{ej}
 
-5) Sea $f: X \ra Y$ una función. Probar que $f(f^{-1}(B)) = B$ para cada $B \subseteq Y$ si y sólo si $f$ es suryectiva
+\begin{ej}
+Sea $f: X \ra Y$ una función. Probar que $f(f^{-1}(B)) = B$ para cada $B \subseteq Y$ si y sólo si $f$ es suryectiva
 
 \begin{proof}
  $\Leftarrow)$ Por ejercicio anteriór sabemos que $f(f^{-1}(B)) \subseteq B $ probemos la otra inclusión.
 
   Sea $y \in B$ luego $y \in Y$ como $f$ suryectiva $\exists x \in X$ tal que $f(x) = y$ equivalentemente $x = f^{-1}(y)$
 
-  Luego $y = f(x) = f(f^{-1}(y)) \in f(f^{-1}(B)) $
+  Luego $y = f(x) \in f(f^{-1}(y)) \subseteq f(f^{-1}(B)) $
 
-  Entonces $y \in f(f{-1}(B)) \quad \forall y \in B $ y por ende $B \subseteq f(f^{-1}(B))$ 
+  Entonces $y \in f(f^{-1}(B)) \quad \forall y \in B $ y por ende $B \subseteq f(f^{-1}(B))$ 
 
   Finalmente $B = f(f^{-1}(B)) $ para cualquier $B \subseteq Y$
 
@@ -296,8 +435,10 @@
 
   Finalmente $Y \neq f(f^{-1}(Y))$
 \end{proof}
-
+\end{ej}
 \noindent
+
+\begin{ej}
 6) Sea $f: X \ra Y$ una función. Luego las siguientes afirmaciones son equivalentes:
 \begin{enumerate}
   \item $f$ es inyectiva
@@ -320,29 +461,35 @@
 
   Luego $f(A \cap B) = f(A) \cap f(B)$
 
-$2 \Ra 3)$ Por ej anteriór sabemos que $A \cap B \subseteq f^{-1}(f(A \cap B))$. Probemos la otra inclusión 
-
-Sea $x \in f^{-1}(f(A \cap B))$ entonces $f(x) \in f(A \cap B)$
+  $2 \Ra 3)$ $\subseteq$) Sea $x \in f^{-1}(f(A \cap B))$ entonces $f(x) \in f(A \cap B)$
 
 Y como $f(A \cap B) = f(A) \cap f(B)$ tenemos $f(x) \in f(A) \cap f(B)$  
 
 Entonces $f(x) \in f(A)$ luego $x \in A$ por otro lado $f(x) \in f(B)$ luego $x \in B$
 
-Finalmente $x \in A \cap B$
+Finalmente $x \in A \cap B$ para cualquier par de $A$ y $B$
 
-$3 \Ra 4 )$ Supongamos que $f(A) \cap f(B) \neq \emptyset$ luego $\exists y \in f(A) \cap f(B)$
+$\supseteq$) Sea $x\in A \cap B$ entonces $f(x) \in f(A\cap B) = f(A) \cap f(B)$
 
-Luego tenemos $y \in f(A)$ entonces $\exists x \in A$ tal que $f(x) = y$
+entonces $x \in f^{-1}(f(A) \cap f(B)) = f^{-1}(f(A \cap B)) $
 
-Y también $y \in f(B)$ entonces $\exists x' \in B$ tal que $f(x') = y$
+Finalmente $x \in f^{-1}(f(A\cap B))$
 
-Entonces tenemos $x' = f^{-1}(f(x')) = f^{-1}(y) = f^{-1}(f(x)) = x$
+$3 \Ra 4$) Sea $A \cap B = \emptyset $ supongamos $f(A) \cap f(B) \neq \emptyset$ 
 
-Luego $x = x'$ por lo que $x \in A \cap B$ lo que es absurdo
+Entonces sea $y \in f(A) \cap f(B)$, luego $y \in f(A)$ y tambié $y \in f(B)$
 
-Provino de suponer $f(A) \cap f(B) \neq \emptyset$
+Por lo tanto existe un $a \in A$ tal que $f(a) = y$ y un $b\in B$ tal que $f(b) = y$
+
+Ahora tenemos que $b\in f^{-1}(y) = f^{-1}(f(a)) = f^{-1}(f(\{a\})) = \{a\}$
+
+Luego $b = a$ entonces $A \cap B \neq \emptyset$, lo que es absurdo.
+
+Provino de suponer que $f(A) \cap f(B) \neq \emptyset$
 
 Entonces $f(A) \cap f(B) = \emptyset$
+
+\newpage
 
 $4 \Ra 5 )$ Primero asumamos $A \neq B$ si fueran iguales es trivial
 
@@ -360,14 +507,28 @@ Luego $x \in A$ por ende $f(x) \in f(A)$
 
 Y tambien $x \notin B$ por ende $\{x\} \cap B = \emptyset$
 
-Por hipótesis (4) sabemos $\{f(x)\} \cap f(B)  = f(\{x\}) \cap f(B) = \emptyset$ entonces $f(x) \notin f(B)$
+Por hipótesis (4) sabemos $f(x) \cap f(B)  = f(\{x\}) \cap f(B) = \emptyset$ entonces $f(x) \notin f(B)$
 
 Finalmente $y = f(x) \in f(A) \setminus f(B)$
 
+$5 \Ra 1$) Supongamos que $f$ no es inyectiva , entonces existen $x \neq x'$ tal que $f(x) = f(x')$.
+
+Ahora sabemos que $y = f(x) \in f(\{x\}) = f(\{x\} \setminus \{x'\}) $ 
+
+Por hipótesis $f(\{x\} \setminus \{x'\}) = f(\{x\}) \setminus f(\{x'\}) = \emptyset$
+
+Luego $y \in\emptyset$ que es absurdo, provino de suponer que $f$ no era inyectiva
+
+Entonces $f$ es inyectiva
+
+Finalmente $1\Ra 2\Ra 3 \Ra 4 \Ra 5 \Ra 1$
+
 \end{proof}
 \end{enumerate}
+\end{ej}
+\begin{ej}
 
-7) Para cada subconjunto $S$ de un conjunto $A$ dado , se define la función característicade $S$, $X_{S}: A \ra {0,1}$, por 
+Para cada subconjunto $S$ de un conjunto $A$ dado , se define la función característicade $S$, $X_{S}: A \ra {0,1}$, por 
 
 
 $$
@@ -380,7 +541,7 @@ f(a) = \left\{
 $$
 \begin{enumerate}[i.]
   
-  \item $X_{S \cap T} = X_{S} \cap X_{T} $
+  \item $X_{S \cap T} = X_{S} \cdot  X_{T} $
     \begin{proof}
       Sea $a \in S \cap T$ entonces $X_{S \cap T}(a) = 1$
 
@@ -412,8 +573,10 @@ $$
     
     Caso IV) $a \notin S$ y además $a \notin T$ entonces $a \notin S \cup T$ y también $a \notin S \cap T$ es tambien trivial
 \end{enumerate}
-\newpage
-9) Sea $\sim$ una relación de equivalencia sobre un conjunto $A$. Para cada $a \in A$ se define el conjunto $S_{a} = \{b \in A : a \sim b\}$. Luego vale:
+\end{ej}
+
+\begin{ej}
+Sea $\sim$ una relación de equivalencia sobre un conjunto $A$. Para cada $a \in A$ se define el conjunto $S_{a} = \{b \in A : a \sim b\}$. Luego vale:
 
 \begin{enumerate}[i.]
   \item Para todo par de elementos $a_{1}, a_{2} \in A$ vale: $S_{a_{1}} = S_{a_{2}} \quad$ o $\quad S_{a_{1}} \cap S_{a_{2}} = \emptyset$
@@ -422,51 +585,52 @@ $$
 
       Veamos para completar que si uno no se da entonces el otro si se da.
 
-      $S_{a_{1}} \cap S_{a_{2}} \neq \empty$ tomamos el $x$ que esta en la intersección
+      Supongamos $S_{a_{1}} \cap S_{a_{2}} \neq \emptyset$ entonces tomamos el $x$ que esta en la intersección
 
-      Luego $x \sim a_{1}$ y por otro lado $x \sim a_{2}$
+      Luego $x \sim a_{1}$ y por otro lado $x \sim a_{2}$ (Transitividad)
 
       Luego sea $y_{1} \in S_{a_{1}} $ tenemos $y_{1} \sim a_{1} \sim x \sim a_{2}$ entonces $y_{1} \in S_{a_{2}}$ 
 
       Y sea $y_{2} \in S_{a_{2}}$ tenemos $y_{2} \sim a_{2} \sim x \sim a_{1}$ entonces $y_{2} \in S_{a_{1}}$
 
-      Finalmente es evidente que $S_{a_{1}} \neq S_{a_{2}}$ implica la intersección es vacía , si la intersección no fuera vacia tendriamos el argumento de arriba para ver que $S_{a_{1}} = S_{a_{2}}$ y esto sería absurdo
-    \end{proof}
+      Entonces $S_{a_1} = S_{a_2}$
 
-  \item $A = \bigcup_{a \in A} S_{a}$ 
+      Finalmente es evidente que $S_{a_{1}} \neq S_{a_{2}}$ implica la intersección es vacía , si la intersección no fuera vacia tendriamos el argumento de arriba para ver que $S_{a_{1}} = S_{a_{2}}$ y esto sería absurdo
+
+      En realidad no hacia falta el último parrafo por que arriba probe $\neg p \ra  q$ que es lo mismo que $\neg q \ra p$
+    \item $A = \bigcup_{a \in A} S_{a}$ 
 
     Esto es trivial, dada la definición del ejercicio , no veo que haya que resolver nada
 
+    Sea $a \in A$ entonces $a \sim a$ (Reflexividad) por lo tanto $a \in S_a$
 
+    Sea $x \in \bigcup S_a$ entonces $x \in S_a$ para algún a entonces por definición $x \in A$
+\end{proof}
 
 \end{enumerate}
+\end{ej}
 
-10) Sea $A$ tal que $\# A = n$ luego $\# \mathcal{P}(A) = 2^{n}$
+\begin{ej}
+	Sea $A$ una cadena y sea $B$ un conjunto parcialmente ordenado. Sea $f: A \ra B$ una función inyectiva para cual si $a,b \in A$ y $a \leq b$, entonces $f(a) \leq f(b)$. Probar $f(a) \leq f(b)$ implica $a \leq b$
+	\begin{proof}
+	\end{proof}
+\end{ej}
+\begin{ej} 
+Sea $A$ tal que $\# A = n$ luego $\# \mathcal{P}(A) = 2^{n}$
 
 Usaremos inducción
 
 \begin{itemize}
-  \item $n=1$, Luego $A = \{x\}$ tiene un elemento entonces $P(A) = \{ \emptyset , x \}$ esto cumple el caso base.
+	\item $n=1$, Luego $A = \{x\}$ entonces $P(A) = \{ \emptyset , x \}$ por lo que $\# \mathcal{P}(A) = 2^{1}$ esto cumple el caso base.
 
-  \item $n \Ra n+1$ Sea $A$ tal que $\# A = n$. Entonces $\exists x \in A$ Luego tomemos $B = A \setminus \{x\}$
+	\item Tomemos $A$ tal que $\# A = n + 1$ luego dado un $x \in A$ definimos $B = X \setminus \{a\}$ ahora sabemos que $\# B = n$ por lo que $\# \mathcal{P}(B) = 2^n$ (por hipótesis)
 
-    Por un lado sabemos ,por hipótesis, que $\# B \setminus \{x\} = n$ entonces tenemos $g: B \setminus \{x\} \ra \I_{n}$ biyectiva. Además es evidente que $\# \{x\} = 1$ 
+		Además $\# \{a\} = 1$ entonces $\# \mathcal{P}(B) = 2$
 
-    Luego existe tenemos $f: A \ra \I_{n+1}$ dada por 
+		Ahora $\mathcal{P}(A) = \mathcal{P}(B) + \mathcal{P}(\{x\}) = 2^n + 2 = 2^{n+1}$
 
-$$
-f(x) = \left\{
-        \begin{array}{ll}
-	  g(x) & \quad x \in B \setminus \{x\} \\
-           n+1 & \quad x \in \{x\} 
-        \end{array}
-    \right.
-$$
-Sabemos que $f$ biyectiva por como fue construida
-
-Luego $\# A = \# \I_{n + 1} =  n + 1$
   \end{itemize}
-
+\end{ej}
 \noindent 11) Sea $A$ un conjunto. Probar que son equivalentes:
 \begin{enumerate}
   \item A es infinito 
