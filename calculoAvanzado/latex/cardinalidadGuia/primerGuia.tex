@@ -643,7 +643,7 @@ Usaremos inducción
 \end{enumerate}
 
 \begin{proof}
-   $1 \Ra 2 )$ Como $A$ es numerable $A = \{x_{n} : n \in \N \}$
+   $1 \Ra 2 )$ Supongamos $A$ es numerable $A = \{x_{n} : n \in \N \}$
 
    Sea $x \in A$ luego $x = x_{j}$ para algún $j \in \N$.
   
@@ -663,7 +663,23 @@ $$
 
    Finalmente tenemos $f \circ g_{x} : A \ra A \setminus \{x\}$ que es biyectiva por composición
 
+   Ahora si $A$ es no numerable , sabemos que tenemos un $B \subseteq A$ que es numerable 
 
+   Entonces tenemos la función 
+
+$$
+h_{x}(j) = \left\{
+        \begin{array}{ll}
+	
+          j & \quad j \in A \setminus B \\
+	  f \circ g_x (j) & \quad j \in B
+        \end{array}
+    \right.
+$$
+
+Esta función va desde $A$ hacia $A \setminus B$ si los $x$ estan en $A \setminus B$ y va hacia $B \setminus \{x\}$ (para algún $x \in B\subseteq A$) para los que estan en $B$
+
+Por lo tanto $f: A \ra A \setminus \{x\}$ para algún $x \in A$
 \end{proof}
 
 $2 \Ra 3) $ Para cada $x_{n}$ Tengo $f_{x_{n}} : A \ra A \setminus \{x_{n}\}$ biyectiva.
@@ -784,7 +800,7 @@ $$
 
 Es evidentemente inyectiva, mas considerando que $A$ es disjunto con $B$ entonces podemos usar sus funciones ya biyectivas para verlo facilmente, también saldría tambien si no lo fueran!
 
-Inyectiva: Sean $a,a' \in A$ tal que $f(a) = f(a')$ entonces $2g(x) = 2g(x') \Ra g(x) = g(x')$ como $g$ biyectiva $x = x'$
+Inyectiva: Sean $a,a' \in A$ (es lo mismo si estan en B) tal que $f(a) = f(a')$ entonces $2g(x) = 2g(x') \Ra g(x) = g(x')$ como $g$ biyectiva $x = x'$. Si $x \in A$ y $x' \in B$ entonces $x \neq x'$ por que $A$ y $B$ son disjuntos
 
 Sobreyectiva , se pueden ver casos pares e impares , si $y \in \N$ es par seguro existe un $y' \in$ tal que $2y' = y$ y luego como $y'$ es natural seguro tiene preimagen dada por $g$ tal que $x \in \N$ y $g(x) = y'$. esto es cierto por que $g$ es sobreyectiva y ademas esta preimagen es única por que $g$ es inyectiva, entonces juntando todo existe un $x$ tal que f(x) = 2g(x) = 2y' = y
    
@@ -807,7 +823,7 @@ Sobreyectiva , se pueden ver casos pares e impares , si $y \in \N$ es par seguro
 
     Si $x\neq x'$ entonces $f_{x'}(m') \subseteq A_{x'}$ y también $A_{x} \supseteq f_{x}(m) $ como $ A_{x'} \cap A_{x} = \emptyset $ entonces $f_{x'}(m') \neq f_x(m)$ esto sería absurdo
 
-    Además sabemos que $f_x$ es inyectiva. Entonces como $f_x(m) = f_{x'}(m')$ sucede $m = m'$ 
+    Además sabemos que $f_x$ es inyectiva. Entonces como $f_x(m) = f_{x}(m')$ sucede $m = m'$ 
 
 
     Sea $y \in \bigcup A_{n}$ luego $y \in A_{i}$ para algún $i \in \N$ entonces tenemos $(i ,f^{-1}_{i} (y)) \in \N \times \N$ que es claramente preimagen de $y$. Esta preimagen existe por que $f_i$ es sobreyectiva para todo $i \in \N$
@@ -820,12 +836,12 @@ Sobreyectiva , se pueden ver casos pares e impares , si $y \in \N$ es par seguro
 
   Como $A$ es finito sabemos que $A^m$ es finito para cualquier $m \in \N$ además es evidente que son disjuntos para distintos $m$. Luego por ii) tenemos que $S$ es numerable ($\# S = \n$)
 
-Notemos que dado cualquier alfabeto hay mas números reales que palabras para nombrarlos. Esto vale por que dado un conjunto $A$ de todos los carácteres de cualquier alfabeto si hacemos $\bigcup_{m \in \N}A^{m}$ eso seria todas las palabras posibles de todas las longitudes posibles y acabamos de probar que esto es numerable, por lo tanto su cardinal es alpeh que es un cardinal mas chico que el de los numeros Reales , por lo tanto hay mas numeros reales que posibles palabras para nombrarlos
+Notemos que dado cualquier alfabeto hay mas números reales que palabras para nombrarlos. Esto vale por que dado un conjunto $A$ de todos los carácteres de cualquier alfabeto si hacemos $\bigcup_{m \in \N}A^{m}$ eso seria todas las palabras posibles de todas las longitudes posibles y acabamos de probar que esto es numerable, por lo tanto su cardinal es aleph que es un cardinal mas chico que el de los numeros Reales , por lo tanto hay mas numeros reales que posibles palabras para nombrarlos
 \end{enumerate}
 \end{ej}
 
 \begin{ej}
-Ej 15) Sean $A$ y $B$ conjuntos disjuntos, $A$ infinito y $B$ numerable entonces:
+ Sean $A$ y $B$ conjuntos disjuntos, $A$ infinito y $B$ numerable entonces:
 \begin{enumerate}
   \item Existe una biyeccion entre $A \cup B$ y $A$
     \begin{proof} 
@@ -842,22 +858,34 @@ Ej 15) Sean $A$ y $B$ conjuntos disjuntos, $A$ infinito y $B$ numerable entonces
 
   \item Si $A$ no numerable y $B \subseteq A$ numerable, existe una biyección entre $A \setminus B$ y $A$
     \begin{proof} 
-    Sabemos que $B$ es numerable luego podemos escribirlo como $B = \{b_{n}\}_{n \in \N}$ 
+	    Sabemos que $B$ es numerable y es directo ver que $A\setminus B$ es infinito , si no lo fuera sería contable, entonces $A \setminus B ) \cup B = A$ sería unión de numerable con contable , por lo tanto sería contable. Pero sabemos que $A$ no es contable.
 
-    De este modo es facil ver que existe $f:B \ra \N_{pares}$ dada por $f(b_{n}) =b_{2n}$ biyectiva
+	    Luego como $A \setminus B$ es infinito , existe un $C \subseteq (A \setminus B)$ tal que $C$ es numerable. Como $B$ también es numerable $B \cup C$ es numerable
 
-  Luego podemos armar $g: X \ra (X \setminus B) \cup B_{pares}$
+	    Luego existe una función biyectiva $f: C \ra B \cup C$
+
+	    Entonces podemos armar una función $g$
 
    $$
     g(x) = \left\{
         \begin{array}{ll}
-	  x  & \quad x \in x \notin B \\
-	  f(x)  & \quad x \in B 
+	  x  & \quad x  \notin C \\
+	  f(x)  & \quad x \in C 
         \end{array}
     \right.
     $$
 
-    Biyectiva. Entonces $ X \sim (X \setminus B) \cup B_{pares} \subseteq X $
+    Inyectiva, si $x ,x'\in A$ es obvio, si $x, x'\in C$ si tenemos $f(x) = f(x') $ como $f$ es inyectiva tenemos $x = x'$
+
+    Sobreyectiva dado un $x \in A$ entonces puede estar en $C$ o no, si $x \in C$ tenemos $f^{-1}(x)$ como pre imagen, si no tenemos a $x$ como preimagen
+
+    Ahora veamos $g: A \setminus B \ra A$ por un lado tenemos que $f((A\setminus B) \setminus C) = (A \setminus B )\setminus C$ por que en este caso es la identidad.
+
+    Y por otro lado $f (((A \setminus B)\setminus C)^c) = B \cup C$
+
+    Entonces $f(A\setminus B) = ((A\setminus B)\setminus C)) \cup (B\cup C) = A$
+
+
   \end{proof}
   \item Observación. Como $\R$ es no numerable y $\Q$ es numerable $\R \setminus \Q \sim \R$ entonces $\R \sim \I$
  

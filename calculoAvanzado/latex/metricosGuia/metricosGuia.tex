@@ -1,0 +1,1177 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Espacios Métricos}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+
+\begin{document}
+
+\begin{ej}
+  Toda colección de abiertos disjuntos de $\R^n$ es a lo sumo numerable. 
+
+  \begin{proof}
+    Por densidad de $\Q$ todo intervalo abierto $A_{i}$ de $\R$ tiene un $x_{i} \in \Q$ tal que $x_{i} \in A_{i}$ y como todos estos intervalos son disjuntos $x_{i} \neq x_{j} \quad j \neq i$. Por ende tenemos a los umo $\# \Q$ intervalos o lo que es lo mismo numerables intervalos
+
+    \begin{remark}
+      Si en cambio pueden ser cerrados los intervalos ya su cardinal no necesariamente es $\n$ 
+
+      Por ejemplo si tomamos los intervalos $[n \sqrt{2},(n+1) \sqrt{2} ]$
+    \end{remark}
+  \end{proof}
+\end{ej}
+
+\begin{ej}
+  Sea $G$ la colección de todas las bolas $B(q,r)$ de $R^n$ con centro $q \in \Q^n$ y radio racional $r$. Sea $S \subseteq \R^n$ abierto y $x \in S$. Probar que $\exists B \in G$ tal que $x \in B \subseteq S$
+
+  \begin{proof}
+  Primero probemos que dada cualquier bola abierta $B(x,r) \subseteq R^n$ de centro $x \in \R^n$ podemos encontrar algún $q \in \Q^n$ tal que $q \in B(x,r)$
+
+  Dada la bola , tomemos un $z \in B(x,r)$ ahora mirando coordenada a coordenada sabemos que para cada $i \in \{1,2,\dots,n\}$ existe un $q_{i} \in \Q$ tal que  $|x_{i} - q_{i}| \leq |x_{i} - z_{i}| $ por densidad de racionales en $\R$ en escencia esto es decir que entre dos numeros reales hay un racional , pero como aquí no sabemos en cada coordenada si $x_{i}$ mayor o menor que $y_{i}$ simplemente buscamos un racional que este más cerca de $x_{i}$, luego pudimos armar un $q = (q_{1},q_{2}, \dots ,q_{n}) \in \Q^n$ tal que $d(x,q) \leq d(x,y)$ esto sale de saber que cada modulo entre $x_{i} , q_{i}$ es mas pequeno que entre $x_{i},y_{i}$. 
+
+  Entonces $q \in \Q^n$ y ademas $q \in B(r,x)$. 
+  \begin{remark}Esto es equivalente a que $Q^n$ es denso en $R^n$ \end{remark}
+
+  Ahora pasamos al ejercicio. Dado $x \in S$ abierto , sabemos que existe $B(x,r) \subseteq S$. 
+
+  Ahora tomemos $r' \in \Q$ tal que $r' < \frac{r}{2}$ 
+
+  Miramos $B(x,r')$ por el lema inicial sabemos que existe $q \in B(x,r')$ tal que $q \in \Q^n$
+
+  Ahora si usamos $B(q,r')$ tenemos una bola que está contenida en $S$ y ademas $x \in B(q,r')$
+
+  Veamosló. Como $q \in B(x,r')$ entonces $d(x,q) \leq r'$ entonces $x \in B(q,r')$
+
+  Ahora tomemos un $p \in B(q,r')$ luego $d(p,q) \leq r'$ 
+
+  Teniendo esto en cuenta sabemos $d(p,x) \leq d(p,q) + d(q,x) \leq r' + r' < \frac{r}{2} + \frac{r}{2} = r$
+
+  Luego $\forall p \in B(q,r')$ tenemos $d(p,x) < r$ entonces $p \in B(x,r) \subseteq S$ entonces $B(q,r') \subseteq S$
+
+  Juntando todo $x \in B(q,r') \subseteq S$
+
+\end{proof}
+\end{ej}
+
+\begin{ej}
+  $Teorema$ $de$ $Lindelof.$ Sea $A \subseteq \R^n$ y $\mathcal{C} = (W_{i})_{i \in I}$ un cubrimiento por abiertos de $A$. Probar que existe un subcubrimiento numerable de $\mathcal{C}$ que cubre a $A$.
+
+  \begin{proof}
+    Sea $W_{i} \subseteq \mathcal{C}$ entonces como es un abierto por el ejercicio anteriór sabemos que para cada $x \in W_{i}$ existe $B(x',r)$ con $x' \in \Q$ y $r \in \Q$ tal que $x \in B(x',r) \subseteq W_{i}$
+
+    Y esto mismo podemos hacer para cada $W_{i}$ y para cada $x \in W_{i}$
+
+    Ahora teniendo esto en mente lo que hacemos para armar el subcubrimiento que buscabamos es para cada una de estas bolas de centro y radio racionales nos quedamos con un único $W_{i}$ que las contiene.
+
+    Esto es seguro un cubrimiento , por que para cada $x \in A$ tenemos un $W_{i}$ tal que $x \in W_{i}$ y por lo tanto una bola racional tal que $x$ está en esa bola y para cada una de esas bolas nos quedamos con un único $W_{i}$ por lo tanto cada $x \in A$ estan en algún $W_{i}$ de los que nos quedamos
+
+    Ahora por la forma en que armamos este subcubrimiento sabemos que a lo sumo tenemos igual cantidad de abiertos cubriendo que de bolas de centro racional y radio racional, pero el conjunto de todas las bolas de centro racional y radio racional , es facil ver que es a lo sumo numerable , por lo tanto este subcubrimiento es lo sumo numerable , de esta forma tenemos que efectivamente es subcubrimiento numerable (por que tiene menos cosas que el anteriór cubrimiento que era no numerable) y además por que es tambié un cumbrimiento
+  \end{proof}
+
+\end{ej}
+
+\begin{ej}
+  Sea $S \subseteq \R^n.$ Un punto $x \in \R^n$ es un punto de condensación de $S$ si toda bola $B$ centrada en $x$ tiene la propiedad de que $B \cap S$ es no numerable. Probar que si $S$ es no numerable entonces existe un punto $x \in S$ de condensación de $S$.
+
+\begin{proof}
+  Llamaré $S_{Con}$ al conjutno de los puntos de condensasión de $S$ por comodidad.
+
+  Supongamos que no existe punto de condensasión de $S$ , entonces $\forall x \in S$ $x \notin S_{con}$ 
+  
+  Entonces $\forall x_{i} \in S$ como $x_{i} \notin S_{con}$ luego existe un $r>0$ tal que $B(x_{i},r_{i}) \cap S$ es contable (lo contrario a no numerable)
+
+  Bueno ahora si tomamos la union de esas bolas $\bigcup_{i \in I} B_{i}$ tenemos un cubrimiento por abiertos de $S$ por que para cada $x \in S$ tenemos una bola
+
+  Luego por Lindelöf sabemos que hay un subcubrimiento numerable 
+
+  Luego tenemos este nuevo $S= \bigcup_{i \in \N} B_{i}$ cubrimiento con numerables bolas abiertas
+
+  Sabemos que $S \cap S = (\bigcup_{i \in \N} B_{i}) \cap S = \bigcup_{n \in \N} B_{i} \cap S$
+
+  Pero cada una de estas intersecciones tiene contables elementos por hipotesis. 
+
+  Luego tenemos que $S = \bigcup B_{i} \cap S$ es union numerable de cosas contables , por lo tanto es a lo sumo numerable
+
+  Pero entonces $S$ es a lo sumo numerable lo cual es absurdo. Dicho absurdo provino de suponer que no existia ningún punto de condensasión
+\end{proof}
+\end{ej}
+
+\begin{ej}
+  Sea $S \subseteq \R^n,$ probar que la colección de puntos aislados de $S$ es a lo sumo numerable.
+
+  \begin{proof}
+    Supongamos que el conjunto de los puntos aislados de $S$ notemosló $S_{aislados}$ es no numerable. 
+
+    Por el ejericio anteriór existe un $x \in S_{aislados}$ tal que $x$ es de condensasión.
+
+    Entonces $\forall r > 0$, $B(x,r) \cap S_{aislados}$ es no numerable.
+
+    Pero entonces $\forall r>0,$ $B(x,r) \cap S_{aislados} \neq \{x\} $ por que $\{x\}$ es finito
+
+    Luego , $\forall r>0, B(x,r)  \cap S \neq \{x\}$
+
+    Pero entonces $x$ no es un punto aislado, lo que es absurdo
+  \end{proof}
+\end{ej}
+\newpage
+\begin{ej} Ver si las siguuientes funciones son distancias.
+  \begin{itemize}
+    \item $d_{1}(x,y) = (x - y)^2$ No es distancia.
+      \begin{proof}
+	$d_{1}(-1,1) = 4 > 1 + 1 = d_{1}(-1,0) + d_{1}(0,1)$
+      \end{proof}
+    \item $d_{2}(x,y) = \sqrt{| x - y|}$ es una distancia
+      \begin{enumerate}
+	\item $d_{2}(x,y) = 0 \iff \sqrt{| x - y |} = 0 \iff |x-y| = 0 \iff x=y$
+	\item $d_{2}(x,y) = d_{2}(y,x)$ es trivial
+	\item $d_{2}(x,y)^2 = |x-y| < |x-z| + |z - y| \leq |x - z| + |z - y | + 2\sqrt{|x-z||z-y|} = (\sqrt{|x-z|}+ \sqrt{|z - y|})^2 = (d_{2}(x,z) + d_{2}(z,y))^2$ 
+      
+	  Luego $d_{2}(x,y)^2 \leq (d_{2}(x,z) + d_{2}(z,y))^2$
+
+	  Y es tirivial ver que entonces $d_{2}(x,y) \leq d_{2}(x,z) + d_{2}(z,y)$
+      \end{enumerate}
+    \item $d_{3}(x,y) = |x^2 - y^2|$ Es facil ver que no es distancia $d_{3}(-2,2) = 0$
+    \item $d_{4}(x,y) = |x -2y|$ Es trivial devuelta $d_{4}(2,1) = 0$
+    \item $d_{5}(x,y) = \frac{|x-y|}{1 + |x-y|}$ queda como ejercicio para el lectro , por que es un aburrimiento hacerlo
+\end{itemize}
+\end{ej}
+
+\begin{ej}
+  Es una clásica demostración de taller de cálculo.
+\end{ej}
+
+\begin{ej}
+  Sea $N : \Z \ra \R$ la funcion definida por 
+
+$$
+N(x) = \left\{
+        \begin{array}{ll}
+	  2^{-n} & \quad \text{si } a \neq 0, \quad p^n | a \quad  \text{ y } \quad p^{n+1} \nmid a  \\
+	  0 & \quad \text{si } a = 0
+        \end{array}
+    \right.
+$$
+
+\noindent donde $p$ es un primo fijo, y sea $d:\Z \times \Z \ra \R$ dada por $d(a,b) = N(a-b)$. Probar que $(\Z ,d)$ es un espacio métrico
+
+\begin{proof}
+  Primero definamos para cada entero no nulo $\phi_{p}(a)$ que es el mayor $n \in \N$ tal que $p^n |a $
+
+  Es simple ver $\phi_{p}(a) = \phi_{p}(-a)$ tambien $\phi_{p}(a + b) \geq \min{\{\phi_{p}(a),\phi_{p}(b)}\}$
+
+  Ahora podemos reescribir
+$$
+d(a,b) = \left\{
+        \begin{array}{ll}
+	  2^{-\phi_{p}(a-b)} & \quad \text{si } a \neq b  \\
+	  0 & \quad \text{si } a = b
+        \end{array}
+    \right.
+$$
+
+\begin{enumerate}
+  \item Sea $d(a,b) = 0$ entonces $a =b $ por definición , por que $2^n \neq 0 \quad \forall n \in \Z$
+  \item Asumiendo $a \neq b$ tenemos $d(a,b) = 2^{-\phi_{p}(a-b)} = 2^{-\phi_{p}(-(a-b))} = 2^{-\phi_{p}(-a+b)}= d(b,a)$
+  \item Ahora consideremos que $\phi_{p}(a - b) = \phi_{p}((a-c) + (c - b)) \geq \min{\{\phi_{p}(a-c) ,\phi_{p}(c-b)\}}$
+
+    Tambien supongo por comodidad $a \neq b \neq c$ por comodidad, si alguno fuera igual la demostración es trivial
+
+    \noindent $d(a,b) = 2^{-\phi_{p}(a-b)} \leq 2^{-\min{   \{\phi_{p}(a-c) ,\phi_{p}(c-b) \}}} = \min{ \{     2^{\phi_{p}(a-c)} ,2^{\phi_{p}(c-b)} \} } \leq 2^{\phi_{p}(a-c)}  + 2^{\phi_{p}(c-b)}$ 
+
+    Finalmente $d(a,b) \leq d(a,c) + d(c,b)$
+
+    Entonces $d$ es una métrica y por lo tanto $(\Z, d)$ es un pár conjunto, métrica o lo que es lo mismo , un espacio métrico
+\end{enumerate}
+\end{proof}
+\end{ej}
+
+
+\begin{ej}
+  Sean $X$ un conjunto y $\delta : X \times X \ra \R$ definida por
+$$
+\delta(x,y) = \left\{
+        \begin{array}{ll}
+	 1 & \quad \text{si } x \neq y  \\
+	  0 & \quad \text{si } x = y
+        \end{array}
+    \right.
+$$
+
+\noindent Verificar que $\delta$ es una métrica y hallar los abiertos de $(X, \delta)$
+
+\noindent Nota: $\delta$ se llama metrica discreta y $(X,\delta)$ espacio métrico discreto
+
+\begin{proof}
+  \begin{enumerate}
+    \item $\delta (x,y) = 0 \iff x = y$
+    \item Supongamos $x\neq y \Ra \delta (x,y) = 1 = \delta(y,x)$
+    \item Supongamos devuelta $x \neq y$ si no es obvio que vale , $\delta (x,y) = 1 \leq \delta (x,z) + \delta (z,y)$ esto vale seguro , por que no puede suceder $\delta (x,z) = \delta (z,y) = 0$ por que esto implicaría $x = z = y$ absurdo 
+  \end{enumerate}
+\end{proof}
+\end{ej}
+
+\begin{ej}
+  Sea $\ell_{\infty} = \{(a_{n})_{n \in \N} \subseteq \R : (a_{n})_{n \in \N} \text{ es acotada} \}$. Se considera $d: \ell_{\infty} \times \ell_{\infty} \ra \R$ definida por $d(a_{n},b_{n}) = \sup_{n \in \N}{|a_{n} - b_{n}|}$. Probar que $(\ell_{\infty},d)$ es un espacio métrico. 
+
+  \begin{proof}
+    \begin{enumerate}
+      \item $d(a_{n},b_{n}) = 0 \iff \sup_{n \in \N}{|a_{n} - b_{n}| = 0} \iff 0 \leq |a_{n} - b_{n}| \leq 0 \quad \forall n \in \N $
+
+$	\iff |a_{n} - b_{n}| = 0 \quad \forall n \in \N \iff a_{n} = b_{n} \quad \forall n \in \N$ 
+      \item $d(a_{n},b_{n}) = \sup_{n \in \N}|a_{n} - b_{n}| = \sup_{n \in \N}|b_{n} - a_{n}| = d(b_{n},a_{n})$
+      \item  Sabemos que $|a_{n} - b_{n}| \leq |a_{n} + c_{n}| + |c_{n} - b_{n}| $
+
+	$   \sup_{n \in \N}|a_{n} - b_{n}| \leq  \sup_{n \in \N}(|a_{n} + c_{n}| + |c_{n} - b_{n}|) =   \sup_{n \in \N}|a_{n} + c_{n}| +  \sup_{n \in \N}|c_{n} - b_{n}| $
+
+      $  d(a_{n},b_{n}) \leq d(a_{n},c_{n}) + d(c_{n},b_{n})  $
+    \end{enumerate}
+  \end{proof}
+\end{ej}
+
+
+\begin{ej}
+  Dados $a,b \in \R, a < b$, se define $\mathcal{C}[a,b] = \{f:[a,b ] \ra \R : f \text{ es continua}\}$. Probar que son espacios métricos.
+  \begin{enumerate}[i.]
+    \item $(\mathcal{C}[a,b],d_{1})$ con $d_{1}(f,g) = \int_{a}^{b} | f(x) - g(x)|dx$
+      
+    \item $(\mathcal{C}[a,b],d_{\infty})$, con $d_{\infty}(f,g) = \sup_{x \in [a,b]}|f(x) - g(x)|$
+      \begin{proof}
+Son demostraciones de taller	
+      \end{proof}
+  \end{enumerate}
+\end{ej}
+\newpage
+\begin{ej}
+Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conjunto $X_{1} \times X_{2}$ y la aplicación $d: (X_{1} \times X_{2}) \times (X_{1} \times X_{2}) \ra \R$ dada por $$d((x_{1},x_{2}),(y_{1},y_{2}) ) = d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2})$$ 
+
+\begin{enumerate}[(a)]
+    \item Probar que $d$ define una métrica en $X_{1} \times X_{2}$
+      \begin{proof}
+	\begin{enumerate}[i.]
+	  \item Por comodida tomemos $x = (x_{1},x_{2})$ e $y = (y_{1},y_{2})$  $d(x,y) = d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2})$ como ambas $d_{1},d_{2}$ son distancias entonces son mayores a $0$ entonces   $d((x_{1},x_{2}),(y_{1},y_{2})) \geq 0$
+	  \item $d(x,y) =  d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2}) =  d_{1}(y_{1},x_{1}) + d_{2}(y_{2},x_{2}) = d(y,x)   $
+	  \item $d(x,y) =  d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2}) \leq d_{1}(x_{1},z_{1}) + d_{1}(z_{1},y_{1}) + d_{2}(x_{2},z_{2}) + d_{2}(z_{2},y_{2}) = d(x,z) + d(z,y) $
+	\end{enumerate}
+	  \end{proof}
+    \item Construir otras métricas en $X_{1} \times X_{2}$
+
+Es evidente que va a funcionar con cualquier par $d_{1},d_{2}$ tales que ambas sean métricas
+  \end{enumerate}
+\end{ej}
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico y sean $A,B \subseteq X$
+  \begin{enumerate}
+    \item Probar las siguientes propiedades del interiór de un conjunto:
+      \begin{enumerate}
+	\item $$A^{\open} = \bigcup_{G \text{ abierto, } G \subseteq A} G$$
+	  \begin{proof}
+	  $\subseteq )$ Trivial dado que $A^{\open}$ es abierto mas grande contenido en  $A$
+	  
+	$\subseteq ) $ Sea $x \in \bigcup G$ entonces $x \in G$ para algún $G$ de la unión
+
+	Como $G$ es abierto existe $B(x,r) \subseteq G$ y por otro lado $G \subseteq A$
+
+	Entonces existe $B(x,r) \subseteq A$ entonces $x \in A^{\open}$
+	  \end{proof}
+	\item $\emptyset^{\open} = \emptyset$
+	  \begin{proof}
+	    Supongamos $\emptyset^{\open} \neq \emptyset$ entonces $\exists x \in X$ tal que $x \in \emptyset^{\open}$
+
+	    Luego tiene que existir $B(x,r) \subseteq \emptyset$ que es absurdo
+	  \end{proof}
+	\item $X^{\open} = X$
+	  \begin{proof}
+	  $\subseteq )$ Vale siempre
+
+	$\supseteq )$ Sea $x \in X$ supongamos que $x \notin X^{\open}$ entonces $\forall r>0 \quad B(x,r) \not\subseteq X$ entonces $\exists y \in B(x,r)$ tal que $y \notin X$
+
+	Absurdo por que $X$ es todo no pueden existir cosas que no esten en $X$
+	  \end{proof}
+	  \newpage
+	\item $A \subseteq B \Ra A^{\open} \subseteq B^{\open}$
+	  \begin{proof}
+	    Sea $x \in A^{\open}$ entonces existe $B(x,r) \subseteq A \subseteq B$ luego $x \in B^{\open}$
+	  \end{proof}
+	\item $(A \cap B)^{\open} = A^{\open} \cap B^{\open}.$ ¿Se puede generalizar a una intersección infinita?
+	  \begin{proof}
+	  $\subseteq )$ Sea $x \in (A \cap B)^{\open}$ entonces existe $B(x,r) \subseteq A \cap B$
+
+	  Pero entonces $B(x,r) \subseteq A$ por lo que $x \in A^{\open}$
+
+	  Tambien $B(x,r) \subseteq B$ por lo que $x \in B^{\open}$
+
+	  Luego $x \in A^{\open} \cap B^{\open}$
+
+	$\supseteq )$ Sea $x \in A^{\open} \cap B^{\open}$ entonces $x \in A^{\open}$ y $x \in B^{\open}$ 
+
+	Entonces existe $B(x,r_{1}) \subseteq A$ y también $B(x,r_{2}) \subseteq B$
+
+	Si tomamos $r = \min{ \{r_{1},r_{2}\}}$ tenemos que $B(x,r) \subseteq A$ y tambien $B(x,r) \subseteq B$
+
+      Entonces $B(x,r) \subseteq A \cap B$ finalmente $ x \in (A \cap B)^{\open}$
+	  \end{proof}
+	\item $(A \cup B)^{\open} \supseteq A^{\open} \cup B^{\open}$ ¿Vale la igualdad?
+	  \begin{proof}
+	    $x \in A^{\open} \cup B^{\open}$ entonces $x$ esta en alguno de los dos o los dos interiores
+
+	    Supongamos $x \in A^{\open}$ entonces existe $B(x,r) \subseteq A \subseteq A \cup B$
+
+	    Entonces $x \in (A \cup B)^{\open}$
+
+	    Si esta en ambos , en particular esta en una , asi que usamos lo de arriba nuevamente
+
+	    No vale la igualdad por ejemplo $A = [1,2]$ y $ B =  [2,3]$
+
+	    $A^{\open} \cup B^{\open} = (1,2) \cup (2,3) \neq (1,3) = ([1,3])^{\open} = (A \cup B)^{\open}$
+	  \end{proof}
+      \end{enumerate}
+    \item Probar las siguiente propiedades de la clausura de un conjunto
+      \begin{enumerate}
+	\item $$\ol A = \bigcap_{F \text{ cerrado, } A \subseteq F} F$$
+	  \begin{proof}
+	    Sea $x \in \ol A$ entonces $\forall r>0 , B(x,r) \cap A \neq \emptyset$ ahora supongamos $x \notin F$
+
+	    Como $F = \ol F$ por ser cerrado, entonces $x \notin \ol F$ para algún $F$ en la intersección
+
+	    Entonces $\exists r'>0$ tal que $B(x,r') \cap F = \emptyset$
+
+	    Pero esto es absurdo dado que $A \subseteq F$ tenemos $\emptyset \neq B(x,r') \cap A \subseteq B(x,r') \cap F = \emptyset$
+
+	    Entonces $x \in \ol F = F$
+
+	    Y esto vale para cualquier $F$ cerrado tal que $A \subseteq F$
+
+	    Entonces $x$ esta en todos estos $F$ y por ende en la intersección
+
+	$\supseteq )$ Sea $x \in \bigcap F$ entonces $x \in F$ para todo $F = \ol F$ por que es cerrado por lo tanto $x \in \ol F$
+
+	Supongamos que $x \in \bigcap F$ pero $x \notin \ol A$ entonces tiene que existir un $r>0$ tal que $B(x,r) \cap A = \emptyset$ luego tenemos que $A \subseteq X \setminus B(x,r)$ que ademas es cerrado por que es el complemento de $B(x,r)$ que es abierto
+
+	Pero entonces $X \setminus B(x,r)$ es un cerrado que contiene a $A$ por ende es uno de los $F$ en la intersección
+
+	Entonces $x \in X \setminus B(x,r)$ lo cual es absurdo
+
+	Provino de suponer que existia un $r>0$ tal que $B(x,r) \cap A = \emptyset$
+
+	Entonces $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$ por lo tanto $x \in \ol A$
+	  \end{proof}
+	\item $\ol \emptyset = \emptyset$
+	  \begin{proof}
+	    Supongamos que son diferentes entonces $\exists x \in X$ tal que $x \in \ol \emptyset$
+
+	    entonces $\forall r>0 \quad B(x,r) \cap \emptyset \neq \emptyset$ lo cual es absurdo
+	  \end{proof}
+	\item $\ol X = X$
+	  \begin{proof}
+	  $\supseteq )$ Ya está demostrada
+
+	$\subseteq ) $ Sea $x \in \ol X$ seguro tambien $x \in X$ por que no existe tal que $x \notin X$
+
+	Notemos que $X$ es el conjunto universal
+	  \end{proof}
+	\item $A \subseteq B \Ra \ol A \subseteq \ol B$
+	  \begin{proof}
+	    Sea $x \in \ol A$ entonces $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$
+
+	    Tambien sabemos que $A \subseteq B$ entonces $B(x,r) \cap A \subseteq B(x,r) \cap B$
+
+	    Entonces $\forall r>0 \quad B(x,r) \cap B \neq \emptyset$ luego $x \in \ol B$
+	  \end{proof}
+	\item $\ol{A \cup B} = \ol A \cup \ol B$ ¿ Se puede generalizar a unión infinita?
+	  \begin{proof}
+	$\subseteq ) $ Sea $x \in \ol{A \cup B}$ luego $\forall r>0 \quad B(x,r) \cap (A \cup B) \neq \emptyset$
+
+	Supongamos $x \notin \ol A \cup \ol B$ entonces $x \notin \ol A$ y $x \notin \ol B$
+
+	Entonces $B(x,r_{1}) \cap A = \emptyset$ y por otro lado $B(x,r_{2}) \cap B = \emptyset$
+
+	Luego sea $r = \min{\{r_{1},r_{2}\}}$ tenemos que 
+      $$B(x,r) \cap (A \cup B) \subseteq (B(x,r) \cap A) \cup (B(x,r) \cap B) \subseteq (B(x,r_{1}) \cap A ) \cup (B(x,r_{2}) \cap B) = \emptyset $$
+
+      Absurdo entonces no puede ser que $x \notin \ol A$ y $x \notin \ol B$
+
+      $\supseteq ) $ Sea  $x \in \ol A \cup \ol B$ supongamos $x \in \ol A$ luego $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$
+
+    Entonces dado que $B(x,r) \cap A \subseteq B(x,r) \cap (A \cup B)$ 
+
+    Tenemos $B(x,r) \cap (A \cup B) \neq \emptyset$ por lo que $x \in \ol{A \cup B}$
+	  \end{proof}
+	\item $\ol{A \cap B} \subseteq \ol A \cap \ol B$
+	  \begin{proof}
+	    Sea $x \in \ol{A \cap B}$ entonces $\forall r>0 \quad B(x,r) \cap (A \cap B) \neq \emptyset$
+
+	    Entonces tenemos $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$ por lo que $x \in \ol A$
+
+	    Y tambien $\forall r>0 \quad B(x,r) \cap B \neq \emptyset$ por lo que $x \in \ol B$
+
+	    Entonces $x \in \ol A \cap \ol B$
+
+	  Sea $A = \Q$ y $B = \R \setminus \Q \quad \ol{A \cap B} = \ol{\emptyset} = \emptyset \neq \R = \R \cap \R = \ol \Q \cap \ol{ \R \setminus \Q} = \ol A \cap \ol B$ 
+	  \end{proof}
+	  \newpage
+	\item $x \in \ol A \iff$ existe una sucesión $(x_{n})_{n \in \N} \subseteq A$ tal que $x_{n} \longrightarrow x$
+	  \begin{proof}
+	  $\Ra )$ Sea $x \in \ol A$ entonces $\forall n \in \N \quad  B(x,\frac{1}{n}) \cap A \neq \emptyset$
+	
+	  Entonces $\forall n \in \N$ existe $a_{n} \in A \cap B(x,\frac{1}{n})$ entonces $a_{n} \in A$ y $a_{n} \in B(x,\frac{1}{n})$
+
+	  Que es lo mismo que decir $\forall \epsilon > 0 \quad \exists a_{n} \in A$ tal que $ d(x,a_{n})\leq \epsilon$
+
+	  Por lo tanto $\forall \epsilon > 0 \quad \exists n_{0}$ tal que $\forall n \geq n_{0} \quad d(x,a_{n}) \leq \epsilon$
+
+	$\Leftarrow ) $ Sea $a_{n} \in A \quad \forall n \in \N$ tal que $a_{n} \ra x $
+
+	Entonces $\forall \epsilon > 0 \quad \exists a_{n} \in A $ tal que $d(x,a_{n}) \leq \epsilon$
+
+	Luego $\forall \epsilon > 0$ tenemos $a_{n} \in B(x, \epsilon)$ con $a_{n} \in A$
+
+      Por lo que $B(x,\epsilon) \cap A \neq \emptyset$
+
+      Entonces $x \in \ol A$
+	\end{proof}
+      \end{enumerate}
+
+    \item Probar las siguientes propiedades que relacionan interiór y clausura:
+      \begin{enumerate}
+	\item $(X \setminus A)^{\open} = X \setminus \ol A$
+	  \begin{proof}
+	  $\subseteq ) $ Sea $x \in (X\setminus A)^{\open}$ entonces existe $r>0$ tal que $B(x,r) \subseteq (X \setminus A)$
+
+	    Entonces $B(x,r) \cap A = \emptyset$ luego $x \notin \ol A$ y sabemos que $x \in X$
+
+	    Entonces $x \in X \setminus \ol A$
+
+	  $\supseteq )$ Sea $x \in X \setminus \ol A$ entonces $x \notin \ol A$
+
+	  Entonces $\exists r>0 \quad B(x,r) \cap A = \emptyset$
+
+	Por lo tanto $B(x,r) \subseteq X \setminus A$ luego $x \in (X \setminus A)^{\open}$
+	  \end{proof}
+	\item $\ol{X \setminus A} = X \setminus A^{\open}$
+	  \begin{proof}
+	  $\supseteq )$ Sea $x \in X\setminus A^{\open} \iff x \notin A^{\open} \iff \forall r > 0 \quad B(x,r) \not\subseteq A$ 
+
+	  $\iff \forall r>0 \quad B(x,r) \cap (X\setminus A) \neq \emptyset \iff x \in \ol{X \setminus A}$
+	  \end{proof}
+	\item ¿Es cierto que vale $\ol A = \ol{A^{\open}}$?
+	  \begin{proof}
+	    Si $A \subseteq \R$ con $A = \{1\}$ entonces $\ol A = \{1\} \neq \emptyset = \ol{\emptyset} = \ol{A^{\open}}$
+	  \end{proof}
+	\item ¿Es cierto que vale $A^{\open} = (\ol A)^{\open}$? 
+	  
+	  $\Q^{\open} = \emptyset \neq \R = \R^{\open} = (\ol{\Q})^{\open}$
+      \end{enumerate}
+
+    \item Probar las siguientes propiedades de la frontera de un conjunto
+      \begin{enumerate}
+	\item $\partial A = \ol A \cap \ol{X \setminus A}$
+	  \begin{proof}
+	  $\subseteq )$ $x \in \partial A \iff \forall r>0 \quad B(x,r) \cap A \neq \emptyset$ y $B(x,r)\cap A^c \neq \emptyset $ 
+
+	  $\iff x \in \ol A$ y $x \in \ol{A^c} = \ol{X \setminus A} \iff x \in \ol A \cap \ol{X \setminus A}$
+	  \end{proof}
+	  \newpage
+	\item $\partial A$ es cerrado
+	  \begin{proof}
+	    Esto es equivalente a ver que $\partial A = \ol{\partial A}$ una de las inclusiones es trivial
+
+	    Veamos que $\ol{\partial A} \subseteq \partial A$. Sea $x \in \ol{\partial A}$ entonces $\forall r>0 \quad B(x,r) \cap \partial A \neq \emptyset$
+
+	    Luego  $\forall r>0 \quad B(x,r) $ tenemos un $y \in \partial A$ tal que $y \in B(x,r)$
+
+	    Como $y \in B(x,r)$ que es abierto $\exists r'$ tal que $B(y,r') \subseteq B(x,r)$
+
+	  Como $y \in \partial A$ entonces $\forall r$ tenemos $B(y,r) \cap A \neq \emptyset$ y $B(y,r) \cap A^c \neq \emptyset$
+
+	  En particular vale para $r'$, entonces $B(y,r') \cap A \neq \emptyset$ y $B(y,r') \cap A^c \neq \emptyset$
+
+	  Entonces $\emptyset  \neq B(y,r') \cap A \subseteq B(x,r) \cap A$ y tambien sucede con $A^c$
+
+	  Entones $x \in \partial A$
+
+	  Otra opción es usar el ejercicio de arriba, como $\partial A = \ol A \cap \ol{X\setminus A}$ que es una intersección de dos cerrados entonces es cerrado 
+	  \end{proof}
+	\item $\partial A = \partial{(X \setminus A)}$
+	  \begin{proof}
+	  Esto sale por definición usando que $A^c = X \setminus A$ y que $A = (X\setminus A)^c$
+	  \end{proof}
+      \end{enumerate}
+  \end{enumerate}
+\end{ej}
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico y sean $G \subseteq X$ abierto y $F \subseteq X$ cerrado. Probar que $F \setminus G$ es cerrado y $G \setminus F$ es abierto
+  \begin{proof}
+    
+  \end{proof}
+\end{ej}
+
+\begin{ej}
+Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bola cerrada de centro $a$ y radio $r$ al conjunto $\ol{B}(a,r) = \{x \in X : d(x,a) \leq r\}$
+\begin{enumerate}
+  \item Probar que $\ol{B}(a,r)$ es un conjunto cerrado y que $\ol{B(a,r)} \subseteq \ol{B}(a,r)$
+    \begin{proof}
+      Sea $y \in X \setminus \ol{B}(x,r)$, entonces $d(x,y) > r$ por lo tanto $\epsilon = d(x,y) -r > 0$
+
+      Ahora sea $z \in B(y,\epsilon)$ entonces $d(z,x) + d(z,y) \geq d(x,y)$
+
+      Luego $d(z,x) \geq d(x,y) - d(z,y) > d(x,y) - \epsilon = r $
+
+      Entonces $z \in X \setminus \ol{B}(x,r) \quad \forall z \in B(y,\epsilon)$
+
+      Por lo que $\forall y \in X \setminus \ol{B}(x,r) \quad \exists B(y,\epsilon) $ tal que $ B(y,\epsilon) \subseteq X \setminus \ol{B}(x,r)$
+
+      Finalmente $X \setminus \ol{B}(x,r)$ es abierto entonces $\ol{B}(x,r)$ es cerrado
+
+      Como sabemos que $B(x,r)\subseteq \ol{B}(x,r)$ y ahora sabiendo que $\ol{B}(x,r)$ cerrado
+
+      Entonces $\ol{B(x,r)} \subseteq \ol{B}(x,r)$
+    \end{proof}
+  \item Dar un ejemplo de un espacio métrico y una bola abierta $B(a,r)$ cuya clausura no sea $\ol{B}(a,r)$
+
+    Esto es dar un ejemeplo donde $\ol{B(x,r)} \not\supseteq \ol{B}(x,r)$
+
+    Consideremos el espacio métrico $(\Z,\delta)$ donde $\delta$ es la distancia discreta 
+
+    Para cualquier $x \in \Z$ tenemos $\ol{B(x,1)} = \ol{\{x\}} = \{x\}\not\supseteq \Z = \ol{B}(x,1)$
+\end{enumerate}
+\end{ej}
+
+\newpage
+\begin{ej}
+  Sean $(X,d_{1})$ e $(Y,d_{2})$ espacios métricos. Se considera el espacio métrico $(X \times Y , d)$, donde la $d$ es la métrica definida en el Ejercicio 12. Probar que para $A \subseteq X$ y $B \subseteq Y$ valen: 
+  \begin{enumerate}
+    \item $(A\times B)^{\open} = A^{\open} \times B^{\open}$
+      \begin{proof}
+
+	Veamos primero que dados $U$ y $V$ abiertos de $X$ e $Y$ respectivamente entonces $U \times V$ es abierto de $X\times Y$.
+
+	Sea $(x,y) \in U \times V$. como $x \in U$ que es abierto existe $B(x,r_{1}) \subseteq U$ 
+
+	Y lo mismo con $y$ existe $B(y,r_{2}) \subseteq V$
+
+	Ahora si tomamos $r = \min{\{r_{1},r_{2}\}}$
+	
+	Sea $x \in (A \times B)^{\open}$ entonces $\exists r>0$ tal que $B(x,r) \subseteq A \times B$
+
+	Si $(x',y') \in B_{r}(x,y) \quad r > d((x,y),(x',y')) = d_{1}(x,x') + d_{2}(y,y') $. Ambos sumandos son positivos por ser distancias. Luego ambos sumandos tienen que ser menores que $r$
+
+	Entonces $d_{1}(x,x') < r \leq r_{1} $ entonces $x' \in B(x,r_{1}) \subseteq U$
+
+	Y también $d_{2}(y,y') < r \leq r_{2}$ entonces $y' \in B(y,r_{2}) \subseteq V$
+
+	Entonces $(x',y') \in U \times V$ luego $B_{r}(x,y) \subseteq U \times V$
+
+	Entonces para cualquier $(x,y) \in U \times V$ encontramos $B_{r}(x,y) \subseteq U \times V$
+
+	Luego $U \times V$ es abierto.
+
+	Luego como $A^{\open}$ y $B^{\open}$ abierto entonces $A^{\open} \times B^{\open}$ abierto 
+
+	Luego dado que $A^{\open} \times B^{\open} \subseteq A \times B$ y $A^{\open} \times B^{\open}$ es abierto. Entonces $A^{\open} \times B^{\open} \subseteq (A \times B)^{\open}$
+
+	Veamos $A^{\open} \times B^{\open} \supseteq (A \times B)^{\open}$
+
+	Sea $(x,y) \in (A \times B)^{\open}$ entonces existe $r>0 \quad B_{r}(x,y) \subseteq (A \times B)$
+
+	Entonces si $x' \in B(x,\frac{r}{2})$ e $y' \in B(y,\frac{r}{2})$
+
+	Luego $d((x',y')(x,y)) = d_{1}(x',x) + d_{2}(y',y) < \frac{r}{2} + \frac{r}{2} = r$
+
+	entonces $(x',y') \in B_{r}(x,y) \subset A \times B$
+
+	Luego $x' \in A$ y tambien $y' \in B$
+
+	$B(x,\frac{r}{2}) \subseteq A$ y por otro lado $B(y,\frac{r}{2}) \subseteq B$
+
+	Entonces $x \in A^{\open}$ e $y \in B^{\open}$ luego $(x,y) \in A^{\open} \times B^{\open}$  
+      \end{proof}
+    \item $\ol{A\times B} = \ol{A} \times \ol{B}$
+      \begin{proof}
+	Siguiendo las ideas anteriores probemos que $F$ y $G$ cerrados entonces $F \times G$ es cerrado
+
+	Sea $F$ e $ G$ cerrados entoncse $X \setminus F$ y $X \setminus G$ son abiertos 
+
+	Luego $X \setminus F \times Y$ es abierto por lo que $F \times X$ es cerrado
+
+	De la misma manera $X \times Y \setminus G$ abierto entonces $X \times G$ es cerrado
+
+	Luego $(X \times G )\cap (F \times Y) = F\times G$ es intersección de cerrado
+
+	Entonces $F \times G$ es cerrado
+
+	Luego usando esto tenemos que $\ol A$ y $\ol B$ son cerrados por lo que $\ol A \times \ol B$ es cerrado
+
+	Luego $A \times B \subseteq \ol A \times \ol B$ entonces $\ol{A \times B} \subseteq \ol A \times \ol B$
+
+	Veamos $\ol{A \times B} \supseteq \ol A \times \ol B$
+      \end{proof}
+  \end{enumerate}
+\end{ej}
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico y sean $A,B$ subconjunto de $X$.
+  \begin{enumerate}
+    \item Probar las siguientes propiedades del derivado de un conjunt:
+      \begin{enumerate}
+	\item $A'$ es cerrado.
+	  \begin{proof}
+	    Sea $(a_{n})_{n \in \N} \subseteq A'$ convergente tal que $a_{n} \ra a$, queremos ver que $a \in A'$ esto nos diría que $A' = \ol{A'}$
+
+	    Como $a_{n} \ra a$ dado un $\epsilon > 0$ existe $n_{0}$ tal que $\forall n > n_{0} \quad d(a,a_{n}) \leq \epsilon$
+
+	    Equivalentemente para cualquier $\epsilon > 0$ existe $n_{0}$ tal que $\forall n \geq n_{0}$ $a_{n} \in B(a,\epsilon)$. Pero tomemos solo un $a_{n}$ llamemoslo $a_{j}$ tal que $a_{j} \in B(a,\epsilon)$
+
+	    Como $a_{j} \in B(a,\epsilon)$ es abierto entonces existe $r'$ tal que $B(a_{j},r') \subseteq B(a,r)$
+
+	    Tambien sabemos que $a_{j} \in A'$ entonces existe $(x_{n})_{n \in \N} \subseteq A$ tal que $x_{n} \ra a_{j}$
+
+	    Sea $\epsilon = r'$ tenemos que exsite  $n_{1}$ tal que $\forall n \geq n_{1}$ $d(x_{n}, a_{j}) \leq r'$
+
+	    Entonces $\forall n \geq n_{1}$ $x_{n} \in B(a_{j},r')$
+
+	    Por lo tanto hay numerables $x_{n} \in A$ tal que $x_{n}  \in B(a_{j},r') \subseteq B(a,r)$
+
+	    Entonces hay numerables $x_{n} \in A$ tal que $x_{n} \in B(a,r)$
+
+	    Por lo tanto $B(a,r) \cap A$ es numerable.
+
+	    Entonces $a$ es un punto de acumulación, $a \in A'$
+
+	    Luego $A' = \ol{A'}$ entonces $A'$ es cerrado
+	  \end{proof}
+	\item $A \subseteq B \Longrightarrow A' \subseteq B'$
+	  \begin{proof}
+	    Sea $x \in A'$ entonces existe $(x_{n} )_{n \in \N} \subseteq A$ tal que $x_{n} \ra x$
+
+	    Como $A \subseteq B$ la misma sucesión $(x_{n})_{n} \subseteq B$ entonces $x \in B'$
+	  \end{proof}
+	\item $(A \cup B)' = A' \cup B'$
+	  \begin{proof}
+	  $\subseteq )$ Sea $x \in (A \cup B)'$ entonces existe $(x_{n})_{n} \subseteq A \cup B$ tal que $x_{n} \ra x$
+
+	    Entonces $x_{n} \in A$ o $x_{n} \in B$ para infinitos términos , si no tendría infinitos términos fuera de $A$ y fuera de $B$ lo que es absurdo. Quizas para los dos , pero no importa.
+
+	    Spd $x_{n} \in A$ para infinitos términos entonces me quedo con todos los términos de $x_{n}$ tal que $x_{n} \in A$ esto es una subsucesión de $x_{n}$ entonces converge a $x$ por lo tanto tengo una sucesión contenida en $A$ que converge a $x$ luego $x \in A'$
+
+	    Entonces $x \in A' \cup B'$
+	    \newpage
+
+	  $\supseteq )$ Sea $x \in A' \cup B'$ spd $x \in A'$ luego existe $(a_{n})_{n \in \N} \subseteq A$ tal que $a_{n} \ra a$
+
+	  Pero entonces $(a_{n})_{n} \subseteq A \cup B$ por lo tanto $a \in (A \cup B)'$
+	  \end{proof}
+	\item $\ol A = A \cup A'$
+	  \begin{proof}
+	  Primero notemos que si $x \in A'$ entonces $\forall r > 0 \quad  B(x,r) \cap A$ es infinita 
+
+	 Por lo tanto diferente del vacio entonces $x \in \ol A$ entonces $A' \subseteq \ol A$
+
+	  $\supseteq ) $ Luego $A \subseteq \ol A$ entonces $A \cup A' \subseteq \ol A \cup A' = \ol A$
+
+	$\subseteq )$ Sea $x \in \ol A$ entonces $\forall r>0 \quad  B(x,r) \cap A \neq \emptyset$
+
+	Supongamos que $x \notin A$, pero entonces usando la bola $B(x,\frac{1}{n})$ y sabiendo que $B(x,\frac{1}{n}) \cap A \neq \emptyset \quad  \forall n \in \N$ Armamos una sucesión $(x_{n})_{n} \subseteq A$ tal que $x_{n} \ra x$
+
+	Luego $x \in A'$
+
+	Ahora supongamos que $x \notin A'$ entonces existe $r>0$ tal que $B(x,r) \cap A$ es finito
+
+      Pero entonces tiene que exisitir algún $r'<r$ tal que $\# (B(x,r') \cap A )= 1$
+
+      Esto sucede por que para cada elemento en la intersección sabemos que está en la bola y entonces tiene una distancia a $x$ pero entonces si tomamos un radio mas pequenio ese elemento no estaría en la bola y por lo tanto no estaría en la intersección y esto lo podemos hacer con todos los elementos , salvo uno, por que si no quedara ninguno existiria un $4_{2}$ tal que $B(x,r_{2}) \cap A = \emptyset$ que es absurdo por que $x \in \ol A$
+
+      Pero entonces existe $r>0$ tal que $B(x,r) \cap A = \{x\}$, si fuese otro eleménto $y$ el único , usaríamos $r'= \frac{d(x,y)}{2}$ y entonces $y \notin B(x,r')$
+
+      Entonces $x \in A$
+
+      Entonces siempre que $x \in \ol A \Ra x \in A$ o $x \in A'$ por lo tanto $x \in A \cup A' $ 
+	  \end{proof}
+	\item $(\ol A)' = A'$
+	  \begin{proof}
+	$\supseteq )$ Usando el b) tenemos que como $A \subseteq \ol A \Ra A' \subseteq (\ol A)'$
+
+      $\subseteq )$ Sea $x \in (\ol A)'$ entonces existe $(x_n)_{n\in \N} \subseteq \ol A \setminus \{x\}= (A \cup A') \setminus \{x\}$ tal que $x_n \ra x$
+
+    Luego $x_{n}$ tiene infinitos términos en $A$ o en $A'$ o en las dos
+
+  Si tiene infinitos en $A$ podemos armar una subsucesión $(x_{n_{j}})_{n\in \N} \subseteq A$ como es subsucesión $x_{n_j} \ra x$ entonces $x \in A'$
+
+Si tiene infinitos en $A'$ similarmente llegamos a que $x \in (A')' \subseteq A'$
+
+Si tiene infinitos en las dos , podemos usar cualquiera de los dos argumentos
+
+\begin{remark}
+ $(A')'\subseteq A'$ 
+ \begin{proof}
+ $A'$ es cerrado por lo tanto para cualquier $(x_{n})_n \subseteq A'$ tal que $x_n \ra x$ sucede que $x \in A'$. Si no , no sería cerrado 
+
+Luego $A'$ contiene a todos sus puntos de acumulación por lo tanto $(A')' \subseteq A'$
+ \end{proof} 
+\end{remark}
+	  \end{proof}
+      \end{enumerate}
+      \newpage
+    \item Probar que $x \in X$ es un punto de acumulación de $A \subseteq X$ si y solo si existe una sucesión $(x_{n})_{n \in \N} \subseteq A$ tal que $x_{n} \ra x$ y $(x_{n})_{n \in \N}$ no es casi constante. 
+      \begin{proof}
+    $\Ra )$ Sabemos que si $x \in A'$ entonces $\forall r>0 \quad B(x,r) \cap A$ es infinito entonces $(B(x,r)\setminus \{x\}) \cap A$ es también infinta. 
+
+      Luego definamos $x_{n}$ tal que $x_{n} \in B(x,\frac{1}{n}) \setminus \{x\} \cap A$ para cada $n \in \N$
+
+Ahora afirmo $x_{n} \ra x$ veamosló
+
+Sea $\epsilon > 0$ sabemos por arquimedianidad que exsite $n_0$ tal que $\frac{1}{n_0} \leq \epsilon$
+
+Luego por como construí $x_n$ tengo que $x_n \in B(x,\frac{1}{n_0}) \quad \forall n \geq n_0$
+
+Entonces dado cualquier $\epsilon > 0$ tenemos que existe $n_0 \in \N$ tal que $d(x_n ,x ) \leq \epsilon \quad \forall n \geq n_0$
+
+Por lo tanto $ \forall \epsilon > 0$ tenemos que existe $n_0 \in \N$ tal que $ d(x,x_n) \leq \epsilon \quad \forall n \geq n_0 $ 
+
+Entonces $x_n \ra x$. Además $x_{n}$ no puede ser casi constante, si lo fuera existiría un $n_{0}$ tal que  $x_{n} = x \quad \forall n \geq n_{0}$ pero esto es absurdo por que sabemos que $x_n \neq x \quad \forall n \in \N$  
+     
+Si en cambio existiera un $n_0$ tal que $x_n = a \neq x \quad \forall n \geq n_0$ luego $a_n$ no convergería a $x$
+
+    \end{proof}
+  \end{enumerate}
+\end{ej}
+
+\begin{ej}
+  Hallar interiór, clausura, conjunto derivado y frontera de cada uno de los siguientes subconjuntos de $\R$. Determinar cuales son abiertos o cerrado
+
+  $$ [0,1] \quad ; \quad (0,1) \quad ; \quad \Q \quad ; \quad \Q \cap [0,1] \quad ; \quad \Z \quad ; \quad [0,1) \cup \{2\}$$
+
+  \begin{proof}
+    \begin{enumerate}
+      \item $[0,1]$ Es facil ver que el interiór es $(0,1)$ viendo que cada punto es interión tomando un punto y usando como radio el minimo de las distancias hacia 0 y hacia 1
+	
+	La clausura es también simple por que todo punto en $[0,1]$ cumple trivialmente que la intersección con $[0,1]$ es diferente de vacía
+
+	Todos los puntos en $[0,1]$ son de acumlación usando la sucesión constante
+
+	La frontera es el conunto $\{0,1\}$ es facíl ver que son de la frontera y es facil ver que cualquier otro no cumple ser de la frontera
+
+	Usando esto es facil ver que $[0,1]$ es cerrado
+
+	Para $(0,1)$ el análisis es similar
+
+	$\Q$ por densidad de $\I$ es facil ver que dado un $x \in \Q \quad \forall r>0 \quad B(x,r) \cap \I \neq \emptyset$
+
+	Por ende ninguna bola puede estar contenida en $\Q$ y entonces su interiór es vacío
+
+	Esta claro que todos $x \in \Q$ es de acumulación , usando la sucesión constante, pero además todo $x \in \I$ es de acumulación de $\Q$ por densidad de racionales es facil de probar
+
+Sabiendo que $\ol \Q = \Q \cup \Q'$  tenemos que $\ol \Q = \Q \cup \I =  \R$
+
+$\partial \Q = \ol{\Q} \setminus \Q^{\open} = \R \setminus \emptyset = \R$
+
+Un análisis muy similar podemos hacer con $\Q \cap [0,1]$
+
+$\Z$ devuelta su interiór es vacío, es facíl ver que todos sus puntos son aislados, entonces no pueden ser de acumulación
+
+Luego $\Z ' = \emptyset$ entonces tambien tenemos que $\ol{\Z} = \Z \cup \Z ' = \Z$
+
+$\partial{\Z} = \ol{\Z} \setminus \Z^{\open} = \ol{\Z} = \Z$
+
+$A = [0,1) \cup \{2\}$ tenemos que $2$ no puede ser interiór usando $\forall r > 0 \quad B(2,r) \not\subseteq A$
+
+Lo mismo con $0$ para cualquier $B(x,r)$ sabemos que existe un $x < 0$ tal que $x \in B(0,r)$ por ende $B(0,r) \not\subseteq A$ el $1 \notin A$ por lo tanto $1 \notin A^{\open}$
+
+Para el resto de los puntos $y$ es facil encontrar un radio usando $d(y,1)$ o $d(y,0)$  
+
+Finalmente tenemos $A^{\open} = (0,1)$
+
+Es fácil ver que $0$ son puntos de acumulación usando una sucesión por derecha
+
+Luego usando una sucesión de numeros menores que 1 vemos que 1 es de acumulación 
+
+Entonces $A' = [0,1] $
+
+Luego $\ol A = A \cup A' = [0,1] \cup \{2\}$
+
+$ \partial A = \ol{A} \setminus A^{\open} = \{0,1,2\} $
+    \end{enumerate} 
+  \end{proof}
+\end{ej}
+
+\begin{ej}
+  Caracterizar los abiertos y los cerrados de $\Z$ considerado como espacio métrico con la métrica inducida por la usual de $\R$. Generalizar a un subespacio discreto de un espacio métrico $X$.
+  \begin{proof}
+      
+  \end{proof}
+\end{ej}
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico y sean $(x_n)_{n \in \N}, (y_n)_{n \in \N}$ sucesiones en $X$.
+  \begin{enumerate}
+    \item Si $\lim x_n = x$ y $\lim y_n = y$, probar que $\lim_{n \ra \infty} d(x_n,y_n) = d(x,y)$ 
+      \begin{proof}
+	Sabemos que $d(x_n , y_n) \leq d(x_n,x) + d(x,y_n) \leq d(x_n,x) + d(x,y) + d(y,y_n)$
+
+	Entonces tenemos que $\lim_{n \ra \infty} d(x_n,y_n) \leq \lim_{n \ra \infty}{(d(x_n,x) + d(x,y) + d(y,y_n))}$
+
+	Como todos los límites del lado derecho exiten los puedo separar $\lim d(x_n,y_n) \leq d(x,y)$
+
+	Con la misma idea $d(x,y) \leq d(x,x_n) + d(x_n,y) \leq d(x,x_n) + d(x_n,y_n) + d(y_n ,y)$
+
+	entonces $- d(x_n,y_n) \leq d(x,x_n) - d(x,y) + d(y_n,y)$
+
+	$\lim - d(x_n,y_n) \leq \lim (d(x,x_n) - d(x,y) + d(y_n,y)) $ 
+
+	Todos los límites existen entonces separando $-\lim d(x_n,y_n) \leq -d(x,y)$
+
+	Finalmente $\lim d(x_n,y_n) \geq d(x,y)$
+
+	Entonces $d(x_n,y_n) = d(x,y)$
+      \end{proof}
+      \newpage
+    \item Si $(x_n)_{n \in \N}, (y_n)_{n \in \N}$ son de sucesiones de Cauchy de $X$, probar que la sucesión real $(d(x_n,y_n))_{n \in \N}$ es convergente
+      \begin{proof}
+	Sabemos que ambas sucesiones son de cauchy entonces 
+
+	Dado un $\epsilon > 0$ tenemos que existe $n_0 \in \N$ tal que $d(x_n,x_m) \leq \frac{\epsilon}{2} \quad \forall n,m \geq n_0$
+
+	Y con ese mismo dado $\epsilon > 0$ existe $n_1\in \N$ tal que $d(y_k,y_j) \leq \frac{\epsilon}{2} \quad \forall k,j\geq n_1 $
+
+	Ahora si tomamos $n_2 = \max{\{n_1 ,n_0\}}$
+
+	Tenemos ambas $d(x_n,x_m) \leq \frac{\epsilon}{2}$ y $d(y_k,y_j) \leq \frac{\epsilon}{2} \quad \forall n,m,j,k \geq n_2$
+
+
+	Teniendo esto $d(x_n,y_n) \leq d(x_n ,x_{s}) + d(x_{s},y_n) \leq d(x_n,x_{s}) + d(x_{s},y_{s}) + d(y_{s},y_n)$
+
+	Entonces dado $\epsilon > 0$ usando el $n_2$ tenemos $d(x_n,y_n) \leq \frac{\epsilon}{2} + d(x_s,y_s) + \frac{\epsilon}{2} \quad \forall n,s \geq n_2$
+
+	Entonces dado el $\epsilon >0$ tenemos $n_2 \in \N$ tal que $d(x_n,y_n) \leq d(x_s,y_s) + \epsilon \quad \forall n,s \geq n_2$
+
+	Hacieno el mismo proceso con $d(x_s,y_s)$ llegamos a que $d(x_s,y_s) - \epsilon \leq d(x_n,y_n)$
+      
+     Luego juntando estas dos ideas podemos notar que dado un $\epsilon > 0$ tenemos
+     $$\exists n_2 \in \N \text{ tal que } |d(x_n,y_n) - d(x_s,y_s)| \leq \epsilon \quad \forall n,s > n_2$$ 
+
+   Sabemos que para todo $\epsilon > 0$ podemos hacer el mismo proceso y encontrar un $n_2$ 
+ $$\forall \epsilon > 0 \quad \exists n_2 \in \N \text{ tal que } |d(x_n,y_n) - d(x_s,y_s)| \leq \epsilon \quad \forall n,s \geq n_2$$ 
+
+
+     Pero esto nos dice que $d(x_n,y_n)$ es de Cauchy y como $d(x_n.y_n) \in \R \quad \forall n \in \N$ y $\R$ es completo entonces $d(x_n,y_n)$ converge
+
+      \end{proof}
+  \end{enumerate}
+\end{ej}
+\begin{ej}
+Un subconjunto de $A$ de un espacio métrico de $X$ se dice $G_{\delta}$ (respectivamente $F_\sigma$) si es intersección de una sucesión de abiertos (respectivamente unión de una sucesión de cerrados) de $X$
+\begin{enumerate}
+  \item Probar que el complemento de un $ G_{\delta}$ es un $F_{\sigma}$
+    \begin{proof}
+    Sea $G_{\delta} = \bigcap_{i \in I} G_i$ intersección de abiertos
+
+    Luego $x \in (\bigcap_{i \in I} G_i)^c = G_{\delta}^c \iff x \notin \bigcap_{i \in I}G_i \iff$
+
+    existe algún $G_i$ tal que $x \notin G_i \iff$ existe algún $G_i$ tal que $ x \in G_{i}^c$
+
+    $\iff x \in \bigcup_{i \in I} G_i^c \iff x \in F_{\sigma}$
+ 
+    Este último sí y solo sí vale por que $G_i$ es abierto, por lo tanto $G_{i}^c$ es cerrado, luego $\bigcup G_i^c$ es unión de cerrados por lo tanto un $F_{\sigma}$
+    \end{proof}
+    \newpage
+  \item Probar que el complemento de un $F_{\sigma}$ es un $G_{\delta}$
+    \begin{proof}
+      Sea $F_{\sigma} = \bigcup_{i \in I}F_i$ unión de cerrados 
+      
+      Luego $x \in F_{\sigma}^c = (\bigcup_{i \in I} F_i)^c \iff x \notin \bigcup_{i \in I} F_i$ 
+
+      $\iff \forall i \in I$ $x \notin F_i \iff x \in F_i^c \quad \forall i \in I \iff x \in \bigcap_{i \in I} F_i^c \iff x \in G_{\delta}$  
+
+      El último si y solo si vale por que  $F_i$ es cerrado luego $F_i^c$ es abierto por lo tanto $\bigcap F_{i}^c$ es intersección de abiertos entonces es un $G_{\delta}$
+
+    \end{proof}
+  \item Probar que todo cerrado es un $G_{\delta}$. Deducir que todo abierto es un $F_{\delta}$
+\begin{proof}
+  Sea $F$ cerrado , definamos $U_n$ $$U_n = \bigcup_{x \in F} B(x,\frac{1}{n})$$
+
+  $U_n$ es unión de abiertos por lo tanto abierto
+
+  Ahora firmo que $F = \bigcap U_n$ osea intersección de abiertos. entonces $F$ es $G_{\delta}$
+
+  Veamosló. $x \in F$ entonces $x \in B(x,\frac{1}{n})\quad \forall n \in \N$ entonces $x \in U_n \quad \forall n \in \N$
+
+Entonces $y \in \bigcap U_n$
+
+Sea $y \in \bigcap U_n$ entonces $y \in U_n \quad \forall n \in \N$ entonces para cada $n \in \N$ sabemos que $y $ pertenece a alguna de esas bolas, otra forma de decirlo $y \in B(x_n,\frac{1}{n})$ para algún $x_n \in F$ pero entonces dado un $\epsilon > 0$ sabemos que existe un $n_0 \in \N$ tal que $\frac{1}{n_0} \leq \epsilon$ pero ademas sabemos que para todo $n > n_0 $ sucede $\frac{1}{n} \leq \frac{1}{n_0} \leq \epsilon $ por ende $d(x_n , y) \leq \epsilon \quad \forall n \geq n_0$
+
+Pero entonces $x_n$ converge a $y$ y además $x_n \in F \quad \forall n \in \N$ y como $F$ es cerrado tenemos que $y \in F$
+
+Forma B. Sea $G$ abierto
+$$U_n = \bigcup_{x \in X \setminus G}B(x,\frac{1}{n}) $$
+
+Luego tenemos $F_n = X \setminus U_n$ que es complemento de abierto por lo tanto cerrado.
+
+Ahora afirmo que $G = \bigcup F_n$ que es unión de cerrados por lo tanto $F_{\sigma}$
+
+Veamosló, sea $y \in G$ supongamos $y \notin \bigcup F_n $ entonces $y \notin F_n \quad \forall n \in \N$
+
+Entonces $y \in U_n \quad \forall n \in \N$ por lo tanto $y \in \bigcap U_n$ por el mismo argumento que antes esto implica que $y \in X \setminus G $ , lo que es absurdo. Luego $y \in \bigcup F_n$
+
+Sea $y \in \bigcup F_n$ entonces $y \in F_n \quad \forall n \in \N$ entonces $y \notin U_n \quad \forall n \in \N$ 
+
+Supongamos $y \notin G$ entonces $y \in X \setminus G$ pero entonces $y \in U_n$ para algún $n \in \N$ seguro
+
+Lo que es absurdo , entonces $y \in G$
+\newpage
+\end{proof}
+  \item 
+    \begin{enumerate}
+      \item Exhibir una sucesión de abiertos de $\R$ cuya intersección sea $[0,1)$. Idem con $[0,1]$
+      \item Exhibir una sucesión de cerrados de $\R$ cuya unión sea $[0,1)$
+      \item ¿Qué conclusión puede obtenerse de estos ejemplos? 
+    \end{enumerate}
+\end{enumerate}
+\end{ej}
+
+
+\begin{ej} a\\
+
+  \begin{enumerate}
+    \item Sea $(X,d)$ un espacio métrico. Se define $d'(x,y) = \frac{d(x,y)}{1 + d(x,y)}$. Probar que $d'$ es una métrica en $X$ topológicamente equivalente a $d$ (o sea, ambas dan a lugar a una misma noción de conjunto abierto). Observar que $0 \leq d'(x,y)\leq 1$ para todo $x,y \in X$
+      \begin{proof}
+	Consideremos $f = \frac{x}{1 + x}$ entonces podemos reescribir $d'(x,y) = f \circ d$
+
+	También sabemos que $f$ es creciente dado que su derivada es mayor a $0 \quad \forall x \in \R$
+
+	Y $f(0) = 0$. Estas dos cosas nos dicen que $f \circ d $ es distancia , por lo tanto $d'$ es distancia
+      
+  
+Veamos que $d' = f \circ d$ y $d$ son topológicamente equivalentes
+
+Sea $y \in B_{d'}(x,\epsilon)$  seguro existe un $r > 0$ tal que $\epsilon < \frac{r}{r+1}$ entonces $d'(y,x) \leq \epsilon \leq \frac{r}{r +1}$
+
+$d'(x,y) = \frac{d(y,x)}{1 + d(y,x)} \leq \frac{r}{r+1} \iff \frac{r+1}{r} \leq \frac{1 + d(y,x)}{d(y,x)} \iff 1 + \frac{1}{r} \leq \frac{1}{d(y,x)} + 1 \iff d(y,x) \leq r$
+
+Entonces $y \in B_d(x,r)$ por lo tanto $B_{d'}(x,\epsilon) \subseteq B_{d}(x,r)$
+
+Ahora sea $y \in B_d(x,\epsilon)$ entonces $d(x,y) \leq \epsilon$ y seguro existe un $r \geq \epsilon$
+
+Entonces $d(x,y) \leq \epsilon \leq r$ usando la misma idea llegamos a que entonces $d'(x,y) \leq \frac{r}{r+1}$
+
+Luego $y \in B_{d'}(x,\frac{r}{r+1})$ luego $B_d(x,r) \subseteq B_{d'}(x,\frac{r}{r+1})$
+
+
+      \end{proof}
+    \item Sea $(X_n,d_n)_{n \in \N}$ una sucesión de espacios métricos tales que para cada $n \in \N$ vale $0 \leq d_n(x,y)\leq 1$ para todo par de elementos $x,y \in X_n$. 
+
+      Para cada $x  = (X_n)_{n \in \N}, y = (y_n)_{n \in \N}$ definimos:
+    $$ d(x,y) = \sum_{n = 1}^{\infty} \frac{d_n(x_n,y_n)}{2^n}$$
+\item Sea $(X,d)$ un espacio métrico. Llamamos $X^{\N}$ al conjunto de las sucesiones de $X$. Mostrar que aplicando i) y ii) se le puede dar una métrica a $X^{\N}.$
+
+
+  \end{enumerate}
+\end{ej}
+\newpage
+\begin{ej}
+  Sean $d_{\infty}$ y $d_2$ las métricas en $R^n$ definidas en el ejercicio 7. Mostrar que $d_{\infty}$ y $d_2$ son topológicamente equivalentes.
+\begin{proof}
+  Por un lado tenemos que $d_{\infty}(x,y) \leq d_1(x,y) \quad \forall x,y \in \R^n$
+
+  Entonces si $x_k$ converge con $d_1$ entonces seguro converge con $d_{\infty}$
+
+  Ahora por otro lado supongamos $x_k$ converge con $d_{\infty}$ 
+
+
+  $x_k$ converge con $d_{\infty}$ entonces dado $\epsilon >0$ existe $n_0$ tal que $d_{\infty}(x_k,x) \leq \epsilon \quad \forall k \geq n_0$
+
+  Entonces dado $\epsilon > 0$ existe $n_0$ tal que 
+  $$d_1(x_k,x) = \sum_{j=1}^{n} |(x_k)_j - x_j| \leq n\sup_{1 \leq j \leq n} |(x_k)_j - x_j| = nd_{\infty}(x_k,x) \leq n\epsilon \quad \forall k \geq n_0$$ 
+
+  \noindent Aclaración $j$ es el indice de componente, y $n$ es un número fijo, que sirve para cualquier $\epsilon$ y está dado por la dimensión de $\R^n$
+
+  Luego $x_k$ converge en $d_1$. Entonces ambas distancias generan las mismas sucesiones convergentes, por lo tanto son equivalentes
+\end{proof}
+\end{ej}
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico. Dados $A \subseteq X$ no vacío y $x \in X$, se define la $distancia$ de $x$ a $A$ como $d_A(x) = \inf{\{d(x,a):a\in A \}}$. Probar:
+  \begin{enumerate}[i.]
+    \item $|d_A(x) - d_A(y)| \leq d(x,y)$ para todo par de elementos $x,y \in X$
+      \begin{proof}
+	Tenemos que $d(x,a) \leq d(x,y) + d(y,a)$ 
+
+	$d(x,A)  = \inf d(x,a) \leq \inf (d(x,y) + d(y,a)) = \inf d(x,y) + \inf d(y,a) = d(x,y) + d(y,A)$
+
+	Entonces $d(x,A) - d(y,A) \leq d(x,y)$
+
+	haciendo lo mismo pero arrancando de $d(y,a) \leq d(y,x) + d(x,a)$
+
+	llegamos a $- d(x,y) \leq d(x,A) - d(y,A)$
+
+	Juntando todo
+	$$ |d_A(x) - d_A(y) | \leq d(x,y) $$
+      \end{proof} 
+    \item $x \in A \Ra d_A(x)=0$
+      \begin{proof}
+	Sea $D = \{d(x,a) : a \in A\}$ afirmo que $\inf D = 0$
+	\begin{itemize}
+	  \item $0 \leq d \quad \forall d \in D$ 
+
+	    Si no fuera cierto existiria $d' \in D$ tal que $d' < 0$ entonces $d' = d(x,a) < 0$ para algún $a \in A$ lo que es absurdo
+	  \item Sea $l \leq d \quad \forall d \in D $ entonces $l \leq 0$ Supongo que no es cierto, entonces existe $l \leq d \quad \forall d \in D$ con $l > 0$ , pero sabemos que $d(x,x) \in D$ y $d(x,x) = 0 < l$
+
+	    Luego $0 = \inf D$ por lo tanto $d_{A}(x) = \inf D = 0$ 
+	  \end{itemize}
+	  \end{proof}
+	  \newpage
+	\item $d_A(x) = 0 \iff x \in \ol A$
+	  \begin{proof}
+	  $\Ra )$ Sea $D = \{d(x,a):A\in A\}$ luego $0 \inf D \iff$ 
+
+	    Entonces existe un sucesión $d_n \in D \quad \forall n \in \N$ tal que $d_n \ra 0$
+
+	    $\iff$ para cada $n \in \N$  existe $a \in A$ tal que $d_n = d(x,a)$ llamemosló $a_n$ 
+
+	    Luego $d(x,a_n)= d_n \ra 0 \iff$ tenemos $a_n \in A \quad \forall n \in \N$ y además $a_n \ra x$
+
+	     $\iff x \in \ol A$
+	  \end{proof}
+    \item $B_A(r) = \{x \in X : d_A(x) < r \}$ es abierto para todo $r>0$
+      \begin{proof}
+	Sea $x \in B_A(r)$ , primero una pequeña afirmación, 
+
+	Como $x \in B_A(r)$ entonces $r > d_A(x) $ luego existe $\epsilon$ tal que $r - \epsilon > d_A(x)$
+
+	Luego puedo tomar $r' = r  - \epsilon - d(x,A)$ y seguro $r > 0$
+
+	Afirmo que $B(x,r') \subseteq B_A(r)$. Veamosló, sea $y \in B(x,r')$ entonces 
+
+	$d(y,A) \leq d(y,x) + d(x,A) \leq r' + d(x,A) = r - \epsilon - d(x,A) + d(x,A) <r$
+
+	Luego $y \in B_A(r)$ entonces $B(x,r') \subseteq B_A(r)$ 
+
+	Finalmente $\forall x \in X \quad \exists r' >0 $ tal que $B(x,r') \subseteq B_A(r)$ 
+
+	$B_A(r)$ es abierto
+      \end{proof}
+    \item $\ol B_{A}(r) = \{x \in X : d_A(x) \leq r\} $ es cerrado para todo $r>0$
+      \begin{proof}
+	Tomemos el complemento de la bola, $A = \{x \in X : d_A(x) > r\}$ veamos que es abierto
+
+	Ahora sea $x \in A$ afirmo que $B(x,r') \subseteq A$ con $r' = d(x,A) - r > 0 $, veamosló
+
+	Sea $y \in B(x,r')$ tenemos $d(x,A) - d(y,A) \leq |d(x,A) - d(y,A)| \leq d(x,y) < d(x,A) -r $
+
+      Entonces $-d(y,A) < -r \Ra d(y,A) > r$ por lo tanto $y \in A$ luego $B(x,r') \subseteq A$
+
+      Luego $\ol B_A(r)$ es complemento de un abierto , por lo tanto es cerrado
+      \end{proof}
+  \end{enumerate}
+\end{ej}
+
+
+\begin{ej}
+  Sea $(X,d)$ un espacio métrico. Dados $A,B \subseteq X$ no vacíos se define la distancia entre $A$ y $B$ por $d(A,B) = \inf{\{d(a,b): a\in A \quad b \in B\}}$. Determinar si las siguientes afirmaciones son verdaderas o falsas:
+  \begin{enumerate}
+    \item $d$ es una distancia en $\mathcal{P}(X) \setminus \{\emptyset\}$ Es falso
+      \begin{proof}
+	Tomemos un $A \subseteq X$ con $A \neq \{\emptyset\}$  $B = A \cup \{x\} \quad x \in X$ 
+
+	Entonces $d(A,B) = 0$ pero $A \neq B$ entonces no es una métrica
+	\end{proof}
+    \item $d(A,B) = d(A ,\ol  B)$ es verdadero
+
+      Sea $L_1 = d(A,B) \quad L_2 = d( A ,\ol B)$ supongamos que son diferentes
+
+      $L_1 < L_2$ entonces $\exists \epsilon > 0$ tal que $L_1 + \epsilon < L_2$
+
+      Como $L_1$ es un ínfimo existe $a \in A, b \in B$ tal que $L_1 \leq d(a,b) \leq L_1 + \epsilon <  L_2 $
+
+      Pero entonces existen $a \in A , b \in B$ tal que  $d(a,b) <  L_2  = \inf{\{d(a,b): a\in A \quad b \in \ol B\}}$
+
+      Absurdo por que como $a \in A, b\in B$ entonces $d(a,b) \in \{d(a,b): a\in A \quad b \in \ol B\}$
+
+      Ahora en cambio si $L_1 > L_2$ entonces usando el mismo argumento
+
+    existe $a \in A \quad b' \in \ol B$ tal que $L_2 \leq d(a,b') \leq L_2 + \epsilon <  L_1$
+
+    Entonces $d(a,b') < L_1$ entonces existe $\epsilon '$ tal que $d(a,b') + \epsilon ' < L_1$
+
+  Ahora como $b' \in \ol B$ existe $(b_n )_n \subseteq B$ tal que $b_n \ra b$ Entonces $|d(a,b_n) - d(a,b')| \ra 0$ 
+
+  Luego dado $\epsilon '$ existe $n_0$ tal que $d(a,b_n) \leq d(a,b') + \epsilon ' \quad \forall n \geq n_0$
+
+  Por lo tanto $\forall n \geq n_0$ tenemos $d(a,b_n) < L_1$ pero con un $b_n \in B$ nos alcanza para decir que es absurdo dado que nuevamente $d(a,b_n) \in \{d(a,b) : a \in A \quad b \in B\}$ por ende $d(a,b_n)$ no puede ser menor que el infimo de un conjunto que lo contiene
+
+Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
+    \item $d(A,B) = 0 \iff A \cap B \neq \emptyset$ es falso
+      \begin{proof}
+	Sea $(\R^2,d)$.Con $d$ la distancia euclídea. 
+
+	Sean $A = \{(x,0): x \in \N\} \quad B= \{(x,\frac{1}{x}): x \in \N \}$ 
+
+	Sabemos que $A \cap B = \emptyset$ , sin embargo es facil ver que $d(A,B) = 0$. 
+
+	Tomamos la sucesión $x_n = d((n,0), (n + \frac{1}{n})) = \sqrt{\frac{1}{n^2}}$. 
+	
+	$(x_n)_n \subseteq \{d(a,b) : a\in A \quad b \in B\}$ y además $x_n \ra 0$
+
+	Por lo tanto $0$ es ínfimo
+
+      \end{proof}
+    \item $d(A,B) = 0 \iff \ol A \cap \ol B \neq \emptyset$
+      \begin{proof}
+	Sirve el mismo ejemplo que arriba, por que $A = \ol A$ y $B = \ol B$
+      \end{proof}
+    \item $d(A,B) \leq d(A,C) + d(C,B)$
+      \begin{proof}
+	$d(A,B)  \leq d(a,b) \leq d(a,c) + d(c,b) \quad \forall (a \in A \quad b \in B \quad c \in C)$
+
+      $d(A,B) \leq d(a,c) + d(c,b) \quad \forall (a \in A \quad b \in B \quad c \in C)$ 
+
+      Entonces $d(A,B) \leq \inf \{d(a,c) + d(c,b) : a \in A \quad b \in B\}$
+
+      Que es igual a  $ \inf \{d(a,c) :  a \in A \quad c \in C\} + \inf \{d(c,b): c \in C \quad b \in B\}$
+
+      o lo mismo $d(A,C) + d(C,B)$. Luego $d(A,B) \leq d(A,C) + d(C,B)$
+      \end{proof}
+  \end{enumerate}
+\end{ej}
+
+
+
+\end{document}
