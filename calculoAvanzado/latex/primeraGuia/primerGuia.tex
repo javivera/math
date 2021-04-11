@@ -804,7 +804,9 @@ Inyectiva: Sean $a,a' \in A$ (es lo mismo si estan en B) tal que $f(a) = f(a')$ 
 
 Sobreyectiva , se pueden ver casos pares e impares , si $y \in \N$ es par seguro existe un $y' \in$ tal que $2y' = y$ y luego como $y'$ es natural seguro tiene preimagen dada por $g$ tal que $x \in \N$ y $g(x) = y'$. esto es cierto por que $g$ es sobreyectiva y ademas esta preimagen es única por que $g$ es inyectiva, entonces juntando todo existe un $x$ tal que f(x) = 2g(x) = 2y' = y
    
-    
+Ahora sabemos que si son disjuntos funciona, tomamos $A' = A \setminus B$ para que la intersección no moleste $A'$ es contable por que le estamos sacando contables cosas a un contable (el vacío es contable). Ahora tengo $A'$ y $B$ que cumplen la hipótesis de arriba entonces $A'\cup B$ es contable pero $A'\cup B = A \setminus B \cup B = A \cup B$ entonces $A \cup B$ es contable
+      
+
 
 
   \item Sea $(A_{n})_{n \in \N}$ una familia de conjuntos contables entonces $\bigcup_{n \in \N} A_{n}$ es contable
@@ -902,9 +904,28 @@ Por un lado tenemos una $f : \Q^{n+1} \ra \Q[X]_{\leq n}$ dada por
 
 $$ f(q_{0},q_{1}, \dots , q_{n}) = \sum_{j = 0}^{n} q_{j}X^{j}$$ que es trivialmente biyectiva. 
 
-Por otro lado sabemos $\Q^{n+1} \sim \N$. Luego $\N \sim \Q^{n+1} \sim \Q[X]_{\leq n}$ para cualquier $n \in \N$ fijo
+Por otro lado sabemos $\Q^{n+1} \sim \N$. Esto se ve con la función $f: \Q^n \ra \N$ dada por:
 
-Entonces el conjunto de polinomios de algún grado fijo es numerable.
+$f(\frac{p}{q}, \cdots , \frac{r}{s} ) = (p_1^{g(p)}p_2^{g(q)}p_{2n-1}^{g(r)}p_{2n}^{g(s)})$ con $mcd = 0$ entre todas las fracciones y $p_n$ primos diferentes para cada $n \in \N$
+
+\newpage
+
+Con $g: \Z \ra \N$
+
+$$
+    g(x) = \left\{
+        \begin{array}{ll}
+		-2x + 1   & \quad  x < 0 \\
+	         2x & \quad x \geq 0  
+        \end{array}
+    \right.
+    $$
+
+Es trivial ver que $g$ es inyectiva. Y usando $g$ inyectiva es facil ver que $f$ es inyectiva 
+
+Luego $ \Q[X]_{\leq n} \sim \Q^{n+1}  $ y $\# \Q^{n+1} \leq \n$  para cualquier $n \in \N$ fijo
+
+Entonces el conjunto de polinomios de algún grado fijo es a lo sumo numerable. Como sabemos que es infinito entonces es numerable
 
 Finalmente $$ \Q[X] = \bigcup_{n \in \N} \Q[X]_{\leq n}$$
 
@@ -915,7 +936,7 @@ Como es una unión numerable de numerables, $\Q[X]$ es numerable
 \end{ej}
 
 \begin{ej}
-Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \dots , a_{n}$ no todos nulos, tales que $$ a_{0} + a_{1}z + \dots + a_{n-1}z^{n-1} + a_{n}z^{n} = 0$$
+Se dice que un numero complejo $z$ es $algebraico$ si existen enteros $a_{0}, \dots , a_{n}$ no todos nulos, tales que $$ a_{0} + a_{1}z + \dots + a_{n-1}z^{n-1} + a_{n}z^{n} = 0$$
 
 \begin{enumerate}
   \item El conjunto de todos los numeros algebráicos es numerable
@@ -923,19 +944,21 @@ Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \d
     \begin{proof}
        Por la definición sabemos que los números algebráicos son raices complejas de algun polinómios de coeficientes enteros 
        
-     Ahora sea $f \in \Q[X]$ no nulo, el conjunto de las raices complejas de ese polinómio $S(f) = \{z \in C : f(z) = 0\}$
+     Ahora sea $f \in \Z[X]$ no nulo, el conjunto de las raices complejas de ese polinómio $S(f) = \{z \in C : f(z) = 0\}$
 
      Es finito, a lo sumo $gr(f)$ (puede ser 0 inclusive)
 
-     Luego $$ \mathcal{A} = \bigcup_{f \in \Q[X] \setminus \{0\}} S(f)$$
+     Luego $$ \mathcal{A} = \bigcup_{f \in \Z[X] \setminus \{0\}} S(f)$$
 
      Donde $\mathcal{A}$ es el conjunto de los números algebráicos
 
-     Y como $\mathcal{A}$ es unión de numerables conjuntos contables y disjuntos es a lo sumo nuerable
+     Ahora sabemos que $\Z[X] \setminus \{0\} \subseteq \Q[X]$ y este último es numerable, por lo tanto $\Z[X] \setminus \{0\}$ es a lo sumo numerable e infinito, por lo tanto numerable
 
-     Pero además es facil ver que por ejemplo los racionales son todos algebraicos (ejercicio para el lector) 
+     Luego como $\mathcal{A}$ es unión de numerables conjuntos contables por lo tanto es a lo sumo numerable
 
-     Luego hay infinitos numeros algebráicos, entonces $\mathcal{A}$ es numerable
+     Pero además es facil ver que por ejemplo los enteros son todos algebraicos. Dado un $z \in \Z$ el polinomio $x - z$ es un polinomio que tiene a $z$ como raíz, por lo tanto $z$ es un numero complejo algebraico 
+
+     Entonces hay infinitos numeros algebráicos, entonces $\mathcal{A}$ es numerable
 
     \end{proof}
 
@@ -983,7 +1006,7 @@ Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \d
 \noindent 
 19) Sea $f: \R \ra \R$ una función monótona entonces 
 \begin{center} 
-  $\# (\{x \in \R :f $ no es continua $\}) \leq \n$
+  $\# (\{x \in \R :f $ no es continua en x $\}) \leq \n$
 \end{center}
 
 \begin{proof}
@@ -1011,7 +1034,7 @@ Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \d
 
   Supongamos primero $t \in (x - \delta , x)$ luego $y = x - (x - y) \leq x - \delta < t < x$ 
 
-  Entonces $y < t < x $ como $f$ es creciente$ f(x) - \epsilon < f(y) \leq f(t) \leq f(x) $
+  Entonces $y < t < x $ como $f$ es creciente $ f(x) - \epsilon < f(y) \leq f(t) \leq f(x) $
 
   Repitiendo esta idea pero usando con $t \in (x , x + \delta)$ tenemos $z = x + (z - x) \geq x + \delta > t > x $ 
 
@@ -1035,13 +1058,13 @@ Se dice que un numero complejo $z$ es $albegraico$ si existen enteros $a_{0}, \d
 
   Supongamos que no, luego $r_{x} > l_{y}$ ahora tomemos $z$ promedio de $x$ e $y$, $z = \frac{1}{2} (x - y)$
 
-  Tenemos $x < z < y$ como $f$ es creciente $r_{x} \leq f(z) \leq l_{y} < r_{x}$ lo que es absurdo
+  Tenemos $x < z < y$ como $f$ es creciente tenemos $f(x) \leq f(z) \leq f(y)$ entonces por como están definidas $r_x,l_y$  tenemos $r_{x} \leq f(z) \leq l_{y} < r_{x}$ lo que es absurdo
 
   Luego para cada discontinuidad tenemos un ÚNICO intervalo que es disjunto con cualquier otro  o lo que es lo mismo tenemos una función biyectiva entre cada discontinuidad y un intervalo abierto de $\R$
 
   Finalmente como sabemos que tenemos a lo sumo numerables intervalos abiertos y disjuntos en $\R$ entonces tenemos a lo sumo numerables discontinuidades 
   
-  Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjutnos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racional y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
+  Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjuntos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racional y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
 \end{proof}
 
 \noindent 20) Sea $A$ un conjunto numerable, el conjunto de las partes finitas de $A$ (es decir, el subconjunto de $\mathcal{P}(A)$ formado por los subconjuntos finitos de $A$) es numerable
@@ -1288,6 +1311,8 @@ Dada por $F(j,h) = f_{j}(h)$ que es biyectiva
 Luego tenemos que $$\bigcup_{i \in \R} A_{j} \sim \R \times \R \sim \R  $$
 
 Luego existe una biyección entre $\R $ asi que como conjunto son 'lo mismo'
+
+Expando un poco mas. Como tengo una biyección entre la unión y $\R$
 
 \noindent Ej 27) Sean 
 
