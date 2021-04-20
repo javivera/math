@@ -45,114 +45,7 @@
 
 \begin{document}
 
-\begin{ej}
-  Toda colección de abiertos disjuntos de $\R^n$ es a lo sumo numerable. 
-
-  \begin{proof}
-    Por densidad de $\Q$ todo intervalo abierto $A_{i}$ de $\R$ tiene un $x_{i} \in \Q$ tal que $x_{i} \in A_{i}$ y como todos estos intervalos son disjuntos $x_{i} \neq x_{j} \quad j \neq i$. Por ende tenemos a los umo $\# \Q$ intervalos o lo que es lo mismo numerables intervalos
-
-    \begin{remark}
-      Si en cambio pueden ser cerrados los intervalos ya su cardinal no necesariamente es $\n$ 
-
-      Por ejemplo si tomamos los intervalos $[n \sqrt{2},(n+1) \sqrt{2} ]$
-    \end{remark}
-  \end{proof}
-\end{ej}
-
-\begin{ej}
-  Sea $G$ la colección de todas las bolas $B(q,r)$ de $R^n$ con centro $q \in \Q^n$ y radio racional $r$. Sea $S \subseteq \R^n$ abierto y $x \in S$. Probar que $\exists B \in G$ tal que $x \in B \subseteq S$
-
-  \begin{proof}
-  Primero probemos que dada cualquier bola abierta $B(x,r) \subseteq R^n$ de centro $x \in \R^n$ podemos encontrar algún $q \in \Q^n$ tal que $q \in B(x,r)$
-
-  Dada la bola , tomemos un $z \in B(x,r)$ ahora mirando coordenada a coordenada sabemos que para cada $i \in \{1,2,\dots,n\}$ existe un $q_{i} \in \Q$ tal que  $|x_{i} - q_{i}| \leq |x_{i} - z_{i}| $ por densidad de racionales en $\R$ en escencia esto es decir que entre dos numeros reales hay un racional , pero como aquí no sabemos en cada coordenada si $x_{i}$ mayor o menor que $y_{i}$ simplemente buscamos un racional que este más cerca de $x_{i}$, luego pudimos armar un $q = (q_{1},q_{2}, \dots ,q_{n}) \in \Q^n$ tal que $d(x,q) \leq d(x,y)$ esto sale de saber que cada modulo entre $x_{i} , q_{i}$ es mas pequeno que entre $x_{i},y_{i}$. 
-
-  Entonces $q \in \Q^n$ y ademas $q \in B(r,x)$. 
-  \begin{remark}Esto es equivalente a que $Q^n$ es denso en $R^n$ \end{remark}
-
-  Ahora pasamos al ejercicio. Dado $x \in S$ abierto , sabemos que existe $B(x,r) \subseteq S$. 
-
-  Ahora tomemos $r' \in \Q$ tal que $r' < \frac{r}{2}$ 
-
-  Miramos $B(x,r')$ por el lema inicial sabemos que existe $q \in B(x,r')$ tal que $q \in \Q^n$
-
-  Ahora si usamos $B(q,r')$ tenemos una bola que está contenida en $S$ y ademas $x \in B(q,r')$
-
-  Veamosló. Como $q \in B(x,r')$ entonces $d(x,q) \leq r'$ entonces $x \in B(q,r')$
-
-  Ahora tomemos un $p \in B(q,r')$ luego $d(p,q) \leq r'$ 
-
-  Teniendo esto en cuenta sabemos $d(p,x) \leq d(p,q) + d(q,x) \leq r' + r' < \frac{r}{2} + \frac{r}{2} = r$
-
-  Luego $\forall p \in B(q,r')$ tenemos $d(p,x) < r$ entonces $p \in B(x,r) \subseteq S$ entonces $B(q,r') \subseteq S$
-
-  Juntando todo $x \in B(q,r') \subseteq S$
-
-\end{proof}
-\end{ej}
-
-\begin{ej}
-  $Teorema$ $de$ $Lindelof.$ Sea $A \subseteq \R^n$ y $\mathcal{C} = (W_{i})_{i \in I}$ un cubrimiento por abiertos de $A$. Probar que existe un subcubrimiento numerable de $\mathcal{C}$ que cubre a $A$.
-
-  \begin{proof}
-    Sea $W_{i} \subseteq \mathcal{C}$ entonces como es un abierto por el ejercicio anteriór sabemos que para cada $x \in W_{i}$ existe $B(x',r)$ con $x' \in \Q$ y $r \in \Q$ tal que $x \in B(x',r) \subseteq W_{i}$
-
-    Y esto mismo podemos hacer para cada $W_{i}$ y para cada $x \in W_{i}$
-
-    Ahora teniendo esto en mente lo que hacemos para armar el subcubrimiento que buscabamos es para cada una de estas bolas de centro y radio racionales nos quedamos con un único $W_{i}$ que las contiene.
-
-    Esto es seguro un cubrimiento , por que para cada $x \in A$ tenemos un $W_{i}$ tal que $x \in W_{i}$ y por lo tanto una bola racional tal que $x$ está en esa bola y para cada una de esas bolas nos quedamos con un único $W_{i}$ por lo tanto cada $x \in A$ estan en algún $W_{i}$ de los que nos quedamos
-
-    Ahora por la forma en que armamos este subcubrimiento sabemos que a lo sumo tenemos igual cantidad de abiertos cubriendo que de bolas de centro racional y radio racional, pero el conjunto de todas las bolas de centro racional y radio racional , es facil ver que es a lo sumo numerable , por lo tanto este subcubrimiento es lo sumo numerable , de esta forma tenemos que efectivamente es subcubrimiento numerable (por que tiene menos cosas que el anteriór cubrimiento que era no numerable) y además por que es tambié un cumbrimiento
-  \end{proof}
-
-\end{ej}
-
-\begin{ej}
-  Sea $S \subseteq \R^n.$ Un punto $x \in \R^n$ es un punto de condensación de $S$ si toda bola $B$ centrada en $x$ tiene la propiedad de que $B \cap S$ es no numerable. Probar que si $S$ es no numerable entonces existe un punto $x \in S$ de condensación de $S$.
-
-\begin{proof}
-  Llamaré $S_{Con}$ al conjutno de los puntos de condensasión de $S$ por comodidad.
-
-  Supongamos que no existe punto de condensasión de $S$ , entonces $\forall x \in S$ $x \notin S_{con}$ 
-  
-  Entonces $\forall x_{i} \in S$ como $x_{i} \notin S_{con}$ luego existe un $r>0$ tal que $B(x_{i},r_{i}) \cap S$ es contable (lo contrario a no numerable)
-
-  Bueno ahora si tomamos la union de esas bolas $\bigcup_{i \in I} B_{i}$ tenemos un cubrimiento por abiertos de $S$ por que para cada $x \in S$ tenemos una bola
-
-  Luego por Lindelöf sabemos que hay un subcubrimiento numerable 
-
-  Luego tenemos este nuevo $S= \bigcup_{i \in \N} B_{i}$ cubrimiento con numerables bolas abiertas
-
-  Sabemos que $S \cap S = (\bigcup_{i \in \N} B_{i}) \cap S = \bigcup_{n \in \N} B_{i} \cap S$
-
-  Pero cada una de estas intersecciones tiene contables elementos por hipotesis. 
-
-  Luego tenemos que $S = \bigcup B_{i} \cap S$ es union numerable de cosas contables , por lo tanto es a lo sumo numerable
-
-  Pero entonces $S$ es a lo sumo numerable lo cual es absurdo. Dicho absurdo provino de suponer que no existia ningún punto de condensasión
-\end{proof}
-\end{ej}
-
-\begin{ej}
-  Sea $S \subseteq \R^n,$ probar que la colección de puntos aislados de $S$ es a lo sumo numerable.
-
-  \begin{proof}
-    Supongamos que el conjunto de los puntos aislados de $S$ notemosló $S_{aislados}$ es no numerable. 
-
-    Por el ejericio anteriór existe un $x \in S_{aislados}$ tal que $x$ es de condensasión.
-
-    Entonces $\forall r > 0$, $B(x,r) \cap S_{aislados}$ es no numerable.
-
-    Pero entonces $\forall r>0,$ $B(x,r) \cap S_{aislados} \neq \{x\} $ por que $\{x\}$ es finito
-
-    Luego , $\forall r>0, B(x,r)  \cap S \neq \{x\}$
-
-    Pero entonces $x$ no es un punto aislado, lo que es absurdo
-  \end{proof}
-\end{ej}
-\newpage
-\begin{ej} Ver si las siguuientes funciones son distancias.
+\begin{ej} Ver si las siguientes funciones son distancias.
   \begin{itemize}
     \item $d_{1}(x,y) = (x - y)^2$ No es distancia.
       \begin{proof}
@@ -170,12 +63,49 @@
       \end{enumerate}
     \item $d_{3}(x,y) = |x^2 - y^2|$ Es facil ver que no es distancia $d_{3}(-2,2) = 0$
     \item $d_{4}(x,y) = |x -2y|$ Es trivial devuelta $d_{4}(2,1) = 0$
-    \item $d_{5}(x,y) = \frac{|x-y|}{1 + |x-y|}$ queda como ejercicio para el lectro , por que es un aburrimiento hacerlo
+    \item $d_{5}(x,y) = \frac{|x-y|}{1 + |x-y|}$. Tomemos la función $f : \R \ra \R$ dada por $f(t) = \frac{t}{1+xt}   $. Viendo que su derivada es siempre mayor que 0 podemos notar que esta función es estrictamente creciente
+
+	    Además $f(a) + f(b) - f(a + b) = \frac{a}{1+a} + \frac{b}{1+b} - \frac{a+b}{1 + a+b} = \frac{a((1+b)(1+a+b)) + b((1+a)(1+a+b)) - (a+b)((1+a)(1+b))}{(1+a)(1+b)(1+a+b)}$
+
+	    $= \frac{(a+ab)(1+a + b) + (b+ab)(1 + b+ a) - (a+b)(1+a + b + ab)}{(1+a)(1+b)(1+a+b)} = \frac{a + 2ab + a^2+a^2b +ab^2 + b +2ab +b^2 + ab^2 + ba^2 - (a + b + a^2 +ba + ab +b^2 + a^2b + ab^2)}{  (1+a)(1+b)(1+a+b)} = \frac{ a + 4ab + a^2+2a^2b +2ab^2 + b  +b^2  - (a + b + a^2 +ba + ab +b^2 + a^2b + ab^2)  }{(1+a)(1+b)(1+a+b)}  = \frac{ 2ab  +ab^2  + a^2b }{(1+a)(1+b)(1+a+b)} \geq 0$
+
+	    Por lo tanto $f(a + b) \leq f(a) + f(b)$
+
+Entonces $d(x,y) = f(|x-y|) \leq f(|x-z| + |z-y|) \leq f(|x-z|) + f(|z-y|) = d(x,z) + d(z,y)$
+
+La primera desigualdad vale por que $f$ es creciente y usando la desigualdad de módulos de siempre, la segunda vale por lo probado arriba
+
+
 \end{itemize}
 \end{ej}
 
 \begin{ej}
-  Es una clásica demostración de taller de cálculo.
+	Es una clásica demostración de taller de cálculo. 
+\end{ej}
+
+
+\begin{ej}
+  Sean $X$ un conjunto y $\delta : X \times X \ra \R$ definida por
+$$
+\delta(x,y) = \left\{
+        \begin{array}{ll}
+	 1 & \quad \text{si } x \neq y  \\
+	  0 & \quad \text{si } x = y
+        \end{array}
+    \right.
+$$
+
+\noindent Verificar que $\delta$ es una métrica y hallar los abiertos de $(X, \delta)$
+
+\noindent Nota: $\delta$ se llama metrica discreta y $(X,\delta)$ espacio métrico discreto
+
+\begin{proof}
+  \begin{enumerate}
+    \item $\delta (x,y) = 0 \iff x = y$
+    \item Supongamos $x\neq y \Ra \delta (x,y) = 1 = \delta(y,x)$
+    \item Supongamos devuelta $x \neq y$ si no es obvio que vale , $\delta (x,y) = 1 \leq \delta (x,z) + \delta (z,y)$ esto vale seguro , por que no puede suceder $\delta (x,z) = \delta (z,y) = 0$ por que esto implicaría $x = z = y$ absurdo 
+  \end{enumerate}
+\end{proof}
 \end{ej}
 
 \begin{ej}
@@ -225,30 +155,6 @@ $$
 
 
 \begin{ej}
-  Sean $X$ un conjunto y $\delta : X \times X \ra \R$ definida por
-$$
-\delta(x,y) = \left\{
-        \begin{array}{ll}
-	 1 & \quad \text{si } x \neq y  \\
-	  0 & \quad \text{si } x = y
-        \end{array}
-    \right.
-$$
-
-\noindent Verificar que $\delta$ es una métrica y hallar los abiertos de $(X, \delta)$
-
-\noindent Nota: $\delta$ se llama metrica discreta y $(X,\delta)$ espacio métrico discreto
-
-\begin{proof}
-  \begin{enumerate}
-    \item $\delta (x,y) = 0 \iff x = y$
-    \item Supongamos $x\neq y \Ra \delta (x,y) = 1 = \delta(y,x)$
-    \item Supongamos devuelta $x \neq y$ si no es obvio que vale , $\delta (x,y) = 1 \leq \delta (x,z) + \delta (z,y)$ esto vale seguro , por que no puede suceder $\delta (x,z) = \delta (z,y) = 0$ por que esto implicaría $x = z = y$ absurdo 
-  \end{enumerate}
-\end{proof}
-\end{ej}
-
-\begin{ej}
   Sea $\ell_{\infty} = \{(a_{n})_{n \in \N} \subseteq \R : (a_{n})_{n \in \N} \text{ es acotada} \}$. Se considera $d: \ell_{\infty} \times \ell_{\infty} \ra \R$ definida por $d(a_{n},b_{n}) = \sup_{n \in \N}{|a_{n} - b_{n}|}$. Probar que $(\ell_{\infty},d)$ es un espacio métrico. 
 
   \begin{proof}
@@ -274,11 +180,72 @@ $	\iff |a_{n} - b_{n}| = 0 \quad \forall n \in \N \iff a_{n} = b_{n} \quad \fora
       
     \item $(\mathcal{C}[a,b],d_{\infty})$, con $d_{\infty}(f,g) = \sup_{x \in [a,b]}|f(x) - g(x)|$
       \begin{proof}
-Son demostraciones de taller	
+Son demostraciones de taller. De todas maneras las desigualdades salen usando $|f(x) - f(y)| \leq |f(x) - h(x)| + |h(x) - f(y)|$
+	
       \end{proof}
   \end{enumerate}
 \end{ej}
-\newpage
+
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico. Se define $d'(x,y) = \frac{d(x,y)}{1+d(x,y)}
+	$
+	\begin{enumerate}[i)]
+		\item $d'$ es una métrica en $X$, que satisface $0 \leq d'(x,y) \leq 1 \quad \forall x,y \in X$
+			\begin{proof} 
+			Veamos que es métrica , las dos primeras propiedades son triviales, veamos la desigualdad, usando la misma funcione que habíamos usado antes $f(t) = \frac{t}{1 + t}$ tenemos que $d'(x,y) = f(d(x,y)) \leq f(d(x,z) + d(z,y)) \leq f(d(x,z)) + f(d(z,y)) = d'(x,z) + d'(z,y)$
+
+			Esto vale por que $f$ es creciente y por que $d$ es métrica
+
+			Por otro lado es trivial que $0 \leq d'(x,y)$
+
+			Supongamos que $d'(x,y) > 1 \Ra d(x,y) > 1 + d(x,y)$ lo que es absurdo , entonces $d'(x,y) \leq 1$
+			\end{proof}
+		\item $A \subseteq X$ es abierto para la métrica $d$ si y sólo si lo es para la métrica $d'$ 
+			\begin{proof}
+				Tomemos cualquier bola abierta en $d$ , $B_d(x,r)$
+
+				Ahora dado $y \in B_{d}(x,r)$ sabemos que $d(x,y) < r \Ra d'(x,y) =  \frac{d(x,y)}{1 + d(x,y)} < d(x,y) <  r$ 
+
+				Por lo tanto $y \in B_{d'}(x,r)$ entonces $B_d(x,r) \subseteq B_{d'}(x,r)$
+
+				$\Leftarrow$) Entonces si tenemos un abierto con $d'$ en $A \subseteq X$ tenemos que dado $x \in X$ existe $B_{d'}(x,r) \subseteq A$ luego $B_d(x,r) \subseteq B_{d'}(x,r) \subseteq A$ por lo tanto tambien es abierto en $d$ 
+
+				$\Ra)$ Ahora tomemos nuevamente un abierto en $A$ con respecto a $d$. Dado $x \in A$ tenemos $B_d(x,r) \subseteq A$. 
+
+				Ahora si consideramos $r'= \frac{r}{r+1} $ podemos afirmar que $B_{d'}(x,r') \subseteq B_d(x,r) \subseteq A$
+
+				Probémoslo, sea $y \in B_{d'}(x,r')$ entonces $d'(x,y) < r' =  \frac{r}{r+1}$, luego $\frac{d(x,y)}{1+d(x,y)} < \frac{r}{r+1} $ 
+
+				Entonces $d(x,y) < \frac{r}{r+1}(1+d(x,y)) \leq \frac{r}{r+1}(1+r) = r$
+
+				Finalmente $d(x,y) < r$ entonces $y \in B_d(x,r)$
+
+				Entonces $A$ es abierto con respecto a $d'$
+			\end{proof}
+
+		\item Deducir que $(x_n)_n$ converge a $x$ con respecto en la métrica $d$ si y sólo si converge a $x$ con respecto a la métrica $d'$
+
+			\begin{proof}
+			$\Ra $) Converge en $d$ entonces $\forall \epsilon > 0$  $\exists n_0 \in \N$ tal que $d(x,x_n) \leq \epsilon \quad \forall n \geq n_0$ 
+
+			Como $d'(x,x_n) < d(x,x_n) \quad \forall n \in \N$. Tenemos que:  
+
+			$\forall \epsilon > 0$ $\exists n_0$ $d'(x,x_n) < d(x,x_n) \leq \epsilon \quad \forall n \geq n_0$
+
+			Por lo tanto $x_n \ra x$ con la métrica $d'$
+
+			$\Leftarrow )$ Supongamos que $x_n$ converge a $x$ con d'. Ahora dado un $\epsilon > 0$ sabemos que $\exists r>0 $ tal que $B_{d'}(x,r) \subseteq B_d(x,\epsilon)$ y por convergencia de $x_n$ tenemos que $\exists n_0$ tal que $x_n \in B_{d '}(x,r) \subseteq B_d(x,\epsilon)\quad \forall n \geq n_0 $ entonces dado un $\epsilon$ conseguimos un $n_0 \in \N$ tal que $x_n \in B_{d}(x,\epsilon) \quad \forall n \geq n_0$ y esto lo podemos hacer para cualquier $\epsilon >0$
+
+			Entonces $x_n$ converge a $x$ con la métrica $d$
+		\end{proof}
+		
+		
+			
+			
+	\end{enumerate}
+\end{ej}
+
+
 \begin{ej}
 Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conjunto $X_{1} \times X_{2}$ y la aplicación $d: (X_{1} \times X_{2}) \times (X_{1} \times X_{2}) \ra \R$ dada por $$d((x_{1},x_{2}),(y_{1},y_{2}) ) = d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2})$$ 
 
@@ -291,9 +258,7 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	  \item $d(x,y) =  d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2}) \leq d_{1}(x_{1},z_{1}) + d_{1}(z_{1},y_{1}) + d_{2}(x_{2},z_{2}) + d_{2}(z_{2},y_{2}) = d(x,z) + d(z,y) $
 	\end{enumerate}
 	  \end{proof}
-    \item Construir otras métricas en $X_{1} \times X_{2}$
-
-Es evidente que va a funcionar con cualquier par $d_{1},d_{2}$ tales que ambas sean métricas
+  \item $\Ra )$ Sea $(a_n,b_n)_n$ convergente a $(a,b)$ entonces $d((a_n,b_n),(a,b)) \ra 0$ entonces $d_1(a_n,a) + d_2(b_n,b) \ra 0$
   \end{enumerate}
 \end{ej}
 

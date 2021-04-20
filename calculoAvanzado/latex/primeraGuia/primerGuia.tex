@@ -1003,8 +1003,10 @@ Se dice que un numero complejo $z$ es $algebraico$ si existen enteros $a_{0}, \d
 
 \end{proof}
 \end{ej}
+
+\begin{ej}
 \noindent 
-19) Sea $f: \R \ra \R$ una función monótona entonces 
+Sea $f: \R \ra \R$ una función monótona entonces 
 \begin{center} 
   $\# (\{x \in \R :f $ no es continua en x $\}) \leq \n$
 \end{center}
@@ -1066,8 +1068,11 @@ Se dice que un numero complejo $z$ es $algebraico$ si existen enteros $a_{0}, \d
   
   Esto último es trivial, y queda como ejericio para el lector. Pero para dar una idea, si tenemos conjuntos disjuntos de $\R$ por densidad sabemos que en cada uno de ellos hay seguro un racional y este racional no se repite en otro , si no no serían disjuntos. Luego sabemos que para cada conjunto podemos tomar un racional y como hay numerables racionales , la cantidad de conjuntos es a lo sumo numerable 
 \end{proof}
+\end{ej}
 
-\noindent 20) Sea $A$ un conjunto numerable, el conjunto de las partes finitas de $A$ (es decir, el subconjunto de $\mathcal{P}(A)$ formado por los subconjuntos finitos de $A$) es numerable
+
+\noindent
+\begin{ej} Sea $A$ un conjunto numerable, el conjunto de las partes finitas de $A$ (es decir, el subconjunto de $\mathcal{P}(A)$ formado por los subconjuntos finitos de $A$) es numerable
 
 \begin{proof}
   Primero veamos cuantos subconjuntos de cardinal $n \in \N$ tenemos.
@@ -1077,8 +1082,9 @@ Se dice que un numero complejo $z$ es $algebraico$ si existen enteros $a_{0}, \d
 
   Que es unión numerable de numerables entonces es numerable. Acá faltaría agregar el conjunto $\{\emptyset\}$ , que es un subconjunto finito de partes, pero sigue valiendo obviamente (ejericicio para el lector si no le parece obvio)
 \end{proof}
+\end{ej}
 
-21) 
+\begin{ej}
 \begin{enumerate}
   \item $A_{1} = \{(a_{n}) : a_{n} \in \N $ para todo $ n \in \N\}$
     \begin{proof}
@@ -1087,54 +1093,99 @@ Se dice que un numero complejo $z$ es $algebraico$ si existen enteros $a_{0}, \d
       Y sabemos $ \mathfrak{c} = 2^{\n}= 2^{\n \n}  = (2^{\n})^{\n} \geq \n^{\n} \geq 2^{\n} = \mathfrak{c}$ 
 
       Entonces $\# A_{1} = \mathfrak{c}$
+
+      Sin usar algebra de cardinales, podemos considerar el conjunto de las sucesiones que tienen solo 0s y 1s
+
+      Cada elemento lo mandamos a un conjunto de naturales , considerando la posicion en la sucesion por ejemplo la sucesion $(0,1,0,0,...0)$ la asignamos al conjunto $\{1\}$ la $(0,1,0,1,0,...,0)$ lo asignamos al $\{1,3\}$ esto es una biyección con partes de $\N$ por lo tanto este conjunto seguro tiene cardinal mayor o igual que $\mathfrak{c}$
+
+      Ahora sabemos que hay una inyección entre las sucesiones naturales y las reales.
+
+      Ahora tenemos $f: \R \ra \{0,1\}^{\N}$ biyectiva , esto lo probamos en clase , pero se puede ver facilmente buscando dos inyecciones.
+
+      Entonces tenemos $g: \R^{\N} \ra \{0,1\}^{\N}$ biyectiva dada por $g(a_1,a_2,a_3,\cdots) \ra (f(a_1),f(a_2),f(a_3),\cdots)$
+
+      Por lo tanto tenemos una inyección entre suc de naturales y $\{0,1\}^{\N}$
+
+      Por lo tanto $\# A_1 \leq 2^{\N} = \mathfrak{c}$
+
+      Por lo tanto $\# A_1 = \mathfrak{c}$
     \end{proof}
   \item $A_{2} = \{(a_{n}) \subseteq \N : a_{n} \leq a_{n +1} $ para todo $ n \in \N \}$
     \begin{proof}
       Podemos definir $f:A_{1} \ra A_{2}$ como la función que manda $a_{n}$ en $b_{n}$ 
      
-      Donde $b_{1} = a_{1}$ y $b_{n} = b_{n - 1} + a_{n} + 1$ es claramente biyectiva si se pinesa un momento
+      Donde $b_{1} = a_{1}$ y $b_{n} = b_{n - 1} + a_{n} + 1$ es claramente biyectiva si se piensa un momento
 
       Por ende $\# A_{2} = \# A_{1} = \mathfrak{c}$
+
+      Sin aritmética: 
+
+      La función $f: A_2 \ra \mathcal{P}(\N)$ dada por $f(a_n) = \{a_n : n \in \N\}$ es sobreyectiva por lo tanto sabemos que $\# A_2 \geq \mathfrak{c}$
+
+      Ahora sabemos que $A_2 \subseteq A_2$ entonces $\# A_2 \leq \# A_1 = \mathfrak{c}$
     \end{proof}  
   \item $A_{3} = \{(a_{n}) \subseteq \N : a_{n} \geq a_{n +1} $ para todo $ n \in \N \}$
     \begin{proof}
-      
+    Sabemos que toda sucesión en $A_3$ es eventualmente constante. 
 
+    Consideremos $A_3^k$ subconjunto de $A_3$ donde hay sucesiones que se hacen constantes a partir de el $k-esimo$ elemento
+
+    Ahora tenemos $f: A_3^n \ra \N^k$ dada por $f(a_n) = (a_1,a_2,\cdots,a_k)$ que es inyectiva
+
+    Por lo tanto $\# A_3^k \leq \# \N^k =\n$
+
+    Por otro lado tenemos $A_3 = \bigcup_{k\in \N} A_3^k$ que es una unión numerable de contables, por lo tanto es contable.
+
+    Luego $\# A_3 \leq \n$
+
+    Ver que su cardinal es mayor que $\n$ es trivial , tomamos las sucesiones con todos los elementos 0 salvo el primero un elemento $n \in \N$ ahi tenemos $\n$ sucesiones distintas dentro del conjunto 
     \end{proof} 
   \item $A_{4} = \{ (q_{n}) \subseteq \Q : \lim_{n \ra \infty} q_{n} = 0\}$
     \begin{proof}
-Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \mathfrak{c}$ entonces $\# A_{3} \leq \mathfrak{c}$
 
-      Por otro lado tenemos $\phi : \{0,1\}^{\N} \ra A_{3} $ dada por $f(a_{n}) = \frac{a_{n}}{n}$ que es inyectiva
+Sabemos que $\Q^{\N} \sim \N^{\N}$ por que como $\Q \sim \N$ tenemos $g: \N \ra \Q$ biyectiva.
+
+Luego podemos definir $f: \Q^{\N} \ra \N^{\N}$ dada por $(a_1,a_2,\cdots,a_n) = (g(a_1),g(a_2),\cdots,g(a_n))$ y es facil ver que es biyectiva
+
+Ahora tenemos $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \mathfrak{c}$ entonces $\# A_{3} \leq \mathfrak{c}$
+
+Por otro lado tenemos $\phi : \{0,1\}^{\N} \ra A_{3} $ dada por $(a_1,a_2,\cdots,a_{n}) = (\frac{a_1}{1},\cdots,\frac{a_{n}}{n})$ que es inyectiva
 
       Entonces $\# A_{3} \geq \# \{0,1\}^{\N} \geq \mathfrak{c}$
 
     \end{proof} 
   \item $A_{5} = \{ (q_{n}) \subseteq \Q : (q_{n}) $ es periódica $\}$
     \begin{proof}
-      Sabemos que toda sucesión en $A_{5}$ se repite en algún momento. Sea $P_{k}$ el conjunto de sucesiones que se repiten a partir del elemento $k$, $a_{n + k} = a_{k}$. 
+      Sabemos que toda sucesión en $A_{5}$ se repite en algún momento. Sea $P_{k}$ el conjunto de sucesiones que se repiten a partir del elemento $k$, $a_{n + k} = a_{n}$. 
 
-      Ahora consideremos $f: P_{k} \ra \Q^{k}$ dada por $f(a_{n}) = (a_{1}, \dots , a_{k})$ que es biyectiva
+      Ahora consideremos $f: P_{k} \ra \Q^{k}$ dada por $f(a_{n}) = (a_{1}, \dots , a_{k})$ que es sobreyectiva (no es inyectiva por ejemplo la sucesion (1,2,3,1,0,1,0..)va a parar al mismo lugar que la sucesion (1,2,3,7,8,7,8...)
 
-      Entonces $\# P_{k} = \# \Q^{k} = \# \N^{k} = \n$
+      Entonces $\# P_{k} \geq \# \Q^{k} = \# \N^{k} = \n$
 
       Y luego tenemos que $$ A_{5} = \bigcup_{k \in \N} P_{k}$$
 
-      Luego $A_{5}$ es unión numerable de numerable $\# A_{5} = \n$
+      Luego $A_{5}$ es unión numerable de contables $\# A_{5} \leq \n$
+
+      Usando las sucesiones $(q,0,0,0..)$ que estan contenidas en $A_n$ vemos que $\# A_5 \geq \n$
 
 
     \end{proof} 
   \item $A_{6} = \{(a_{n}) \subseteq \N : 1 \leq a_{n} \leq m$ para todo $ n \in \N\}$
     \begin{proof}
-      Sabemos que $X_{6} = \{1, \dots , m\}^{\N}$ 
 
-      Luego $\mathfrak{c} = 2^{\n} < m^{\n} = \# A_{6} < \# \N^{\N} = \n^{\n} = \mathfrak{c}$ resumiendo $\# A_{6} = \mathfrak{c}$
+	    Sabemos que este conjunto está contenido en el de todas la sucesiones de naturales por lo tanto $\# A_6 \leq \mathfrak{c}$
+
+	    Por otro lado adentro de el estan las sucesiones de 1s y 2s, y esas estan en biyección con las de 0s y 1s (trivial mandas todos los 1s a 1s y 2s a 0s) que estan en biyección con $\R$
+
+	    Por lo tanto $\# A_6 \geq \mathfrak{c}$
     \end{proof} 
 
 \end{enumerate}
+\end{ej}
 
+\newpage
 \noindent
-22) 
+\begin{ej}
 \begin{enumerate}[i.]
   \item $A_{1} = \{$ I : I es un intervalo de extremos racionales$ \}$
     \begin{proof}
@@ -1160,7 +1211,8 @@ Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \math
     \end{proof}
   \item $I$, sabiendo que $\{A_{i}\}_{i \in I} \subset \R$ es una familia de intervalos disjuntos
     \begin{proof}
-      Esto está probado más arriba, igual no es dificil, la idea usando axioma de elección y densidad es que para conjunto $A_{i}$ podemos elegir un $q \in \Q$ y esté va a estar solo en este conjunto , si no no serían disjuntos , de ahi podemos armar una biyección con $\Q$ y por ende este conjunto es numerable 
+
+	    Es facil armar una inyección con los racionales , dado que por densidad para cada intervalo hay un racional y no se puede repetír el mismo racional en dos intervalos disjuntos, por lo tanto el conjunto tiene cardinal menor que $\n$. 
     \end{proof}
   \item $\{(x,y) \in \R^{2} : 3x + 2y \geq 7\}$
     \begin{proof}
@@ -1177,8 +1229,11 @@ Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \math
       Notar que en realidad es facil probar que ambas funciones son una la inversa de la otra y son ambas biyectivas..
     \end{proof}
 \end{enumerate}
+\end{ej}
 
-\noindent 23) Unión numerable de conjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$.
+
+\noindent
+\begin{ej} Unión numerable de conjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$.
 \begin{proof}
   Sea $A_{n}$ un sucesión de conjuntos de cardinal $\mathfrak{c}$ luego para cada $n \in \N$ tenemos un conjunto de cardinal $\mathfrak{c}$ por ende una biyección $\phi :\R \ra A_{n}$ y esto pasa para cada $n \in \N$ entonces tenemos varias biyecciones $f_{n} : \R \ra A_{n}$
 
@@ -1194,8 +1249,11 @@ Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \math
 
   Finalmente $$\# \bigcup_{n \in \N} A_{n} = \mathfrak{c}$$
 \end{proof}
+\end{ej}
 
-\noindent Ej 24) Sean $a,b,c$ cardinales
+
+\begin{ej}
+\noindent  Sean $a,b,c$ cardinales
 \begin{enumerate}[i.]
   \item $a.(b+c) = ab + ab$
     \begin{proof}
@@ -1203,7 +1261,7 @@ Primero tenemos que $A_{3} \subseteq \Q^{\N} \sim \N^{\N}$ y $\# \N^{\N} = \math
 
       Pero en este caso $A \times (B \cup C) = (A \times B) \cup (A \times C)$ por ende la función identidad serviría
     \end{proof}
-  \newpage
+  
   \item $a^{b + c} = a^b.a^c$
  
     \begin{proof}
@@ -1285,8 +1343,9 @@ Luego es facil ver que esta es inversa a ambos lados y eso nos asegura sobreyect
     \end{proof}
   \item Si $b \leq c,$ entonces $a^b \leq a^c$ y $b^a \leq c^a$
 \end{enumerate}
-
-\noindent 25) $n^{\n} = \n^{\n} = \mathfrak{c}^{\n} = \mathfrak{c}$ con $n \geq 2$
+\end{ej}
+\noindent
+\begin{ej} $n^{\n} = \n^{\n} = \mathfrak{c}^{\n} = \mathfrak{c}$ con $n \geq 2$
 
 \begin{proof}
   Primero veamos $\mathfrak{c}^{\n} = \mathfrak{c}$
@@ -1299,10 +1358,14 @@ Luego es facil ver que esta es inversa a ambos lados y eso nos asegura sobreyect
 
   Tambien $2^{\n} \leq n^{\n} \leq \n^{\n}$
 \end{proof}
+\end{ej}
 
-\noindent 26) $\R$ es unión disjunta de $\mathfrak{c}$ conjuntos de cardinal a $\mathfrak{c}$
+\begin{ej}
+\noindent  $\R$ es unión disjunta de $\mathfrak{c}$ conjuntos de cardinal a $\mathfrak{c}$
 
-Tenemos una union de conjuntos de cardinal $\mathfrak{c}$ para cada uno de estos conjuntos $A_{j}$ tenemos una funcion $f_{j} : \R \ra A_{j}$ con $j \in \R$ biyectiva.
+Tenemos union de conjuntos disjuntos de cardinal $\mathfrak{c}$ 
+
+Para cada uno de estos conjuntos $A_{j}$ tenemos una funcion $f_{j} : \R \ra A_{j}$ con $j \in \R$ biyectiva.
 
 Ahora definimos una función $F: \R \times \R \ra \bigcup_{j \in \R} A_{j}$
 
@@ -1312,9 +1375,34 @@ Luego tenemos que $$\bigcup_{i \in \R} A_{j} \sim \R \times \R \sim \R  $$
 
 Luego existe una biyección entre $\R $ asi que como conjunto son 'lo mismo'
 
-Expando un poco mas. Como tengo una biyección entre la unión y $\R$
+Expando un poco mas. Por un lado $\bigcup_{i \in \R} A_j \subseteq \R$ y por otro lado $\# \bigcup_{i \in \R} A_j = \# \R$
 
-\noindent Ej 27) Sean 
+Entonces $\bigcup_{j \in \R} A_j = \R$
+
+Con esto probamos que unión de $\mathfrak{c}$ elementos disjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$
+
+Pero entonces tenemos una biyección $g: \bigcup_{j \in \R} A_j \ra \R$
+
+Ahora podemos afirmar $\R = g(\bigcup_{j \in \R} (A_j)) = \bigcup_{i \in \R} g(A_j)$
+
+Veamos que $g(A_j)$ son disjuntos. 
+
+Suponiendo que no lo fueran , existen $j\neq k$ tal que $y \in g(A_j)$ e $y \in g(A_k)$
+
+Por lo tanto existen $x_1 \in A_j$ tal que $g(x_1) = y$ y $x_2 \in A_k$ tal que $g(x_2) = y$ como $g$ es inyectiva entonces $x_1 = x_2$, por lo tanto $x_1 = x_2 \in A_j \cap A_k$
+
+Lo que es absurdo , por que los $A_n$ son disjuntos
+
+Veamos que son de cardinal $\mathfrak{c}$. Tomemos cualquier $A_j$
+
+Si tomamos la función $g|_{A_j}: A_j \ra g|_{A_j}(A_j)$ tenemos una función trivialmente sobreyectiva. Y es inyectiva, por que es el resultado de restringir una función inyectiva. Por lo tanto es biyectviva. 
+
+Pero además $g|_{A_j} (A_j) = g(A_j)$ por lo tanto esta nueva función $h: A_j \ra g(A_j)$ y es biyectiva, entonces $\mathfrak{c} = \# A_j = \# g(A_j)$
+
+Entonces escribimos a $\R$ como unión de $\mathfrak{c}$ conjuntos disjuntos cada uno de cardinal $\mathfrak{c}$
+\end{ej}
+\noindent 
+\begin{ej} Sean 
 
 $$ \mathcal{F}(\R) = \{f | f:\R \ra \R \} \quad \mathcal{F}(\Q) = \{f | \Q \ra \R \}$$
 
@@ -1329,12 +1417,11 @@ $$ \mathcal{F}(\R) = \{f | f:\R \ra \R \} \quad \mathcal{F}(\Q) = \{f | \Q \ra \
 	Sabemos que $\# \mathcal{F}(\Q) = \# \R^{\Q} = \mathfrak{c}^{\n} = \mathfrak{c}$	
 
 	      \end{proof}
-      \newpage
     \item $\# \mathcal{C}(\Q) = \mathfrak{c}$
       \begin{proof}
 	Por un lado tenemos que $\# \mathcal{C}(\Q)  \leq \# \mathcal{F}(\Q) = \mathfrak{c}$ 
 
-Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de funciones constantes $f: \Q \ra \R$ y sabemos que $A$ tiene cardinal $\mathfrak{c}$
+	Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de funciones constantes $f: \Q \ra \R$ (que te mandan todo $\Q$ a un elemento de $\R$) y sabemos que $A$ tiene adentro seguro $\mathfrak{c}$ funciones
 
 	Entonces $\# \mathcal{C}(\Q) = \mathfrak{c}$
       \end{proof}
@@ -1344,7 +1431,13 @@ Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de fun
 
       Pero entonces $f(x) = g(x) \quad \forall x \in \R$ por lo que $f = g $ entonces $\phi$ es inyectiva
 
-      Esta es una demostración de taller por ende no la voy a hacer, la idea es suponer que restringiendo a $\Q$ son iguales pero no lo son en $\R$ y usando la propiedad de que continua manda sucesiones convergentes en convergentes llegas a un absurdo 
+      Esta es una demostración de taller por ende no la voy a hacer muy detallada, la idea es suponer que restringiendo a $\Q$ son iguales pero no lo son en $\R$ y usando la propiedad de que continua manda sucesiones convergentes en convergentes llegas a un absurdo. Supongamos que tenemos un $i \in \I$ tal que $f(i) \neq g(i)$
+
+      Ahora tomemos una sucesión $(a_n)_n \in \Q$ tal que $a_n \ra i$ que existe por densidad, entonces por continuidad $f(a_n) \ra f(i) \neq g(i) \leftarrow g(a_n)$
+
+      Como todos los términos de $a_n$ estan en $\Q$ sabemos que $f(a_n) = g(a_n) \quad \forall n \in \N$, pero entonces, dado que ambas convergen, tienen que converger a lo mismo
+
+      Esto es absurdo , por que dijimos que no convergian a lo mismo, provino de suponer que existia dicho $i \in \I$ entonces no existe, por lo tanto $f(x) = g(x) \quad \forall x \in \R$
       \end{proof}
     \item $\# \mathcal{C}(\R) = \mathfrak{c}$
 
@@ -1354,9 +1447,10 @@ Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de fun
 
       Entonces $\# \mathcal{C}(\R) = \mathfrak{c}$
   \end{enumerate}
+  \end{ej}
 
-
-\noindent Ej 28) El conjunto de partes numerables de $\R$ (es decir, el subcojunto de $\mathcal{P}(\R)$ formado por todos los subconjuntos numerables de $\R$) tiene cardinal $\mathfrak{c}$
+\noindent 
+\begin{ej} El conjunto de partes numerables de $\R$ (es decir, el subcojunto de $\mathcal{P}(\R)$ formado por todos los subconjuntos numerables de $\R$) tiene cardinal $\mathfrak{c}$
 \begin{proof}
   Consideremos la funcion $f: \mathcal{P}_{numerables}(\R) \ra \R^{\N}$ 
 
@@ -1364,20 +1458,39 @@ Pero por otro lado sabemos que $\mathcal{C}(\Q)$ contiene al conjunto $A$ de fun
 
   Luego  $\mathcal{P}_{n}(\R) \leq \mathfrak{c}^{\n} = \mathfrak{c}$
 
-  Por otro lado sabemos que partes numerables contiene a partes numerables y acotadas adentro llamemosla $\mathcal{P}_{NumAc}(\R)$ y ahora tenemos la función $g: \mathcal{P}_{NumAc}(\R) \ra \R$ dada por $f(A) = inf(A)$ que es evidentemente sobreyectiva usando la inclusión tenemos que $\# \mathcal{P}_{n}(\R) \geq \mathfrak{c}$
+  Por otro lado sabemos que partes numerables contiene a partes numerables y acotadas inferiormente adentro llamemosla $\mathcal{P}_{NumAc}(\R)$ y ahora tenemos la función $g: \mathcal{P}_{NumAc}(\R) \ra \R$ dada por $f(A) = inf(A)$ que es evidentemente sobreyectiva usando la inclusión tenemos que $\# \mathcal{P}_{n}(\R) \geq \# \mathcal{P}_{NumAc}(\R) \geq \mathfrak{c}$
 
 \end{proof}
+\end{ej}
 
+\begin{ej}
 \noindent Ej 29) Sean $A,B \neq \emptyset$. Luego o bien existe $f:A \ra B$ inyectiva o bien $g: B \ra A$ inyectiva.(Es decir $\#A \leq \# B$ o $\#B \leq \# A$) 
 
 Supongamos que no existe $f: A \ra B$ inyectiva entonces $\forall a \in A \quad \exists b \in B $ tal que $f(a) = b$. Y para algunos $a \in A$ o quizas para todos existe más de un $b \in B$
 
-Por axioma de elección tenemos una función que elije elementos llamemosla $h$
 
-Ahora podemos armar una función $g: B \ra A$ dada por $g(b) = h ( f^{-1}(b)) $
+\end{ej}
+
+\begin{ej}
+	Sean $A$ y $B$ conjuntos no vacíos. Probar que existe una función sobreyectiva $f: A\ra B$ si y solo si existe una función inyectiva $g:B \ra A$
+
+	\begin{proof}
+		$\Leftarrow )$ Si tengo $g: B \ra A$ inyectiva , se que para cada $x \in B$ existe un $y = f(x) \in A$ entonces puedo tomar la función $h: A \ra B$ dada por $h(x) = g^{-1}(x)$ si $x \in im(g)$ si no $h(x) = x$ esta es sobreyectiva , por que para cada $y \in B$ seguro tengo un único $x \in A$ tal que $g^{-1}(x) = y$, si no fuera único el $x$ entonces la función $g$ no estaría bien definida.
+
+		Veamos que está bien definida. Si $x \notin im(g)$ está bien definida, si $x \in im(g)$, trivialmente seguro tiene preimagen y además esta preimagen es única , por que si tuviera mas de una preimagen entonces $g$ no sería inyectiva. Entonces $h$ está bien definida
+
+		$\Ra$) Por axioma de elección tenemos una función que elije elementos llamemosla $h$
+
+		Ahora podemos armar una función $g: B \ra A$ dada por $g(b) = h ( f^{-1}(b)) $
+
+		Ahora sabemos que las preimagenes no se intersecan si no $f$ no estaría bien definida, por lo tanto $h$ siempre va a estar elijiendo cosas de conjuntos disjuntos, por lo tanto $g$ es inyectiva y sabemos que está bien definida, por que dado $b \in B$ seguro existe $f^{-1}(b)$ por que f es sobreyectiva
+	\end{proof}
+	
+	
+\end{ej}
+
 
 
 \end{document}
 
 
-proof
