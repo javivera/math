@@ -1475,7 +1475,7 @@ Supongamos que no existe $f: A \ra B$ inyectiva entonces $\forall a \in A \quad 
 	Sean $A$ y $B$ conjuntos no vacíos. Probar que existe una función sobreyectiva $f: A\ra B$ si y solo si existe una función inyectiva $g:B \ra A$
 
 	\begin{proof}
-		$\Leftarrow )$ Si tengo $g: B \ra A$ inyectiva , se que para cada $x \in B$ existe un $y = f(x) \in A$ entonces puedo tomar la función $h: A \ra B$ dada por $h(x) = g^{-1}(x)$ si $x \in im(g)$ si no $h(x) = x$ esta es sobreyectiva , por que para cada $y \in B$ seguro tengo un único $x \in A$ tal que $g^{-1}(x) = y$, si no fuera único el $x$ entonces la función $g$ no estaría bien definida.
+		$\Leftarrow )$ Si tengo $g: B \ra A$ inyectiva , se que para cada $x \in B$ existe un $y = f(x) \in A$ entonces puedo tomar la función $h: A \ra B$ dada por $h(x) = g^{-1}(x)$ si $x \in im(g)$ si no $h(x) = p$, donde $p \in B$ sabemos que dicho $p$ existe, porque $B \neq \emptyset$. Esta función es sobreyectiva , por que para cada $y \in B$ seguro tengo un único $x \in A$ tal que $g^{-1}(x) = y$, si no fuera único el $x$ entonces la función $g$ no estaría bien definida.
 
 		Veamos que está bien definida. Si $x \notin im(g)$ está bien definida, si $x \in im(g)$, trivialmente seguro tiene preimagen y además esta preimagen es única , por que si tuviera mas de una preimagen entonces $g$ no sería inyectiva. Entonces $h$ está bien definida
 

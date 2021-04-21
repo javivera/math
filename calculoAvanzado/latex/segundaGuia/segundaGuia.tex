@@ -258,9 +258,37 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	  \item $d(x,y) =  d_{1}(x_{1},y_{1}) + d_{2}(x_{2},y_{2}) \leq d_{1}(x_{1},z_{1}) + d_{1}(z_{1},y_{1}) + d_{2}(x_{2},z_{2}) + d_{2}(z_{2},y_{2}) = d(x,z) + d(z,y) $
 	\end{enumerate}
 	  \end{proof}
-  \item $\Ra )$ Sea $(a_n,b_n)_n$ convergente a $(a,b)$ entonces $d((a_n,b_n),(a,b)) \ra 0$ entonces $d_1(a_n,a) + d_2(b_n,b) \ra 0$
+  \item $\Ra )$ Sea $(a_n,b_n)_n$ convergente a $(a,b)$ entonces $d_1(a_n,a) + d_2(b_n,b) = d((a_n,b_n),(a,b)) \ra 0$ entonces $d_1(a_n,a) + d_2(b_n,b) \ra 0 $ dado que son distancias son ambas mayores o iguales que 0 , por lo tanto ambas convergen a 0 , si no el sumando no convergería. 
+
+	  $\Leftarrow ) $ $a_b \ra a$ y $b_n \ra b$ entonces $d_2((a_n,b_n),(a,b)) = d_1(a_n,a) + d_2(b_n,b) \ra 0$
   \end{enumerate}
 \end{ej}
+
+\begin{ej}
+	Sea $(X_n,d_n)_{n \in \N}$ una sucesión de espacios métricos, y consideramos el producto cartesiano $X = \prod_{n =1}^{\infty} X_n$. El objetivo del ejercicios es construír una métrica para $X$ en la cual la convergencia de una sucesión equivalga a la convergencia en cada coordenada, como en el ejercicios anteriór.
+	\begin{enumerate}
+		\item Supongamos primero que todos los $X_n$ tienen diámetro menor o igual que 1, es decir $d_n(x,y) \leq 1 \quad \forall n\in \N \quad \forall x,y \in X_n$. Dados dos elementos $x = (x_n)_n$ e $y= (y_n)_n$ en $X$, definimos 
+
+			$$ d(x,y) = \sum_{n = 1}^{\infty} \frac{d_n(x_n,y_n)}{2^n}$$
+
+			Probar que $d$ es una métrica
+			\begin{proof}
+				Las primeras dos propiedades son triviales considerando que cada $d_n$ es métrica
+
+				Ahora veamos la desigualdad
+
+				$$ d(x,y) = \sum_{i = 1}^\infty \frac{d_n(x_n,y_n)}{2^n} = d_1(x_1,y_1) + d_2(x_2,y_2) + \cdots  \leq d_1(x_1,z_1) + d_1(z_1,y_1) + \cdots $$ 
+
+				$$= \sum d_n(x_n,z_n) + d_n(z_n,y_n) = d(x,z) + d(z,y) $$
+
+				Entonces es una métrica
+			\end{proof}
+		\item Sea $x^1,x^2,x^3,..$ una sucesión de puntos de $X$, es decir, cada $x^k$ es una sucesión $(x_1^k,x_2^k,\cdots)$, en la cual $x_n^k \in X_n$ para cada $n \in \N$. Sea $x = (x_n)_n$ un elemento de $X$. Probar que, con la métrica $d$ definida en el ítem anteriór, $x^k \ra x $ en $X$ si y sólo para todo $n \in \N$ se cumple que $x_n^k \ra x_n $ en $X_n$	
+			
+	\end{enumerate}
+\end{ej}
+
+
 
 \begin{ej}
   Sea $(X,d)$ un espacio métrico y sean $A,B \subseteq X$
@@ -269,9 +297,9 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
       \begin{enumerate}
 	\item $$A^{\open} = \bigcup_{G \text{ abierto, } G \subseteq A} G$$
 	  \begin{proof}
-	  $\subseteq )$ Trivial dado que $A^{\open}$ es abierto mas grande contenido en  $A$
+		  $\subseteq )$ Sea $x \in A^{\open}$ entonces existe $r>0$ tal que $B(x,r) \subseteq A$ y este es un abierto contenido en $A$ entonces $x \in B(x,r) \subseteq \bigcup G$
 	  
-	$\subseteq ) $ Sea $x \in \bigcup G$ entonces $x \in G$ para algún $G$ de la unión
+	$\supseteq ) $ Sea $x \in \bigcup G$ entonces $x \in G$ para algún $G$ de la unión
 
 	Como $G$ es abierto existe $B(x,r) \subseteq G$ y por otro lado $G \subseteq A$
 
