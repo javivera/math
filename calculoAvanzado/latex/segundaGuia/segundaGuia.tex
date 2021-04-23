@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
@@ -285,6 +285,19 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 			\end{proof}
 		\item Sea $x^1,x^2,x^3,..$ una sucesión de puntos de $X$, es decir, cada $x^k$ es una sucesión $(x_1^k,x_2^k,\cdots)$, en la cual $x_n^k \in X_n$ para cada $n \in \N$. Sea $x = (x_n)_n$ un elemento de $X$. Probar que, con la métrica $d$ definida en el ítem anteriór, $x^k \ra x $ en $X$ si y sólo para todo $n \in \N$ se cumple que $x_n^k \ra x_n $ en $X_n$	
 			
+			\begin{proof}
+				Tenemos que $d(x^k, x) \ra 0$ o lo que es equivalente dado  $\epsilon > 0 $ existe $k \in \N$ tal que  $d(x^k,x) \leq \epsilon \quad \forall k\geq k_0$. 
+
+			Entonces $\sum_{n = 0}^{\infty} \frac{d_n(x_n^k , x_n)}{2^n} \leq \epsilon $
+
+			Luego  $\sum_{n = 0}^{\infty} \frac{d_n(x_n^k , x_n)}{2^n} \leq 2^n\epsilon $ 
+
+			Ahora dado cualquier $n \in \N$ tenemos que $d_n(x_n^k , x_n) \leq C \epsilon \quad \forall k \geq k_0$ (Donde $C = 2^n$ es una constante)
+
+			O lo que es lo mismo $x_n^k \ra x_n$. Y esto vale para cualquier $n \in \N$ que tomemos
+			\end{proof}
+			
+			
 	\end{enumerate}
 \end{ej}
 
@@ -319,7 +332,6 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 
 	Absurdo por que $X$ es todo no pueden existir cosas que no esten en $X$
 	  \end{proof}
-	  \newpage
 	\item $A \subseteq B \Ra A^{\open} \subseteq B^{\open}$
 	  \begin{proof}
 	    Sea $x \in A^{\open}$ entonces existe $B(x,r) \subseteq A \subseteq B$ luego $x \in B^{\open}$
@@ -334,6 +346,8 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 
 	  Luego $x \in A^{\open} \cap B^{\open}$
 
+	  Esta se puede generalizar a infinito
+
 	$\supseteq )$ Sea $x \in A^{\open} \cap B^{\open}$ entonces $x \in A^{\open}$ y $x \in B^{\open}$ 
 
 	Entonces existe $B(x,r_{1}) \subseteq A$ y también $B(x,r_{2}) \subseteq B$
@@ -341,6 +355,12 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	Si tomamos $r = \min{ \{r_{1},r_{2}\}}$ tenemos que $B(x,r) \subseteq A$ y tambien $B(x,r) \subseteq B$
 
       Entonces $B(x,r) \subseteq A \cap B$ finalmente $ x \in (A \cap B)^{\open}$
+
+      Esta no se puede generalizar , por que ahora no necesariamente tenemos mínimo , y tenemos un conjunto de radios que si bien está acotado inferiormente por 0, nada nos asegura que el infimo no sea el mismo 0 que no nos serviría como radio.
+
+      Ejemplo $\bigcap B(x,\frac{1}{n}) = \bigcap (B(x,\frac{1}{n}))^{\circ}$ esto es porque las bolas son abiertas por ende iguales a su interiór
+
+      $x \in \bigcap (B(x,\frac{1}{n}))^{\circ}$ sin embargo $x \notin (\bigcap B(x,\frac{1}{n}))^{\circ} = \{x\}^{\circ} = \emptyset$
 	  \end{proof}
 	\item $(A \cup B)^{\open} \supseteq A^{\open} \cup B^{\open}$ ¿Vale la igualdad?
 	  \begin{proof}
@@ -361,7 +381,7 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
       \begin{enumerate}
 	\item $$\ol A = \bigcap_{F \text{ cerrado, } A \subseteq F} F$$
 	  \begin{proof}
-	    Sea $x \in \ol A$ entonces $\forall r>0 , B(x,r) \cap A \neq \emptyset$ ahora supongamos $x \notin F$
+		  $\subseteq$) Sea $x \in \ol A$ entonces $\forall r>0 , B(x,r) \cap A \neq \emptyset$ ahora supongamos $x \notin F$ para algún $F$
 
 	    Como $F = \ol F$ por ser cerrado, entonces $x \notin \ol F$ para algún $F$ en la intersección
 
@@ -369,15 +389,13 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 
 	    Pero esto es absurdo dado que $A \subseteq F$ tenemos $\emptyset \neq B(x,r') \cap A \subseteq B(x,r') \cap F = \emptyset$
 
-	    Entonces $x \in \ol F = F$
+	    Provino de suponer que $x \notin F$ por lo tanto $x \in F $
 
 	    Y esto vale para cualquier $F$ cerrado tal que $A \subseteq F$
 
 	    Entonces $x$ esta en todos estos $F$ y por ende en la intersección
 
-	$\supseteq )$ Sea $x \in \bigcap F$ entonces $x \in F$ para todo $F = \ol F$ por que es cerrado por lo tanto $x \in \ol F$
-
-	Supongamos que $x \in \bigcap F$ pero $x \notin \ol A$ entonces tiene que existir un $r>0$ tal que $B(x,r) \cap A = \emptyset$ luego tenemos que $A \subseteq X \setminus B(x,r)$ que ademas es cerrado por que es el complemento de $B(x,r)$ que es abierto
+	$\supseteq )$ Supongamos que $x \in \bigcap F$ pero $x \notin \ol A$ entonces tiene que existir un $r>0$ tal que $B(x,r) \cap A = \emptyset$ luego tenemos que $A \subseteq X \setminus B(x,r)$ que ademas es cerrado por que es el complemento de $B(x,r)$ que es abierto
 
 	Pero entonces $X \setminus B(x,r)$ es un cerrado que contiene a $A$ por ende es uno de los $F$ en la intersección
 
@@ -395,11 +413,18 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	  \end{proof}
 	\item $\ol X = X$
 	  \begin{proof}
-	  $\supseteq )$ Ya está demostrada
+		  $\supseteq )$ Sea $x \in X$ entonces $\forall r >0$ tenemos que $ B(x,r) \cap X \neq \emptyset$ por que $x \in B(x,r)$ y $x \in X \quad \forall r >0$
 
-	$\subseteq ) $ Sea $x \in \ol X$ seguro tambien $x \in X$ por que no existe tal que $x \notin X$
+		  Entonces $x \in \ol X$
 
-	Notemos que $X$ es el conjunto universal
+	$\subseteq ) $ Sea $x \in \ol X$ entonces $B(x,r) \cap X \neq \emptyset \quad \forall r>0$ 
+
+	Tomemos radios $\frac{1}{n}$, entonces $B(x,\frac{1}{n}) \cap X \neq \emptyset \quad \forall n \in \N$
+
+	Ahora $\emptyset \neq \bigcap_{n \in \N} B(x,\frac{1}{n}) \cap X = (\bigcap_{n \in \N} B(x,\frac{1}{n})) \cap X = \{x\} \cap X$
+
+	Entonces $\{x\} \cap X \neq \emptyset$ por lo tanto $x \in X$
+
 	  \end{proof}
 	\item $A \subseteq B \Ra \ol A \subseteq \ol B$
 	  \begin{proof}
@@ -418,38 +443,63 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	Entonces $B(x,r_{1}) \cap A = \emptyset$ y por otro lado $B(x,r_{2}) \cap B = \emptyset$
 
 	Luego sea $r = \min{\{r_{1},r_{2}\}}$ tenemos que 
-      $$B(x,r) \cap (A \cup B) \subseteq (B(x,r) \cap A) \cup (B(x,r) \cap B) \subseteq (B(x,r_{1}) \cap A ) \cup (B(x,r_{2}) \cap B) = \emptyset $$
+      $$B(x,r) \cap (A \cup B) =(B(x,r) \cap A) \cup (B(x,r) \cap B) \subseteq (B(x,r_{1}) \cap A ) \cup (B(x,r_{2}) \cap B) = \emptyset $$
 
       Absurdo entonces no puede ser que $x \notin \ol A$ y $x \notin \ol B$
+
+      Por lo tanto $x \in \ol A$ o $x \in \ol B$ luego $x \in \ol A \cup \ol B$
+
+      Creo que no vale la generalización 
+
+      Por ejemplo consideremos los conjuntos $A_n = (\frac{1}{n}, 2]$. Luego $0 \in \ol{\bigcup_{n} A_n}$
+
+      Vale por que podemos construír una sucesión $x_j \subseteq \bigcup_{n \in \N} A_n$ tal que $x_j \ra 0$
+
+      La podemos armar por ejemplo dando $x_1 = 2 $ y despues $x_j \in A_j \setminus A_{j-1} \neq \emptyset$
+
+      Pero por otro lado $\forall n \in \N \quad 0 \notin \ol A_n$ por lo tanto $0 \notin \bigcup_{n\in \N} \ol A_n$
 
       $\supseteq ) $ Sea  $x \in \ol A \cup \ol B$ supongamos $x \in \ol A$ luego $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$
 
     Entonces dado que $B(x,r) \cap A \subseteq B(x,r) \cap (A \cup B)$ 
 
     Tenemos $B(x,r) \cap (A \cup B) \neq \emptyset$ por lo que $x \in \ol{A \cup B}$
+
+    Esta se puede generalizar facilmente a infinitos
 	  \end{proof}
 	\item $\ol{A \cap B} \subseteq \ol A \cap \ol B$
 	  \begin{proof}
 	    Sea $x \in \ol{A \cap B}$ entonces $\forall r>0 \quad B(x,r) \cap (A \cap B) \neq \emptyset$
 
+	    Entonces por asociatividad $(B(x,r) \cap A ) \cap B \neq \emptyset$
+
 	    Entonces tenemos $\forall r>0 \quad B(x,r) \cap A \neq \emptyset$ por lo que $x \in \ol A$
 
-	    Y tambien $\forall r>0 \quad B(x,r) \cap B \neq \emptyset$ por lo que $x \in \ol B$
+	    Lo mismo podemos hacer con $B$. Entonces $x \in \ol A \cap \ol B$
 
-	    Entonces $x \in \ol A \cap \ol B$
+	No vale la vuelta:  
 
-	  Sea $A = \Q$ y $B = \R \setminus \Q \quad \ol{A \cap B} = \ol{\emptyset} = \emptyset \neq \R = \R \cap \R = \ol \Q \cap \ol{ \R \setminus \Q} = \ol A \cap \ol B$ 
+	Sea $A = \Q$ y $B = \R \setminus \Q \quad \ol{A \cap B} = \ol{\emptyset} = \emptyset \neq \R = \R \cap \R = \ol \Q \cap \ol{ \R \setminus \Q} = \ol A \cap \ol B$ 
 	  \end{proof}
-	  \newpage
 	\item $x \in \ol A \iff$ existe una sucesión $(x_{n})_{n \in \N} \subseteq A$ tal que $x_{n} \longrightarrow x$
 	  \begin{proof}
 	  $\Ra )$ Sea $x \in \ol A$ entonces $\forall n \in \N \quad  B(x,\frac{1}{n}) \cap A \neq \emptyset$
 	
 	  Entonces $\forall n \in \N$ existe $a_{n} \in A \cap B(x,\frac{1}{n})$ entonces $a_{n} \in A$ y $a_{n} \in B(x,\frac{1}{n})$
 
-	  Que es lo mismo que decir $\forall \epsilon > 0 \quad \exists a_{n} \in A$ tal que $ d(x,a_{n})\leq \epsilon$
+	  Que es lo mismo que decir $\forall n \in \N \quad \exists a_{n} \in A$ tal que $ d(x,a_{n})\leq \frac{1}{n}$
 
-	  Por lo tanto $\forall \epsilon > 0 \quad \exists n_{0}$ tal que $\forall n \geq n_{0} \quad d(x,a_{n}) \leq \epsilon$
+	  Ademas podemos ver que $d(x,a_n) \leq d(x, a_{n_0})$ si $n \geq n_0$. 
+
+	  Esto vale por que $B(x,\frac{1}{n}) \subseteq B(x,\frac{1}{n_0})$
+
+	  Ahora dado cualquier $\epsilon$ sabemos que $\exists n_0 \in \N$ tal que $\frac{1}{n_0} \leq \epsilon$
+
+	  Por lo tanto $\forall \epsilon > 0 \quad \exists n_{0}$ tal que $\forall n \geq n_{0} \quad d(x,a_{n}) \leq d(x,a_{n_0}) \leq \frac{1}{n_0}\leq \epsilon$
+
+	  Juntando todo $\forall \epsilon > 0 \quad \exists n_0 \in \N$ tal que $d(x,a_n) \leq \epsilon \quad \forall n \geq n_0$
+
+	  Entonces $a_n \ra x$
 
 	$\Leftarrow ) $ Sea $a_{n} \in A \quad \forall n \in \N$ tal que $a_{n} \ra x $
 
@@ -481,7 +531,7 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 	  \end{proof}
 	\item $\ol{X \setminus A} = X \setminus A^{\open}$
 	  \begin{proof}
-	  $\supseteq )$ Sea $x \in X\setminus A^{\open} \iff x \notin A^{\open} \iff \forall r > 0 \quad B(x,r) \not\subseteq A$ 
+	  Sea $x \in X\setminus A^{\open} \iff x \notin A^{\open} \iff \forall r > 0 \quad B(x,r) \not\subseteq A$ 
 
 	  $\iff \forall r>0 \quad B(x,r) \cap (X\setminus A) \neq \emptyset \iff x \in \ol{X \setminus A}$
 	  \end{proof}
@@ -502,7 +552,6 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 
 	  $\iff x \in \ol A$ y $x \in \ol{A^c} = \ol{X \setminus A} \iff x \in \ol A \cap \ol{X \setminus A}$
 	  \end{proof}
-	  \newpage
 	\item $\partial A$ es cerrado
 	  \begin{proof}
 	    Esto es equivalente a ver que $\partial A = \ol{\partial A}$ una de las inclusiones es trivial
@@ -530,11 +579,26 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
       \end{enumerate}
   \end{enumerate}
 \end{ej}
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico y sea $A \subseteq X$ un conjunto numerable. Probar que $\# \ol A \leq \mathfrak{c}$
+	\begin{proof}
+		
+	\end{proof}
+	
+	
+\end{ej}
+
 
 \begin{ej}
   Sea $(X,d)$ un espacio métrico y sean $G \subseteq X$ abierto y $F \subseteq X$ cerrado. Probar que $F \setminus G$ es cerrado y $G \setminus F$ es abierto
   \begin{proof}
-    
+ Sea $G$ abierto , supongamos que $G \setminus F$ no es abierto, entonces existe algun $x \in G \setminus F$ que no es interiór     
+
+ Entonces $B(x,r) \not\subseteq G \setminus F \quad \forall r > 0$
+
+ Entonces dado un $r>0$ tenemos que $\exists x' \in B(x,r)$ tal que $y \notin G \setminus F$
+
+ Por lo tanto $y \in G^c $ o $y \in F$
   \end{proof}
 \end{ej}
 
