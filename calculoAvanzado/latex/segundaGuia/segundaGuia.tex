@@ -582,7 +582,15 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 \begin{ej}
 	Sea $(X,d)$ un espacio métrico y sea $A \subseteq X$ un conjunto numerable. Probar que $\# \ol A \leq \mathfrak{c}$
 	\begin{proof}
-		
+		Sea $B = \{(a_n)_n \subseteq A : a_n \text{ converge} \}$. Tenemos una sobreyección $f : B \ra \ol A$ donde $f(a_n) = a$ (con $a_n \ra a$) 
+
+		Es evidentemente sobreyectiva, por que para cualquier $x \in \ol A$ tenemos un sucesión contenida en $A$ que converge a $x$
+
+		Esta sucesión está en $B$ por ser una sucesión convergente contenida en $A$ 
+
+		Luego $x$ tiene preimagen
+
+		Luego $\# \ol A \leq \# B \leq \# A^{\N} \leq \# \N^{\N} = \mathfrak{c} $
 	\end{proof}
 	
 	
@@ -592,13 +600,23 @@ Sean $(X_{1},d_{1})$ y $(X_{2}.d_{2})$ espacios métricos. Consideremos el conju
 \begin{ej}
   Sea $(X,d)$ un espacio métrico y sean $G \subseteq X$ abierto y $F \subseteq X$ cerrado. Probar que $F \setminus G$ es cerrado y $G \setminus F$ es abierto
   \begin{proof}
- Sea $G$ abierto , supongamos que $G \setminus F$ no es abierto, entonces existe algun $x \in G \setminus F$ que no es interiór     
 
- Entonces $B(x,r) \not\subseteq G \setminus F \quad \forall r > 0$
+	  Primero voy a probar que complemento de un abierto es cerrado. Sea $A$ abierto , supongamos que $A^c$ es abierto. 
 
- Entonces dado un $r>0$ tenemos que $\exists x' \in B(x,r)$ tal que $y \notin G \setminus F$
+	  Supongo $A^c$ no es cerrado, entonces existe algún punto de acumulación $x$ de $A^c$ tal que $x \notin A^c$ luego $x \in A$
 
- Por lo tanto $y \in G^c $ o $y \in F$
+	  Pero como $x \in A$ que es abierto entonces existe $r>0$ tal que $B(x,r) \subseteq A$, contradiciendo que $x$ era punto de acumulación de $A^c$
+
+	  Por lo tanto, $A^c$ contiene todos sus puntos de acumulación entonces $A^c = \ol A$ por lo que es cerrado.
+
+	  Que complemento de un cerrado $A$ es abierto, sale de forma similar , suponiendo que el $A^c$ no es abierto , entonces tenemos algún punto $x \in A^c$ que no es interiór
+
+	  Por lo tanto para todo radio la bola de centro $x$ no está contenida enteramente en el complemento, luego podemos armar una sucesion de A que converga a $x$ y como $A$ es cerrado el límite de la sucesión tiene que estar en $A$ lo que es absurdo
+
+Sabemos que $G \setminus F = G \cap F^c$ como $F$ cerrado entonces $F^c$ es abierto , por lo tanto tenemos una intersección de dos abiertos que sabemos que es abierta
+
+Sabemos que $F \setminus A = F \cap G^c$ como $G$ es abierto entonces $G^c$ es cerrado, por lo tanto tenemos una intersección de dos cerrados que sabemos que es cerrada
+
   \end{proof}
 \end{ej}
 
@@ -633,24 +651,51 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 \end{enumerate}
 \end{ej}
 
-\newpage
+\begin{ej}
+	Sean $(X,d)$ un espacio métrico, $p$ un punto de $X$ y $a,b$ números reales tales que $0 <a<b$. Probar que:
+	\begin{enumerate}[i.]
+		\item $ \{ x \in X \text{/} a < d(x,p)<b\}$ es abierto
+			\begin{proof}
+				Primero sea $A_1 = \{x \in X : d(x,p) < b\}$ entonces $A_1 = B(x,b)$ que ya demostramos que es abierta
+
+				Y luego consideremos $A_2 = \{x \in X : a < d(x,p)\}$
+
+				Ahora si miramos $A_2^c = \{x \in X : d(x,p) \leq a)\} = \ol B (x,a)$ la bola cerrada que ya demostramos que es cerrada
+
+				Entonces $A_2$ tiene que ser abierto
+
+				Pero $A = A_1 \cap A_2$ entonces por ser intersección de abiertos es abierto
+			\end{proof}
+			
+		\item $ \{ x \in X \text{/} a \leq d(x,p) \leq b\}$ es cerrado. Sale igual que el $i.$
+	\end{enumerate}
+\end{ej}
+
+
+
 \begin{ej}
   Sean $(X,d_{1})$ e $(Y,d_{2})$ espacios métricos. Se considera el espacio métrico $(X \times Y , d)$, donde la $d$ es la métrica definida en el Ejercicio 12. Probar que para $A \subseteq X$ y $B \subseteq Y$ valen: 
   \begin{enumerate}
     \item $(A\times B)^{\open} = A^{\open} \times B^{\open}$
       \begin{proof}
+	      \begin{lemma}
+	Sean $U$ y $V$ abiertos de $X$ e $Y$ respectivamente entonces $U \times V$ es abierto de $X\times Y$.
 
-	Veamos primero que dados $U$ y $V$ abiertos de $X$ e $Y$ respectivamente entonces $U \times V$ es abierto de $X\times Y$.
+\begin{proof}
+	
 
+
+
+	
 	Sea $(x,y) \in U \times V$. como $x \in U$ que es abierto existe $B(x,r_{1}) \subseteq U$ 
 
 	Y lo mismo con $y$ existe $B(y,r_{2}) \subseteq V$
 
-	Ahora si tomamos $r = \min{\{r_{1},r_{2}\}}$
-	
-	Sea $x \in (A \times B)^{\open}$ entonces $\exists r>0$ tal que $B(x,r) \subseteq A \times B$
+	Ahora si tomamos $r = \min{\{r_{1},r_{2}\}}$. 
 
-	Si $(x',y') \in B_{r}(x,y) \quad r > d((x,y),(x',y')) = d_{1}(x,x') + d_{2}(y,y') $. Ambos sumandos son positivos por ser distancias. Luego ambos sumandos tienen que ser menores que $r$
+	Tenemos $B((x,y),r)$, veamos que está contenida en $U \times V$ por que entonces habiendo tomado cualquier $(x,y) \in U\times V$ estaríamos encontrando $B((x,y),r)\subseteq U\times V$. Probando que $U \times V$ es abierto
+
+	Sea $(x',y') \in B((x,y),r)$ luego $ r > d((x,y),(x',y')) = d_{1}(x,x') + d_{2}(y,y') $. Ambos sumandos son positivos por ser distancias. Luego ambos sumandos tienen que ser menores que $r$
 
 	Entonces $d_{1}(x,x') < r \leq r_{1} $ entonces $x' \in B(x,r_{1}) \subseteq U$
 
@@ -661,8 +706,12 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 	Entonces para cualquier $(x,y) \in U \times V$ encontramos $B_{r}(x,y) \subseteq U \times V$
 
 	Luego $U \times V$ es abierto.
+\end{proof}
+\end{lemma}
 
-	Luego como $A^{\open}$ y $B^{\open}$ abierto entonces $A^{\open} \times B^{\open}$ abierto 
+Continua el ejercicio:
+
+	Luego como $A^{\open}$ y $B^{\open}$ abierto entonces $A^{\open} \times B^{\open}$ abierto por lema
 
 	Luego dado que $A^{\open} \times B^{\open} \subseteq A \times B$ y $A^{\open} \times B^{\open}$ es abierto. Entonces $A^{\open} \times B^{\open} \subseteq (A \times B)^{\open}$
 
@@ -674,11 +723,11 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 
 	Luego $d((x',y')(x,y)) = d_{1}(x',x) + d_{2}(y',y) < \frac{r}{2} + \frac{r}{2} = r$
 
-	entonces $(x',y') \in B_{r}(x,y) \subset A \times B$
+	entonces $(x',y') \in B_{r}(x,y) \subseteq A \times B$
 
 	Luego $x' \in A$ y tambien $y' \in B$
 
-	$B(x,\frac{r}{2}) \subseteq A$ y por otro lado $B(y,\frac{r}{2}) \subseteq B$
+	Por lo tanto $B(x,\frac{r}{2}) \subseteq A$ y por otro lado $B(y,\frac{r}{2}) \subseteq B$
 
 	Entonces $x \in A^{\open}$ e $y \in B^{\open}$ luego $(x,y) \in A^{\open} \times B^{\open}$  
       \end{proof}
@@ -686,11 +735,17 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
       \begin{proof}
 	Siguiendo las ideas anteriores probemos que $F$ y $G$ cerrados entonces $F \times G$ es cerrado
 
-	Sea $F$ e $ G$ cerrados entoncse $X \setminus F$ y $X \setminus G$ son abiertos 
+	Sea $F$ e $ G$ cerrados entoncse $X \setminus F$ y $Y \setminus G$ son abiertos 
 
-	Luego $X \setminus F \times Y$ es abierto por lo que $F \times X$ es cerrado
+	Ahora como sabemos que $X$ e $Y$ son abiertos (y cerrados, pero no nos importa)
 
-	De la misma manera $X \times Y \setminus G$ abierto entonces $X \times G$ es cerrado
+	Luego $X\setminus F \times Y  $ es abierto por ser producto de dos abiertos $X\setminus F$ e $Y$.
+
+	Pero $ X\setminus F \times Y = X \times Y \setminus (F \times Y) $ y esto es el complemento de $F \times Y$
+
+	Entonces el complemento de $F \times Y$ es abierto , por lo que $F \times Y$ es cerrado
+
+	De la misma manera $X \times Y \setminus G = X \times Y \setminus X \times G$ abierto entonces $X \times G$ es cerrado
 
 	Luego $(X \times G )\cap (F \times Y) = F\times G$ es intersección de cerrado
 
@@ -698,9 +753,34 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 
 	Luego usando esto tenemos que $\ol A$ y $\ol B$ son cerrados por lo que $\ol A \times \ol B$ es cerrado
 
-	Luego $A \times B \subseteq \ol A \times \ol B$ entonces $\ol{A \times B} \subseteq \ol A \times \ol B$
+	Luego $A \times B \subseteq \ol A \times \ol B$ entonces $\ol{A \times B} \subseteq \ol{\ol A \times \ol B} = \ol A \times \ol B$
 
-	Veamos $\ol{A \times B} \supseteq \ol A \times \ol B$
+	Veamos la otra inclusión. Tenemos $(x,y) \in \ol A \times \ol B$ queremos ver $(x,y) \in \ol{A \times B}$
+
+	Dado cualquier $r>0$ queremos que $B(r,(x,y)) \cap A \times B \neq \emptyset$
+
+	Pero sabemos que $\forall r' > 0$ en particular para $\frac{r}{2}$ se da $B(x,\frac{r}{2}) \cap A \neq \emptyset$ y también $B(y,\frac{r}{2}) \cap B \neq \emptyset$
+
+	Recordemos $((A\times B) \cap (C \times D) = A \cap C \times B \cap D)$
+
+	Entonces $\emptyset \neq B(x,\frac{r}{2}) \cap A \times B(y,\frac{r}{2} \cap B) = (B(x,\frac{r}{2}) \times B(y,\frac{r}{2})) \cap (A \times B)$
+
+	Veamos que $B(x,\frac{r}{2}) \times B(y,\frac{r}{2}) \subseteq B((x,y),r)$
+
+	Sea $(x',y') \in  B(x,\frac{r}{2}) \times B(y,\frac{r}{2})$ entonces $x' \in B(x,\frac{r}{2})$  e $y'\in B(y,\frac{r}{2})$
+
+	$d(x',x) < \frac{r}{2}$ y también $d(y,y') < r$
+
+	Entonces $d((x',y')(x,y)) = d(x',x) + d(y',y) < \frac{r}{2} + \frac{r}{2} = r$ 
+
+	Por lo tanto $(x',y ') \in B((x,r),r)$ luego $B(x,\frac{r}{2}) \times B(y,\frac{r}{2})\subseteq B((x,y),r)$
+
+	Finalmente juntando todo lo que teníamos llegamos a 
+
+	$$ \emptyset \neq B(x,\frac{r}{2}) \times B(y,\frac{r}{2}) \cap (A \times B) \subseteq B((x,y),r) \cap A \times B$$
+
+	Esto lo podemos hace para cualquie radio, por lo tanto $(x,y) \in \ol{A\times B}$
+
       \end{proof}
   \end{enumerate}
 \end{ej}
@@ -735,12 +815,42 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 	    Entonces $a$ es un punto de acumulación, $a \in A'$
 
 	    Luego $A' = \ol{A'}$ entonces $A'$ es cerrado
+
+	    Otra forma:
+
+	    Sabemos que $A'\subseteq \ol{A'}$ veamos que $\ol{A'} \subseteq A'$
+
+	    Tomemos $p\in\ol{A'}$ queremos ver que es punto de acumulación de $A$ entonces $p \in A'$
+
+	    Como $p \in \ol{A'}$ entonces $B(p,r) \cap A' \neq \emptyset \quad \forall r>0$
+
+	    Una opción es que $p \in A'$ y ya estaríamos. La otra opción es que $p \notin A'$
+
+	    Entonces existe un $p_1 \in A'$ tal que $d(p_1,p) < \frac{r}{2}$ con $p_1 \neq p$ 
+
+	    Además $p_1 \in A'$ luego $(B(p_1,\frac{r}{2})\setminus\{p_1\})\cap A \neq \emptyset$ 
+
+	    Entonces $\exists a \in A$ tal que $d(a,p_1) < \frac{r}{2}$ 
+
+	    Ahora $d(a,p) \leq d(a,p_1) + d(p_1,p) = \frac{r}{2} + \frac{r}{2} = r$ 
+
+	    Entonces $a \in B(p,r)$ además $a \in A$ y $a\neq p$ por lo tanto $(B(p,r)\setminus\{p\})\cap A \neq \emptyset$
+
+	    Y esto lo podemos hacer para cualquier $r$. 
+
+	    Finalmente $p$ es punto de acumulación de $A$ o lo que es lo mismo $p \in A'$
 	  \end{proof}
 	\item $A \subseteq B \Longrightarrow A' \subseteq B'$
 	  \begin{proof}
 	    Sea $x \in A'$ entonces existe $(x_{n} )_{n \in \N} \subseteq A$ tal que $x_{n} \ra x$
 
 	    Como $A \subseteq B$ la misma sucesión $(x_{n})_{n} \subseteq B$ entonces $x \in B'$
+
+	    Esto se aprovecha de algo que se prueba en este mismo ejercicio asi que voy a dar otra solución sin usarlo.
+
+	    Sea $a \in A'$ entonces $\emptyset \neq (B(a,r)\setminus \{a\}) \cap A  \subseteq (B(a,r)\setminus \{a\}) \cap B\quad \forall r>0 $
+
+	    Entonces $a \in B' $
 	  \end{proof}
 	\item $(A \cup B)' = A' \cup B'$
 	  \begin{proof}
@@ -751,11 +861,31 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 	    Spd $x_{n} \in A$ para infinitos términos entonces me quedo con todos los términos de $x_{n}$ tal que $x_{n} \in A$ esto es una subsucesión de $x_{n}$ entonces converge a $x$ por lo tanto tengo una sucesión contenida en $A$ que converge a $x$ luego $x \in A'$
 
 	    Entonces $x \in A' \cup B'$
-	    \newpage
 
 	  $\supseteq )$ Sea $x \in A' \cup B'$ spd $x \in A'$ luego existe $(a_{n})_{n \in \N} \subseteq A$ tal que $a_{n} \ra a$
+	    Sin usar sucesiones:
 
-	  Pero entonces $(a_{n})_{n} \subseteq A \cup B$ por lo tanto $a \in (A \cup B)'$
+	    $\subseteq$) Sea $x \in (A \cup B) '$. Entonces: 
+
+	    $$\emptyset \neq (B(x,r)\setminus\{x\}) \cap (A \cup B) = ((B(x,r)\setminus \{x\}) \cap A) \cup ((B(x,r)\setminus\{x\}) \cap B)$$
+
+	    Entonces $B(x,r)\setminus\{x\} \cap A \neq \emptyset$ o $B(x,r)\setminus\{x\} \cap B \neq \emptyset \quad \forall r>0$
+ 
+            Supongamos que $x \notin A'\cup B'$ entonces $x \notin A'$ y $x \notin B'$ 
+
+	    Luego $\exists r_1>0$ tal que $(B(x,r_1)\setminus\{x\}) \cap A = \emptyset$ 
+
+	    También $\exists r_2>0$ tal que $(B(x,r_2) \setminus\{x\} )\cap B = \emptyset$
+
+	    Tomamos $r = min \{r_1,r_2\}$ 
+
+	    Entonces $(B(x,r)\setminus \{x\} \cap A = \emptyset)$ y también $ (B(x,r)\setminus \{x\} \cap B = \emptyset)   $
+
+	    Lo que es absurdo, por lo tanto $x \in A'\cup B'$
+
+	  $\supseteq )$ Sea $x \in A'\cup B'$ entonces spd $x \in A'$ por lo tanto $B(x,r)\setminus\{x\} \cap A \neq \emptyset \quad \forall r>0$
+
+	  Pero entonces $B(x,r)\setminus\{x\}\cap (A \cup B) \neq \emptyset\quad \forall r>0$ por lo tanto $x \in (A\cup B)'$
 	  \end{proof}
 	\item $\ol A = A \cup A'$
 	  \begin{proof}
@@ -763,25 +893,19 @@ Sea $(X,d)$ un espacio métrico. Dados $a \in X$ y $r \in \R_{>0}$, llamamos bol
 
 	 Por lo tanto diferente del vacio entonces $x \in \ol A$ entonces $A' \subseteq \ol A$
 
-	  $\supseteq ) $ Luego $A \subseteq \ol A$ entonces $A \cup A' \subseteq \ol A \cup A' = \ol A$
+	 Otra forma de verlo es $\emptyset \neq B(x,r)\setminus\{x\} \cap A \subseteq B(x,r) \cap A \quad \forall r>0$
+
+	 Luego $x \in \ol A$ entonces $A'\subseteq \ol A$
+
+	  $\supseteq )$ $ A \cup A' \subseteq \ol A \cup A' \subseteq \ol A \cup \ol A= \ol A$
 
 	$\subseteq )$ Sea $x \in \ol A$ entonces $\forall r>0 \quad  B(x,r) \cap A \neq \emptyset$
 
-	Supongamos que $x \notin A$, pero entonces usando la bola $B(x,\frac{1}{n})$ y sabiendo que $B(x,\frac{1}{n}) \cap A \neq \emptyset \quad  \forall n \in \N$ Armamos una sucesión $(x_{n})_{n} \subseteq A$ tal que $x_{n} \ra x$
+	Si $x \in B(x,r) \cap A \quad \forall r >0$ entonces $x \in A$ luego $x \in A\cup A'$
 
-	Luego $x \in A'$
+	Si $x \notin B(x,r) \cap A\quad \forall r>0$ entonces $\emptyset \neq B(x,r) \cap A = (B(x,r)\setminus \{x\}) \cap A$
 
-	Ahora supongamos que $x \notin A'$ entonces existe $r>0$ tal que $B(x,r) \cap A$ es finito
-
-      Pero entonces tiene que exisitir algún $r'<r$ tal que $\# (B(x,r') \cap A )= 1$
-
-      Esto sucede por que para cada elemento en la intersección sabemos que está en la bola y entonces tiene una distancia a $x$ pero entonces si tomamos un radio mas pequenio ese elemento no estaría en la bola y por lo tanto no estaría en la intersección y esto lo podemos hacer con todos los elementos , salvo uno, por que si no quedara ninguno existiria un $4_{2}$ tal que $B(x,r_{2}) \cap A = \emptyset$ que es absurdo por que $x \in \ol A$
-
-      Pero entonces existe $r>0$ tal que $B(x,r) \cap A = \{x\}$, si fuese otro eleménto $y$ el único , usaríamos $r'= \frac{d(x,y)}{2}$ y entonces $y \notin B(x,r')$
-
-      Entonces $x \in A$
-
-      Entonces siempre que $x \in \ol A \Ra x \in A$ o $x \in A'$ por lo tanto $x \in A \cup A' $ 
+	Por lo tanto $x \in A'$ luego $x \in A \cup A'$
 	  \end{proof}
 	\item $(\ol A)' = A'$
 	  \begin{proof}
@@ -805,6 +929,27 @@ Si tiene infinitos en las dos , podemos usar cualquiera de los dos argumentos
 Luego $A'$ contiene a todos sus puntos de acumulación por lo tanto $(A')' \subseteq A'$
  \end{proof} 
 \end{remark}
+
+	Sin usar sucesiones:
+
+	Sea $x \in ( \ol A)'$ entonces $\emptyset \neq (B(x,r)\setminus \{x\})\cap \ol A = (B(x,r)\setminus \{x\})\cap (A \cup A')$
+
+	Entonces $((B(x,r)\setminus\{x\} )\cap A) \cup ((B(x,r)\setminus\{x\}) \cap A') \neq \emptyset$
+
+        Por lo tanto $(B(x,r)\setminus\{x\}) \cap A \neq \emptyset$ o $(B(x,r)\setminus\{x\}) \cap A' \neq \emptyset$
+
+	Si pasa la segunda entonces $x \in (A')' \subseteq A'$ si no $x \in A '$ por lo tanto $x \in A'$
+
+	\begin{remark}
+		$(A') '\subseteq A'$. Sea $x \in (A') '$ 
+
+		Entonces $\emptyset \neq (B(x,r)\setminus\{x\})\cap A'\subseteq B(x,r) \cap A'\quad \forall r>0$ 
+
+		Por lo tanto $x \in \ol{A'}$ pero como sabemos que $A'$ es cerrado entonces $\ol{A'} = A'$
+
+		Luego $x \in A'$
+	\end{remark}
+
 	  \end{proof}
       \end{enumerate}
       \newpage
