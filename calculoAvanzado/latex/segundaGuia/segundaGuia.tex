@@ -1499,7 +1499,47 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 		Entonces $\mathcal{B}$ es base de $X$
 
+		$2 \Ra 3$) Tenemos una base contable $\mathcal{B} = \{B_1,B_2, \cdots\}$ 
 
+		Tomemos un cubrimiento de abiertos $\mathcal{C} = \{A_i\}_{i \in I}$ 
+
+		Sea $\mathcal{B}' = \{B_{n_1}, B_{n_2},\cdots\} \subseteq \mathcal{B} $ de elementos $B_{n_j} $ tales que existe $ i \in I$ tal que $B_{n_j} \subseteq A_i$
+
+		Ahora sea $J \subseteq I$ el conjunto formado por $j(k)$ donde $j(k)$ es alguno de los $i \in I$ tq $A_j \supseteq B_{n_k}$ con $B_{n_k} \in \mathcal{B}'$
+
+		Entonces tenemos que $\bigcup_{j \in J} A_j = \bigcup_{k\in\N} A_{j(k)} \supseteq \bigcup_{k\in\N} B_{n_k}$
+
+		Si probamos que $\bigcup_{k\in\N} B_{n_k} = X$ entonces tendríamos que $\bigcup_{j \in J} A_j \supseteq X$ por lo tanto sería un subcubrimiento de $X$
+
+		Una contención es trivial por que $X$ es el conjunto universo. Entonces sea $x \in X$
+
+		Tenemos que existe $i \in I$ tal que $x \in A_i$, como $\mathcal{B}$ es base, sabemos que existe un $B_n$ tal que $x \in B_n \subseteq A_i$
+
+		Pero entonces por como definimos $\mathcal{B}'$ tenemos que $B_n \in \mathcal{B} '$ entonces $x$ está en algún elemento de $\mathcal{B'}$ por lo tanto $x \in \bigcup_{k\in\N} B_{n_k}$
+
+		Probando finalmente que $X = \bigcup_{k \in \N} B_{n_k}$
+
+		Entonces $\bigcup_{j \in J} A_j$ es cubrimiento de $X$ y es subcubrimiento de $\mathcal{C}$
+
+		Pero además para cada $j \in J$ tenemos un elemento $B_{n_k}$ de $\mathcal{B}'$ y en este conjunto hay menos elementos que en $\mathcal{B}$ que era contable, por lo tanto $J$ es contable
+
+		$3 \Ra 1$) Considermos los cubrimientos de la pinta $A_n = \{B(x,\frac{1}{n}): x \in X)\}$ cada uno de ellos tiene que tener subcubrimiento contable
+
+		Entonces $A_n^s = \{B(x_j,\frac{1}{n}) :  j \in \N\}$ que es numerable.
+
+		Ahora si unimos todos los $A_n^j$ tenemos unión numerable de numerables entonces es numerable y además es un cubrimiento , por que es unión de cubrimientos de $X$
+
+		Veamos que $\mathcal{C} = \bigcup_{n\in\N} A_n^s$ es denso en $X$
+
+		Tomemos $x \in X$ y un radio $r>0$. Sabemos que para cada $n \in \N$ tenemos un subcubrimiento de $X$ (de los que habíamos armado) en particular para algún $n_0$ tal que $\frac{1}{n_0} < r$, tenemos el cubrimiento $A_{n_0}^s$ en el cual está $x$
+
+		Por lo tanto tenemos algun $j \in \N$ tal que $x \in B(x_j,\frac{1}{n_0})$
+
+		Pero entonces $x_j \in B(x,\frac{1}{n}) \subseteq B(x,r)$. Por lo tanto $B(x,r)\cap \mathcal{C} \neq \emptyset$
+
+		Por lo tanto $x \in \ol{\mathcal{C}}$ entonces $X \subseteq \ol{\mathcal{C}}$ y ya sabíamos que $\mathcal{C} \subseteq X$
+
+		Entonces $\ol{\mathcal{C}} = X$. Probando que $\mathcal{C}$ es denso en $X$
 	\end{proof}
 	
 	
@@ -1530,7 +1570,25 @@ Probar que todo espacio métrico separable es separable
 \begin{ej}
 	¿Es $\ell^{\infty}$ separable ?. Esto es igual al conjunto de suceciones acotadas con $d){\infty}$
 	\begin{proof}
-		
+		Consideremos el conjunto $\ell_{\N} = \{(a_n)\subseteq \N : a_n \text{ es acotada }\}$
+
+		Este conjunto tiene cardinal $\mathfrak{c}$ por que es una unión numerable de cosas de carindal $\mathfrak{c}$
+
+		Veámoslo. sea $p_n= \{f: \N \ra A : \# a =n  \}$ dado cualquier $n \in \N$ está claro que estas son funciones acotadas , por que solo tienen $n$ posible valores en la imagen. Además $\# p_n = n^\N$ entonces salvo para $p_1,p_2$ todas tienen cardinal mas grande o igual que $2^{\n}$ y mas chico que $\N ^\N$ por que la imagen es siempre finita. Entonces estos conjuntos tienen cardinal $\mathfrak{c}$
+
+		Ahora $\bigcup_{n\in\N} p_n $ es una unión numerable de $\mathfrak{c}$ cosas (y además $p_1,p_2$, pero sacar esos elementos a algo numerable me lo deja numerable asi que no hay problema) por ende 
+
+		$$\mathfrak{c} = \# \bigcup_{n\in\N} p_n = \# \ell_{\N} $$
+
+		Por otro lado $\ell_{\N} \subseteq \ell^{\infty}$. Ahora consideremos para cualquier $x_n \in \ell_{\N}$ 
+
+		Si prestamos atención notamos que la bola $B(x_n,\frac{1}{2}) = x_n$. 
+
+		Veásmoslo , supongamos que existe $x_n \neq y_n \in \ell_{\N}$ tal que $y_n \in B(x_n,\frac{1}{2})$ entonces $d_{\infty}(x_n,y_n) = \sup_{n \in \N} |x_n - y_n| \leq \frac{1}{2}$.
+
+		Pero para cualquier $n \in \N$ sabemos que $x_n,y_n \in \N$ entonces si $d(x_n,y_n) \leq \frac{1}{2}$ tiene que ser que $x_n = y_n $, pero esto es absurdo. 
+
+		Por lo tanto $B(x_n,\frac{1}{2}) = x_n$ mostrando que $x_n$ es aislado, y esto vale para cualquier $x_n \in \ell_{\N}$ y sabemos que tenemos $\mathfrak{c}$ sucesiones en dicho conjunto, por lo tanto tenemos $\mathfrak{c}$ puntos aislados, mostrando que $\ell_{\N}$ no es separable, y por lo tanto $\ell^{\infty}$ tampoco lo és
 	\end{proof}
 	
 	
