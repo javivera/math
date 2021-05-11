@@ -1,0 +1,652 @@
+\documentclass[11pt]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Espacios Métricos}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+
+\DeclarePairedDelimiter\Floor\lfloor\rfloor
+\DeclarePairedDelimiter\Ceil\lceil\rceil
+
+\begin{document}
+
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico y sea $(x_n)_n \subseteq X$. Probar:
+	\begin{enumerate}
+		\item $\lim x_n = x$ si y sólo si para toda subsucesión $(x_{n_k})_k, \quad \lim_{k \ra \infty} x_{n_k} = x$
+			\begin{proof}
+				$\Ra )$	Como $x_n$ converge dado $\epsilon >0$ existe $n_0 \in \N$ tal que $d(x_n,x) < \epsilon \quad \forall n \geq n_0$
+
+				Por ser $x_{n_k}$ subsucesión tenemos que $n_{k_0} \geq n_0 $ entonces $d(x_{n_k},x) < \epsilon \quad \forall n_k \geq n_{k_0}$
+
+				Y esto lo podemos hacer con cualquier epsilon por lo tanto $x_{n_k}$ converge a $x$
+
+				$\Leftarrow )$ Si vale para toda subsucesión en particular vale para $x_n$ que es una subsucesión, entonces $x_n \ra x$
+			\end{proof}
+
+		\item Si existe $x \in X$ para el cual toda subsucesión $(x_{n_k})_k$ de $(x_n)_n$ tiene un subsucesión $(x_{n_{k_j}})_j$ tal que $\lim_{j} x_{n_{k_j}} = x$, entonces $(x_n)_n$ converge y $\lim_n x_n = x$
+			
+		\begin{proof}
+			Supongamos que $x_n$ no converge a $x$.
+
+			Entonces $\exists \epsilon >0$ tal que para cada $N \in \N$ $\exists n_0 > N$ con $d(x_{n_0},x) \geq \epsilon$
+
+			Entonces para $N_1 \in \N$ nos quedamos con un $n_1 \geq N_1$ tal que $d(x_{n_1},x) \geq \epsilon$
+
+			Y ahora tomamos $N_2 > n_1$ tiene que existir un $n_2 > N_2 > n_1$ tal que $d(x_{n_2},x) \geq \epsilon$
+
+			Si nos vamos quedando con todos los $x_{n_k}$ y teniendo en cuenta como los tomamos nos aseguramos que $x_{n_k}$ es una subsucesión de $x_n$
+
+			Pero entonces existe $x_{n_{k_j}}$ convergente a $x$. Y esto es absurdo , por que TODOS los términos de $x_{n_k}$ cumplían $d(x_{n_k},x) \geq \epsilon$ por ende como $x_{n_{k_j}}$ es sub tiene que cumplir lo mismo entonces $d(x_{n_{k_j}},x) \geq \epsilon \quad \forall j \in \N$
+		\end{proof}
+
+		\item Si $(x_n)_n$ es convergente entonces es de Cauchy, ¿Vale la recíproca?
+
+		\begin{proof}
+			$\Ra )$ Sea $x_n$ convergente a $x$ 
+
+			Tomemos $\epsilon > 0$ sabemos que existe $n_0 \in \N$ tal que $d(x_n,x) < \frac{\epsilon}{2} \quad \forall n \geq n_0$
+
+			Ahora si miramos $d(x_n,x_j) \leq d(x_n,x) + d(x,x_j) \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \quad \forall n,j \geq n_0$
+
+			La vuelta no vale cuando no es completo. Por ejemplo los racionales, tenemos la sucesion $x_n = \sqrt{2} + \frac{1}{n}$ es facil ver que es de Cauchy, sin embargo no converge en $\Q$ por que $\sqrt{2}$ no está en $\Q$
+		\end{proof}
+		
+	\item Si $(x_n)_n$ es de Cauchy, entonces es acotada.
+
+		\begin{proof}
+		Dado $\epsilon > 0$ sabemos que existe $n_0 \in \N$ tal que $d(x_n,x_m) \leq \epsilon \quad \forall n,m \geq n_0$
+
+		Entonces si fijo $x_n$ con $n \geq n_0$ tenemos que $d(x_n,x_m) \leq \epsilon \quad \forall m \geq n_0$
+
+		Equivalentemente $x_m \in B(x_n,\epsilon) \quad \forall m \geq n_0$ entonces todos los términos mayores que $n_0$ están acotados. Llamemosle a su cota $M$
+
+		Y los anteriores son finitos, entonces cada uno es menór que un $M_i$
+
+		Entonces puedo tomar una cota para todos $C = \max_{i}\{M_i,M\}$
+		\end{proof}
+	\item Si $(x_n)_n$ es de Cauchy y tiene un subsucesión $(x_{n_k})_k$ convergente a $x \in X$, entonces $(x_n)_n$ converge a $x$
+		\begin{proof}
+			Dado un $\epsilon >0$ tenemos un $n_0 \in \N$ tal que $d(x_n,x_m) \leq \frac{\epsilon}{2} \quad \forall n,m \geq n_1$
+
+			Y además tenemos un $n_2 \in \N$ tal que $d(x_{n_k},x) \leq \frac{\epsilon}{2} \quad \forall n_k \geq n_2$
+
+			Si $n_0 = \max\{n_1,n_2\}$ luego $d(x_n ,x )\leq d(x_n,x_{n_k}) + d(x_{n_k},x) = \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \quad \forall n_k,n \geq n_0$
+		\end{proof}
+	\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	Probar que si toda bola cerrada de un espacio métrico $X$ es un subespacio completo de $X$ entonces $X$ es completo.
+
+	\begin{proof}
+		Tomemos $(x_n)_n \subseteq X$ de Cauchy. Sabemos entonces que está acotada , por ende a partir de un momento podemos meterla en una bola en particular cerrada y para los elementos que nos quedan miramos de todos ellos el que nos genere una distancia mas grande a la bola , ahora sumamos ese radio al de la bola y tenemos una nueva bola cerrada que tiene todos los elementos de la sucesión.
+
+		Como es una bola cerrada es una espacio métrico completo , por ende $x_n$ que estaría contenida en dicho nuevo espacio y ademas sería de cauchy por que el nuevo espacio tiene la misma métrica, tiene que ser convergente a un $x$ en ese espacio , pero ese espacio es un subespacio de $X$ por ende $x_n$ converge a algo en $X$. Y esto lo podemos hacer con cualquier sucesión de Cauchy.
+
+		Por ende $X$ es completo
+	\end{proof}
+\end{ej}
+	\begin{ej}
+		Sean $A$ y $B$ subespacios de un espacio métrico. Probar que si $A$ y $B$ son completos, entonces $A \cup B$ y $A \cap B$ son completos.
+		\begin{proof}
+			Sea $(x_n)_n \subseteq A\cap B$ de Cauchy entonces $(x_n)_n \subseteq A$ por lo tanto $x_n$ converge en $A$
+
+			Entonces $x_n$ converge en $A$.
+
+			Por otro lado $(x_n)_n \subseteq B$ entonces $x_n$ converge en $B$
+
+			Por unicidad de límite $x_n$ converge en $A \cap B$, entonce $A \cap B$ es completo
+
+			Sea $(x_n)_n \subseteq A\cup B$ de Cauchy. Entonces $(x_n)_n \subseteq A$ entonces $x_n$ converge en $A$
+
+			Por lo tanto $x_n$ converge en $A \cup B$, entonces $A \cup B$ es completo
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico.
+		\begin{enumerate}
+			\item Probar que todo subespacio completo de $(X,d)$ es un subconjunto cerrado de $X$
+				\begin{proof}
+					Sea $(Y,d)$ subespacio métrico completo de $(X,n)$
+
+					Ahora si tomamos $(x_n)_n \subseteq Y$ convergente, sabemos que entonces es de Cauchy, pero entonces converge en $Y$ dado que es completo. Por lo tanto $Y$ es cerrado y está contenido en $X$, es un cerrado de $X$. (En realidad se puede ver que es cerrado en cualquier lado , por ser completo. Por que completitud es una propiedad intrínseca)
+				\end{proof}
+
+			\item Probar que si $X$ es completo, entonces todo subconjunto $F\subseteq X$ cerrado, es un subespacio completo de $X$
+				\begin{proof}
+					Sea $(x_n)_n \subseteq F$ una sucesión de Cauchy, esta misma es entonces una sucesión de Cauchy de $X$, entonces converge.
+
+					Ahora si miramos a $F$ como subconjunto de $X$ sabemos que es cerrado
+
+					Entonces $x_n$ es una sucesión de $F$ que converge, como $F$ es cerrado , tiene que converger allí
+
+					Entonces $x_n$ converge en $F$
+
+					Esto vale para cualquier sucesion de cauchy de $F$. Por lo tanto $F$ es completo
+
+				\end{proof}
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Sean $(X,d)$ e $(Y,d')$ espacios métricos. Consideramos en $X \times Y$ la métrica $d_{\infty}$ definida por
+
+		$$ d_{\infty}((x_1,y_1),(x_2,y_2)) = \max\{d(x_1,x_2),d'(y_1,y_2)\}$$
+
+		Probar que $(X\times Y, d_{\infty})$ es completo si y sólo si $(X,d)$ e $(Y,d')$ son compleots.
+		\begin{proof}
+			$\Ra )$ Sean $(x_n)_n$ e $(y_n)_n$ sucesiones de Cauchy de $X$ e $Y$ respectivamente.
+
+			Entonces dado $\epsilon >0$ existe $n_1 \in \N$ tal que $d(x_n,x_m) \leq \epsilon \quad \forall n,m \geq n_1$ 
+
+			También existe $n_2 \in \N $ tal que $d'(y_n,y_m) \leq \epsilon \quad \forall n,m \geq n_2$
+
+			Tenemos entonces una sucesión $(x_n,y_n)_n \subseteq X \times Y$, veamos que es de Cauchy
+
+			$d_{\infty}((x_n,y_n),(x_m,y_m)) = \max \{d(x_n,x_m),d(y_n,y_m)\}$
+
+			Podemos suponer que el máximo es cualquier de las dos sin pérdida de generalidades.
+
+			Entonces $d_{\infty}\{((x_n,y_n),(x_m,y_m)) = d(x_n,x_m) \leq \epsilon \quad \forall n,m \geq n_1$. 
+
+			Esto lo puedo hacer para cualquier $\epsilon$. Por lo tanto $(x_n,y_n)$ es de Cauchy, entonces converge
+
+			Supongamos que converge a $(x,y)$ 
+
+			Entonces $ \max \{d(x_n,x),d'(y_n,y)\} = d_{\infty}((x_n,y_n),(x,y)) \ra 0$
+
+			Pero el máximo es mas grande que las dos distancias, por lo tanto es mas grande que cualquier de ellas 
+
+			Entonces $ 0 < d(x_n,x) \leq d_{\infty}((x_n,y_n)(x,y)) \ra 0$. Entonces $d(x_n,x) \ra 0$ 
+
+			Y lo mismo pasa con $(y_n,y)$. Mostrando que ambas convergen. 
+
+			Entonces $X$ es de Cauchy e $Y$ es de Cauchy
+
+			$\Leftarrow$) Sea $(x_n,y_n)_n \subseteq X\times Y$ una sucesión de Cauchy.
+
+			Dado $\epsilon > 0$ existe $n_0 \in \N$ tal que $d_{\infty}((x_n,y_n),(x_m,y_m)) \leq \epsilon \quad \forall n,m\geq n_0$ 
+			
+			Entonces por como está  definida la distancia infinito. Tenemos que $d(x_n,x_m) \leq \epsilon \quad \forall n,m \geq n_0$
+
+			Y lo mismo con $y_n$. Esto es por que ambas distancias son mas pequeñas que la distancia infinito.
+
+			Pero entonces ambas sucesiones son de Cauchy en sus respectivos espacios completos, por ende convergen
+
+			Entonces usando el $\epsilon$ que teníamos sabemos que existe $n_1 \in \N$ tal que $d(x_n,x) \leq \epsilon \quad \forall n\geq n_1$ 
+
+			Y también existe $n_2 \in \N$ tal que $d(y_n,y) \leq \epsilon \quad \forall n\geq n_2$.
+
+			Ahora si tomamos $n_0 = \max\{n_1,n_2\}$ tenemos que $d_{\infty}((x_n,y_n),(x,y)) \leq \epsilon \quad \forall n \geq n_0$
+
+			Entonces $(x_n,y_n)$ converge, y lo podemos hacer con cualquier sucesión de Cauchy.
+
+			Entonces $X\times Y$ es completo
+		\end{proof}
+	\end{ej}
+
+	\begin{ej}
+		\begin{enumerate}
+			\item Sea $X$ un espacio métrico y sea $B(X) = \{f: X\ra \R / f $ es acotada $\}$. 
+
+				Probar que $(B(X),d_{\infty})$ es un espacio métrico completo, donde $d_{\infty}(f,g) = \sup_{x\in X}|f(x)-g(x)|$
+
+				\begin{proof}
+					
+				\end{proof}
+				
+				
+			\item Sean $a,b\in \R, a < b$. Probar que $(C[a,b],d_{\infty})$ es un espacio métrico completo, donde $d_{\infty}(f,g) = \sup_{x\in [a,b]}|f(x)-g(x)|$
+			\item Probar que $C_0 := \{(a_n)_n \subseteq \R / a_n \ra 0 \}$ se un espacio métrico completo con la distancia $d_{\infty}((a_n),(b_n)) = \sup_{n\in\N} |a_n-b_n|$
+	
+		\end{enumerate}
+	\end{ej}
+
+
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico y sea $\mathcal{D} \subseteq X$ un subconjunto denso con la propiedad que toda sucesión de Cauchy $(a_n)_n \subseteq \mathcal{D}$ converge en $X$. Probar que $X$ es completo.
+		\begin{proof}
+			Sea $(x_n)_n \subseteq X$ un sucesión de Cauchy.
+
+			Como $\mathcal{D}$ es denso, para cada $x_n$ existe un $d_n \in D$ tal que $d(x_n,d_n) \leq \frac{1}{n}$
+
+			Veamos que $d_n$ es de Cauchy.
+
+			Ahora dado un $\epsilon > 0 $ tenemos sabemos que existe  $n_1 \in \N$ tal que $\frac{2}{n_1} + \epsilon ' \leq \epsilon$
+
+			Dado dicho $\epsilon ' > 0 $ sabemos por Cauchy existe un $n_2\in \N$ tal que $d(x_n,x_m )\leq \epsilon ' \quad \forall n,m \geq n_1$
+
+			Ahora si tomamos $n_0 = \max\{n_1,n_2\}$ Tenemos que:
+			
+			$$d(d_n,d_m) < d(d_n,x_n) + d(x_n,x_m) + d(x_m,d_m) = \frac{1}{n} + \epsilon ' + \frac{1}{m} \leq \frac{2}{n_1} + \epsilon '=\epsilon \quad \forall n,m \geq n_0$$
+
+			Entonces $d_n$ es de Cauchy , como está contenida en $D$ converge a un $d$
+
+			Ahora propongo mi $d$ como candidato a límite de $a_n$.
+
+		Dado $\epsilon >0$ sabemos que existe un $n_1 \in \N$ tal que $\frac{1}{n_1} + \frac{\epsilon}{2} < \epsilon$
+
+			dado que $d_n$ converge a $d$, tenemos que existe $n_2$ tal que $d(d_n,d) \leq \frac{\epsilon}{2} \quad \forall n \geq n_2$
+
+			Si tomamos nuevamente $n_0 = \max\{n_1,n_2\}$
+
+			$d(a_n,d) \leq d(a_n,d_n) + d(d_n,d) \leq \frac{1}{n} +\frac{\epsilon}{2} \leq \frac{1}{n_1}+\frac{\epsilon}{2}  = \epsilon \quad \forall n \geq n_0 $ 
+
+			Entonces $a_n$ converge a $d$, como $d\in D \subseteq X$ entonces $d \in X$.
+
+			Finalmente $a_n$ converge en $X$. Entonces $X$ es completo
+		\end{proof}
+	\end{ej}
+
+	\begin{ej}
+	$Teorema$ $de$ $cantor$
+
+	Probar que un espacio métrico $(X,d)$ es completo si y sólo si toda familia $(F_n)_n$ de suconjuntos de $X$ cerrados, no vacíos tales que $F_{n+1} \subset F_n$ para todo $n \in \N$ y $diam(F_n) \ra 0$ tiene un único punto en la intersección
+
+		\begin{proof}
+			$\Ra$) Tenemos una familia de subconjuntos que cumple las propiedades dadas.
+
+			Entonces podemos armar una sucesión $x_n$ donde cada elemento es algún elemento de $F_n$
+
+			Veamos que es de Cauchy. Dado $\epsilon >0$ y considerando que $diam(F_n) \ra 0$. Sabemos que existe algún cerrado $F_{n_0}$ tal que $diam(F_{n_0}) < \epsilon$.
+
+			Ahora dado cualquier par de elementos $x_n, x_m$ tales que $n,m \geq n_0$ sabemos que pertenecen a algún cerrado que está contenido en $F_{n_0}$. Por lo tanto $d(x_n,x_m) \leq diam(F_{n_0}) < \epsilon$.
+
+			Entonces $(x_n)_n$ es de Cauchy. Ahora por ser $X$ completo, $x_n$ converge digamos a $x$
+
+			Además $(x_n)_n \subseteq \bigcap_{i \in I} F_i$ por como la construimos y esta intersección es una intersección de cerrados por ende cerrada.
+
+			Por ende $(x_n)_n$ tiene que converger en la intersección. Entonces $x \in \bigcap_{i \in I}F_i$
+
+			Ahora supongamos que existe $x'\neq x$ en la intersección. 
+
+			Obviamente $x_n$ no puede converger a él. Por unicidad de convergencia. 
+
+			Por lo tanto existe $\epsilon > 0$ tal que $\forall n_0\in \N$ existe $n \geq n_0$ tal que $d(x_n,x') > \epsilon$
+
+			Ahora , sabemos que existe $n_0 \in \N$ tal que $diam(F_{n_0}) < \epsilon$ y además  $(x_n)_n \subseteq F_{n_0} \quad \forall n \geq n_0$.
+
+			Pero entonces $x' \notin F_{n_0}$ por que si no $d(x_n,x) < \epsilon \quad \forall n\geq n_0$
+
+			Por lo tanto $x' \notin \bigcap_{i \in I} F_i$ lo que es absurdo, provino de suponer que existia un $x'\neq x$ en la intersección, entonces no existe otro elemento diferente de $x$ en la intersección
+
+			$\Leftarrow$ ) Sea $(x_n)_n \subseteq X$ una sucesion de Cauchy supongamosla no constante, si lo fuera ya sabemos que converge. Entonces si tomamos $\epsilon = \frac{1}{j}$ 
+
+			Sabemos que para cada uno existe un $n_0 \in \N $ tal que $d(x_n,x_m) < \frac{1}{j} \quad \forall n \geq n_0$
+
+			Entonces nos armamos $F_j = \{(x_n)_n \subseteq X : n \geq n_0 \}$ y luego los clausuro. Entonces $diam(\ol{F_j}) = \frac{1}{j}$
+
+			Ahora a medida que voy agrandando el $j$ voy obteniendo conjuntos que están estrictamente incluidos en el anteriór, no es cierto que en cada paso suceda, pero si , para algún $j$ por que si no $\ol{F_j}$ sería a partir de algún $j_0$ siempre igual, por lo tanto el mismo $n_0$ nos serviría para todos los conjuntos, pero entonces la sucesión era constante. 
+
+			Entonces me quedo con un grupo de $J$ tal que $\ol{F_{j+1}} \subset \ol{F_{j}}\quad \forall j \in J$, sabemos que su diametro tiende a 0, por como tomamos los $\epsilon$.
+
+			Entonces estamos dentro de las hipótesis, por lo tanto podemos afirmar que existe un único punto $x$ tal que $x \in \bigcap_{j \in J} F_j$. 
+		
+			Proponemos ese $x$ como punto al que converge $x_n$
+	
+			Dado $\epsilon >0$, sabemos que existe un $j_0 \in J$ tal que $\frac{1}{j_0} < \epsilon$ 
+
+			Además existe $n_0 \in \N$ tal que $d(x_n,x_m) \leq \frac{1}{j_0} < \epsilon \quad \forall n,m \geq n_0$
+
+			Por lo tanto $x_n \in F_{j_0} \quad \forall n \geq n_0$ 
+
+			Además por estar en la intersección de todos los $F_j$ sabemos que $x \in F_{j_0}$
+
+			Por lo tanto como $diam(F_{j_0}) < \epsilon$ sucede que $d(x_n,x) < \epsilon \quad \forall n\geq n_0$.
+
+			Y esto lo podemos hacer con cualquier $\epsilon >0$, entonces $x_n$ converge a $x$
+		\end{proof}	
+	\end{ej}
+	\begin{ej}
+		Sea$(X,d)$ un espacio métrico completo sin puntos aislados. Probar que $X$ tiene cardinal mayor o igual que $\mathfrak{c}$. Deducir que si además $X$ es separable, entonces $\# X = \mathfrak{c}$ (Para esto último, puede servir un ejercicio de la práctica anteriór)
+
+		\begin{proof}
+			
+		\end{proof}
+		
+	\end{ej}
+
+	\begin{ej}
+		Sean $(X,d)$ e $(Y,d')$ espacios métricos y sea $f: X \ra Y$. Probar que:
+		\begin{enumerate}
+			\item $f$ es continua en $x_0 \in X$ si y sólo si para toda sucesión $(x_n)_n \subset X$ tal que $x_n \ra x_0$. La sucesión $(f(x_n))_n \subset Y$ converge a $f(x_0)$
+
+			\begin{proof}
+				La ida es trivial.
+
+				$\Leftarrow ) $ Supongamos que $f$ no es continua en $x_0$ entonces dado $\epsilon >0 $ sabemos que $\forall \delta >0 $ si $d(x,x_0) < \delta \Ra d(f(x),f(x_0)) > \epsilon$.
+
+				Ahora si tomamos $\delta = \frac{1}{n}$ y para cada delta me quedo con algún $x_n$
+
+				Por lo tanto tengo una sucesión $x_n$ que converge a $x$
+
+				Sin embargo $d(f(x_n),f(x)) \geq \epsilon $ lo que es absurdo, provino de suponer que $f$ no era continua.
+
+				Entonces $f$ es continua.
+			\end{proof}
+			\item 	Son equivalentes:
+				\begin{enumerate}[(a)]
+					\item $f$ es continua
+					\item Para todo $G \subseteq Y$ abierto, $f^{-1}(G)$ es abierto en $X$
+					\item Para todo $F \subseteq Y$ cerrado, $f^{-1}(F)$ es cerrado en $X$
+				\end{enumerate}
+				\begin{proof}
+					$(a) \Ra (b) $ Sea $x_0 \in f^{-1}(G)$ qvq existe un entorno abierto $V$ de $x_0$
+
+					$f(x) \in G$ que es abierto, entonces existe $\epsilon>0$ tal que $B(f(x_0),\epsilon) \subseteq G$
+
+					Entonces por continuidad existe un $\delta > 0 $ tal que $f(B(x_0,\delta)) \subseteq B(f(x_0),\epsilon)\subseteq G$
+
+					Entonces $f^{-1}(f(B(x_0),\delta))\subseteq f^{-1}(G)$, por lo tanto $B(x_0,\delta) \subseteq f^{-1}(G)$
+
+					$(a) \Ra (c)$ Sea $(x_n)_n \in f^{-1}(F)$ convegente a $x$ entonces $(f(x_n))_n \subseteq F $.
+
+					Por continuidad $f(x_n) $ converge a $f(x)$ y como $F$ es cerrado entonces $f(x) \in F$
+
+					Por lo tanto $x = f^{-1}(f(x)) \in f^{-1}(F)$. Entonces probamos que toda sucesión de $f^{-1}(F)$ que converge, converge en $f^{-1}(F)$.
+
+					Por lo tanto $f^{-1}(F) $ es cerrado
+
+					$(b) \Ra (a)$ Tomemos $x_0 \in X$ veamos que $f$ es continua en $x_0$
+
+					Como $x_0 \in X$ existe $y \in Y$ tal que $f(x_0) = y$. 
+
+					Ahora dado $\epsilon >0$ tenemos que $B(y,\epsilon)$ es un abierto de $Y$
+
+					Por lo tanto $f^{-1}(B(y,\epsilon))$ es abierto de $X$ y además $f^{-1}(y) = x_0$ pertenece a ese conjunto trivialmente
+
+					Entonces por ser abierto existe $\delta >0$ tal que $B(x_0,\delta) \subseteq f^{-1}(B(y,\epsilon)) = f^{-1}(B(f(x_0),\epsilon))$
+
+					Entonces aplicando $f$ de ambos lados tenemos que $f(B(x_0),\delta)\subseteq B(f(x_0),\epsilon)$.
+
+					Por lo tanto $f$ es continua en $x_0$
+
+					También podríamos haber usado que si $x\in B(x_0,\delta)$ entonces $d(x,x_0) < \delta$
+
+					Y además $x \in f^{-1}(B(f(x_0),\epsilon))$, por lo tanto $f(x) \in B(f(x_0), \epsilon)$
+
+					Entonces $d(f(x),f(x_0)) < \epsilon$, por lo tanto dado un $\epsilon$ encontramos un $\delta$ que cumple lo necesario
+
+					$(c) \Ra (b)$ Probemos que dad cualquier funcione $f$ y cualquier conjunto $A$ entonces
+
+					$$ f^{-1} (X\setminus A) = X \setminus f^{-1}(A)$$
+
+					$\subseteq ) $ Sea $x \in f^{-1}(X\setminus A)$ entonces $f(x) \in X \setminus A$ por lo tanto $f(x) \notin A$
+
+					Entonces $x \notin f^{-1}(A)$. Finalmente $x \in X \setminus f^{-1}(A)$
+
+					$\supseteq )$ Sea $x \in X \setminus f^{-1}(A)$ entonces $x \notin f^{-1} (A) $.
+
+					Luego $f(x) \notin A$ entonces $f(x) \in X \setminus A$, finalmente $x \in f^{-1}(X \setminus A)$
+
+					Tomemos un abierto $G \subseteq Y$ por lo que acabamos de probar $X \setminus f^{-1}(G) = f^{-1}(X \setminus G)$.
+
+					Como $G$ es abierto $X \setminus G$ es cerrado, entonces por hipótesis $f^{-1}(X \setminus G)$ es cerrado.
+
+					Entonces $X \setminus f^{-1}(G)$ es cerrado , por lo tanto $f^{-1}(G)$ es abierto
+				\end{proof}
+				
+				
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Decidir cuáles de las siguientes funciones son continuas:
+			\begin{enumerate}
+				\item $f: (\R^2, d) \ra (\R, |.|), f(x,y) = x^2 + y^2$. Donde $d$ es la métrica euclídea
+
+				\item $id_{\R^2}: (\R^2,\delta) \ra (\R^2,d_{\infty})$. La función identidad, donde $\delta$ representa la métrica discreta.
+					\begin{proof}
+						Sabemos que en un conjunto con la métrica discreta, todo subconjunto es abierto y cerrado, por lo tanto si agarro cualquier abierto en la imagen , su preimagen es un abierto, entonces es continua
+					\end{proof}
+				 		
+				\item $id_{\R^2}: (\R^2,d_{\infty}) \ra (\R^2,\delta)$. La función identidad, donde $\delta$ representa la métrica discreta.
+
+					\begin{proof}
+						Sea $(x_n,y_n) = (\frac{1}{n},\frac{1}{n})$ esta sucesión converge a 0 con $d_{\infty}$
+
+						Dado $\epsilon >0$ existe $n_0 \in \N$ tal que $\frac{1}{n_0} < \epsilon$
+
+						Entonces $d((x_n,y_n),0) = max\{|x_n - 0 |,|y_n - 0|\} = max\{|\frac{1}{n}|,|\frac{1}{n}|\} = \frac{1}{n} \leq \frac{1}{n_0} < \epsilon \quad \forall n\geq n_0$
+
+						Sin embargo $f((x_n,y_n))$ no converge dado que no es constante a partir de ningún momento, y en un espacio discreto las unicas sucesiones convergentes son las que son constantes a partir de algún momento
+					\end{proof}
+
+				\item $i:(E,d) \ra (X,d)$, la inclusión, donde $E \subset X$
+
+					\begin{proof}
+						Dado un abierto  $V \subseteq X$ sabemos que $V \cap E$ es un abierto relativo a $E$
+					\end{proof}
+					
+				\item $f:(\mathcal{C}[0,1],d_{\infty}) \ra (\R,|\cdot|), f(\phi) = \phi (0)$
+
+					Veamos que es continua en $\phi_0$. Dado $\epsilon >0$ tenemos si pedimos $\delta = \epsilon$ alcanza
+
+					Veamosló: $d(\phi,\phi_1) = \sup_{x\in [0,1] }|\phi(x)-\phi_1 (x)| < \delta$
+
+					Pero entonces en partcular evaluar en el cero también va a ser menór.
+
+					Entonces $|f(\phi) - f(\phi_1)| = |\phi(0) - \phi_1(0)| < \delta = \epsilon $
+
+					Entonces dado $\epsilon$ tomamos $\delta = \epsilon$ y viemos que $d_{\infty}(\phi,\phi_1) < \delta \Ra d_{|\cdot|}(f(\phi),f(\phi_1)) < \epsilon$
+
+					Por lo tanto $f$ es continua en $\phi_0$ y esto lo podemos hacer para cualquier función del dominio.
+
+					Por ende $f$ es continua en todo el dominio					
+					
+			\end{enumerate}
+	\end{ej}
+
+	\begin{ej}
+		Sean $f,g,h : [0,1] \ra \R$
+
+		\[
+ 		 f(n) =
+  			\begin{cases}
+                                   0 & \text{if $x\notin \Q$} \\
+                                   1 & \text{if $x\in \Q$} \\
+  			\end{cases}
+		\]
+
+		$$g(x) = x.f(x)$$
+
+		\[
+ 		 h(n) =
+  			\begin{cases}
+                                   0 & \text{if $x\notin \Q$} \\
+				   \frac{1}{n} & \text{if $x =\frac{m}{n} \ , \ (m:n)=1$} \\
+				   1 & \text{if $x =0$} \\
+  			\end{cases}
+		\]
+
+
+		Probar que 
+
+		\begin{enumerate}
+			\item $f$ es discontinua en todo punto.
+				\begin{proof}
+					Sea $x_0 \in \Q$, ahora sea $\epsilon = \frac{1}{2}$ entonces 
+
+					Entonces para cualquier $\delta >0$ que tomemos sabemos que $B(x_0,\delta)$ contiene algún irracional, por densidad.
+
+					Entonces $0 \in f(B(x_0,\delta)) \subseteq B(f(x_0),\epsilon) = B(1,\frac{1}{2})$, lo que es absurdo.
+
+					Entonces $f$ no es continua en $x_0$ entonces no es continua en ningún racional 
+
+					Con el mismo argumento tendríamos que  $1 \in B(0,\frac{1}{2})$
+
+				\end{proof}
+			\item $g$ sólo es continua en $x=0$
+				\begin{proof}
+					Dado $\epsilon >0 $, si tomamos $\delta = \epsilon$ sucede:
+
+					$ g(B(0,\delta)) \subseteq [0,\delta]  \cap \Q \subseteq B(0,\epsilon) = B(f(0),\epsilon) $
+
+					Por lo tanto es continua en $0$
+
+					Supongamos $f$ es continua en un $x_0 \in \Q$ con $x_n \neq 0$. 
+
+					Ahora si agarramos una sucesión de irracionales $x_n$ que converga a $x_0$ (podemos hacerlo por densidad de irracionales en $[0,1]$)
+
+					Tenemos que $g(x_n) = 0 $ por lo tanto $f(x_n)$ converge a $0$ pero $g(x) = x \neq 0$
+
+					Entonces $g(x_n)$ no converge a $g(x)$, por lo tanto $g$ no es continua en $\Q \setminus \{0\}$
+
+					Hacemos lo mismo con un $x_0 \in \I$ , hay una sucesión de racional convergiendo a él, cuando le aplicamos $g$ nos queda constantemente 1, por lo tanto converge a 1 , pero $g(x_0) = 0$
+
+					Entonces $g(x_n)$ no converge a $g(x_0)$, por lo tanto $g$ no es continua en $\I \setminus \{0\}$
+
+					Entonce $g $ es continua únicamente en el 0
+
+				\end{proof}
+				
+			\item $h$ solo es continua en $[0,1] \setminus \Q$
+				
+				Sea $x_0 \in \I$. Ahora tomemos cualquier $(x_n)_n $ sucesión de racionale que converga a $x_0$
+
+				Ahora $f(x_n)$
+		\end{enumerate}
+
+
+
+		\end{ej}
+	\begin{ej}
+		
+	\end{ej}
+		Probar que un espacio métrico $X$ es discreto si y sólo si toda función de $X$ en un espacio métrico arbitrario es continua.
+
+		\begin{proof}
+			
+		\end{proof}
+		
+		
+	
+	
+	\begin{ej}
+		Sean $(X,d)$ e $(Y,d')$ espacios métricos y sea $f: X \ra Y$ una función.
+		\begin{enumerate}
+			\item Probar que $f$ es continua si y sólo si $f(\ol E) \subset \ol{f(E)}$ para todo subconjunto $E$ de $X$
+				Mostrar con un ejemplo que la inclusión puede ser estricta.
+				\begin{proof}
+					$\Ra )$ Sea $f$ contínua , dado un $E$ que temos ver que $f(\ol E)$ está en la clausura de $f(E)$
+
+					O lo mísmo , dado un $y \in f(\ol E)$ queremos ver que $\forall r >0 \quad B(y,r) \cap f(E) \neq \emptyset$
+
+					Ahora como $y \in f(\ol E)$ entonces existe un $x \in \ol E$ tal que $f(x) = y$
+
+					Entonces tenemos una sucesión $(x_n)_n \subseteq E$ tal que $x_n \ra x$
+
+					Como $f$ es continua $f(x_n) \ra f(x) = y$ y $(f(x_n)_n \subseteq f(E)$
+
+					Entonces tomando el $r>0$ sabemos que existe un $n_0 \in \N$ tal que $d(f(x_n),y) \leq r \quad \forall n \geq n_0$ 
+
+					En particular existe algun $n_1 \in \N$ tal que $d(f(x_{n_1}),y) < r$ 
+
+					Equivalentemente $f(x_{n_1}) \in B(y,r)$ con $f(x_{n_1}) \in f(E)$. Entonces $B(y,r) \cap f(E) \neq \emptyset$ 
+
+					Y esto lo podemos hacer con cualquie $r>0$. Por lo tanto $y \in \ol{f(E)}$
+
+					Finalmente $f(\ol E) \subseteq \ol{f(E)}$
+
+					$\Leftarrow )$ Sea $x_n$ una sucesión convergente a $x$. Queremos ver que $f(x_n)$ converge a $f(x)$ 
+
+					Ahora tomemos una sub sucesión $x_{n_k}$ cualquiera. Si esta pasa infinitas veces por $x$ entonces nos tomamos la sub sucesión $x_{n_{k_j}} = x$  y entonces $f(x_{n_{k_j}}) = f(x)$ por lo tanto converge.
+
+					Entonces para un $f(x_{n_k})$ de este tipo encontramos un $f(x_{n_{k_j}})$ que converge a $f(x)$
+
+					Si no pasa infinitas veces, entonces a partir de algún momento $n_{k_0}$ deja de pasar por $x$
+
+					Entonces nos quedamos con el conjunto $E = \{ x_{n_{k}}: k \geq k_0 \}$
+					
+					Sabemos que $x \in \ol E$ justamente por que $x_{n_k}$ converge a $x$
+
+					Y por hipótesis sabemos que $f(\ol E) \subset \ol{f(E)}$
+
+					Por lo tanto $f(x) \in \ol{f(E)}$, entonces tenemos una sucesión de elementos de $f(E)$ que converge a $f(x)$
+
+					Ahora esta sucesión la podemos armar como subsucesión de $f(x_{n_k})$, si esto no fuera cierto, entonces existiría $n_{k_1}$ tal que $d(f(x_{n_{k}}),f(x)) > \epsilon \quad \forall n_k \geq n_{k_1}$.
+
+					Pero nuestro conjunto $E$ tiene solamentes elementos $f(x_{n_k})$ por lo tanto no podría tener una sucesión de $E$ que converja a $f(x)$, lo cual es absurdo, entonces puedo armarme una sub-subsucesión $f(x_{n_{k_j}})$ que converja a $f(x)$
+
+					Y por último, si $x_n$ nunca era $x$ entonces podemos repetír el argumento recién usado.
+
+					Entonces teniendo $f(x_n)$ y tomando cualquier subsucesion $f(x_{n_k})$ pudimos encontrar una subsubsucesión $f(x_{n_{k_j}})$ que converje a $f(x)$, por lo tanto $f(x_n)$ converje a $f(x)$.
+
+					Mostrando que $f$ es continua
+
+				\end{proof}
+				
+				
+			\item Probar que $f$ es continua y cerrada si y sólo si $f(\ol E) = \ol{f(E)}$ para todo subconjunto $E$ de $X$
+				\begin{proof}
+				$\Ra$) Sea $E$ un conjunto , usando la hipótesis junto con el $i)$ tenemos $f(\ol E) \subseteq \ol{f(E)}$
+
+				Ahora veamos la otra inclusión. Sabemos que $f(E) \subseteq f(\ol E)$ entonces $\ol{f(E)} \subseteq \ol{f(\ol E)}$
+
+				Como $f$ es cerrada, $f(\ol E)$ es cerrado entonces $\ol{f(\ol E)} = f(\ol E)$
+
+				Finalmente $\ol{f(E)} \subseteq f(\ol E)$ entonces $\ol{f(E)} = f(\ol E)$
+
+				$\Leftarrow$) Por una de las inclusiones y usando el $i)$ tenemos la continuidad. Veamos que $f$ es cerrada
+
+				Dado un $E$ cerrado , sabemos que $f(E) = f(\ol E)$ y por hipótesis tenemos que $f(\ol E) = \ol{f(E)}$
+
+				Entonces tenemos que $f(E) = \ol{f(E)}$ por lo tanto es cerrado
+
+				Finalmente para cualquier cerrado su imagen por $f$ es un cerrado, por lo tanto $f$ es cerrada
+				\end{proof}
+		\end{enumerate}
+	\end{ej}
+	
+	
+
+
+	\begin{ej}
+		Sea $f:(X,d) \ra (Y,d')$ una función uniformemente continua y sean $A,B \subseteq X$ conjuntos no vacíos tales que $d(A,B) = 0$. Probar que $d'(f(A),f(B)) = 0$
+	\end{ej}
+	
+	
+
+
+
+\end{document}

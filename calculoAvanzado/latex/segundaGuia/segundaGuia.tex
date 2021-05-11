@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{report}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
@@ -1115,8 +1115,7 @@ $ \partial A = \ol{A} \setminus A^{\open} = \{0,1,2\} $
     \item $|d_A(x) - d_A(y)| \leq d(x,y)$ para todo par de elementos $x,y \in X$
       \begin{proof}
 	Tenemos que $d(x,a) \leq d(x,y) + d(y,a)$ 
-
-	$d(x,A)  = \inf d(x,a) \leq \inf (d(x,y) + d(y,a)) \leq \inf d(x,y) + \inf d(y,a) = d(x,y) + d(y,A)$
+	$$d(x,A)  = \inf_{a\in A} d(x,a) \leq \inf_{a \in A} (d(x,y) + d(y,a)) \leq \inf_{a \in A} d(x,y) + \inf_{a \in A} d(y,a) = d(x,y) + d(y,A)$$
 
 	\begin{remark}
 		(Otra forma sin usar propiedades de infimos)
@@ -1222,9 +1221,9 @@ Un subconjunto de $A$ de un espacio métrico de $X$ se dice $G_{\delta}$ (respec
     \begin{proof}
       Sea $F_{\sigma} = \bigcup_{i \in I}F_i$ unión de cerrados 
       
-      Luego $x \in F_{\sigma}^c = (\bigcup_{i \in \N} F_i)^c \iff x \notin \bigcup_{i \in \N} F_i$ 
+      Luego $x \in F_{\sigma}^c = (\bigcup_{i \in I} F_i)^c \iff x \notin \bigcup_{i \in I} F_i$ 
 
-      $\iff \forall i \in I$ $x \notin F_i \iff x \in F_i^c \quad \forall i \in \N \iff x \in \bigcap_{i \in \N} F_i^c \iff x \in G_{\delta}$  
+      $\iff \forall i \in I$ $x \notin F_i \iff x \in F_i^c \quad \forall i \in I \iff x \in \bigcap_{i \in I} F_i^c \iff x \in G_{\delta}$  
 
       El último si y solo si vale por que  $F_i$ es cerrado luego $F_i^c$ es abierto por lo tanto $\bigcap F_{i}^c$ es intersección de abiertos entonces es un $G_{\delta}$
 
@@ -1278,6 +1277,11 @@ El absurdo provino de suponer que $y \in X \setminus G$ por lo tanto $y \in G$
   \item 
     \begin{enumerate}
       \item Exhibir una sucesión de abiertos de $\R$ cuya intersección sea $[0,1)$. Idem con $[0,1]$
+	      \begin{proof}
+		      $\bigcap_{n\in \N} (- \frac{1}{n} , 1) = [0,1)$. No voy a aclarar por que es trivial.
+	      \end{proof}
+	      
+	      
       \item Exhibir una sucesión de cerrados de $\R$ cuya unión sea $[0,1)$
       \item ¿Qué conclusión puede obtenerse de estos ejemplos? 
     \end{enumerate}
@@ -1332,10 +1336,24 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 	La vuelta vale, y es trivial demostrarlo.
 
+	\begin{remark}
+
+	Un ejemplo mucho mas trivial es $A = (0,1)$ y $B= (1,2)$
+
+	Si agarramos $a_n = d(1-\frac{1}{n},1+\frac{1}{n})$ tenemos que $(a_n)_n \subseteq d(A,B)$
+
+	Y es facil ver que $a_n \ra d(1,1) = 0$ entonces tenemos una sucesión en $d(A,B)$ que converge a $0$.
+
+	Y además sabemos que cero es cota inferiór de este conjunto por que ningun distancia puede ser menor que 0.
+
+	Entonces $0$ es infimo del conjunto , por lo tanto $d(A,B) = 0$ sin embargo $A \cap B = \emptyset$
+	
+	\end{remark}
       \end{proof}
     \item $d(A,B) = 0 \iff \ol A \cap \ol B \neq \emptyset$
       \begin{proof}
 	Sirve el mismo ejemplo que arriba, por que $A = \ol A$ y $B = \ol B$
+
       \end{proof}
     \item $d(A,B) \leq d(A,C) + d(C,B)$
       \begin{proof}
@@ -1412,13 +1430,17 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 		Por lo tanto $d(a_n,b_n) \leq d(a_n,c_n) + d(c_n,b_n)$
 
+		\begin{remark}
+			Se podría hacer por partes como vimos antes, sin usar esa propiedad de ínfimo
+		\end{remark}
+
 		Entonces $d$ es una métrica
 
-		Ahora tomemos $\Q^{\N}$ este es numerable lo probamos en la primera práctica, la idea era que como su límite es cero miramos un conjunto intermedio que es el de las sucesiones de racionales que no son constantemente cero hasta un momento $n$ de esas podemos tener a lo sumo numerables , y despues unimos todas esas y es una unión numerable de numerables que nos da $\Q^{\N}$
+		Ahora tomemos $\Q^{\N}$ este es numerable lo probamos en la primera práctica, la idea era que como su límite es cero miramos un conjunto intermedio que es el de las sucesiones de racionales que a partir de un momento $n$ son constantemente nulas, de esas podemos tener a lo sumo numerables , y despues unimos todas esas y es una unión numerable de numerables que nos da $\Q^{\N}$
 
 		Veamos que es denso:
 
-		Sea $B(x_n,r)$ una bola cualquiera de $\R^{\N}$ ahora para cada $x_n$ existe un $q_n \in \Q$ tal que $|x_n - q_n| \leq \frac{r}{2}$ por densidad de $\Q$ en $\R$. Y cuando $x_n = 0$ tambien lo es $q_n$ 
+		Sea $B(x_n,r)$ una bola cualquiera de $\R^{\N}$ ahora para cada $x_n \in \R $ existe un $q_n \in \Q$ tal que $|x_n - q_n| \leq \frac{r}{2}$ por densidad de $\Q$ en $\R$. Y cuando $x_n = 0$ tambien lo es $q_n$ 
 
 		Entonces $(q_n)_n \subseteq \Q^{\N} $ veamos que $q_n \in B(x_n,r)$
 
@@ -1485,11 +1507,13 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 		Tomemos $\mathcal{B} = \{B(a_m,\frac{1}{n}) : n,m \in \N\}$. Ahora $\# \mathcal{B} = \# \N\times \N = \n$
 
-		Veamos que es base. Tomemos $U \subseteq X$ abierto. Ahora dado $y \in U$ tenemos que existe $B(y,r) \subseteq U$
+		Veamos que es base. Tomemos $U \subseteq X$ abierto. 
+
+		Ahora dado $y \in U$ tenemos que existe $B(y,r) \subseteq U$
 
 		Como $A$ es denso en $X$ existe un $a_m \in A$ tal que $d(a_m,y) \leq \frac{1}{n}$ con $n \in \N$ tal que $\frac{1}{n} < \frac{r}{2}$
 
-		Entonces $y \in B(a_m,\frac{1}{n})$ y además $B(a_m,\frac{1}{n}) \subseteq \mathcal{B}$ 
+		Entonces $y \in B(a_m,\frac{1}{n})$ y además $B(a_m,\frac{1}{n}) \in \mathcal{B}$ 
 
 		Tomemos un $x \in B(a_m,\frac{1}{n})$ tenemos que $d(x,y) < d(x,a_m) + d(a_m,y) = \frac{1}{n} + \frac{1}{n} < r$
 
@@ -1503,7 +1527,7 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 		Tomemos un cubrimiento de abiertos $\mathcal{C} = \{A_i\}_{i \in I}$ 
 
-		Sea $\mathcal{B}' = \{B_{n_1}, B_{n_2},\cdots\} \subseteq \mathcal{B} $ de elementos $B_{n_j} $ tales que existe $ i \in I$ tal que $B_{n_j} \subseteq A_i$
+		Sea $\mathcal{B}' = \{B_{n_1}, B_{n_2},\cdots\} \subseteq \mathcal{B} $ con $B_{n_j} \in \mathcal{B} $ tales que existe $ i \in I$ tal que $B_{n_j} \subseteq A_i$
 
 		Ahora sea $J \subseteq I$ el conjunto formado por $j(k)$ donde $j(k)$ es alguno de los $i \in I$ tq $A_j \supseteq B_{n_k}$ con $B_{n_k} \in \mathcal{B}'$
 
@@ -1523,36 +1547,51 @@ Luego no sucede $L_1 < L_2 $ y tampoco $L_2 < L_1$ entonces $L_1 = L_2$
 
 		Pero además para cada $j \in J$ tenemos un elemento $B_{n_k}$ de $\mathcal{B}'$ y en este conjunto hay menos elementos que en $\mathcal{B}$ que era contable, por lo tanto $J$ es contable
 
-		$3 \Ra 1$) Considermos los cubrimientos de la pinta $A_n = \{B(x,\frac{1}{n}): x \in X)\}$ cada uno de ellos tiene que tener subcubrimiento contable
+		$3 \Ra 1$) Sea $(X,d)$ un espacio métrico. 
 
-		Entonces $A_n^s = \{B(x_j,\frac{1}{n}) :  j \in \N\}$ que es numerable.
+		Considermos los cubrimientos de la pinta $A_n = \{B(x,\frac{1}{n}): x \in X)\}$ 
 
-		Ahora si unimos todos los $A_n^j$ tenemos unión numerable de numerables entonces es numerable y además es un cubrimiento , por que es unión de cubrimientos de $X$
+		Por hipótesis cada uno de ellos tiene que tener subcubrimiento numerable
 
-		Veamos que $\mathcal{C} = \bigcup_{n\in\N} A_n^s$ es denso en $X$
+		Entonces tenemos $A_n^s = \{B(x_j,\frac{1}{n}) :  j \in \N\}$ que es numerable.
 
-		Tomemos $x \in X$ y un radio $r>0$. Sabemos que para cada $n \in \N$ tenemos un subcubrimiento de $X$ (de los que habíamos armado) en particular para algún $n_0$ tal que $\frac{1}{n_0} < r$, tenemos el cubrimiento $A_{n_0}^s$ en el cual está $x$
+		Ahora cada $A_n^s$ tiene numerables $x_j$ y tenemos numerables $A_n^s$ 
 
-		Por lo tanto tenemos algun $j \in \N$ tal que $x \in B(x_j,\frac{1}{n_0})$
+		Por lo tanto el conjunto $\mathcal{C} = \{x_j^n : j,n \in \N \}$ es unión de numerables entonces numerable
+
+		Veamos que es denso en $X$
+
+		Tomemos $x \in X$ y un radio $r>0$. Sabemos que para cada $n \in \N$, en particular para algún $n_0 \in \N$ tenemos un subcubrimiento de $X$ (de los que habíamos armado), tal que $\frac{1}{n_0} < r$ por ende tenemos el cubrimiento $A_{n_0}^s$ en el cual está $x$ (si no no sería cubrimientos)
+
+		Por lo tanto tenemos algun $j \in \N$ tal que $x \in B(x_j,\frac{1}{n_0})$ con $x_j \in \mathcal{C}$
 
 		Pero entonces $x_j \in B(x,\frac{1}{n}) \subseteq B(x,r)$. Por lo tanto $B(x,r)\cap \mathcal{C} \neq \emptyset$
 
 		Por lo tanto $x \in \ol{\mathcal{C}}$ entonces $X \subseteq \ol{\mathcal{C}}$ y ya sabíamos que $\mathcal{C} \subseteq X$
 
 		Entonces $\ol{\mathcal{C}} = X$. Probando que $\mathcal{C}$ es denso en $X$
+
+		Podríamos haber hecho lo mismo y decir dado cualquier abierto de $x$ su intersección con $\mathcal{C}$ es no vacía, por ende $\mathcal{C}$ es denso en $X$
+
+		Finalmente, tenemos $\mathcal{C}$ un subconjunto denso y numerable de $X$ , por lo tanto $X$ es separable
 	\end{proof}
 	
 	
 \end{ej}
 
 \begin{ej}
-Probar que todo espacio métrico separable es separable
+Probar que todo subespacio métrico de un espacio métrico separable es separable
 \begin{proof}
-	Sea $(A,d)$ separable y $(B,d)$ sub espacio métrico. Como $A$ es separable existe $\mathcal{B}$ una base contable,
+	Sea $(X,d)$ separable y $(Y,d)$ sub espacio métrico. Como $A$ es separable existe $\mathcal{B}$ una base contable de $X$.
 
-	Pero esta misma base es base tambien de $B$ por lo tanto $B$ tiene una base contable , entonces $B$ es separable
+	Ahora consideremos $\mathcal{B}' = \{A \cap Y : A \in \mathcal{B}\}$ y estos por como estan armados son todos abiertos relativos a $Y$ 
 
-	Capaz deberíamos intersecar todas las cosas de la base $\mathcal{B}' = \{x \cap B : x \in \mathcal{B}\}$ y esta sería una base de $B$ 
+	Además dado $x \in Y \subseteq X$ como $x \in X$ tenemos un $A \in \mathcal{B}$ tal que $x \in A \subseteq X $ por lo tanto $x \in A \cap Y$
+
+	Entonces $x \in A \cap Y \subseteq Y$ , la última inclusión es trivial. Y además como $A \in \mathcal{B}$ sabemos $A\cap Y \in \mathcal{B} '$
+
+	Entonces $\mathcal{B}'$ es una base de abiertos $Y$
+
 \end{proof}
 \end{ej}
 
@@ -1564,11 +1603,13 @@ Probar que todo espacio métrico separable es separable
 		Sea $x \in X$ punto aislado entonces $\exists \epsilon >0$ tal que $B(x,\epsilon) \cap X = \{x\}$
 
 		Ahora para cada aislado hay una de esas bolas que son abiertas y son disjuntas dos a dos, por lo tanto solo puede haber contables bolas y por lo tanto contables puntos aislados
+
+		Otra forma. Mirar a estos conjuntos $A_i$ disjuntos como subespacio métrico $Y$. Ahora mirar el cubrimiento dado por todos eso conjuntos $\bigcup_{i \in J} A_i$, eso cubre $Y$. Sin embargo, como son disjuntos, no tiene subcubrimiento, cualquier $A_i$ que saque, dejaría de cubrirlo. Entonces $Y$ no es separable, y dado que $Y \subseteq X$ entonces $X$ no es separable
 	\end{proof}
 \end{ej}
 
 \begin{ej}
-	¿Es $\ell^{\infty}$ separable ?. Esto es igual al conjunto de suceciones acotadas con $d){\infty}$
+	¿Es $\ell^{\infty} = \{(a_n) \subseteq  \R : a_n \text{ es acotada}\}$ separable ?
 	\begin{proof}
 		Consideremos el conjunto $\ell_{\N} = \{(a_n)\subseteq \N : a_n \text{ es acotada }\}$
 
