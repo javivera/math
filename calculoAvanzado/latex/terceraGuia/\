@@ -246,13 +246,11 @@
 
 					Por convergencia de $f_n(x)$ dado un $\epsilon >0$ existe $n_0 \in \N$ tal que $|f_n(x) - f(x)| < \epsilon \quad \forall n \geq n_0$
 
-					Si fijamos un $x \in X$ tenemos que $|f_n(x)-f_m(x)| < \epsilon \quad \forall n,m\geq n_0$
+					Devuelta como esto vale para cualquier $x \in X$ entonces $\sup_{x \in X}|f_n(x) - f(x)| \leq \epsilon \quad \forall n \geq n_0 $
 
-					Si hacemos limite de $n$ tendiendo a infinito $|f(x) - f_m(x)| \leq \epsilon \quad \forall m \geq n_0$
+					Pero entonces $d_{\infty}(f_n,f) = \sup_{x \in X} |f_n(x) - f(x)| \leq \epsilon \quad \forall n\geq n_0$
 
-					Y esto vale para cada $x \in X$ entonces $\sup_{x\in X}|f(x)-f_m(x)| = d_{\infty}(f,f_m) \leq \epsilon$
-
-					Por lo tanto $f_n$ converge a $f$ si es que $f$ está en el conjunto.
+					Por lo tanto $f_n$ converge a $f$
 
 					Tomando el mismo $\epsilon$ y una $f_n$ cualquier con $n \geq n_0$ tenemos que 
 					$$|f_n(x) - f(x)| \leq \epsilon \quad \forall x \in X \iff f_n(x) - \epsilon \leq f(x) \leq \epsilon + f_n(x)$$
@@ -280,7 +278,7 @@
 
 				Entonces $|f_n(x)-f(x)| < \frac{\epsilon}{3} \quad \forall x \in X$ si tomo cualquier $n \geq n_0$ fijo
 
-				Además $f_n$ con ese $n \in \N$ fijo es continua entonces en un compacto, entonces es uniformemente contínua 
+				Además $f_n$ con ese $n \in \N$ fijo es continua entonces  
 			$$\exists \delta >0 \ / \ d(x,y) < \delta \Ra d(f_n(x),f_n(y)) < \frac{\epsilon}{3}$$
 
 				Ahora usando ese delta tenemos que $d(x,y) < \delta$ implica 
@@ -291,41 +289,11 @@
 				Entonces está en $\mathcal{C}[a,b]$ mostrando que la sucesión converge en el conjunto. 
 
 			 	Finalmente $\mathcal{C}[a,b]$ es cerrado, por lo tanto es compoeto
-
-				\begin{remark} Sin usar compacto, tenemos la demo de convergencia uniforme implica puntual
-					
-				        Por convergencia uniforme para cualquier $x \in X$ sucede $d(f(x),f_n(x)) < \frac{\epsilon}{3} \quad \forall n\geq n_0$ 
-
-					Además $f_{n_0}$ con $n_0 \in \N$ fijo es contínua en todo punto , en particular lo es en $x_0$
-
-					Por lo tanto dado $\epsilon$ existe un $\delta$ tal que $d(x,x_0) < \delta \Ra d(f_{n_0}(x),f_{n_0}(x_0))< \frac{\epsilon}{3} = \epsilon$.
-
-					Entonces $f$ es contínua en $x_0$ y esto lo podemos hacer para cualquier $x_0 \in X$
-
-
-				Ahora usando aquél delta tenemos $d(x,x_0) < \delta$ implica:
-				$$ d(f(x),f(x_0)) < d(f(x),f_{n_0}(x)) + d(f_{n_0}(x),f_{n_0}(x_0)) + d(f_{n_0}(x_0),f(x_0)) $$
-				\end{remark}
 				\end{proof}
 				
 				
 			\item Probar que $C_0 := \{(a_n)_n \subseteq \R / a_n \ra 0 \}$ se un espacio métrico completo con la distancia $d_{\infty}((a_n),(b_n)) = \sup_{n\in\N} |a_n-b_n|$
-
-				Estas son funciónes que van de $\N \ra \R$ y además por converge a 0, están acotadas, dado que tienen finitos términos distintos que 0
-
-				Probemos entonces que es cerrado y sería cerrado en un completo, por lo tanto completo
-
-				Sea $a^k $ convergente a $a$ entonces $\sup_{n \in \N}|a^{k}_n - a_n|=  d_{\infty}(a^k_n,a_n) < \frac{\epsilon}{2} \quad \forall k\geq k_0$
-				
-				Entonces para cada $n \in \N$ tenemos $d(a_n,a^{k_0}_n) < \frac{\epsilon}{2}$
-			
-				Además dado ese $k_0$ sabemos que $d(a^{k_0}_n , 0 ) < \frac{\epsilon}{2} \quad \forall n \geq n_0$
-
-				Finalmente dado $\epsilon$ tenemos:
-
-			$$ d(a_n,0) < d(a_n,a^{k_0}_n) + d(a^{k_0}_n , 0) < \epsilon \quad \forall n\geq n_0$$
-
-			Entonces $a_n$ converge a 0 por lo tanto $(a_n)_n \subseteq C_0$. Mostrando que $C_0$ es cerrado
+	
 		\end{enumerate}
 	\end{ej}
 
@@ -853,9 +821,9 @@
 				\begin{proof}
 					Es contínua por que $\Z$ es un espacio métrico discreto, entonces toda función que salga de él será contínua, no es así si cambiamos $\Z$ por $\Q$.  
 
-					Por ejemplo la función que es 1 en todos los enteros y 0 en todos los racionales no enteros, no es contínua. 	
+					Por ejemplo la función que es 1 en todos los enteros y 0 en todos los racionales , no es contínua. 	
 
-					Tengo una sucesion de racionales no enteros que se acerca a un entero , pero su imagen es constantemente 0 que es diferente que 1 que sería la imagen del límite de esa sucesión
+					Tengo una sucesion de racionales que se acerca a un entero , pero su imagen es constantemente 0 que es diferente que 1 que sería la imagen del límite de esa sucesión
 				\end{proof}
 			\item Suponiendo que $f$ es biyectiva ¿puede ser un homeomorfismo?
 				
@@ -938,15 +906,11 @@
 		
 			\item Mostar con un ejemplo que una función puede ser biyectiva, abierta y cerrada pero no contínua.
 				\begin{proof}
-					$id: (\R,d) \ra (\R,\delta)$, con $d$ la métrica euclídea y $\delta$ la métrica discreta.
+					$id: (\R,d) \ra (\R,\delta)$, esta es cláramente biyectiva. Y es obviamente no contínua (se puede ver con sucesiones tomas una sucesions que converge en el dominio, pero no converge en la imagen , por que las únicas que convergen son constantes a partír de algún momento)
 
-					Esta es cláramente biyectiva, también abierta y cerrada por que TODO en la imagen es abierto y cerrado (imagen discreta)
+					Es cláramente abierta y cerrada por que TODO en el dominio es abierto y cerrado (dominio discreto)
 
-					Además la inversa es contínua, por que su dominio es discreto.
-
-					Sin embargo es obviamente no contínua (se puede ver con sucesiones tomas una sucesions que converge en el dominio, pero no converge en la imagen , por que las únicas que convergen son constantes a partír de algún momento)
-
-
+					Ahora la inversa es contínua, por que su dominio es discreto.
 
 				\end{proof}
 		\end{enumerate}
@@ -1063,8 +1027,6 @@
 					Probemos continuidad (uniforme) 
 					$$d_X(\pi_1((x_1,y_1)),\pi_1((x_2,y_2)) = d_X(x_1,x_2) < d_X(x_1,x_2) + d_Y(y_1,y_2) = d_{\infty}((x_1,x_2),(y_1,y_2)) $$		
 
-					Probemos que son abiertas:
-
 					Sea $U \subseteq X \times Y$ abierto. Dado $(x_1,y_1) \in U$ tenemos un $r>0$ tal que $B((x_1,y_1),r) \subseteq U$
 
 					Entonces $\pi_1(B((x_1,y_1),r)) \subseteq \pi_1(U)$. Ahora me gustaría ver que $B(x_1,r) \subseteq \pi_1(U)$. 
@@ -1096,15 +1058,11 @@
 
 					$\Leftarrow$) Sea $(x_n)_n \subseteq \Z$ convergente a $x$ 
 
-					Entonces sabemos que $f_1(x_n)$ converge a $f_1(x)$ y lo mismo con $f_2(x_n)$, por que ambas con contínuas. Entonces para cada uno tenemos un $n_k$, tal que $d(f_1(x_n),f_1(x)) < \frac{\epsilon}{2} \quad \forall n \geq n_k$ y lo mismo con $f_2$
-
-					Tomamos $n_0$ el máximo entre ámbos y ahora tenemos que dado ese $\epsilon$ ambas sucesiones están cerca del límite a partir de $n_0$
+					Entonces sabemos que $f_1(x_n)$ converge a $f_1(x)$ y lo mismo con $f_2(x_n)$, por que ambas con contínuas.
 
 					Ahora teniendo en cuenta que $f(x) = (f_1(x),f_2(x)) $ tenemos $f(x_n) = (f_1(x_n),f_2(x_n))$, 
 
-					$d_{\infty}((f_1(x_n),f_2(x_n)),(f_1(x),f_2(x))) = d_X(f_1(x_n),f_1(x)) + d_Y(f_2(x_n),f_2(x)) < \epsilon \quad \forall n\geq n_0$
-
-					Luego tenemos que $f(x_n) = (f_1(x_n),f_2(x_n))$ converge a $(f_1(x),f_2(x)) =  f(x)$
+					Luego tenemos que $f(x_n)$ converge a $(f_1(x),f_2(x)) =  f(x)$
 
 					Por lo tanto $f$ es contínua
 
@@ -1188,255 +1146,23 @@
 					$f$ semicontínua inferiormente entonces dado $\epsilon >0$ existe $\delta >0$ tal que 
 					$$ d(x,x_0) < \delta \Ra f(x_0) < f(x) + \epsilon$$
 
-					Sea $x_0 \in f^{-1}(\alpha,+\infty)$ entonces $f(x_0) > \alpha$ entonces $f(x_0) - \alpha > 0 $
+					Sea $x \in f^{-1}(\alpha,+\infty)$ entonces $f(x) > \alpha$ entonces $f(x) - \alpha > 0 $
 
-					Entonces tomamos $\epsilon ' = f(x_0) - \alpha $ tendríamos:
-
-					$$\exists \delta >0 \text{ tal que } d(x,x_0 ) < \delta \Ra f(x_0) < f(x) + \epsilon ' \iff f(x) > \alpha \iff x \in f^{-1}(\alpha , +\infty)$$
-
-					Pero entonces $x \in B(x_0,\delta) \iff d(x,x_0) < \delta \iff x \in f^{-1}(\alpha,+\infty)$
-
-					Por lo tanto $B(x_0,\delta) \subseteq f^{-1}(\alpha,+\infty)$. Y esto vale para cualquier $x_0 \in X$
-
-					Por lo tanto $f^{-1}(\alpha,+\infty)$ es abierto
-
-			
+					Entonces tomamos $\epislon ' = f(x) - \alpha $
 				\end{proof}
 				
 				
 			\item $f$ es semicontínua superiormente si y sólo si $f^{-1}(-\infty,\alpha)$ es abierto para todo $\alpha \in \R$
-				\begin{proof}
-					Sale con un razonamiento análogo al anteriór
-				\end{proof}
-				
-				
-			\item Si $A\subset X$ y $\chi_A : X \ra \R$ es su función característica, entonces $\chi_A$ es semicontínua inferiormente (resp. superiormente) si y sólo si $A$  es abierto (resp. cerrado).
+			\item Si $A\subset X$ y $X_A L X \ra \R$ es su función característica, enotnces $X_A$ es semicontínua inferiormente (resp. superiormente) si y sólo si $A$  es abierto (resp. cerrado).
 
 				Comparar con el ejercicio 17
-				\begin{proof}
-					\[
-						\chi_A^{-1}((\alpha,+\infty)) =
-  					\begin{cases}
-                                   		\R & \text{if $\alpha \leq 0$} \\
-                                   		A & \text{if $0 < \alpha \leq 1 $} \\
-  						\emptyset & \text{if $\alpha > 1$}
-  					\end{cases}
-					\]
-				\end{proof}
-				Sabemos que $\R$ es abierto , $\emptyset$ es abierto , entonces esta preimagen es abierta si y sólo si $A$ es abierto
-
-				Entonces $X_A$ es semicontínua inferiormente si y solo si $X_A^{-1}((\alpha,+\infty))$ es abierto para todo $\alpha \in \R$ si y solo si $A$ es abierto
-		
-				\[
-					f^{-1}((-\infty,\alpha)) =
-  \begin{cases}
-                                   \emptyset & \text{if $\alpha < 0$} \\
-                                   \R \setminus A & \text{if $0 \leq \alpha < 1$} \\
-  				   \R & \text{if $1 \leq \alpha$}
-  \end{cases}
-\]
-
-				Ahora tenemos algo similar $\R$ es abierto $\emptyset$ es abierto necesitamos que $\R \setminus A$ sea abierto y esto sucede si y sólo si $A$ es cerrado
-
-				Es similar por que el 17 nos dice que si $f^{-1}((- \infty,\alpha)) = \{x\in X : f(x) < \alpha\}$
-
-				y $f^{-1}((\alpha,+\infty)) = \{x\in X : f(x)> \alpha\}$ son abiertos , $f$ es contínua.
-
-				Y este ej nos dice que si $f^{-1}((\alpha,+\infty))$ es abierto entonces $f $ es semicontínua inferiormente
-
-				Y el otro nos dice que es semicontínua superiormente, y ambas juntas nos dice que $f$ es contínua
 		\end{enumerate}
 	\end{ej}
 	
-	\begin{ej}
-		Sean $(X,d)$ e $(Y,d')$ espacios métricos y sea $f: X \ra Y$ una función que satisface:
-		
-		$$d'(f(x_1),f(x_2)) \leq c d(x_1,x_2) $$
-
-		para todo $x_1,x_2\in X,$ donde $c \geq 0$. Probar que $f$ es uniformemente contínua.	
-
-		\begin{proof}
-			Si $c = 0$, entonces $d'(f(x_1),f(x_2)) = 0 \quad \forall x_1,x_2 \in X$
-
-			Entonces dado un $\epsilon$ podemos tomar cualquier $\delta >0$.
-
-			Si $c \neq 0$ dado $\epsilon > 0$ tomamos $\delta = \frac{\epsilon}{c} > 0$
-
-			Entonces $d(x_2,x_2) < \delta \Ra d'(f(x_1),f(x_2)) < cd(x_1,x_2) < c \delta = \epsilon \quad \forall x_1,x_2 \in X$
-		\end{proof}
-		
-		
-	\end{ej}
-
-	\begin{ej}a
-		\begin{enumerate}
-			\item Sean $(X,d)$ e $(Y,d')$ espacios métricos, $A \subset X$ y $f: X \ra Y$ una función. Probar que si existe $\alpha > 0, (x_n)_n, (y_n)_n \subset A$ sucesiones y $n_0 \in \N$ tales que:
-				\begin{enumerate}
-					\item $d(x_n,y_n) \ra 0$ para $n \ra +\infty$						
-						
-					\item $d'(f(x_n),f(y_n)) \geq \alpha \quad \forall n \geq n_0$
-
-					entonces $f$ no es uniformemente contínua en $A$
-				\end{enumerate}
-				\begin{proof}
-					Tomemos $\epsilon = \alpha$
-
-					Como $d(x_n,y_n) \ra 0$ dado cualquier $\delta$ tenemos un $n_1 \in \N$ tal que $d(x_n,y_n) < \delta \quad \forall n \geq n_1$
-
-					Tomamos $n_2 = \max\{n_1,n_0\}$ luego tomemos $x_{k},y_{k}$ con $k \geq n_2$
-
-					Ahora por hipótesis sabemos que $d'(f(x_{k}),f(y_{k})) \geq \alpha$ (vale por que $k \geq n_2 \geq n_0$)
-
-					Por lo tanto para cualquier $\delta$ nos podemos fabricar $x_1,x_2 \in X$
-
-					Luego existe $\epsilon $ ($\alpha$) tal que $\forall \delta >0 $ tengo  $x,y \in X$ tal que $d(x,y)<\delta \Ra d(f(x),f(y)) \geq \alpha$
-
-					Por lo tanto $f$ no es uniformemente contínua
-				\end{proof}
-				
-				
-			\item Verificar que la función $f(x)=x^2$ no es uniformente contínua en $\R$ ¿Y en $\R_{\leq -\pi}$?
-
-				Sean $x_n = n + \frac{1}{n}$ e $y_n = n$ tenemos que $d(x_n,y_n) = |n + \frac{1}{n} -n| = \frac{1}{n}  \ra 0$
-
-				Sin embargo $d(f(x_n),f(y_n)) = d(n^2 + 2 + \frac{1}{n^2} - n^2) |2 + \frac{1}{n^2}| \ra 2 $
-
-				Entonces $d(x_n,y_n) \ra 0$ 
-
-				Además si tomamos $\alpha = 1$ sabemos que existe $n_0$ tal que $d(f(x_n),f(y_n)) > \alpha \quad \forall n \geq n_0$
-			\item Verificar que la función $f(x) = sen(\frac{1}{x})$ no es uniformemente contínua en $(0,1)$
-		\end{enumerate}
 	
-	\end{ej}
-	
-	\begin{ej}a
-		\begin{enumerate}
-			\item Sea $f:(X,d) \ra (X,d')$ una función uniformemente contínua y sea $(x_n)_n$ una sucesión de Cauchy en $X$. Probar que $(f(x_n))_n$ es una sucesión de Cauchy en $Y$
-				\begin{proof}
-					Dado $\epsilon > 0$. Sabemos $\exists \delta> 0$ tal que 
-
-					Para todo $x,y \in X$ que cumpla $d(x,y) < \delta \Ra d(f(x),f(y))< \epsilon $
-
-
-					Sea $(x_n)_n \subseteq X$ de Cauchy entonces existe un $n_0 \in \N$ tal que $d(x_n,x_m) < \delta \quad \forall n,m\geq n_0$
-
-					Entonces $d(f(x_n),f(x_m)) < \epsilon \quad \forall n,m \geq n_0$
-
-					Por lo tanto $f(x_n)$ es de Cauchy
-
-				\end{proof}
-				
-				
-			\item Sea $f: (X,d) \ra (Y,d')$ un homeomorfismo uniforme. Probar que $(X,d)$ es completo si y sólo si $(Y,d')$ es completo
-
-			       En particular, si un espacio métrico $X$ es completo para una métrica lo es para cualquier otra métrica uniformemente equivalente.
-			       \begin{proof}
-				Tenemos $(y_n)_n \subseteq Y$ de Cauchy. Como $f$ es homeo uniforme entonce $f^{-1}$ es uniformente contínua.
-
-				Entonces $x_n = f^{-1}(y_n)$ es de Cauchy, por inciso i). Como $X$ es completo $x_n$ converge.
-
-				Ahora por continuidad $f(x_n) = y_n$ converge también. Entonces $Y$ es completo.
-
-				Con un razonamiento análogo vemos que $Y$ completo implica $X$ completo.
-
-				\end{proof}
-					
-				Ahora probemos que si tenemos $f: (X,d) \ra (X,d')$ contínua con $d$ y $d'$ métricas equivalentes. Entonces $f$ es uniformemente contínua.
-				\begin{proof}
-					Dado $\epsilon > 0 $ tomemos $\delta = \frac{\epsilon}{c}$
-
-					Entonces tenemos que $d(x,y) < \delta \Ra d(f(x),f(x)) < $
-				\end{proof}
-
-				Sabemos que tenemos la identidad $id: (X,d) \ra (X,d')$ 
-
-				Como las métricas son equivalentes Tenemos que $B_d(x,r') \subseteq B_d'(x,r)$ con $r'<r$
-
-				Tenemos algún Entonces si $x' \in B_d(x,r')$ entonces $x' \in B_d'(x,r)$
-
-				Por lo tanto tenemos que $d(x,x') < r' \Ra d'(f(x),f(x')) < r \iff $ 
-
-		\end{enumerate}
-		
-	\end{ej}
-	
-	\begin{ej}a
-		\begin{enumerate}
-			\item Dar un ejemplo de una función $f: \R \ra \R$ acotada y contínua pero no uniformemente contínua.
-				\begin{proof}
-					
-
-				\end{proof}
-				
-			\item Dar un ejemplo de una función $f : \R \ra \R$ no acotada y uniformemente contínua
-				\begin{proof}
-					
-				\end{proof}
-				
-				
-		\end{enumerate}
-	\end{ej}
-	
-		
 
 	\begin{ej}
 		Sea $f:(X,d) \ra (Y,d')$ una función uniformemente continua y sean $A,B \subseteq X$ conjuntos no vacíos tales que $d(A,B) = 0$. Probar que $d'(f(A),f(B)) = 0$
-		\begin{proof}
-		  Sabemos que $d(A,B) = \inf\{(a,b):a \in A, b \in B\} = 0$, entonces tenemos una sucesión $d(a_n,b_n)$ que converge a 0
-
-		  Ahora supongamos que $d'(f(A),f(B)) = \alpha > 0 $ entonces para $d(f(a),f(b)) \geq \alpha \quad \forall a \in A ,b \in B$
-
-		  Por que sino tendría dos elementos $a'\in A, b'\in B$ tal que $d(f(a'),f(b')) < \alpha$ contradiciendo que $\alpha$ es un ínfimo.
-
-		  Pero entonces en partícular $d(f(a_n),f(b_n)) \geq \alpha \quad \forall n \in \N$
-
-		  Pero entonces $f$ no debería ser uniformemnte contínua, lo que es absurdo.
-
-		  Por lo tanto $d(f(A),f(B)) \leq 0$ como son distancias, son positivas. $d(f(A),f(B)) = 0$
-		\end{proof}
-		
-		
-	\end{ej}
-	
-	\begin{ej}
-		Sean $X$ e $Y$ espacios métricos, $Y$ completo. Sea $D \subset X$ denso y $f:D \ra Y$ una función uniformente contínua. Probar que $f$ tiene una única extensión contínua a todo $X$, es decir, existe una única función $F: X \ra Y$ tal que $F|_D =f $ (Más aún, $F$ es uniformemente contínua)
-		\begin{proof}
-			Sea $x \in D$ entonces $F(x) = f(x)$
-
-			Si en cambio $x \notin X \setminus D$, como $D$ es denso tenemos una sucesion $(d_n)_n \subseteq D$ que converge a $x$ 
-
-			Entonces $F(x) = \lim_{n\ra +\infty} f(d_n)$ sabemos que este límite existe 
-
-			Veamos que cualquier sucesion del denso que tomemos nos da lo mismo. Sean  $(x_n)_n,(y_n)_n \subseteq D$
-
-			Tales que ambas convergen a $x \in X$. $d(x_n,y_n) < d(x_n,x) + d(x,y_n) < \epsilon \quad \forall n\geq n_0$
-
-			Entonces $d(x_n,y_n) \ra 0$, como $f$ es uniformemente contínua 
-
-			Dado $\epsilon>0 \quad \exists n_0 \in \N$ tal que $d(f(x_n),f(y_n)) < \epsilon \quad \forall n\geq n_0$ 
-
-			(Salteé un par de pasos, dado $\epsilon$ primero tenes el $\delta$ y dado el $\delta$ tenes el $n_0$ por que $d(x_n,y_n) \ra 0$ y ahí llegas al $\epsilon$ en la imagen)
-
-			Esto nos dice que $d(f(x_n),f(y_n)) \ra 0$ y además sabemos que tanto $f(x_n)$ como $f(y_n)$ convergen por continuidad
-
-			Pero entonces $\lim f(x_n) = \lim f(y_n)$ por lo tanto da igual que sucesión tomemos y entonces $F(x)$ está bien definido, es único
-
-			Veamos que $F$ es contínua, sabemos que es contínua para cualquier punto de $D$
-
-			Entonces tomemos un $x_0 \in X$ tomemos una sucesion $x_n$ convergente a $x_0$
-
-			La idea es que para cada término de esta $x_n$ tenemos una $(d_n)_n \subset D$ tal que $d_j^n \ra x_n$
-
-			Entonces con esto probamos que tenemos una sucesión $(d_n)_n \subseteq D$ tal que $d(x_n,d_n) \ra 0$
-
-			Entonces $f(d_n) \ra f(x_0)= F(x_0)$
-
-			
-
-
-		\end{proof}
-		
-		
 	\end{ej}
 	
 	
