@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio} 
+
+
+\fancyhead[R]{Primer Pracial}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+\begin{document}
+
+\begin{ej}
+	Idea: A primera vista dado un $a_1$ pareceríá que $a_2$ puede valer dos cosas nada mas, $a_1 - 1$ o $a_1 + 1$ . Esto valdría por que la sucesión es de numeros naturales y para cada natural solo hay 2 elementos a distancia 1. Pero eso no es cierto si $a_1 = 0$ si fuese así tendríamos solo una opción natural para $a_2$ que sería $a_2 = 1$ y esto también pasa para cualquier momento de las sucesiones que armemos si $a_n = 0$ entonces $a_{n+1} = 1$. 
+
+	Entonces lo que vamos a ver es un subconjunto de A en donde las sucesiones arrancan en un numero fijo , despues pasan a ser ese numero fijo + 1 y despues elije entre sumar uno o restar uno y despues si o si suman uno y repiten periódicamente ese comportamiento , un turno elijen el otro suman. Despues vamos a ver que ese conjunto tiene cardinal $\mathfrak{c}$
+
+	Si logramos esto tendríamos un subconjunto de $A$ que tiene cardinal $\mathfrak{c}$ por lo tanto tiene cardinal mayor o igual que $\mathfrak{c}$ y buscar una cota superiór va a ser facil
+
+	Empezemos: 
+
+	Sea $$A_i = \{(a_n)_n \subset \N : |a_{n+1}-a_n| = 1 \quad \forall n \in \N \text{ , } a_1 = i \in \N_{>0} \text{ y } a_{2n} = a_{2n - 1} + 1  \neq 0 \quad \forall n_0 > 1\}$$
+
+	Esto es justo lo que dijimos arriba, el primer elmento fijo y despues sumamos 1 obligado , despues tenemos opcion , despues sumamos 1 obligado y así sucesivamente
+
+	Estos son todos subconjuntos de $A$ por lo tanto su unión también es subconjunto de $A$
+
+	Ahora cuando armamos sucesiónes en un $A_i$ para cada n impar podemos elejir entre dos opciones por lo tanto tenemos numerables (igual cantidad que numeros naturales pares) turnos en los que elejimos entre dos opciones. También tenemos numerables turnos donde no elejimos, pero eso no nos importa
+
+
+
+
+	Por lo tanto $$\# A_i = 2^{\n} = \mathfrak{c}$$ 
+
+	Como sabemos que unión numerable de conjuntos de cardinal $\mathfrak{c}$ tiene cardinal $\mathfrak{c}$
+	
+	Tenemos :$$ \# \bigcup_{i \in \N} A_i  = \mathfrak{c}$$ 
+
+	Como ya dijimos $\bigcup_{i \in \N} A_i \subseteq A$ entonces $\# A \geq  \mathfrak{c}$
+
+	Además $A$ está contenido en el conjunto de las sucesiones naturales que sabemos que tienen cardinal $\mathfrak{c}$, por lo tanto $\# A \leq \mathfrak{c}$
+
+	Finalmente $$\# A = \mathfrak{c}$$
+\end{ej}
+
+\begin{ej}
+	Sabemos que $D$ es denso en $X$ entonces podemos tomar una sucesión $(d_n)_n \subset D$ tal que $d_n$ converge a $x$
+
+	Ahora por hipótesis $d(x_n,d_n)$ tiende a $d(x,d_n)$, pero esto último tiende a 0, por como tomamos $d_n$
+
+	Entonces $d(x_n,d_n)$ tiende a 0.
+
+	Ahora dado un $\epsilon >0$ tenemos que existe $n_1 > 0 $ tal que $d(x_n,d_n) < \frac{\epsilon}{2} \quad \forall n \geq n_1$
+
+	Y por convergencia de $d_n$ tenemos que existe $n_2 > 0$ tal que $d(d_n,x) < \frac{\epsilon}{2} \quad \forall n \geq n_2$
+
+	Entonces si tomamos $n_0 =  \max\{n_1,n_2\}$ tendríamos
+
+	$d(x_n,x) \leq d(x_n,d_n) + d(d_n,x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \quad \forall n \geq n_0$ 
+
+	O lo que es lo mismo $$\lim_{n\ra\infty} x_n = x$$
+\end{ej}
+
+\begin{ej}
+	Sea $(f_j)_j \subset X$ una sucesión de Cauchy en $X$. Tenemos que dado $\epsilon >0 $ existe $j_0 \in \N$ tal que:
+
+	$$d(f_j,f_k) = \sum_{n=1}^{\infty} \frac{d_n(f_j,f_k)}{2^n} < \epsilon \quad \forall j,k \geq j_0$$
+
+	Entonces tenemos que $d_n(f_j,f_k) < \epsilon.2^n$ por lo tanto $\sup_{x \in [-n,n]} |f_j(x)-f_k(x)| < \epsilon.2^n$
+
+	Luego si fijamos un $x\in [-n,n]$ tenemos $|f_j(x)-f_k(x)| < \epsilon.2^n \quad \forall j,k\geq j_0 $
+
+	Esto nos dice que $f_j(x)$ es una sucesión de Cauchy
+
+	Ahora $f_j(x)$ es una sucesión de la imagen de $f$ que sabemos que es $[0,1]$ que es compacto.
+
+	Por ser compacto es completo, entonces por ser sucesión de Cauchy en un completo $f_j(x)$ converge digamos a $f(x)$
+
+	Ahora tengo entonces un candidato a límite que es justamente $f$ donde $f(x) = \lim_{j\ra\infty}f_j(x)$
+
+	Estos límites existen (por lo expuesto arriba), y son únicos, no importa que agrandemos el $n$ eso nos va a dar nuevos $x$ a los que encontrale límite , pero no nos va a cambiar el limite de $f_j(x)$ para los $x$ que habíamos visto antes.
+
+	Veamos que $f$ es contínua, tomemos cualquier $x_0$ y una sucesión convergente $x_k$ de $\R$ a $x_0$
+
+	Nos gustaría ver $d(f(x_k),f(x))$ se achica infinitamente. Sabemos que:
+
+
+	Sabemos $x_0 \in [-n,n]$ para algún $\N$, fijémoslo. 
+
+	Por convergencia de $k_n$ a partír de algún $k_1$ tenemos que $x_k \in [-n,n] \quad \forall k \geq k_1$
+
+	Entonces sabiendo que $\sup_{x \in [-n,n] } |f_j(x)-f_k(x)| <\epsilon.2^n \quad \forall j,k \geq j_0 $ usamos límite de $k$ tendiendo a infinitoy y conseguimos  
+	$$\sup_{x\in[-n,n]} |f_j(x) - f(x)| < \epsilon.2^n \quad \forall j\geq j_0$$
+
+	Ahora voy a fijar $j_0$ por comodidad
+
+	Como $x_0 \in [-n,n] $ tenemos:
+	$$ |f_{j_0}(x_0) - f(x_0)| < \epsilon. 2^n $$
+
+	Como  $x_k \in [-n,n]\quad \forall k\geq k_1$  
+	$$|f_{j_0}(x_k)-f(x_k)| < \epsilon .2^n \quad \forall k \geq k_1$$
+
+	Por continuidad de $f_j$ tenemos un $k_2$ tal que dado un $j_0$
+	$$ d(f_{j_0}(x_k) ,f_{j_0}(x_0)) < \epsilon \quad \forall k \geq k_2$$
+
+	Veamos que $d(f(x_k),f(x_0))$ se achica, tomemos $k_0 = max\{k_1,k_2\}$
+
+	$$d(f(x_k),f(x_0)) \leq d(f(x_k),f_{j_0}(x_k)) + d(f_{j_0}(x_k),f_{j_0}(x_0)) + d(f_{j_0}(x_0),f(x_0)) < \epsilon.2^n + \epsilon + \epsilon2^n \quad \forall k \geq k_0$$
+
+	No tengo tiempo de correjir los epsilon , pero está claro que para esta distancia se puede encontrar $k_0$ que la hace tan chica como uno quiera por lo tanto $d(f(x_k),f(x_0))$  tiende a 0 mostrando que $f$ es contínua
+
+	Veamos que es acotada:
+
+	Sabemos que si fijamos cualquier $x \in \R$ tenemos $0 \leq f_j(x) \leq 1 \quad \forall j\in\N$ 
+
+	Por lo tanto fijado un $x\in \R$ sabemos $0 \leq \lim_{j \ra \infty} f_j(x) \leq 1$
+
+	Pero entonces $0 \leq f(x) \leq 1 \quad \forall x \in \R$. 
+
+	Lo cual nos dice que $f$ es acotada
+
+	Por lo tanto $|f_j(x) - f(x)| \leq 1 \quad \forall x\in \R \quad \forall j \in \N$
+
+	Podemos concluir que $d_n(f_j,f) = \sup_{x\in[-n,n] }|f_j(x)-f(x)|\leq 1 \quad \forall j \in \N \quad \forall n \in \N$
+
+	Finalmente tenemos que:
+	$$ d(f_j,f) = \sum_{n=1}^{\infty}\frac{d_n(f_j,f)}{2^n} = \sum_{n=1}^{\infty} \frac{\sup_{x \in [-n,n]}|f_j(x)-f(x)|}{2^n}\leq \sum_{n=1}^{\infty}\frac{1}{2^n}$$
+
+	Esto me dice que tengo mas o menos controlada la sumatoria. Ahora dado $\epsilon > 0 $
+
+Considerando que la serie $\sum_{n=1}^{\infty}$ es convergente sabemos que las colas de la sumatoria se van haciendo cada vez mas pequeñas  existe algún $n_0 \in \N$ tal que $\sum_{n_0}^{\infty} \frac{1}{2^n} < \frac{\epsilon}{2}$
+	
+	Y ademas para cada $n\in \N$ sabemos que $d_n(f_j,f) < \frac{\epsilon}{2n_0} \quad \forall j \geq j_n$ 
+
+	Y como tenemos finitos $n < n_0$ tenemos finitos $j_n$ y tomemos el máximo de ellos llamemoslo $j_0$
+
+	AHora tenemos que $$d(f_j,f) \leq \sum_{n=1}^{n_0 - 1} \frac{d_n(f_j,f)}{2^n} + \sum_{n_0}^{\infty} \frac{1}{2^n } \leq n_0\frac{\epsilon}{2n_0} + \frac{\epsilon}{2} = \epsilon \quad \forall j \geq j_0$$
+
+	Entonces mostramos que $f_n$ converge a $f$ y que $f \in X$. Por lo tanto $X$ es completo
+
+
+	
+\end{ej}
+
+\begin{ej}
+	
+\end{ej}
+
+
+
+\end{document}
+
+

@@ -652,9 +652,34 @@
 				
 			\item $h$ solo es continua en $[0,1] \setminus \Q$
 				
-				Sea $x_0 \in \I$. Ahora tomemos cualquier $(x_n)_n $ sucesión de racionale que converga a $x_0$
+				Veamos que es contínua en los irracionales. Sea $x_0 \in \I$
 
-				Ahora $f(x_n)$
+				Tomemos $(x_n)_n$ convergente a $x_0$. Si a partír de algún momento fuese irracional , es evidente que $f(x_n)$ es constantemente 0 entonces $f(x_n)$ converge a $f(x_0) = 0$
+
+				Entonces miremos las sucesiones que no tienen tal momento , entonces $(x_n)_n$ siempre tiene racionales.
+
+				Ahora es lo mismo mirar la subsucesión $x_{n_k} $ solo de racionales, esta tiene que converger también a $x_0$
+
+				Supongamos que el exponente de cada uno de estos elementos tiene una cota superiór $m>0$
+
+				Bueno en algún momento tenemos algun $\frac{k}{m} < x_0 < \frac{k+1}{m}$ y como $m$ es el mas grande que puedo tomar entonces solo podría cambiar $k$ para acercarme, pero eso no me va a servír 
+
+				Entonces la sucesión no podría converger, por lo tanto dicho $m$ no existe, y el denominador tiene que agrandarse infinitamente para que la sucesión pueda converger a $x_0$
+
+				Entonces ahora si miramos nuevamente $x_n$ tenemos que $f(x_n) = 0$ para los irracionales y $f(x_n) = \frac{1}{n}$ para los racionales por lo tanto converge a $0$ que es $f(x_0)$
+
+				Entonces es contínua en $x_0$ y esto vale para cualquier irracional
+
+				Tenemos que es contínua en irracionales. 
+
+				Supongamos que es contínua en un $x_0 \in \Q$ tal que $x_0 \in [0,1]$
+
+				Ahora tenemos una sucesión $(x_n)_n$ de irracionales que converge a $x_0$
+
+				Como $f$ es contínua en racionales  $f(x_n)$ converge a $f(x_0)$. 
+
+				Pero $f(x_n)$ es constantemente 0 y $f(x_0)$  es diferente de 0, por que $x_0 \notin \I$
+
 		\end{enumerate}
 
 
@@ -667,17 +692,26 @@
 		\begin{proof}
 			$\Ra )$ Si es discreto sabemos que todo sub de $X$ es abierto y cerrado , por lo tanto si tomo un abierto en la imagen, y miro su preimagen , por ser sub de $X$ es también abierta, entonces $f$ es continua.
 
-			$\Leftarrow )$ Supongamos que no es discreto , como puedo tomar cualquier espacio métrico tomo $(X,\delta)$ con $\delta$ la métrica discreta. 
+			$\Leftarrow )$ Como puedo tomar cualquier espacio métrico tomo $(X,\delta)$ con $\delta$ la métrica discreta. 
 
 			Ahora como puedo tomar cualquier función tomo la identidad
 
-			$id: (X,d) \ra (X,\delta)$ ahora esta función no puede ser continua, por que $X$ no es discreto
+			$id: (X,d) \ra (X,\delta)$ por hipótesis tiene que ser contínua.
 
-			Entonces agarro cualquier conjunto abierto $(X,d)$ y ese mismo conjunto es abierto y cerrado en $(X,\delta)$, por lo tanto tenemos que preimagen de un cerrado es abierto, por lo tanto $id$ no es continua, lo cual es absurdo , por que toda función debía ser continua.
+			Entonces si agarro un abierto en $(X,\delta)$ tiene que ser abierto en $(X,d)$
 
-			Por lo tanto tengo un abierto que tiene preimagen no abierta
+			Ahora cualquier conjunto $A$ que agarre en $(X,d)$.
 
-			El absurdo provino de suponer que $X$ no era discreto
+			$A = f(A) \subseteq (X,\delta)$ y por lo tanto es abierto y cerrado en $(X,\delta)$ 
+
+
+			Entonces tenemos que $A$ es abierto y cerrado en $(X,\delta)$
+
+			Ahora como $f$ es contínua entonces también es abierto y cerrado en $(X,d)$
+
+			Entonces $(X,d)$ es discreto
+
+
 
 		\end{proof}
 	\end{ej}
@@ -730,6 +764,8 @@
 				$d_2(x_n,x) < d_1(x_n,x) < \delta \Ra d(f(x_n),f(x)) \leq \epsilon$
 
 				Probando que $f$ sigue siendo continua con $d_1$
+
+				Comentario: Vale para cualquier métrica de las equivalentes en $\R$ , por que las métricas equivalentes conservan abiertos y cerrados
 				
 				\end{remark}
 		\end{enumerate}
@@ -858,8 +894,9 @@
 					Tengo una sucesion de racionales no enteros que se acerca a un entero , pero su imagen es constantemente 0 que es diferente que 1 que sería la imagen del límite de esa sucesión
 				\end{proof}
 			\item Suponiendo que $f$ es biyectiva ¿puede ser un homeomorfismo?
-				
-				Puede ser un homeomorfismo, si $f^{-1}(\Q,\delta) \ra \Z$ tiene la métrica $\delta$ discreta
+
+				No no puede, se prueba viendo $f^{-1}$ para que una sucesión en la imagen converga entonces tiene que ser constante a partír de un momento y esto no necesariamente vale en el dominio
+
 		\end{enumerate}
 	\end{ej}
 	
@@ -1331,31 +1368,23 @@
 
 			       En particular, si un espacio métrico $X$ es completo para una métrica lo es para cualquier otra métrica uniformemente equivalente.
 			       \begin{proof}
-				Tenemos $(y_n)_n \subseteq Y$ de Cauchy. Como $f$ es homeo uniforme entonce $f^{-1}$ es uniformente contínua.
+				       $\Ra$) Tenemos $(y_n)_n \subseteq Y$ de Cauchy. Como $f$ es homeo uniforme entonce $f^{-1}$ es uniformente contínua.
 
 				Entonces $x_n = f^{-1}(y_n)$ es de Cauchy, por inciso i). Como $X$ es completo $x_n$ converge.
 
 				Ahora por continuidad $f(x_n) = y_n$ converge también. Entonces $Y$ es completo.
 
-				Con un razonamiento análogo vemos que $Y$ completo implica $X$ completo.
+				$\Leftarrow $) Con un razonamiento análogo vemos que $Y$ completo implica $X$ completo.
 
 				\end{proof}
 					
-				Ahora probemos que si tenemos $f: (X,d) \ra (X,d')$ contínua con $d$ y $d'$ métricas equivalentes. Entonces $f$ es uniformemente contínua.
-				\begin{proof}
-					Dado $\epsilon > 0 $ tomemos $\delta = \frac{\epsilon}{c}$
+				Sabemos que tenemos la identidad $id: (X,d) \ra (X,d')$ esto es un homeomorfismo, veamos que es uniforme
 
-					Entonces tenemos que $d(x,y) < \delta \Ra d(f(x),f(x)) < $
-				\end{proof}
+				Como las métricas son uniformemente equivalentes $d(x,y) < \alpha d'(x,y)$
 
-				Sabemos que tenemos la identidad $id: (X,d) \ra (X,d')$ 
+				Entonces por continuidad de $id^{-1}$ dado $\epsilon >0 $ tenemos que existe $\delta > 0$ tal que $d'(x,y) < \delta $ implica $d(x,y)< \epsilon$
 
-				Como las métricas son equivalentes Tenemos que $B_d(x,r') \subseteq B_d'(x,r)$ con $r'<r$
-
-				Tenemos algún Entonces si $x' \in B_d(x,r')$ entonces $x' \in B_d'(x,r)$
-
-				Por lo tanto tenemos que $d(x,x') < r' \Ra d'(f(x),f(x')) < r \iff $ 
-
+				Además $ d(x,y) < \delta \iff \alpha d(x,y) < \alpha \delta $
 		\end{enumerate}
 		
 	\end{ej}
@@ -1388,7 +1417,7 @@
 
 		  Por que sino tendría dos elementos $a'\in A, b'\in B$ tal que $d(f(a'),f(b')) < \alpha$ contradiciendo que $\alpha$ es un ínfimo.
 
-		  Pero entonces en partícular $d(f(a_n),f(b_n)) \geq \alpha \quad \forall n \in \N$
+		  Pero entonces en particular $d(f(a_n),f(b_n)) \geq \alpha \quad \forall n \in \N$
 
 		  Pero entonces $f$ no debería ser uniformemnte contínua, lo que es absurdo.
 
