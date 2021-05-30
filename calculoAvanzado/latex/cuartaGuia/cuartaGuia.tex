@@ -426,25 +426,22 @@
 	\begin{ej}
 		Sea $(X,d)$ un espacio métrico compacto. Probar que para cada espacio métrico $(Y,d')$, la proyección $\pi :X \times Y \ra Y$ definida por $\pi (x,y) = y$ es cerrada.
 		\begin{proof}
-			Tomemos $B$ un cerrado en $Y$ , ahora tomemos cualquier otro cerrado $A$ en $X$.
+			Sea $F \subseteq X \times Y$ un cerrado. Queremos ver que $\pi (F)$ es cerrado
 
-			Entonces $A \times B \subseteq X \times Y $ tiene que ser cerrado
+			Tomemos $(y_n)_n \subseteq \pi(F)$ convergente a $y$, queremos ver que $y \in \pi (F)$
 
-			$f(A\times B) = f(B)$. Queremos ver entonces que $f(B)$ es cerrado. 
+			Para cada $y_n$ tengo un $x_n \in X$ tal que $\pi (x_n,y_n) = y_n$ y $(x_n,y_n) \in F$
 
-			Tomemos $(b_n)_n \subseteq f(B)$ un sucesión convergente a digamos un $b$, nos gustaría que $b \in f(B)$
+			Ahora como $(x_n)_n \subseteq X$ que es compacto, existe $(x_{n_k})_k$ que converge a un $x \in X$
 
-			Ahora si miramos  $f^{-1}(b_n) = \{x \times b_n : x \in X, \ n\in \N \}$. 
-			
-			Luego si miramos $C = \{x\} \times b_n $ con cualquier $x \in A$ fijo sabemos que $C \subseteq f^{-1}(b_n)$ 
+			Y como $y_{n_k}$ es sub de $y_n$ sigue convergiendo a $y$
 
-			Además $C \subseteq A\times B$
+			Por lo tanto $(x_{n_k},y_{n_k}) = (x_{n_k},\pi(x_{n_k},y_{n_k}))$ converge a $(x,y)$
 
-			Ahora esta es una sucesión convergente de $A \times B$ que converge a  $\{x\} \times \{b\}$.
+			Pero esta sub sub está contenida en $F$ que es cerrado. Entonces $(x,y) \in F$
 
-			Entonces $b = f(\{x\} \times \{b\}) \in f(B)$
+			Por lo tanto $\pi (x,y) = y \in \pi (F)$
 
-			Mostrando que $b_n$ converge dentro de $f(B)$. Por lo tanto $f(B)$ es cerrado
 		\end{proof}
 		
 	\end{ej}
@@ -452,9 +449,21 @@
 	\begin{ej}
 		Sean $(X,d)$ e $(Y,d)$ espacios métricos y sea $f : X \ra Y$ una función. Probar que si $Y$ es compacto y el gráfico de $f$ es cerrado en $(X\times Y, d_{\infty})$, entonces $f$ es contínua. Comparar con el ejercicio 15 de la práctica 3.
 		\begin{proof}
-			Tomemos $x_n$ convergente a $x$. Ahora tenemos que $((x_n,f(x_n))_n \subseteq Gr(f)$
+			Tomemos $x_n$ convergente a $x$.  Luego mirmoes cualquier sub $f(x_n)_n$
 
-			Como el gráfico es cerrado 
+			Como $(f(x_{n_k}))_k$ está en un compacto , tiene un sub sub $f(x_{n_{k_j}})$ convergentea $y$
+
+			Además $(x_{n_{k_j}})_j$ sigue convergiendo a $x$ por lo tanto $(x_{n_{k_j}},f(x_{n_{k_j}})) \subseteq Gr(f)$ coverge a $(x,y)$
+
+			Como $Gr(f)$ es cerrado $(x,y) \in Gr(f)$ por lo tanto $y = f(x)$
+
+			Mostrando que $f(x_{n_{k_j}})$ converge a $f(x)$
+
+			Ahora esto lo podemos hacer con cualquier sub de $f(x_n)$ y siempre va a tener las sub sub van a converge $(x,f(x))$
+
+			Por lo tanto $f(x_n)$ converge a $f(x)$
+
+			Mostrando que $f$ es contínua.
 
 		\end{proof}
 	\end{ej}

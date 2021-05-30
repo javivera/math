@@ -96,9 +96,9 @@
 \begin{ej}
 	Sea $(f_j)_j \subset X$ una sucesión de Cauchy en $X$. Tenemos que dado $\epsilon >0 $ existe $j_0 \in \N$ tal que:
 
-	$$d(f_j,f_k) = \sum_{n=1}^{\infty} \frac{d_n(f_j,f_k)}{2^n} < \epsilon \quad \forall j,k \geq j_0$$
+	$$d(f_j,f_l) = \sum_{n=1}^{\infty} \frac{d_n(f_j,f_l)}{2^n} < \epsilon \quad \forall j,l \geq j_0$$
 
-	Entonces tenemos que $d_n(f_j,f_k) < \epsilon.2^n$ por lo tanto $\sup_{x \in [-n,n]} |f_j(x)-f_k(x)| < \epsilon.2^n$
+	Entonces tenemos que $d_n(f_j,f_l) < \epsilon.2^n$ por lo tanto $\sup_{x \in [-n,n]} |f_j(x)-f_l(x)| < \epsilon.2^n$
 
 	Luego si fijamos un $x\in [-n,n]$ tenemos $|f_j(x)-f_k(x)| < \epsilon.2^n \quad \forall j,k\geq j_0 $
 
@@ -112,17 +112,19 @@
 
 	Estos límites existen (por lo expuesto arriba), y son únicos, no importa que agrandemos el $n$ eso nos va a dar nuevos $x$ a los que encontrale límite , pero no nos va a cambiar el limite de $f_j(x)$ para los $x$ que habíamos visto antes.
 
-	Veamos que $f$ es contínua, tomemos cualquier $x_0$ y una sucesión convergente $x_k$ de $\R$ a $x_0$
+	Veamos que $f$ es contínua, tomemos una sucesión $x_k$ de $\R$ convergente a $x$
 
 	Nos gustaría ver $d(f(x_k),f(x))$ se achica infinitamente. Sabemos que:
 
+	Entonces sabiendo que $\sup_{x \in [-n,n] } |f_j(x)-f_l(x)| <\epsilon.2^n \quad \forall j,k \geq j_0 $ 
 
-	Sabemos $x_0 \in [-n,n]$ para algún $\N$, fijémoslo. 
-
-	Por convergencia de $k_n$ a partír de algún $k_1$ tenemos que $x_k \in [-n,n] \quad \forall k \geq k_1$
-
-	Entonces sabiendo que $\sup_{x \in [-n,n] } |f_j(x)-f_k(x)| <\epsilon.2^n \quad \forall j,k \geq j_0 $ usamos límite de $k$ tendiendo a infinitoy y conseguimos  
+	Usamos límite de $l$ tendiendo a infinito y conseguimos:  
 	$$\sup_{x\in[-n,n]} |f_j(x) - f(x)| < \epsilon.2^n \quad \forall j\geq j_0$$
+	
+	Sabemos $x \in [-n,n]$ para algún $n \in \N$, fijémoslo. 
+
+	Por convergencia de $x_k$ a partír de algún $k_1$ tenemos que $x_k \in [-n,n] \quad \forall k \geq k_1$
+
 
 	Ahora voy a fijar $j_0$ por comodidad
 
@@ -137,10 +139,9 @@
 
 	Veamos que $d(f(x_k),f(x_0))$ se achica, tomemos $k_0 = max\{k_1,k_2\}$
 
-	$$d(f(x_k),f(x_0)) \leq d(f(x_k),f_{j_0}(x_k)) + d(f_{j_0}(x_k),f_{j_0}(x_0)) + d(f_{j_0}(x_0),f(x_0)) < \epsilon.2^n + \epsilon + \epsilon2^n \quad \forall k \geq k_0$$
+	$$d(f(x_k),f(x)) \leq d(f(x_k),f_{j_0}(x_k)) + d(f_{j_0}(x_k),f_{j_0}(x)) + d(f_{j_0}(x),f(x)) < \epsilon.2^n + \epsilon + \epsilon2^n \quad \forall k \geq k_0$$
 
-	No tengo tiempo de correjir los epsilon , pero está claro que para esta distancia se puede encontrar $k_0$ que la hace tan chica como uno quiera por lo tanto $d(f(x_k),f(x_0))$  tiende a 0 mostrando que $f$ es contínua
-
+	Habría que correjir los $\epsilon$ para que se cancelen los $2^n$ que son constantes, pero queda claro que esta distancia se puede achicar tanto como querramos, por lo tanto $f(x_k)$ converge a $f(x)$
 	Veamos que es acotada:
 
 	Sabemos que si fijamos cualquier $x \in \R$ tenemos $0 \leq f_j(x) \leq 1 \quad \forall j\in\N$ 
@@ -162,11 +163,11 @@
 
 Considerando que la serie $\sum_{n=1}^{\infty}$ es convergente sabemos que las colas de la sumatoria se van haciendo cada vez mas pequeñas  existe algún $n_0 \in \N$ tal que $\sum_{n_0}^{\infty} \frac{1}{2^n} < \frac{\epsilon}{2}$
 	
-	Y ademas para cada $n\in \N$ sabemos que $d_n(f_j,f) < \frac{\epsilon}{2n_0} \quad \forall j \geq j_n$ 
+Y ademas como ya probamos que $f_n$ converge a $f$  podemos afirmar que para cada $n\in \N$ existe un $j(n)$ tal que $d_n(f_j,f) < \frac{ \epsilon}{ n_0} \quad \forall j \geq j(n)$ 
 
-	Y como tenemos finitos $n < n_0$ tenemos finitos $j_n$ y tomemos el máximo de ellos llamemoslo $j_0$
+Y como tenemos finitos $n < n_0$ tenemos finitos $j(n)$ y tomemos el máximo de ellos llamemoslo $j_0$. Este nos va a servir para $d_n$ con $n < n_0$
 
-	AHora tenemos que $$d(f_j,f) \leq \sum_{n=1}^{n_0 - 1} \frac{d_n(f_j,f)}{2^n} + \sum_{n_0}^{\infty} \frac{1}{2^n } \leq n_0\frac{\epsilon}{2n_0} + \frac{\epsilon}{2} = \epsilon \quad \forall j \geq j_0$$
+Ahora tenemos que $$d(f_j,f) \leq \sum_{n=1}^{n_0 - 1} \frac{d_n(f_j,f)}{2^n} + \sum_{n_0}^{\infty} \frac{1}{2^n } \leq n_0\frac{ \epsilon}{2n_0} + \frac{\epsilon}{2} = \epsilon \quad \forall j \geq j_0$$
 
 	Entonces mostramos que $f_n$ converge a $f$ y que $f \in X$. Por lo tanto $X$ es completo
 

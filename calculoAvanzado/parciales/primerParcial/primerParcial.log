@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.5.1)  21 MAY 2021 22:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.5.25)  29 MAY 2021 22:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -214,7 +214,7 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count276
 \l__pdf_internal_box=\box50
 )
-No file primerParcial.aux.
+(./primerParcial.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
 LaTeX Font Info:    ... okay on input line 43.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
@@ -229,6 +229,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
 LaTeX Font Info:    ... okay on input line 43.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
 LaTeX Font Info:    ... okay on input line 43.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -320,31 +321,31 @@ r/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$
  []
 
 
-Overfull \hbox (22.94838pt too wide) detected at line 140
+Overfull \hbox (3.94814pt too wide) detected at line 142
 \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/
 m/it/12 x[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 x[]\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 d\OT1/cmr/m/n/12
- (\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )\OML/
-cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )) + \OML
-/cmm/m/it/12 d\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/
-it/12 x[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 x[]\OT1/cmr/m/n/12 )) + \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
-f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f\O
-T1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )) \OML/cmm/m/it/12 < ^^O:\O
-T1/cmr/m/n/12 2[] + \OML/cmm/m/it/12 ^^O \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^O
-\OT1/cmr/m/n/12 2[] \OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 k \OMS/cmsy/m/n/12 ^^U \
-OML/cmm/m/it/12 k[]
+12 x\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 (
+\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )\OML/cm
+m/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 )) + \OML/c
+mm/m/it/12 d\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it
+/12 x[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ x\OT1/cmr/m/n/12 )) + \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f[]\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; f\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )) \OML/cmm/m/it/12 < ^^O:\OT1/cmr/m
+/n/12 2[] + \OML/cmm/m/it/12 ^^O \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^O\OT1/cmr
+/m/n/12 2[] \OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 k \OMS/cmsy/m/n/12 ^^U \OML/cmm/
+m/it/12 k[]
  []
 
 [2] [3] (./primerParcial.aux) ) 
 Here is how much of TeX's memory you used:
- 3685 strings out of 479383
- 50834 string characters out of 5875831
- 344601 words of memory out of 5000000
+ 3687 strings out of 479383
+ 50870 string characters out of 5875830
+ 344592 words of memory out of 5000000
  20767 multiletter control sequences out of 15000+600000
  409090 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,11n,72p,549b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,11n,72p,549b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
 fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
@@ -356,7 +357,7 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/euler/eufm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
 s/symbols/msbm10.pfb>
-Output written on primerParcial.pdf (3 pages, 109595 bytes).
+Output written on primerParcial.pdf (3 pages, 110185 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
