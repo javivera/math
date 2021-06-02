@@ -1,0 +1,553 @@
+\documentclass[11pt]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Espacios Métricos}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+
+\DeclarePairedDelimiter\Floor\lfloor\rfloor
+\DeclarePairedDelimiter\Ceil\lceil\rceil
+
+\begin{document}
+	\begin{ej}
+		
+	\end{ej}
+
+	\begin{ej}
+		
+	\end{ej}
+
+	\begin{ej}
+		
+	\end{ej}
+
+	\begin{ej}
+		
+	\end{ej}
+
+	\begin{ej}
+		
+	\end{ej}
+
+	\begin{ej}a
+		\begin{enumerate}
+			\item Mostrar que el intervalo $(0,1] \subseteq \R$ no es compacto.
+				\begin{proof}
+					Tenemos la sucesión de Cauchy $a_n = \frac{1}{n}$ que no converge , por lo tanto no es completo				
+				\end{proof}
+				
+				
+			\item Sea $S = (a,b) \cap \Q$ con $a,b \in \R \setminus \Q$. Probar que $S$ es un subconjunto cerrado y acotado pero no compacto de $(\Q,d)$, donde $d$ es la métrica usual de $\R$
+				\begin{proof}
+					Acotado por $a$ y $b$ es evidente, que es cerrado es facil ver que es igual a su clausura
+					
+					No es completo por que tenemos la sucesion $a_n = a + \frac{1}{n}$ que es de Cauchy , pero no converge
+				\end{proof}
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $E = \{e^{(n)} \in \ell^{\infty} \  / \ n \in \N\}$, donde cada sucesión $e^{(n)} = (e_k^{(n)})_k$ esta definida por 
+
+		$e_k^{(n)} = 0$ si $k \neq n$ y es 1 si $k = n$
+
+		Probar que $E$ es discreto, cerrado y acotado
+
+		\begin{proof}
+			Es facil ver que cualquier subconjunto de $E$ es abierto.
+
+			Sea $A \subset E$ , sea $x \in A$ si tomamos $B(x,\frac{1}{2}) $ sabemos que $B(x,\frac{1}{2}) = \{x\} \subseteq A$
+
+			Por lo tanto $A$ es abierto. Para ver que cualquier sub es cerrado , tomamos $F \subset E$ y miramos su complemento $F^c$, que como es sub de $E$ tiene que ser abierto por lo recién demostrado. Entonces $F$ es cerrado
+
+			Por lo tanto todo subconjunto de $E$ es abierto y cerrado, mostrando que $E$ es discreto.
+
+			Cerrado: Tomemos una sucesión $a_k$ de $E$ convergente, como $E$ es discreto las únicas sucesiones convergentes son las constantes y una sucesión que está contenida en $E$ y que eventualmente es constante tiene que se constantemente algo en $E$.
+
+			Si no la sucesión tendría elementos fuera de $E$ lo cual es absurdo por que es una sucesión de elementos de $E$
+
+			Acotado: Tomamos cualquier $e^n \in E$ y vemos $B(e^n,2)$.
+
+			Ahora dado cualquier elemento $e^j \in E$ sabemos que $d(e^j_k,e^n_k) = \sup_{k \in \N}|e^j_k - e^n_k| \leq 1$
+
+			Entonces $e^j \in B(e^n,2)$ y esto vale para cualquier $e^j\in E$ por lo tanto $E \subseteq B(e^n,2)$. 
+
+			Entonces $E$ es acotado. Pero no es totalmente acotado.
+
+			Por que si tomamos $\epsilon = \frac{1}{2}$ y queremos cubrir $E$ tomando bolas de radio $\epsilon$ , vamos a necesitar una bola para cada elemento de $E$. 
+
+			Pero $E$ tiene numerables elementos, entonces no podemos cubrir con finitas bolas de radio $\epsilon$
+
+			Entonces $E$ no es compacto.
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $c_0 = \{(x_n)_n\subset \R \ / \ \lim_{n\ra\infty} x_n = 0\}$. Se define en $c_0$ la métrica
+		$$ d(x,y) = \sup\{|x_n - y_n| \ / \ n \in \N\}$$
+
+		Demostrar que la bola cerrada $\ol B (x,1) = \{y \in c_0 \ / \ d(x,y) \leq 1\}$ no es compacta.
+
+		\begin{proof}
+			Sabemos que $c_0$ es completo , entonces la bola cerrada es completa. Lo que tiene que fallar es totalmente acotada
+		\end{proof}
+	\end{ej}
+
+	\begin{ej}
+		Sea $X$ un espacio métrico y sea $(x_n)_n \subset X$ tal que $\lim_{n\ra\infty } a_n = a \in X$. Probar que el conjunto $K = \{a_n \ / \ n \in \N\} \cup \{a\} \subset X$ es compacto
+		\begin{proof}
+ 			Dado un cubrimiento de abiertos de $K$. Sabemos que en alguno de esos abiertos $A$ está $a$. 
+
+			Ahora como $A$ es abierto tenemos $B(a,r) \subset A$. Y dado que $a_n$ converge a $a$. 
+
+			$\exists n_0$ tal que $d(a_n,a) < r \quad \forall n \geq n_0$. Entonces $\{a_n : n \geq n_0\} \subseteq B(a,r) \subseteq A$
+
+			Ahora sea $x_n$ con $n < n_0$ sabemos que hay algún abierto del cubrimiento para cada uno (si nó no sería cubrimiento)
+
+			Por ser finitos , tenemos finitos abiertos del cubrimiento. Y si a esos le agregamos $A$, tenemos un subcubrimiento finito de $K$. 
+
+			Esto muestra que $K$ es compacto
+				
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Probar que todo espacio métrico compacto es separable
+		\begin{proof}
+			Dado un cubrimiento del espacio, tengo sub cubrimiento finito , por ser compacto,  entonces tengo subcubrimiento contable. Por ende es separable	
+		\end{proof}
+	\end{ej}
+
+	\begin{ej} Sea $(X,d)$ un espacio métrico. Probar que:
+		\begin{enumerate}
+			\item Si $(X,d)$ es compacto, todo subconjunto cerrado de $X$ es compacto.
+				\begin{proof}
+					Sabemos que todo cerrado dentro de un completo es completo. Y todo conjunto dentro de un TTA es TTA
+
+					Entonces cualquier subconjunto cerrado es completo y TTA por lo tanto compacto.
+				\end{proof}
+			\item Todas unión finita y toda intersección (finita o infinita) de subconjuntos compactos de $X$ es compacta
+				\begin{proof}
+					Unión finita de cerrados es cerrada , por lo tanto la unión es un cerrado dentro de un compacto y entonces completo.
+
+					Por otro lado subconjunto de un TTA es TTA. Entonces esta unión finita por ser subconjunto de un TTA es TTA.
+
+					Finalmente es compacto
+
+					Lo mismo pasa con intersección de cerrados , es cerrado , por lo tanto completo, y sigue siendo un sub de un TTA entonces es TTA, por lo tanto compacto
+				\end{proof}
+			\item Un subconjunto $F \subset X$ es cerrado si y sólo si $F \cap K$ es cerrado para todo compacto $K \subset X$
+				\begin{proof}
+					$\Ra )$ Si $F$ es cerrado y $K$	compacto, entonces intersecarlos es intersecar cerrados, por lo tanto es cerrado
+
+					$\Leftarrow )$ Sea $(x_n)_n \subseteq F$ convergente a $x$. 
+
+					Por ejercicio pasado sabemos que $A = \{x_n : n \in \N\} \cup \{x\}$ es compacto
+
+					$F \cap A$ es cerrado, por lo tanto $(x_n)_n \subset F \cap A$ es una sucesión convergente en un cerrado
+
+					Por lo tanto $x \in F \cap A$ por lo tanto $x \in F$.
+
+					Entonces $F$ es cerrado
+				\end{proof}
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Sean $(Y,d)$ e $(Y,d')$ espacios métricos. Se consiera $(X\times Y,d_{\infty})$, donde
+		$$ d_{\infty}((x_1,y_2),(x_2,y_2))= max\{d(x_1,x_2),d'(y_1,y_2)\}$$
+
+		Probar que $(X\times Y,d_{\infty})$ es compacto si y sólo si $(X,d)$ e $(Y,d')$ son compactos.
+		\begin{proof}
+			$\Ra $) Sea $(x_n)_n \subset X$  e $(y_n)_n \subset Y$ entonces $(x_n,y_n)_n \subset X \times Y$
+
+			Por lo tanto existe un sub $(x_{n_k},y_{n_k})$ convergente a $(x,y)$
+
+			entonces $d_{\infty }((x_{n_k},y_{n_k}),(x,y)) < \epsilon \quad \forall n \geq n_0$
+
+			Por lo tanto $d(x_{n_k},x) < \epsilon \quad \forall n \geq n_0$ y lo mismo pasa con $y_{n_k}$
+
+			Entonces dado $x_n$ encontramos un sub convergente, por lo tanto $X$ es compacto
+
+			Y lo mismo pasa con $Y$
+
+			$\Leftarrow ) $ Sea $(x_n,y_n)_n \subset X \times Y$. 
+
+			Entonces $(x_n)_n \subset X$ e $(y_n)_n \subset Y$
+
+			Por ser $X$ compacto, existe un sub $x_{n_k}$ convergent a digamos $x \in X$ 
+
+			Ahora si vemos $y_{n_k} \subset Y$ y tenemos en cuenta que $Y$ compacto
+
+			Existe $y_{n_{k_j}}$ convergente a digamos $y \in Y$
+
+			Ademas como $x_{n_k}$ converge a $x$ entonces $x_{n_{k_j}}$ también
+
+			Por lo tanto tenemo que $d_{\infty}((x_{n_{k_j}},y_{n_{k_j}}),(x,y)) = max\{d(x_{n_{k_j},x}),d'(y_{n_{k_j}},y)\} <  \epsilon \quad \forall n \geq n_0$
+
+			Por lo tanto encontramos una sub convergente entonces $X \times Y$ es compacto
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $X$ un espacio métrico compacto y sea $f : X \ra \R$ una función contínua tal que $f(x) > 0$ para todo $x \in X$. Probar que existe $\epsilon >0$ tal que $f(x) \geq \epsilon$ para todo $x \in X$
+		\begin{proof}
+			Supongamos que no es cierto entonces $\forall \epsilon > 0 $ existe un $x \in X$ tal que $f(x) < \epsilon$
+
+			Ahora si tomamos $\epsilon = \frac{1}{n}$ vamos a tener una sucesión $(x_n)_n \subset X$ tal que $f(x_n) < \frac{1}{n}$
+
+			Ahora sabemos que existe un sub $x_{n_k}$ que converge a $x\in X$ entonces $f(x_{n_k})$ converge a $f(x) \in \R$
+
+			Pero además $0\leq f(x_{n_k}) < \frac{1}{n_k}$ por lo tanto $0 \leq \lim_{k \ra \infty} f(x_{n_k}) \leq \lim_{k\ra \infty}$ entonces $0 \leq f(x) \leq 0$.
+
+			Finalmente $f(x) = 0$ lo que es absurdo
+		\end{proof}
+		
+	\end{ej}
+
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico.
+		\begin{enumerate}
+			\item Sean $F \subset X$ un cerrado y $x \in X\setminus F$. Probar que no es cierto en general que exista un punto $y \in F$ tal que $d(x,y) = d(x,F)$. Es decir la distancia entre un punto y un cerrado puede no realizarse 
+				\begin{proof}
+					Tomemos como espacio $X = \{0\} \cup (1,2)$
+
+					Ahora el $(1,2)$ es cerrado en $X$. Toda sucesión convergente de $(1,2)$ converge dentro.
+					
+					A lo sumo uno podría pensar que converge a $1$ o $2$, pero esos no están en el espacio métrico, entonces la sucesiones que "tienden" a $1$ o $2$ no convergen.
+
+					Sin embargo la distancia entre $0$ y $(1,2)$ no se realiza
+
+				\end{proof}
+			\item Sean $K\subset X$ un compacto y $x \in X \setminus K$. Probar que existe $y \in K$ tal que $d(x,K) = d(x,y)$. Es decir, la distancia entre un punto y un compacto siempre se realiza.
+				\begin{proof}
+					Sabemos que $d(x,K)$ es un infirmo , entonces tenemos una sucesión $d(x,k_n)$ que converge al ínfimo, a $d(x,K)$.
+
+					Además por ser $K$ compacto existe una $k_{n_j}$ convergente a $k \in K$
+
+					Entonces tenemos $d(x,k_{n_k})$ una sub de $d(x,k_n)$ por ende converge a lo mismo.
+
+					Como $k_{n_j}$ converge a $k$ entonces $d(x,k_{n_j})$ converge a $d(x,k)$. 
+
+					Esto vale por que $d(x,k)$ es contínua 	
+
+					Por lo tanto $d(x,k_{n_j})$ converge a $d(x,k)$ y también converge a $d(x,K)$
+
+					Por lo tanto $d(x,K) = d(x,k)$ con $k \in K$. Entonces ese ínfimo es un mínimo.
+
+					La distancia se realiza
+					
+				\end{proof}
+			\item Probar que si $X$ tiene la propiedad de que toda bola cerrada es compacta (por ejemplo)
+				\begin{proof}
+					Usando el iii) sería directo
+				\end{proof}
+				
+			\item Sean $F,K \subset X$ dos subconjuntos disjuntos de $X$ tales que $F$ es cerrado y $K$ es compacto.
+
+				Probar que la distancia $d(F,K)$ entre $F$ y $K$ es positiva, pero puede no realizarse.
+				\begin{proof}
+					En el ii) hay un ejemplo de un punto (compacto) y un cerrado , tal que su distancia no se realiza y es positiva
+				\end{proof}
+				
+			\item Sean $K_1,K_2 \subset X$ dos subconjuntos compactos de $X$ tales que $K_1 \cap K_2 = \emptyset$. Probar que existen $x_1 \in K_1$ y $x_2 \in K_2$ tales que $d(K_1,K_2) = d(x_1,x_2)$. Es decir, la distancia entre dos compactos siempre se realiza
+
+				\begin{proof}
+					En principio $d(K_1,K_2)$ es un ínfimo entonces tenemos una sucesión $d(x_n,y_n)$ convergente a $d(K_1,K_2)$
+
+					Ahora como $K_1,K_2$ son compactos entonces $K_1 \times K_2$ es compacto también
+
+					Por lo tanto $(x_n,y_n)_n \subset K_1\times K_2 $ tiene sub sucesión $(x_{n_k},y_{n_k})$ convergente a $(x,y) \in K_1 \times K_2$
+
+					Dado que $d$ es contínua $d(x_{n_k},y_{n_k})$ converge a $d(x,y)$, 
+
+					Pero además $d(x_{n_k},y_{n_k})$ converge a $d(K_1,K_2)$ por ser sub converge de $d(x_n,y_n)$
+
+					Por lo tanto  $d(K_1,K_2) = d(x,y)$ con $x\in K_1,y \in K_2$.
+
+					Entonces la distancia se realiza
+				\end{proof}
+		\end{enumerate}
+	\end{ej}
+
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico completo. Se define
+		$$ \mathcal{K} (X) = \{K\subset X \ / \ K \text{ es compacto y no vacío}\}$$
+
+		\begin{enumerate}
+			\item Sea $d'(A,B) = \sup_{a\in A}\{d(a,B)\}$. Verificar que, en general, d' $no$ es una métrica en $\mathcal{K}(X)$
+				\begin{proof}
+					Sea $A = [0,1]$ y $B = [1,100]$
+
+					$d(A,B) = \sup_{a\in A}\{d(a,B)\} = 0$ pero $d(B,A) = 99$
+				\end{proof}
+			\item Se define $d: \mathcal{K} \times \mathcal{K} (X) \ra \R$ como $d(A,B) = \max\{ d'(A,B),d'(B,A))\}$. Proba que para todo $\epsilon >0$ vale
+				$$ d(A,B) < \epsilon \quad \iff \quad A\subset B(B,\epsilon) \quad y\quad  B\subset B(A,\epsilon),$$
+
+					donde $B(C,\epsilon) = \{x \in X \ / \ d(x,C) < \epsilon\}$
+
+					\begin{proof}
+						$d(A,B) < \epsilon \iff d'(A,B) < \epsilon \ \  y \ \ d'(B,A) < \epsilon$
+
+							$\iff d(a,B) < \epsilon \quad \forall a\in A \ \ y \ \ d(b,A)<\epsilon \quad \forall b \in B $
+
+								$\iff a \in B(B,\epsilon) \quad \forall a \in A \ \ y \ \  b \in B(A,\epsilon) \quad \forall b\in B$ 
+
+									$\iff A \subset B(B,\epsilon) \ \ y \ \ B \subset B(A,\epsilon)$
+					\end{proof}
+				\item Probar que $d$ es una métrica en $\mathcal{K} (X)$
+
+					\begin{enumerate}
+						\item $d(A,A) = 0 $ es trivial
+						\item $d(A,B) = \max\{d'(A,B),d'(B,A)\} = \max\{d'(B,A),d'(A,B)\} = d(B,A)$
+						\item Sin pérdida de generalidades supongamos $d(A,C) = d'(A,C) = \sup_{a\in A}\{d(a,C)\}$
+							$$d(a,c) < d(a,b) + d(b,c) \leq \iff \inf_{c \in C}\{d(a,c)\} \leq d(a,b) + d(b,c) \iff d(a,C) \leq d(a,b) + d(b,c)$$
+
+								$$ d(a,C) \leq \inf_{b \in B}\{d(a,b)\} + d(b,c)\iff d(a,C) \leq d(a,B) + d(b,c)$$
+
+									$$ d(a,C ) \leq d(a,B) + \inf_{c\in C}\{d(b,c)\} \iff d(a,C) \leq d(a,B) + d(b,C) $$
+										Y haciendo lo mismo pero con supremos nos queda:
+
+										$$ d(A,C) \leq d(A,B) + d(B,C)$$
+							Luego encadenando supremos llegamos a que $\sup_{a\in A} d(a,b) + d$ 
+
+							Si hubiese sido $d'(C,A)$ arrancabamos con $d(c,a)$ y concluíamos lo mismo
+					\end{enumerate}
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Dado un cubrimiento por abiertos $(U_i)_{i \in I}$ de un espacio métrico $(X,d)$ un número $\epsilon >0$ se llama numero de Lebesgue de $(U_i)_{i \in I}$ si para todo $x \in X$ existe $j \in I$ tal que $B(x,\epsilon) \subset U_j$. Probar que todo cubrimiento por abiertos de un espacio métrico compacto tiene un número de Lebesgue.
+		\begin{proof}
+			Como $\bigcup_{i \in I} U_i$ es un cubrimiento por abiertos.
+
+			Entonces para cada $x\in X$ tenemos un $U_i^x \subseteq \bigcup U_i$ tal que $x \in U_i^x $
+
+			Como $U_i^x$ es abierto tenemos $r(x) >0$ tal que $B(x,2r(x)) \subset U_i^x$
+
+			Ahora la unión de todas esas bolas es cubrimiento por abierto, y por ser $X$ compacto tiene subcubrimiento finito
+
+			Por lo tanto tenemos un $\epsilon = \min \{r(x) : x\in X\}$.
+
+			$\epsilon > 0 $ por que es el mínimo de cosas mayores que cero.
+
+			Dado $y \in X$ tenemos que existe algún $x \in X$ tal que $y \in B(x,r(x)) $ por ser cubrimiento
+
+			Ahora sabemos que $B(y,\delta) \subset B(y,r(x)) \subseteq B(x,2r(x)) \subseteq U_i^x$
+
+			Veamos la inclución del medio. Sea $z \in B(y,r(x))$. 
+
+			$$ d(z,x) \leq d(z,y)  + d(y,x) \leq r(x) + r(x) = 2r(x) \Ra z \in B(x,2r(x))$$
+
+			Finalmente dado encontramos $\delta >0$ tal que dado cualquier $y \in X$ sucede $B(y,\delta) \subseteq U_i$ para algún abierto del cubrimiento
+
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico. Se dice que una familia $(F_i)_{i\in I}$ de subconjuntos de $X$ tiene la propiedad de intersección finita (P.I.F) si cualquier subfamilia finita de $(F_i)_{i \in I}$ tiene intersección no vacía.
+		Probar que los siguientes enunciados son equivalentes:
+		\begin{enumerate}
+			\item $X$ es compacto.
+				\begin{proof}
+					asd
+				\end{proof}
+			\item Toda familia $(F_i)_{i \in I}$ de subconjuntos cerrados de $X$ con la P.I.F tiene intersección no vacía.
+			\item Todo subconjunto infinito de $X$ tiene un punto de acumulación en $X$.
+			\item Toda sucesión en $X$ tiene una subsucesión convergente.
+			\item $X$ es completo y totalmente acotado.
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Sean $(X,d)$ e $(Y,d')$ espacios métricos y $f: X \ra Y$ contínua y biyectiva. Probar que si $(X,d)$ es compacto, entonces $f$ es un homemorfismo
+		\begin{proof}
+			Podemos mirar $f^{-1}$ por la biyectividad nos asegura que es una función bien definida. 
+
+ 			Veamos que es contínua. Sea $(f(x_n))_n \subset Y$  convergente a $f(x_0)$
+
+			Ahora miramos $f^{-1}(f(x_n)) = (x_n)_n \subseteq X$. 
+
+			Dada cualquier sub $x_{n_k}$ por compacidad tenemos una subsub $x_{n_{k_j}}$ convergente a un $x_1$ 
+
+			Veamos que $x_1 = x_0$
+
+			Supongamos que son diferentes. Entonces $(f(x_{n_{k_j}}))_j$ converge a $f(x_1)$ que es diferente a $f(x_0)$ por inyectividad de $f$.
+
+			Pero esto es absurdo por que $(f(x_{n_{k_j}}))_k$ es un subsucesión de $(f(x_n))_n$ que convergía a $f(x_0)$
+
+			Entonces $x_1 = x_0$. Lo que muestra que $x_{n_{k_j}}$ converge a $x_0$
+
+			Y esto lo podemos hacer con cualquier subsucesión de $x_n$. Por lo tanto $x_n$ converge a $x_0$
+
+			Entonces $f^{-1}$ es contínua. Por lo tanto $f$ es homeomorfismo
+
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $(X,d)$ un espacio métrico compacto. Probar que para cada espacio métrico $(Y,d')$, la proyección $\pi :X \times Y \ra Y$ definida por $\pi (x,y) = y$ es cerrada.
+		\begin{proof}
+			Sea $F \subseteq X \times Y$ un cerrado. Queremos ver que $\pi (F)$ es cerrado
+
+			Tomemos $(y_n)_n \subseteq \pi(F)$ convergente a $y$, queremos ver que $y \in \pi (F)$
+
+			Para cada $y_n$ tengo un $x_n \in X$ tal que $\pi (x_n,y_n) = y_n$ y $(x_n,y_n) \in F$
+
+			Ahora como $(x_n)_n \subseteq X$ que es compacto, existe $(x_{n_k})_k$ que converge a un $x \in X$
+
+			Y como $y_{n_k}$ es sub de $y_n$ sigue convergiendo a $y$
+
+			Por lo tanto $(x_{n_k},y_{n_k}) = (x_{n_k},\pi(x_{n_k},y_{n_k}))$ converge a $(x,y)$
+
+			Pero esta sub sub está contenida en $F$ que es cerrado. Entonces $(x,y) \in F$
+
+			Por lo tanto $\pi (x,y) = y \in \pi (F)$
+
+		\end{proof}
+		
+	\end{ej}
+	
+	\begin{ej}
+		Sean $(X,d)$ e $(Y,d)$ espacios métricos y sea $f : X \ra Y$ una función. Probar que si $Y$ es compacto y el gráfico de $f$ es cerrado en $(X\times Y, d_{\infty})$, entonces $f$ es contínua. Comparar con el ejercicio 15 de la práctica 3.
+		\begin{proof}
+			Tomemos $x_n$ convergente a $x$.  Luego mirmoes cualquier sub $f(x_n)_n$
+
+			Como $(f(x_{n_k}))_k$ está en un compacto , tiene un sub sub $f(x_{n_{k_j}})$ convergentea $y$
+
+			Además $(x_{n_{k_j}})_j$ sigue convergiendo a $x$ por lo tanto $(x_{n_{k_j}},f(x_{n_{k_j}})) \subseteq Gr(f)$ coverge a $(x,y)$
+
+			Como $Gr(f)$ es cerrado $(x,y) \in Gr(f)$ por lo tanto $y = f(x)$
+
+			Mostrando que $f(x_{n_{k_j}})$ converge a $f(x)$
+
+			Ahora esto lo podemos hacer con cualquier sub de $f(x_n)$ y siempre va a tener las sub sub van a converge $(x,f(x))$
+
+			Por lo tanto $f(x_n)$ converge a $f(x)$
+
+			Mostrando que $f$ es contínua.
+
+		\end{proof}
+	\end{ej}
+	
+	\begin{ej}.
+		\begin{enumerate}
+			\item Sea $f : \R_{\geq a} \ra \R$ una función que es uniformemente contínua en $[a,b]$ y también en $[b,+\infty )$. Probar que $f$ es uniformemente contínua en $\R_{\geq a}$
+				\begin{proof}
+					Dado $\frac{\epsilon}{2} >0$ tenemos que existe $\delta_1$ tal que $d(x,y) < \delta_1 \Ra d(f(x),f(y))< \epsilon \quad \forall x,y \in [a,b]$
+
+					Y tenemos un $\delta_2$ que sirve para $x,y \in [b,+\infty]$
+
+					Ahora si tomamos $\delta = \min\{\delta_1,\delta_2\}$ sabemos que nos sirve para los dos
+
+					Veamos que pasa cuando tenemos un $x \in [a,b]$ y un $y \in [b,+\infty]$
+
+					$$d(x,y) < d(x,b) + d(b,y) < \delta$$ 
+
+					Luego tanto $d(x,b)$ como $d(b,y)$ seguro son menores que sus deltas
+					
+					Entonces tenemos por un lado $d(f(x),f(b)) < \frac{\epsilon}{2}$ y por otro $d(f(b),f(y)) < \frac{\epsilon}{2}$
+
+					Entonces $$ d(f(x),f(y)) < d(f(x),f(b)) + d(f(b),f(y)) \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
+	
+					Mostrando que $f$ es uniformemente contínua para cualquier par $x \in [a,b], \ y \in [b,+\infty)$  
+
+					Concluyendo que $f$ es uniformemente contínua en $[a,+\infty) = \R_{\geq a}$
+				\end{proof}
+				
+							
+				
+			\item Deducir que $\sqrt{x}$ es uniformemente contínua en $\R_{\geq 0}$
+					
+				\begin{proof}
+					Dado $\epsilon$ tomamos $\delta = \epsilon^2$
+
+					$$ |\sqrt{x} - \sqrt{y}|^2 < |\sqrt{x} -\sqrt{y}|.|\sqrt{x} + \sqrt{y}| =  |\sqrt{x}^2 - \sqrt{y}^2| = |x -  y| < \delta = \epsilon^2$$
+
+					Como la raíz cuadrada es una función estrictamente creciente 
+
+					$$|\sqrt{x} - \sqrt{y}| < \epsilon^2 \iff |\sqrt{x} - \sqrt{y}| < \epsilon$$
+
+					Entonces:
+
+					$$ |x+y | < \delta \Ra |\sqrt{x} + \sqrt{y}| < \epsilon$$
+				\end{proof}
+
+			\item Sea $f : \R \ra \R$ contínua y tal que $\lim_{x \ra - \infty} f(x) = \lim_{x \ra + \infty} f(x) = 0$. Probar que $f$ es uniformemente contínua en $\R$
+				\begin{proof}
+					Dado $\epsilon$ sabemos que existe $\alpha_1$ tal que $$d(f(x),0) < \frac{\epsilon}{2} \quad \forall x \in (-\infty,\alpha] $$
+
+					Entonces dados $x,y \in (-\infty,\alpha] $ tenemos $d(f(x),f(y)) < d(f(x),0) + d(0,f(y)) = \epsilon$
+
+					Por lo tanto tomando cualquier $\delta$ tenemos: 
+					$$d(x,y) < \delta \Ra d(f(x),f(y)) < \epsilon \quad \forall x,y \in (-\infty,\alpha] $$
+
+					Por lo tanto $f$ es uniformemente contínua en $(-\infty,\alpha]$
+
+					Lo mismo pasa con un $\beta$ y con $x,y \in [\beta,+\infty)$ y $d(f(x),f(y))$
+
+					Entonces $f$ es uniformemente contínua en $[\beta,+\infty)$
+
+					Además $f$ es unfiormemente contínua en $[\alpha,\beta]$ por ser un compacto y $f$ contínua 
+
+					Ahora usando $[\beta,+\infty)$ y $[\alpha,\beta]$ caémos en las hipótesis de la primera parte
+
+					Por lo tanto $f$ es contínua en $[\alpha,+\infty)$
+				\end{proof}
+				
+				
+		\end{enumerate}
+	\end{ej}
+	
+	\begin{ej}
+		Sea $f : \R \ra \R$ una función contínua y abierta.
+		\begin{enumerate}
+			\item Probar que $f$ no tiene extremos locales; es decir, no existen $x_0 \in \R$ y $\epsilon > 0$ tales que $f(x_0) \leq f(x)$ (resp. $f(x_0) \geq f(x)$) para todo $x \in (x_0 - \epsilon,x_0 + \epsilon)$
+
+			\item Comprobar que existen $a,b \in \R \cup \{-\infty,+\infty\}$ tales que $f(\R) = (a,b)$
+			\item Mostrar que $f: \R \ra (a,b)$ es un homeomorfismo y que ella y su inversa son funciones monótonas
+		\end{enumerate}
+	\end{ej}
+	
+	
+	
+		
+\end{document}
