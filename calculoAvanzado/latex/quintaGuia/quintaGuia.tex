@@ -1,0 +1,387 @@
+\documentclass[11pt]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\n}{\aleph_{0}}
+\newcommand{\F}{\mathhbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\open}{\mathrm{o}}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem*{remark}{Observación}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemm}{Lema}
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{prop}{Proposición}
+\newtheorem{ej}{Ejercicio}
+
+
+\fancyhead[R]{Conexión}
+\fancyhead[L]{Alumno Javier Vera}
+\fancyhead[C]{Cálculo Avanzado}
+
+\DeclarePairedDelimiter\Floor\lfloor\rfloor
+\DeclarePairedDelimiter\Ceil\lceil\rceil
+
+\begin{document}
+\begin{ej}
+	Determinar cuales de los siguientes subconjuntos de $\R$ (con la métrica usual) son conexos:
+	$$ \N , \quad [0,1),\quad  \Q, \quad \bigg\{ \frac{1}{n} / n\in\N \bigg\}$$
+		
+\begin{proof}
+	$\N$ no es conexo, podemos tomar $U = (-\infty , \frac{1}{2})$ y $V=(\frac{1}{2},+\infty)$.
+
+	Ambos son abiertos, son disjuntos y su unión (disjunta) es todo $\N$ 
+
+	Podemos afirmar que $[0,1)$ es un intervalo de $\R$ por lo tanto es conexo. Probar que es intervalo es trivial.
+
+	$\Q$ No es conexo, de hecho es totalmente disconexo. Podemos usar el mismo argumento que antes.
+
+	El único intervalo que hay en $\Q$ es el punto, por lo tanto las únicas cosas conexas de $\Q$ son los puntos.
+
+	Todo $\Q$ no es un intervalo mirándolo en $\R$, es facil de ver por que cualquier intervalo $[a,b]$ tiene elementos de $\R$ por lo tanto no estará contenido en $\Q$ 
+
+	Usando lo mismo que con $\Q$ vemos que el conjunto no es conexo
+
+\end{proof}
+\end{ej}
+
+\begin{ej}
+	Analizar la validez de las siguientes afirmaciones en un espacio métrico arbitrario $(X,d)$. Pensar además si las que son falsas se vuelven verdaderas cuando el espacio es $\R^n$
+\begin{enumerate}
+	\item Toda bola abierta $B(a,r)$ es conexa.
+	\item Para todo $a \in X$, existe $r >0$ tal que la bola $B(a,r)$ es conexa.
+	\item Si $A,B \subset X$ son conexos entonces $A \cup B$ es conexo.
+	\item Si $A,B \subset X$ son conexos entonces $A \cap B$ es conexo.
+	\item Si $A,B \subset X$ son conexos entonces $A\setminus B$ es conexo.
+	\item Si $A \subset X$ es conexo y $x$ es un punto de acumulación de $A$, entonces $A \cup \{x\}$ es conexo.
+	\item Si $A \subset X$ es conexo, entonces $A^{\circ}$ es conexo
+	\item Si $A \subset X$ es conexo, entonces $\ol A$ es conexo.
+\begin{proof}
+	\begin{enumerate}[i.]
+		\item No es cierto ni siquiera en $\R^n$. Supongamos que tenemos $(\R^n,\delta)$, donde $\delta$ es la métrica discreta.
+
+			Ahora $B(x,2) = \R^n$ sin embargo lo podemos separar con $B(x,\frac{1}{2})$ y su complemento, que son ambos abiertos (y cerrados) y además disjuntos. 
+
+			Entonces $B(x,2)$ no es conexa.
+
+		\item No es cierto por ejemplo si tomamos $(\Q,d)$ con $d$ la distancia euclídea heredada de $\R$
+
+			Cualquier bola es un intervalo , entonces para cualquier intervalo $I = (a-\epsilon,a+\epsilon)$ vamos a poder encontrar un $\alpha \in \R \setminus \Q$ tal que $\alpha \in I$.
+
+			Entonces tenemos que $I = (a-\epsilon,\alpha) \cup (\alpha , a +\epsilon)$ que son dos abiertos disjuntos.
+
+			Aclaración no los intersequé con $\Q$ por que ya estamos $\Q$ como espacio métrico 
+
+			Si estamos en $\R$ con las métricas usuales es cierto que las bolas son conexas, por que las bolas son los intervalos
+
+			Pero si ponemos la métrica discreta vuelve a ser disconexeo
+		\item No es cierto, ni siquiera en $\R^n$ por ejemplo $A = \{1\}$ y $B=\{2\}$ ambos son subconjuntos de conexos $\R$ pero su unión no es un conexo. 
+		\item No es cierto nisiquiera en $\R^n$, por ejemplo si intersecamos una recta en $\R^2$ con la circunferencia (una recta cuya intersección con la circunferencia sea no vacía y se interseque en dos puntos). Tenemos un disconexo 
+
+		\item No es cierto tampoco usando la misma idea que arriba, si a la circunferencia le sacas un segmento que la corta en dos puntos se desconecta
+		\item Supongamos que $A \cup \{x\}$ no es conexo , entonces existe $U,V$ abiertos, no vacíos y disjuntos tales que $U \cup V = A\cup \{x\}$ 
+
+			Ahora como $A$ es conexo entonces $A \in U$ o $A \in V$ si no fuese así , podríamos usar $U\cap A$ y $V\cap A$ que son abiertos de $A$ para desconectar $A$.
+
+			Pero entonces spd $A = U$ por lo tanto $\{x\} = V$ , si nó $V = \emptyset$ contradiciendo que son dos abiertos no vacíos.
+
+			Ahora dado que $V$ es abierto y $x \in V$ tenemos $B(x,r') \subseteq V$ y como $x$ es de acumulación $B(x,r) \cap A \neq \emptyset \quad \forall r > 0$. En particular $B(x,r') \cap A \neq \emptyset$
+
+			Por lo tanto existe $a \in A$ tal que $a \in B(x,r') \subset V$, lo que es absurdo por que $A = U$ que es disjunto con $V$
+
+		\item Sea $A = \ol B(-1,1)$ y $B = \ol B(1,1)$ entonces $A \cup B$ está conectado, sin embargo su interiór no lo está por que no tiene al $(0,0)$
+		\item Sabemos que $A \cup \{x\}$ con $x$ cualquier punto de acumulación es conexo, por que $A$ es conexo. Entonces si unimos uno a uno los puntos de acumulación siempre estamos uniendo conexos con puntos de acumulación, por lo tanto es conexo y eventualmente unimos todos los puntos de acumulación por lo tanto tenemos $\ol A$ que terminaría siendo conexo
+
+			Otra forma: Sea $f: \ol A \ra \{0,1\}$ contínua, como $A$ es conexo entonces $f(A) = 1$ o $f(A) = 0$ 
+
+			Si no, tendríamos $$f|_{A} : A \ra \{0,1\}$$ contínua , pero no constante, lo cual es absurdo con $A$ conexo.
+
+			Supongamos que $f(A)=0$ entonces $f^{-1}(0)$ es un cerrado (por continuidad) que contiene a $A$ por lo tanto $\ol A \subset f^{-1}(0)$
+
+			Por lo tanto $f(\ol A) = 0$ por lo tanto $f$ es constante
+	\end{enumerate}
+\end{proof}
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	Probar que el conjunto $A = \{(x,y) \in \R^2 : 0 \leq ||(x,y)|| < 2\}$ es conexo
+
+	\begin{proof}
+		Esto es el circulo relleno , pero sin bordes y sin el punto $(0,0)$.
+
+		Probemos que es arco conexo: 
+
+		Dados dos puntos $x,y \in A$ lo podemos unirlos con la recta $r(t) = xt + (1-t)y$.
+
+		Esta es una función contínua, además $r(0) = y$, $r(1) = x$.
+
+		Ahora si $x$ es múltiplo de $y$ entonces no me sirve esa recta por que pasa por el $(0,0)$
+
+		Pero no es un gran problema, por que en ese caso hago una recta intermedia que vaya de $x$ a $(1,0)$ y otra que vaya del $(1,0)$ a $y$, usando la misma fórmula que arriba, estas ambas serían contínuas y cumplen lo mismo que $r$, y sabemos que unión de arco conexo con algún punto en común es arco conexo y estas comparten el $(1,0)$. Y seguro no pasa por el $(0,0)$
+
+		Por lo tanto dado cualquier par de puntos encontramos forma contínua de unirlos. Entonces $A$ es arco conexo, por lo tanto es conexo
+
+	\end{proof}
+\end{ej}
+
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico y sea $C\subset X$. Probar que son equivalentes:
+\begin{enumerate}
+	\item No existen $U,V$ abiertos en $C$, no vacíos y disjuntos tales que $C = U \cup V$.
+	\item No existe $U,V$ abiertos en $X$ tales que $C \cap U \neq \emptyset$, $C \cap V \neq \emptyset$, $C \cap U \cap V = \emptyset$ y $C \subset U \cup V$.
+	\item Si $A \subset C$ es no vacío y abierto y cerrado en $C$, entonces $A = C$
+
+		\begin{proof}
+		$1 \Ra 3$ ) Supongamos que existen dichos abiertos $U,V$. Ahora $U \cap C$ y $V \cap C$ son abiertos de $C$, por definición.
+
+Además son no vacíos por 2). 
+
+Jugando un poco con 2) tenemos $\emptyset = C \cap U \cap V = (C \cap U) \cap (C \cap V)$, por lo tanto son disjuntos.
+
+Finalmente $C \subset U \cup V$ entonces $C = (U \cup V ) \cap C = (U \cap C) \cup (V \cap C)$.
+
+Pero estas tres cosas contradicen 1). Lo cual es absurdo.
+
+		$2 \Ra 3$) Sabemos que $A \subset C$, supongamos $A \neq C$ entonces $C \setminus A \neq \emptyset$ además $C \setminus A$ es abierto y cerrado con respecto a $C$ por ser complemento de un abierto y cerrado. 
+
+		En particular ambos son abiertos. Entonces:
+		\begin{enumerate}
+			\item $A \cup ( C \setminus A ) = C$ 
+			\item $C \cap A \cap (C \setminus A) = \emptyset $ 
+			\item $C \cap A \neq \emptyset$ y $C \cap (C \setminus A) \neq \emptyset$
+
+		\end{enumerate}		
+	Lo cual es absurdo por 2). Entonces $A = C$
+
+$3 \Ra 1)$ Supongamos que existen dichos abiertos entonces $V = C \setminus U $ es complemento de un abierto con respecto a $C$, por lo tanto es cerrado con respecto a $C$ y además ya sabíamos que era abierto.
+
+Entonces $V$ es abierto y cerrado luego por hipótesis $V = C$, luego $C = V \cup U = C \cup U$
+
+Finalmente $U = \emptyset$ o $U \subset V$. Ambas contradicen la negación de 1).
+
+Por lo tanto es absurdo negar 1), entonces 1 es verdadera
+		\end{proof}
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico y sea $C$ un subconjunto de $X$ que no es conexo. Probar que existen $U,V$ abiertos en $X$ disjuntos tales que $C \cap U \neq \emptyset$ , $C \cap V \neq \emptyset$ y $C \subset U \cup V$
+	\begin{proof}
+		Sabemos que $C$ no es conexo entonces existe $U',V' \subset C$ abiertos de $C$, disjuntos y no vacíos tal que $U' \cup V' = C$
+
+		Ahora por definición tienen que exisitr $U,V$ abiertos de $X$ tales que $U' = U \cap C$ y $V' = V \cap C$ 
+
+		Además como $U'$ y $V'$ son no vacíos, $U \cap C$ y $V \cap C$ son no vacíos tambien
+
+		Finalmente $U' = U \cap C$ entonces $U' \subset U$ lo mismo para llegar a $V' \subset V$
+
+		Entonces $C = U' \cup V' \subset U \cup V$
+	\end{proof}
+\end{ej}
+\begin{ej}
+	Sea $(X,d)$ un espacio métrico y sea $\mathcal{A}$ una familia de conjuntos conexo de $X$ tal que para cada par de conjuntos $A,B \in \mathcal{A}$ existen $A_0 , \cdots , A_n \in \mathcal{A}$ que satisfacen $A_0 = A$ , $A_n = B$ y $A_i \cap A_{i+1} \neq \emptyset$ para cada $i =0,\cdots , n-1$. Probar que $\bigcup_{A \in \mathcal{A}} A$ es conexo
+
+	\begin{proof}
+	
+	\end{proof}
+
+\end{ej}
+
+\begin{ej}
+	Sea $f: \R \ra \Z$ contínua. Probar que $f$ es constante.
+	\begin{proof}
+
+		Voy a asumir que $\R$ está con alguna métrica tradicional, si estuviera con la discreta, pordría ser contínua.
+
+		Como $\R$ tiene la métrica discreta, entonces es conexo. Como la función es contínua $f(\R)$ tiene que ser conexo también.
+
+		Además $f(\R) \subseteq \Z$ entonces $f(x) = a \in \Z \quad \forall x \in \R$ si no fuera así , existiría algún $x'$ tal que $f(x' ) = b$ entonces $B(a,\frac{1}{2}) \cup B(b,\frac{1}{2})$ separa la imagen, lo cual es absurdo. 
+
+		Si tuviese mas de dos puntos en la imagen $a,b,c$ podria separar usando $$(B(a,\frac{1}{2}) \cup B(b,\frac{1}{2})) \cup B(c,\frac{1}{2}) = A \cup B(c,\frac{1}{2})$$ Donde $A$ es aberto por ser unión de abiertos.
+
+		Y esto lo puedo hacer sin importar cuantos puntos distintos tenga, siempre llego a un absurdo.
+
+		Por lo tanto la imagen tiene que tener un solo punto, mostrando que $f$ es contínua
+		
+	\end{proof}
+\end{ej}
+
+
+\begin{ej}
+	Probar que un espacio métrico $(X,d)$ es conexo si y sólo si toda función contínua $f: X \ra \{0,1\}$ es constante
+	\begin{proof}
+	$\Ra )$	Usando una idea igual que la del ejercicio 7, tenemos $f(X) \subseteq \{0,1\}$ tiene que se conexo.
+
+	Entonces $f(x) = 1$ o $f(x) = 0 \quad \forall x \in X$ 
+
+	\end{proof}
+\end{ej}
+
+\begin{ej}
+	Probar que si $n \geq 2$ no existe un homeomorfismo entre $\R$ y $\R^n $
+	\begin{proof}
+		Mostremos primero que dado $x \in \R^n $ sucede que $\R^n \setminus \{x\}$ es conexo.
+
+		Tomemos dos puntos $a,b \in \R^n \setminus \{x\}$ ahora los podemos unir por la recta $r(t) = ta + (1-t)b$
+
+		Esta cumple todas las hipótesis de arcoconexión, ahora si existe un $t \in [0,1]$ tal que $r(t) = x$ entonces tomo un $c \in \R^n \setminus \{x\}$ tal que $c \neq a,b$ y armo dos rectas usando la misma tecnica una que vaya desde $a$ hasta $c$ y otra desde $c$ hasta $a$.
+
+		Estas rectas seguro no pasan por $x$ y sin tienen a $c$ en común por lo tanto unen $a$ y $b$ bajo las hipótesis de arcoconexión.
+
+		Si no existe dicho $t$ entonces la recta ya sería para arcoconexión, mostrando que $\R^n \setminus \{x\}$ es arcoconexo entonces es conexo.
+		Ahora demostremos el ejercicio:
+
+		Si existiera dicho homeomorfismo $f$ entonces tendríamos una restricción 
+		$$g : \R \setminus \{a\} \ra \R^n \setminus \{f(a)\} $$ 
+
+		Por ser restricción a la imagen directa de un homeo entonces $g$ es homeo, por lo tanto $g^{-1}$ es contínua y manda un conexo a $\R^n \setminus\{f(a)\}$ a $\R$ sin un punto por lo tanto disconexo , lo cual es absurdo.
+		 
+	\end{proof}
+\end{ej}
+
+\begin{ej}
+	Probar que los espacios métricos $(0,1),[0,1)$ y $[0,1]$ (con las métricas que heredan como subespacios de $\R$) son dos a dos no homeomorfos
+\begin{proof}
+a) Supongamos que tenemos un homeo $f: [0,1) \ra (0,1)$ 
+
+Entonces $f([0,1)) = (0,1)$ esto vale por la sobreyectividad
+
+Por lo tanto $f( (0,1)) = (0,1) \setminus f(0)$. Esto vale por la inyectividad
+
+Pero $(0,1)$ es un conexo de $[0,1)$ y $f$ es una función contínua, sin embargo $(0,1)\setminus f(0)$ no es conexa sin importar que sea $f(0)$
+
+Entonces $f$ no puede ser homeomorfa
+
+Lo mismo pasa con $g : [0,1] \ra [0,1)$ y con $h: [0,1] \ra (0,1)$
+\end{proof}
+\end{ej}
+
+\begin{ej}
+	Probar que si $f: [0,1] \ra [0,1]$ es contínua, existe un $x_0 \in [0,1]$ tal que $f(x_0) = x_0$
+	\begin{proof}
+		Demostrar lo que nos piden es equivalente a 
+		$$\exists x_0 \in [0,1] \text{ tal que } g(x_0) = 0 \text{ donde } g = f(x) - x $$
+		
+		Sabemos que $g(0) = f(0)$ ahora si $f(0) = 0$ entonces ya teníamos la solución, supongamos que no entonces $g(0) > 0$
+
+		Además $g(1) = f(1) - 1 \leq 0 $ ahora devuelta si $g(1) = 0$ entonces $f(1) = 1$ lo cual devuelta nos daría la solución, supongamos que no, entonces $g(1) < 0$
+
+		Ahora $g$ es contínua por ser resta de contínuas entonces $g([0,1])$ tiene que ser conexo 
+
+		Sabemos que $g([0,1])$ tiene que ser conexo 
+
+		Además $(a,b) \subseteq g([0,1])$ con $g(1) = a < 0$ y $g(0) = b > 0$. 
+
+		Por lo tanto $0 \in g([0,1]) $ si nó sería un intervalo sin el $0$ por lo tanto no sería conexo
+
+		Entonces existe $x_0$ tal que $g(x_0) = 0$ por lo tanto $0 = g(x_0) = f(x_0) - x_0 \iff f(x_0) = x_0$
+
+	\end{proof}
+\end{ej}
+
+\begin{ej}.
+
+\begin{enumerate}
+	\item Sea $(X,d)$ un espacio métrico conexo y sea $f : X \ra \R$ una función contínua. Sean $a,b \in f(X)$ tales que $a \leq b$ . Probar que para todo $c \in [a,b]$ existe $x \in X$ tal que $f(x) = c$
+	\item Probar que si $(X,d)$ es conexo, entonces $\# X = 1$ o $\# X \geq c$
+\end{enumerate}
+\end{ej}
+
+\begin{ej}
+	Hallar las componentes conexas de los siguientse subconjuntos de $\R$ y de $\R^2$
+	\begin{enumerate}
+		\item $arcsen([\frac{\sqrt{2}}{2},1])$
+			\begin{proof}
+				Sabemos que arcoseno es contínua en ese intervalo, por lo tanto tenemos un intervalo de $\R$ (por lo tanto conexo)y una función contínua. 
+
+				Entonces $arcsen([\frac{\sqrt{2}}{2},1])$ es conexo
+			\end{proof}
+		\item $\Q$
+			\begin{proof}
+				$\Q$ es totalmente disconexo, o lo que es lo mismo las componentes conexas son los puntos.
+
+				Supongamos que hay algún conexo que tenga mas de un elemento, bueno entonces tomemos $x,y$ dos elementos cualquier de ese conjunto , entre ellos hay un $\alpha$ irracional , si tomamos $(-\infty, \alpha) \cup (\alpha,+\infty)$ separamos el conjunto en dos abiertos disjuntos, contradiciendo que era conexo
+			\end{proof}
+		\item $B((-1,0),1) \cup B( (1,0),1)$
+			\begin{proof}
+				Las bolas por separado son componentes conexas. Veámoslo.
+
+				Notemos primero que es evidente que la unión de ambas bolas es un conjunto disconexo, justamente estan separadas trivialmente por las mismas bolas. Además facil ver que las bolas por separado son arco conexas. Por lo tanto conexas
+
+				Ahora supongamos que existe un $x$ en alguna de las bolas por ejemplo $x \in B( (-1,0),1)$ tal que la componente conexa de $x$ no es esa misma bola.
+
+				Como la bola ya és conexa entonces la componente conexa de $x$ tiene que tener mas elementos, si tuviera menos seguro no sería componente conexa, por que estaría contenida en $B( (-1,0),1)$ que ya es conexo y contiene a $x$ (obs: esto vale en general para cualquier conexo que quiero probar que es compoenente conexa, sacarle puntos no hace falta por que pasaría lo recién explicado, solo sirve chequear si es componente conexa agregando puntos)
+
+				Pero los únicos que puedo agregar son de la otra bola entonces supongamos la componente conexa de $x$ es $B( (-1,0),1)$ mas elementos de la otra bola.
+
+				Entonces tenemos un conexo que tiene todo $B( (-1,0),1)$ mas algún punto de $B((1,0),1)$ 
+
+				Como $B( (1,0),1)$ es conexo y también tiene ese punto sucede que la unión de ambas bolas tiene que ser conexa, por que es una unión de conexo que comparten un punto, lo que es absurdo.
+
+				Otra forma mas directa era agregar algún punto y ver que el conjunto resultante no es conexo, por lo tanto seguro no es componente conexa
+			\end{proof}
+		\item $B( (-1,0),1) \cup B( (1,0),1) \cup \{(0,0)\}$
+			\begin{proof}
+				Todo el conjunto es conexo, por lo tanto es una componente conexa.
+				
+				Es facil ver que es arconexo, tomamos $a,b$ en el conjunto , si ambos estan en la misma bola usamos la recta de siempre si estan en diferentes usamos una recta hasta el $(0,0)$ y otra desde allí al otro punto, mostrando que es arco conexo
+			\end{proof}
+
+	\end{enumerate}
+\end{ej}
+\begin{ej}
+	Para cada $n \in \N$, sea $A_n = \{\frac{1}{n}\} \times [0,1]$, y sea $X = \bigcup_{n\in \N} A_n \cup \{(0,0),(0,1)\}$
+
+	Probar que:
+	\begin{enumerate}
+		\item $\{(0,0)\}$ y $\{(0,1)\}$ son componentes conexas de $X$
+		\item Si $B \subset X$ es abierto y cerrado en $X$, entonces $\{(0,0),(0,1)\} \subset B$ o $\{(0,0),(0,1)\} \cap B = \emptyset$
+			\begin{proof}
+				Supongamos que no es cierto el enunciado, entonces spd $(0,0) \in B$ pero $(0,1) \notin B$.
+
+				Ahora como $B$ es abierto tenemos un $r >0$ tal que $B((0,0),r) \subset B$.
+
+				Por arquimedianidad sabemso que $\exists n_0$ tal que $\frac{1}{n} < \frac{1}{n_0} < r$ para todo $n \geq n_0 $
+
+				Por lo tanto los puntos $(\frac{1}{n}, 0) \in B$ también están en $A_n$. 
+
+				Y sabemos que $C_n = A_n \cap B $ son abiertos y cerrados relativos a $A_n$ y la intersección es no vacía para todo $n \geq n_0$ por lo visto arriba.
+
+				Además sabemos que $A_n$ son componentes conexas. Pero entonces $C_n \subseteq A_n$ son abiertos y cerrados dentro de una componente conexa (un conexo) por lo tanto o son todo o son vacio, y como no son vacíos entonces son todo.
+
+				Entonces $A_n = C_n \quad \forall n \geq n_0$. Y como $C_n \subset B$ por construcción, entonces $A_n \subset B$ 
+
+				Pero entonces tenemos la sucesión $c_n = (\frac{1}{n},1) \subseteq A_n \subset B$
+
+				Y como $B$ es cerrado en $X$ y $c_n$ está contenida en $B$ entonces su límite está en $B$ por lo tanto $(0,1) \in B$. Lo que es absurdo. 
+
+				Provino de suponer que $B$ tenía únicamente al $(0,0)$ entonces o tiene ambos puntos o no tiene ninguno
+			\end{proof}
+	\end{enumerate}
+\end{ej}
+\end{document}
